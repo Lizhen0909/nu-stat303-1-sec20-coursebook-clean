@@ -234,7 +234,7 @@
     "href": "vscode_setup.html",
     "title": "1  Jupyter Notebooks in VS Code",
     "section": "",
-    "text": "1.1 Anaconda vs. VS Code\nIn STAT 201, you used Jupyter notebooks through Anaconda. In STAT 303-1, you will continue writing .ipynb notebooks, now inside VS Code, and use Quarto to produce HTML assignment submissions.\nBy the end of this chapter, you should be able to:\nAnaconda and Visual Studio Code serve different roles and can be used together. Anaconda provides Python, packages, and environment-management tools; VS Code provides a flexible workspace for writing code and managing projects.\nWhy we use VS Code in STAT 303-1:",
+    "text": "1.1 Anaconda vs. VS Code\nIn STAT 201, you used Jupyter notebooks through Anaconda. In STAT 303-1, you will continue writing .ipynb notebooks, now inside VS Code, and use Quarto to produce HTML assignment submissions.\nBy the end of this chapter, you should be able to:\nAnaconda and Visual Studio Code serve different roles: Anaconda provides Python, packages, and environment management tools, while VS Code offers a flexible workspace for writing code and managing projects. The table below compares their purposes, key features, typical uses, and limitations.\nWhy we use VS Code in STAT 303-1:",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
