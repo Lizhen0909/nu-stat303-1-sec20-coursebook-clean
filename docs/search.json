@@ -234,7 +234,7 @@
     "href": "vscode_setup.html",
     "title": "1  Jupyter Notebooks in VS Code",
     "section": "",
-    "text": "1.1 Know Your Tools\nIn STAT 201, you used Jupyter notebooks through Anaconda. In STAT 303-1, you will continue writing .ipynb notebooks, now inside VS Code, and use Quarto to produce HTML assignment submissions.\nBy the end of this chapter, you should be able to open a project folder, run and save a notebook, identify its Python kernel, and explain the roles of the tools you use.\nInstalling VS Code does not replace Python, and selecting a notebook kernel is not the same as opening a terminal. You do not need to uninstall Anaconda or discard your STAT 201 notebooks.",
+    "text": "1.1 Know Your Tools\nIn STAT 201, you used Jupyter notebooks through Anaconda. In STAT 303-1, you will continue writing .ipynb notebooks, now inside VS Code, and use Quarto to produce HTML assignment submissions.\nBy the end of this chapter, you should be able to:\nInstalling VS Code does not replace Python, and selecting a notebook kernel is not the same as opening a terminal. You do not need to uninstall Anaconda or discard your STAT 201 notebooks.",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
