@@ -1,0 +1,2 @@
+
+# This is an example of writing content to a file using %%writefile magic command.

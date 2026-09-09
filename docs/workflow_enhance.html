@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Enhancing Workflow in Jupyter Notebooks – Data Science I with python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+q { quotes: "“" "”" "‘" "’"; }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./python_basics.html" rel="next">
+<link href="./python_venv.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vscode_setup.html">Getting started</a></li><li class="breadcrumb-item"><a href="./workflow_enhance.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science I with python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Environments and Package Management</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python refresher</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Structures</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Core library foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vectorized_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Visualization Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Advanced_Data_Visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Visualization Intermediate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">From messy to insight</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Assignment C</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment D.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Assignment D</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment E.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Assignment E</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">3.1</span> Learning Objectives</a></li>
+  <li><a href="#magic-commands" id="toc-magic-commands" class="nav-link" data-scroll-target="#magic-commands"><span class="header-section-number">3.2</span> Magic Commands</a>
+  <ul>
+  <li><a href="#what-are-magic-commands" id="toc-what-are-magic-commands" class="nav-link" data-scroll-target="#what-are-magic-commands"><span class="header-section-number">3.2.1</span> What are Magic Commands?</a></li>
+  <li><a href="#line-magic" id="toc-line-magic" class="nav-link" data-scroll-target="#line-magic"><span class="header-section-number">3.2.2</span> Line Magic</a>
+  <ul class="collapse">
+  <li><a href="#time-timing-the-execution-of-code" id="toc-time-timing-the-execution-of-code" class="nav-link" data-scroll-target="#time-timing-the-execution-of-code"><span class="header-section-number">3.2.2.1</span> <code>%time</code>: Timing the execution of code</a></li>
+  <li><a href="#matplotlib-inline-displaying-plots-inline" id="toc-matplotlib-inline-displaying-plots-inline" class="nav-link" data-scroll-target="#matplotlib-inline-displaying-plots-inline"><span class="header-section-number">3.2.2.2</span> <code>%matplotlib inline</code>: Displaying plots inline</a></li>
+  </ul></li>
+  <li><a href="#cell-magic-commands" id="toc-cell-magic-commands" class="nav-link" data-scroll-target="#cell-magic-commands"><span class="header-section-number">3.2.3</span> Cell Magic Commands</a>
+  <ul class="collapse">
+  <li><a href="#time-timing-cell-execution" id="toc-time-timing-cell-execution" class="nav-link" data-scroll-target="#time-timing-cell-execution"><span class="header-section-number">3.2.3.1</span> <code>%%time</code>: Timing cell execution</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#shell-commands-in-jupyter-notebooks" id="toc-shell-commands-in-jupyter-notebooks" class="nav-link" data-scroll-target="#shell-commands-in-jupyter-notebooks"><span class="header-section-number">3.3</span> Shell Commands in Jupyter Notebooks</a>
+  <ul>
+  <li><a href="#using-shell-commands" id="toc-using-shell-commands" class="nav-link" data-scroll-target="#using-shell-commands"><span class="header-section-number">3.3.1</span> Using Shell Commands</a>
+  <ul class="collapse">
+  <li><a href="#print-the-current-working-directory" id="toc-print-the-current-working-directory" class="nav-link" data-scroll-target="#print-the-current-working-directory"><span class="header-section-number">3.3.1.1</span> Print the current working directory</a></li>
+  <li><a href="#ls-dir-on-windows-listing-files-and-directories" id="toc-ls-dir-on-windows-listing-files-and-directories" class="nav-link" data-scroll-target="#ls-dir-on-windows-listing-files-and-directories"><span class="header-section-number">3.3.1.2</span> <code>!ls</code> (<code>!dir</code> on Windows): Listing files and directories</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#installing-required-packages-within-your-notebook" id="toc-installing-required-packages-within-your-notebook" class="nav-link" data-scroll-target="#installing-required-packages-within-your-notebook"><span class="header-section-number">3.4</span> Installing Required Packages Within Your Notebook</a></li>
+  <li><a href="#file-paths-in-python" id="toc-file-paths-in-python" class="nav-link" data-scroll-target="#file-paths-in-python"><span class="header-section-number">3.5</span> File Paths in Python</a>
+  <ul>
+  <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path"><span class="header-section-number">3.5.1</span> Absolute Path</a></li>
+  <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path"><span class="header-section-number">3.5.2</span> Relative Path</a></li>
+  <li><a href="#methods-to-specify-file-paths-in-windows" id="toc-methods-to-specify-file-paths-in-windows" class="nav-link" data-scroll-target="#methods-to-specify-file-paths-in-windows"><span class="header-section-number">3.5.3</span> Methods to Specify File Paths in Windows</a>
+  <ul class="collapse">
+  <li><a href="#method-1-using-escaped-backslashes" id="toc-method-1-using-escaped-backslashes" class="nav-link" data-scroll-target="#method-1-using-escaped-backslashes"><span class="header-section-number">3.5.3.1</span> Method 1: <strong>Using Escaped Backslashes</strong></a></li>
+  <li><a href="#method-2-using-raw-strings" id="toc-method-2-using-raw-strings" class="nav-link" data-scroll-target="#method-2-using-raw-strings"><span class="header-section-number">3.5.3.2</span> Method 2: <strong>Using Raw Strings</strong></a></li>
+  <li><a href="#method-3-using-forward-slashes" id="toc-method-3-using-forward-slashes" class="nav-link" data-scroll-target="#method-3-using-forward-slashes"><span class="header-section-number">3.5.3.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></a></li>
+  <li><a href="#method-4-using-os.path.join" id="toc-method-4-using-os.path.join" class="nav-link" data-scroll-target="#method-4-using-os.path.join"><span class="header-section-number">3.5.3.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></a></li>
+  </ul></li>
+  <li><a href="#file-paths-in-macos-and-linux" id="toc-file-paths-in-macos-and-linux" class="nav-link" data-scroll-target="#file-paths-in-macos-and-linux"><span class="header-section-number">3.5.4</span> File paths in macOS and Linux</a>
+  <ul class="collapse">
+  <li><a href="#best-practices-for-file-paths-in-data-science" id="toc-best-practices-for-file-paths-in-data-science" class="nav-link" data-scroll-target="#best-practices-for-file-paths-in-data-science"><span class="header-section-number">3.5.4.1</span> Best Practices for File Paths in Data Science</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#interacting-with-the-os-and-filesystem" id="toc-interacting-with-the-os-and-filesystem" class="nav-link" data-scroll-target="#interacting-with-the-os-and-filesystem"><span class="header-section-number">3.6</span> Interacting with the OS and Filesystem</a></li>
+  <li><a href="#navigate-between-directories-and-understand-.-and-..-in-paths" id="toc-navigate-between-directories-and-understand-.-and-..-in-paths" class="nav-link" data-scroll-target="#navigate-between-directories-and-understand-.-and-..-in-paths"><span class="header-section-number">3.7</span> Navigate between directories and understand . and .. in paths</a></li>
+  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">3.8</span> Independent Study</a>
+  <ul>
+  <li><a href="#setting-up-your-data-science-workspace" id="toc-setting-up-your-data-science-workspace" class="nav-link" data-scroll-target="#setting-up-your-data-science-workspace"><span class="header-section-number">3.8.1</span> Setting Up Your Data Science Workspace</a></li>
+  </ul></li>
+  <li><a href="#references-and-further-learning" id="toc-references-and-further-learning" class="nav-link" data-scroll-target="#references-and-further-learning"><span class="header-section-number">3.9</span> References and Further Learning</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vscode_setup.html">Getting started</a></li><li class="breadcrumb-item"><a href="./workflow_enhance.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<img src="./images/mdir.jpg" width="500">
+</div>
+</div>
+<section id="learning-objectives" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">3.1</span> Learning Objectives</h2>
+<p>In this lecture, we’ll explore how to optimize your workflow in Jupyter notebooks by leveraging <strong>magic commands</strong> and <strong>shell commands</strong>, understanding <strong>file paths</strong>, and interacting with the <strong>filesystem</strong> using the <code>os</code> module.</p>
+<p>By completing this lecture, you will be able to:</p>
+<ul>
+<li>Run shell commands directly within a notebook.<br>
+</li>
+<li>Navigate and manipulate files and directories efficiently.<br>
+</li>
+<li>Integrate external tools and scripts seamlessly into your workflow.</li>
+</ul>
+<p>By mastering these techniques, you’ll be able to work more efficiently and handle complex data science tasks with ease.</p>
+</section>
+<section id="magic-commands" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="magic-commands"><span class="header-section-number">3.2</span> Magic Commands</h2>
+<section id="what-are-magic-commands" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="what-are-magic-commands"><span class="header-section-number">3.2.1</span> What are Magic Commands?</h3>
+<p>Magic commands in Jupyter are shortcuts that extend the functionality of the notebook environment. There are two types of magic commands:</p>
+<ul>
+<li><strong>Line magics</strong>: Commands that operate on a single line.</li>
+<li><strong>Cell magics</strong>: Commands that operate on the entire cell.</li>
+</ul>
+<p>You can access the full list of magic commands by typing:</p>
+<div id="cell-3" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show all the avaiable magic commands on the system</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>lsmagic  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>Available line magics:
+%alias  %alias_magic  %autoawait  %autocall  %automagic  %autosave  %bookmark  %cd  %clear  %cls  %code_wrap  %colors  %conda  %config  %connect_info  %copy  %ddir  %debug  %dhist  %dirs  %doctest_mode  %echo  %ed  %edit  %env  %gui  %hist  %history  %killbgscripts  %ldir  %less  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %macro  %magic  %mamba  %matplotlib  %micromamba  %mkdir  %more  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %pip  %popd  %pprint  %precision  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %ren  %rep  %rerun  %reset  %reset_selective  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %uv  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%cmd  %%code_wrap  %%debug  %%file  %%html  %%javascript  %%js  %%latex  %%markdown  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.</code></pre>
+</div>
+</div>
+</section>
+<section id="line-magic" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="line-magic"><span class="header-section-number">3.2.2</span> Line Magic</h3>
+<p>In Jupyter notebooks, line magic commands are invoked by placing a single percentage sign (<code>%</code>) in front of the statement, allowing for quick, inline operations.</p>
+<section id="time-timing-the-execution-of-code" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="time-timing-the-execution-of-code"><span class="header-section-number">3.2.2.1</span> <code>%time</code>: Timing the execution of code</h4>
+<p>In data science, it is often crucial to evaluate the performance of specific code snippets or algorithms, and the <code>%time</code> magic command provides a simple and efficient way to measure the execution time of individual statements, helping you identify bottlenecks and optimize your code for better performance.</p>
+<div id="cell-5" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_dot(a, b): </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">   Compute the dot product of two vectors</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"> </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">      a (ndarray (n,)):  input vector </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">      b (ndarray (n,)):  input vector with same dimension as a</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">      x (scalar): </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(a.shape[<span class="dv">0</span>]):</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> x <span class="op">+</span> a[i] <span class="op">*</span> b[i]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-6" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.random.rand(<span class="dv">10000000</span>)  <span class="co"># very large arrays</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.random.rand(<span class="dv">10000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s use <code>%time</code> to measure the execution time of a single line of code.</p>
+<div id="cell-8" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Timing a list comprehension</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time np.dot(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>CPU times: total: 15.6 ms
+Wall time: 32.9 ms</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>2501072.5816813153</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time my_dot(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>CPU times: total: 1.88 s
+Wall time: 1.86 s</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>2501072.5816813707</code></pre>
+</div>
+</div>
+<p>To capture the output of <code>%time</code> (or <code>%timeit</code>), you cannot directly assign it to a variable as it’s a magic command that prints the result to the notebook’s output. However, you can use Python’s built-in <code>time</code> module to manually time your code and assign the execution time to a variable.</p>
+<p>Here’s how you can do it using the <code>time</code> module:</p>
+<div id="cell-11" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tic <span class="op">=</span> time.time()  <span class="co"># capture start time</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> np.dot(a, b)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>toc <span class="op">=</span> time.time()  <span class="co"># capture end time</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"np.dot(a, b) =  </span><span class="sc">{</span>c<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Vectorized version duration: </span><span class="sc">{</span><span class="dv">1000</span><span class="op">*</span>(toc<span class="op">-</span>tic)<span class="sc">:.4f}</span><span class="ss"> ms "</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>tic <span class="op">=</span> time.time()  <span class="co"># capture start time</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> my_dot(a,b)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>toc <span class="op">=</span> time.time()  <span class="co"># capture end time</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"my_dot(a, b) =  </span><span class="sc">{</span>c<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"loop version duration: </span><span class="sc">{</span><span class="dv">1000</span><span class="op">*</span>(toc<span class="op">-</span>tic)<span class="sc">:.4f}</span><span class="ss"> ms "</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span>(a)<span class="op">;</span><span class="kw">del</span>(b)  <span class="co">#remove these big arrays from memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.dot(a, b) =  2501072.5817
+Vectorized version duration: 2.9922 ms 
+my_dot(a, b) =  2501072.5817
+loop version duration: 2004.3225 ms </code></pre>
+</div>
+</div>
+</section>
+<section id="matplotlib-inline-displaying-plots-inline" class="level4" data-number="3.2.2.2">
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="matplotlib-inline-displaying-plots-inline"><span class="header-section-number">3.2.2.2</span> <code>%matplotlib inline</code>: Displaying plots inline</h4>
+<p>This command allows you to embed plots within the notebook.</p>
+<div id="cell-13" class="cell" data-execution_count="13">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Using %matplotlib inline to display a plot</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflow_enhance_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cell-magic-commands" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="cell-magic-commands"><span class="header-section-number">3.2.3</span> Cell Magic Commands</h3>
+<p>While cell magic commands are denoted with double percentage signs (<code>%%</code>) at the beginning of the cell, enabling you to apply commands to the entire cell for more complex tasks. Note that a cell magic command in Jupyter notebook has to be the first line in the code cell!</p>
+<section id="time-timing-cell-execution" class="level4" data-number="3.2.3.1">
+<h4 data-number="3.2.3.1" class="anchored" data-anchor-id="time-timing-cell-execution"><span class="header-section-number">3.2.3.1</span> <code>%%time</code>: Timing cell execution</h4>
+<p>This cell magic is useful for measuring the execution time of an entire cell.</p>
+<div id="cell-15" class="cell" data-execution_count="14">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Timing a cell with matrix multiplication</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.rand(<span class="dv">1000</span>, <span class="dv">1000</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.rand(<span class="dv">1000</span>, <span class="dv">1000</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.dot(A, B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>CPU times: total: 219 ms
+Wall time: 23 ms</code></pre>
+</div>
+</div>
+<p>Question: there are several timing magic commands that can be confusing due to their similarities, they are <code>%time</code>,<code>%timeit</code>, <code>%%time</code>, and <code>%timeit</code>. Do your own research on the differences among them</p>
+</section>
+</section>
+</section>
+<section id="shell-commands-in-jupyter-notebooks" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="shell-commands-in-jupyter-notebooks"><span class="header-section-number">3.3</span> Shell Commands in Jupyter Notebooks</h2>
+<p><strong>What are Shell Commands?</strong></p>
+<p>Shell commands let you interact directly with your computer’s operating system from within a Jupyter notebook. This means you can manage files, check your environment, and run system tools without leaving your notebook. To run a shell command in Jupyter, start the line with an exclamation mark (<code>!</code>). For example, <code>!ls</code> lists files on macOS/Linux, while <code>!dir</code> does the same on Windows.</p>
+<p><strong>How does it work?</strong></p>
+<ul>
+<li>Python code is executed by the IPython kernel inside the notebook.</li>
+<li>Shell commands (lines starting with <code>!</code>) are sent to your computer’s shell (like Bash, Command Prompt, or PowerShell), not to Python.</li>
+<li>This separation means you can use both Python and shell commands in the same notebook, but they run in different environments.</li>
+</ul>
+<section id="using-shell-commands" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="using-shell-commands"><span class="header-section-number">3.3.1</span> Using Shell Commands</h3>
+<section id="print-the-current-working-directory" class="level4" data-number="3.3.1.1">
+<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="print-the-current-working-directory"><span class="header-section-number">3.3.1.1</span> Print the current working directory</h4>
+<p>To see where your notebook is running, use: - On macOS/Linux: <code>!pwd</code> - On Windows: <code>!cd</code></p>
+<p>This helps you understand where files will be saved or loaded from.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>c:\Users\lsi8012\mydev\STAT303-1-class-notes</code></pre>
+</div>
+</div>
+</section>
+<section id="ls-dir-on-windows-listing-files-and-directories" class="level4" data-number="3.3.1.2">
+<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="ls-dir-on-windows-listing-files-and-directories"><span class="header-section-number">3.3.1.2</span> <code>!ls</code> (<code>!dir</code> on Windows): Listing files and directories</h4>
+<p>To view all files and folders in your current directory, use a shell command:</p>
+<ul>
+<li><p>On macOS/Linux: <code>!ls</code></p></li>
+<li><p>On Windows: <code>!dir</code></p></li>
+</ul>
+<p>This is useful for quickly checking what data, scripts, or notebooks are available in your workspace. If you want to see hidden files (those starting with a dot), use <code>!ls -a</code> on macOS/Linux or <code>!dir /a</code> on Windows.</p>
+<p><strong>Tip:</strong> If you get an error, double-check that you are using the correct command for your operating system.</p>
+</section>
+</section>
+</section>
+<section id="installing-required-packages-within-your-notebook" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="installing-required-packages-within-your-notebook"><span class="header-section-number">3.4</span> Installing Required Packages Within Your Notebook</h2>
+<p>When working in Jupyter notebooks, you often need to install new Python packages. There are two main ways to do this:</p>
+<ol type="1">
+<li><p><strong>Shell Command (not recommend):</strong></p>
+<ul>
+<li><p>Use an exclamation mark (<code>!</code>) before the command:</p>
+<ul>
+<li><code>!pip install package_name</code></li>
+</ul></li>
+<li><p>This runs the command in your system shell, which may not always install the package in the same environment as your notebook kernel.</p></li>
+</ul></li>
+<li><p><strong>Magic Command:</strong></p>
+<ul>
+<li><p>Use a percent sign (<code>%</code>) before the command:</p>
+<ul>
+<li><code>%pip install package_name</code></li>
+</ul></li>
+<li><p>This is Jupyter-specific and ensures the package is installed in the environment where your notebook is running.</p></li>
+</ul></li>
+</ol>
+<p><strong>Example:</strong></p>
+<ul>
+<li><p><code>%pip install numpy</code> # Installs numpy in the notebook’s environment</p></li>
+<li><p><code>!pip install numpy</code> # Installs numpy using the system shell (may differ from notebook environment)</p></li>
+</ul>
+<p>Unlike shell commands, the <code>%pip</code> magic command is designed specifically for Jupyter notebooks. It automatically installs packages into the exact environment your notebook kernel is using, reducing confusion and installation errors.</p>
+<div id="cell-21" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: numpy in c:\users\lsi8012\appdata\local\anaconda3\lib\site-packages (1.26.4)
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<p>In most cases, you don’t need to type <code>%</code> before <code>pip install numpy</code> because Jupyter’s <q>automagic</q> feature is enabled by default. Automagic lets you use line magics without the <code>%</code> (unless their name conflicts with Python variables or commands).</p>
+<p><strong>How automagic works:</strong></p>
+<ul>
+<li>If you type <code>pip install numpy</code>, Jupyter will interpret it as <code>%pip install numpy</code> automatically.</li>
+</ul>
+<p><strong>Best practice:</strong></p>
+<ul>
+<li>Use <code>%pip install ...</code> for clarity and to avoid conflicts.</li>
+<li>Automagic is convenient, but explicit magic commands are safer in shared or complex notebooks.</li>
+</ul>
+<p><strong>Note:</strong> Cell magics still require the <code>%%</code> prefix.</p>
+</section>
+<section id="file-paths-in-python" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="file-paths-in-python"><span class="header-section-number">3.5</span> File Paths in Python</h2>
+<p>Understanding how to specify file paths in Python is essential for loading and saving data. File paths tell Python where to find or store your files (e.g., datasets, results, or scripts).</p>
+<p>There are two main types of file paths: <strong>absolute paths</strong> and <strong>relative paths</strong>.</p>
+<ul>
+<li><strong>Absolute Path:</strong> Gives the complete location of a file or folder from the root of your file system. It always points to the same place, no matter where your code is running.</li>
+<li><strong>Relative Path:</strong> Specifies the location of a file or folder in relation to your current working directory. It is shorter and more flexible, making your code easier to share and reuse.</li>
+</ul>
+<p>Choosing the right type of path helps avoid errors and makes your code more portable across different computers and operating systems.</p>
+<section id="absolute-path" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="absolute-path"><span class="header-section-number">3.5.1</span> Absolute Path</h3>
+<p>An <strong>absolute path</strong> provides the full address to a file or directory, starting from the root of your system. It does <strong>not</strong> depend on where your code is running.</p>
+<p><strong>Example (Windows):</strong></p>
+<div id="cell-25" class="cell" data-execution_count="23">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute path example (Windows)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-26" class="cell" data-execution_count="24">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda env <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># conda environments:
+#
+base                  *  C:\Users\lsi8012\AppData\Local\anaconda3
+</code></pre>
+</div>
+</div>
+<p>The path associated with each conda env is absolute path.</p>
+</section>
+<section id="relative-path" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="relative-path"><span class="header-section-number">3.5.2</span> Relative Path</h3>
+<p>A <strong>relative path</strong> describes the location of a file or folder in relation to your current working directory. It is shorter, more flexible, and makes your code easier to share and run on different computers.</p>
+<p>Relative paths are especially useful in projects with organized folder structures, because they allow you to move your code and data together without changing file references.</p>
+<p>To find your current working directory in your notebook, you can use a magic command:</p>
+<ul>
+<li>Magic command: <code>%pwd</code></li>
+</ul>
+<p>Knowing your current working directory helps you understand where Python will look for files when using relative paths.</p>
+<div id="cell-29" class="cell" data-execution_count="25">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Magic command</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'c:\\Users\\lsi8012\\Documents\\Courses\\FA24\\DataScience_Intro_python_fa24_Sec20_21'</code></pre>
+</div>
+</div>
+<p>Example of a Relative Path:</p>
+<div id="cell-31" class="cell" data-execution_count="27">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of relative path</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"sample.txt"</span>  <span class="co"># Relative to the current directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The relative path <code>sample.txt</code> means that there is a file in the current working directory.</p>
+</section>
+<section id="methods-to-specify-file-paths-in-windows" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="methods-to-specify-file-paths-in-windows"><span class="header-section-number">3.5.3</span> Methods to Specify File Paths in Windows</h3>
+<p>Specifying file paths correctly is crucial for avoiding errors and making your code portable. Windows uses backslashes (<code>\</code>) to separate folders, but in Python, a single backslash is an escape character (e.g., <code>\n</code> for newline), which can lead to mistakes if not handled properly.</p>
+<p>Here are four reliable ways to specify file paths in Windows:</p>
+<section id="method-1-using-escaped-backslashes" class="level4" data-number="3.5.3.1">
+<h4 data-number="3.5.3.1" class="anchored" data-anchor-id="method-1-using-escaped-backslashes"><span class="header-section-number">3.5.3.1</span> Method 1: <strong>Using Escaped Backslashes</strong></h4>
+<p>Use double backslashes (<code>\\</code>) to prevent Python from interpreting them as escape characters.</p>
+<div id="cell-35" class="cell" data-execution_count="28">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Username</span><span class="ch">\\</span><span class="st">Documents</span><span class="ch">\\</span><span class="st">data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="method-2-using-raw-strings" class="level4" data-number="3.5.3.2">
+<h4 data-number="3.5.3.2" class="anchored" data-anchor-id="method-2-using-raw-strings"><span class="header-section-number">3.5.3.2</span> Method 2: <strong>Using Raw Strings</strong></h4>
+<p>Prefix the path with <code>r</code> to tell Python to treat backslashes as literal characters.</p>
+<div id="cell-37" class="cell" data-execution_count="29">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="vs">r"C:\Users\Username\Documents\data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="method-3-using-forward-slashes" class="level4" data-number="3.5.3.3">
+<h4 data-number="3.5.3.3" class="anchored" data-anchor-id="method-3-using-forward-slashes"><span class="header-section-number">3.5.3.3</span> Method 3: <strong>Using forward slashes (<code>/</code>)</strong></h4>
+<p>Python accepts forward slashes (<code>/</code>) in file paths, even on Windows. This is often the simplest and most portable method.</p>
+<div id="cell-39" class="cell" data-execution_count="30">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"C:/Users/Username/Documents/data.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="method-4-using-os.path.join" class="level4" data-number="3.5.3.4">
+<h4 data-number="3.5.3.4" class="anchored" data-anchor-id="method-4-using-os.path.join"><span class="header-section-number">3.5.3.4</span> Method 4: <strong>Using <code>os.path.join</code></strong></h4>
+<p>Use <code>os.path.join()</code> to build paths programmatically. This method automatically uses the correct separator for your operating system, making your code cross-platform.</p>
+<p>Using these methods helps prevent bugs, makes your code easier to share, and ensures it works on different computers and operating systems.</p>
+<div id="cell-41" class="cell" data-execution_count="31">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> os.path.join(<span class="st">"C:"</span>, <span class="st">"Users"</span>, <span class="st">"Username"</span>, <span class="st">"Documents"</span>, <span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This method works across different operating systems because <code>os.path.join</code> automatically uses the correct path separator (<code>\</code> for Windows and <code>/</code>for Linux/Mac).</p>
+</section>
+</section>
+<section id="file-paths-in-macos-and-linux" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="file-paths-in-macos-and-linux"><span class="header-section-number">3.5.4</span> File paths in macOS and Linux</h3>
+<p>macOS and Linux use forward slashes (<code>/</code>) as path separators, which is exactly what Python expects by default. This means you can specify file paths directly, like <code>/Users/yourname/Documents/data.csv</code>, without worrying about escape characters or compatibility issues.</p>
+<p><strong>Why is this helpful?</strong> - Forward slashes work seamlessly in Python on macOS, Linux, and even Windows. - You avoid common errors caused by backslashes (which are escape characters in Python). - Code written with forward slashes is portable and recommended for all platforms.</p>
+<section id="best-practices-for-file-paths-in-data-science" class="level4" data-number="3.5.4.1">
+<h4 data-number="3.5.4.1" class="anchored" data-anchor-id="best-practices-for-file-paths-in-data-science"><span class="header-section-number">3.5.4.1</span> Best Practices for File Paths in Data Science</h4>
+<ul>
+<li>Prefer <strong>relative paths</strong> within your project folders—this makes your code portable and easy to share or move.</li>
+<li>Use <strong>absolute paths</strong> only for files outside your project or when you need a fixed location.</li>
+<li>Always check your <strong>current working directory</strong> before reading or writing files to avoid confusion and errors.</li>
+<li>Avoid hardcoding file paths directly in your code; use variables or configuration files for flexibility.</li>
+<li>For cross-platform compatibility, use <strong>forward slashes (<code>/</code>)</strong> in file paths or build paths programmatically with <code>os.path.join()</code>.</li>
+<li>Document your file structure and path conventions in your project README to help collaborators.</li>
+<li>When sharing code, test file paths on both Windows and macOS/Linux to ensure portability.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="interacting-with-the-os-and-filesystem" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="interacting-with-the-os-and-filesystem"><span class="header-section-number">3.6</span> Interacting with the OS and Filesystem</h2>
+<p>In data science projects, you often work with data files (such as CSV, Excel, or JSON) stored in various folders. Managing these files efficiently is essential for reproducible workflows and organized projects.</p>
+<p>The Python <code>os</code> module provides powerful tools to interact with your operating system and manage files and directories directly from your notebook. With <code>os</code>, you can: - Check your current working directory - List files and folders - Create, rename, or delete directories - Move between folders - Check if files or folders exist before using them</p>
+<p>Let’s import the <code>os</code> module and explore some of its most useful functions for data science tasks.</p>
+<div id="cell-46" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We can get the location of the current working directory using the <code>os.getcwd</code> function.</p>
+<div id="cell-48" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>'c:\\Users\\lsi8012\\mydev\\STAT303-1-class-notes'</code></pre>
+</div>
+</div>
+<p>The command <code>os.chdir('..')</code> in Python changes the current working directory to the parent directory of the current one.</p>
+<p>Note that <code>..</code> as the path notation for the parent directory is universally true across all major operating systems, including Windows, macOS, and Linux. It allows you to move one level up in the directory hierarchy, which is very useful when navigating directories programmatically, especially in scripts where directory traversal is needed.</p>
+<div id="cell-50" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'..'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-51" class="cell" data-execution_count="10">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'c:\\Users\\lsi8012\\mydev'</code></pre>
+</div>
+</div>
+<p><code>os.chdir()</code> is used to change the current working directory.</p>
+<p>For example: <code>os.chdir('./week2')</code></p>
+<p><code>./week2</code> is a relative path:</p>
+<ul>
+<li><code>.</code> refers to the current directory.</li>
+<li>week2 is a folder inside the current directory.</li>
+</ul>
+<p>The <code>os.listdir()</code> function in Python returns a list of all files and directories in the specified path. If no path is provided, it returns the contents of the current working directory.</p>
+<div id="cell-55" class="cell" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>['limonstar-web',
+ 'llm2005spring',
+ 'llm2005spring_back',
+ 'mcdc_2025su',
+ 'mcdc_2025su_new',
+ 'STAT201',
+ 'STAT303-1-class-notes',
+ 'STAT303-2-class-notes',
+ 'STAT303-3-class-notes',
+ 'stat359_su25',
+ 'stat362']</code></pre>
+</div>
+</div>
+<p>Check whether a specific folder/file exist in the current working directory</p>
+<div id="cell-57" class="cell" data-execution_count="12">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">'data'</span> <span class="kw">in</span> os.listdir(<span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="navigate-between-directories-and-understand-.-and-..-in-paths" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="navigate-between-directories-and-understand-.-and-..-in-paths"><span class="header-section-number">3.7</span> Navigate between directories and understand . and .. in paths</h2>
+<p>In Python, you can use the <code>os</code> module to work with directories and paths, and it’s important to understand how relative paths work:</p>
+<ul>
+<li><code>.</code> refers to the <strong>current directory</strong><br>
+</li>
+<li><code>..</code> refers to the <strong>parent directory</strong></li>
+</ul>
+<p>This knowledge is essential for organizing files and writing portable code.</p>
+<p>From the command line, you can use the <code>cd</code> (change directory) command to move between folders:</p>
+<ul>
+<li><code>cd &lt;folder_name&gt;</code> moves <strong>down</strong> into a child folder<br>
+</li>
+<li><code>cd ..</code> moves <strong>up</strong> to the parent folder</li>
+</ul>
+<p>By combining these commands, you can navigate to the desired location.</p>
+</section>
+<section id="independent-study" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">3.8</span> Independent Study</h2>
+<section id="setting-up-your-data-science-workspace" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="setting-up-your-data-science-workspace"><span class="header-section-number">3.8.1</span> Setting Up Your Data Science Workspace</h3>
+<p>To reinforce and apply the skills from this lecture, complete the following hands-on tasks:</p>
+<ol type="1">
+<li><strong>Set Up Your Workspace</strong>
+<ul>
+<li><p>Create a folder named <code>STAT303-1</code> to organize all course materials.</p></li>
+<li><p>Set up a dedicated <code>.venv</code> environment for your coursework to keep dependencies isolated.</p></li>
+<li><p>Organize your files into subfolders for datasets, assignments, project, quizzes, and lectures. The layout looks like below</p>
+<pre class="text"><code>stat303-1/
+├── .venv/               # Python virtual environment
+├── datasets/
+├── project/
+├── homework assignments/
+├── small assignments/
+└── lectures/</code></pre></li>
+<li><p>Use the <code>os</code> module or shell commands in your notebook to create these directories programmatically.</p></li>
+</ul></li>
+<li><strong>Practice Magic Commands</strong>
+<ul>
+<li>Use <code>%timeit</code> to measure the execution time of a simple Python function in your notebook.</li>
+<li>Explore <code>%lsmagic</code> to discover all available magic commands and experiment with a few.</li>
+</ul></li>
+<li><strong>Run Shell Commands</strong>
+<ul>
+<li>Use <code>!ls</code> (or <code>!dir</code> on Windows) to list the contents of the directories you created.</li>
+<li>Use <code>!pwd</code> (or <code>!cd</code> on Windows) to print your current working directory.</li>
+</ul></li>
+<li><strong>Navigate between directoires using <code>.</code> and <code>..</code></strong></li>
+</ol>
+<p><strong>Tip:</strong> Document your process and any issues you encounter. This will help you troubleshoot and share your workflow with others.</p>
+</section>
+</section>
+<section id="references-and-further-learning" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="references-and-further-learning"><span class="header-section-number">3.9</span> References and Further Learning</h2>
+<ul>
+<li><p><strong>IPython Magic Commands</strong><br>
+<a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">IPython Documentation – Magic Commands</a><br>
+A complete list of available line and cell magics, such as <code>%time</code>, <code>%pip</code>, and <code>%%bash</code>.</p></li>
+<li><p><strong>File and Directory Management in Python</strong><br>
+<a href="https://docs.python.org/3/library/os.html#os">Python <code>os</code> module documentation</a><br>
+Covers functions like <code>os.getcwd()</code>, <code>os.chdir()</code>, and path handling.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./python_venv.html" class="pagination-link" aria-label="Python Environments and Package Management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Environments and Package Management</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./python_basics.html" class="pagination-link" aria-label="Python Basics">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Basics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

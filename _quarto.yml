@@ -1,0 +1,67 @@
+project:
+  type: book
+  output-dir: docs
+
+
+book:  
+  title: "Data Science I with python"
+  subtitle: "STAT 303-1-Sec20"
+  author: "Lizhen Shi"
+  
+  sidebar:
+    search: true
+    logo: "NU_Stat_logo.png"
+    logo-href: "https://statistics.northwestern.edu/"
+
+  chapters:
+    - index.qmd
+    - part: 'Getting started'
+      chapters:
+        - vscode_setup.ipynb
+        - python_venv.ipynb
+        - workflow_enhance.ipynb
+    - part: 'Python refresher'
+      chapters:
+        - python_basics.ipynb
+        - data_structures.ipynb
+    - part: 'Core library foundations'
+      chapters:
+        - Reading_data.ipynb
+        - Pandas.ipynb
+        - data_types_in_pandas.ipynb
+        - Numpy.ipynb
+        - vectorized_numpy.ipynb
+        - Data visualization.ipynb
+        - Advanced_Data_Visualization.ipynb
+    - part: 'From messy to insight'
+      chapters:
+        - Data_cleaning.ipynb
+        - Data_preparation.ipynb
+        - Data aggregation.ipynb
+        - Data_reshaping.ipynb
+        - Data wrangling.ipynb
+        # - student_solutions.ipynb
+  appendices: 
+    - Assignment A.ipynb
+    - Assignment B.ipynb
+    - Assignment C.ipynb
+    - Assignment D.ipynb
+    - Assignment E.ipynb
+    - Assignment F.ipynb
+    # - Assignment G.ipynb
+    - Datasets.ipynb
+    # - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+
+
+
+
+
+# Preserve saved notebook outputs; examples include intentional errors and live APIs.
+execute:
+  enabled: false

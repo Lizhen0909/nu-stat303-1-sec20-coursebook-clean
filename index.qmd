@@ -1,0 +1,24 @@
+# Preface {.unnumbered}
+
+Welcome to **STAT 303-1 (Data Science with Python I), Section 20** at Northwestern University.
+
+This book is designed to support your journey into data science, blending foundational concepts with hands-on practice. It builds on the original work of **Professor Arvind Krishna**, whose materials inspired the structure and spirit of this resource. The content has been thoughtfully updated to meet the evolving needs of students and the goals of the course.
+
+In this first course, you will:
+
+- Learn to use essential Python libraries for data science, including but not limited to **NumPy**, **Pandas**, and **Matplotlib**. These three are the main focus, but you will also be introduced to other useful libraries and tools as needed for real-world data analysis.
+- Develop skills in **Exploratory Data Analysis (EDA)**, transforming messy, real-world datasets into meaningful insights through visualization, summarization, and pattern discovery
+
+The book is organized to guide you step-by-step:
+
+- **Chapters 1–3**: Set up your coding environment in VS Code, understand Python environments, and enhance your workflow
+- **Chapters 4–5**: Review key concepts from STAT 201. If you need a refresher, visit the [STAT 201 ebook](https://lizhen0909.github.io/Intro_to_programming_for_data_sci/).
+- New material begins in **Chapter 6 – *Reading Data***
+
+Throughout the quarter, this resource will be updated and refined to improve clarity, depth, and alignment with our teaching objectives.
+
+As a **living document**, your feedback and suggestions are always welcome. Contributions from students, instructors, and the broader academic community help make this book stronger and more effective.
+
+If you have ideas for improving the textbook, please share your feedback or suggestions using our dedicated [Textbook Improvement Form](https://edstem.org/us/courses/86347/discussion). Your input is invaluable in making this resource better for everyone.
+
+Thank you for joining us on this learning adventure. We hope this book becomes a valuable companion as you build your skills and confidence in data science with Python.

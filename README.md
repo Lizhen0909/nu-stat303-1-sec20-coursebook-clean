@@ -1,0 +1,34 @@
+# Data Science I with Python — STAT 303-1, Section 20
+
+Free coursebook by Lizhen Shi for Northwestern University's Department of Statistics and Data Science. This clean edition preserves the 25 pages of the original online book, including its assignments, saved notebook outputs, navigation, and search.
+
+**Read the book:** https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/
+
+## Repository contents
+
+- `_quarto.yml`, `index.qmd`, and 24 chapter/appendix notebooks: editable book sources.
+- `Datasets/`, `images/`, and referenced root-level data files: materials used in the active chapters. Geographic shapefiles include all companion files.
+- `docs/`: the published HTML book and its required browser assets. GitHub Pages serves this directory from `main`.
+- `references.bib`, `NU_Stat_logo.png`, and `LICENSE.txt`: bibliography, branding, and original license.
+
+The initial `docs/` pages are copied unchanged from the original published repository. The original repository and website remain available and unchanged.
+
+## Update the book
+
+1. Install [Quarto](https://quarto.org/docs/get-started/).
+2. Edit the relevant notebook or `index.qmd`. If changing code results, run the relevant cells in Jupyter and save their outputs.
+3. From the repository root, run:
+
+   ```sh
+   quarto render --to html
+   ```
+
+4. Review `docs/index.html` and the changed pages. Commit and push the source changes together with the updated `docs/` files. GitHub Pages republishes automatically.
+
+Rendering preserves saved notebook outputs (`execute.enabled: false`). Some examples deliberately demonstrate errors, access live services, or refer to historical local paths; rebuilding the website does not require re-running those examples. Executing every notebook from scratch is a separate task: existing examples include `datasets`/`Datasets` case differences, Windows path separators, and files outside the repository. These teaching-source issues have not been silently rewritten during cleanup.
+
+The old `requirements.txt` belonged to an unrelated, outdated TensorFlow environment and has been removed. Install the Python packages needed for the particular examples you wish to run. No Python package installation is needed just to read the published book.
+
+## Provenance and license
+
+Cleaned from [Lizhen0909/nu-stat303-1-sec20-coursebook](https://github.com/Lizhen0909/nu-stat303-1-sec20-coursebook), commit `1742b20f70d12eb90119c7ac5e97307e8cba7e1f`. The original preface acknowledges Professor Arvind Krishna's foundational materials. The original Creative Commons Attribution-ShareAlike 4.0 license is retained in `LICENSE.txt`.
