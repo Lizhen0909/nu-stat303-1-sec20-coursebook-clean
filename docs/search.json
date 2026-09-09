@@ -245,7 +245,7 @@
     "href": "vscode_setup.html#know-your-tools",
     "title": "1  Jupyter Notebooks in VS Code",
     "section": "1.2 Know Your Tools",
-    "text": "1.2 Know Your Tools\nWith Anaconda and VS Code’s roles established, let’s distinguish the other tools you will use.\n\n\n\n\n\n\n\nTool\nIts role in this course\n\n\n\n\nPython\nExecutes your Python code\n\n\nJupyter notebook\nA document containing code, Markdown, and saved outputs\n\n\nKernel\nThe running process that executes a notebook’s code\n\n\nTerminal\nA place to issue commands to a shell such as PowerShell, zsh, or Bash\n\n\nQuarto\nConverts your saved notebook into a formatted HTML document\n\n\n\nSelecting a notebook kernel is not the same as opening a terminal. Each can use a different Python environment; you will learn to check both.",
+    "text": "1.2 Know Your Tools\nWith Anaconda and VS Code’s roles established, let’s distinguish the other tools you will use.\n\n\n\n\n\n\n\n\nTool\nIts role in this course\n\n\n\n\n Python\nExecutes your Python code\n\n\n Jupyter notebook\nA document containing code, Markdown, and saved outputs\n\n\n Kernel\nThe running process that executes a notebook’s code\n\n\n Terminal\nA place to issue commands to a shell such as PowerShell, zsh, or Bash\n\n\n Quarto\nConverts your saved notebook into a formatted HTML document\n\n\n\n\nSelecting a notebook kernel is not the same as opening a terminal. Each can use a different Python environment; you will learn to check both.",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
