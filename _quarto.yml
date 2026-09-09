@@ -15,16 +15,16 @@ book:
 
   chapters:
     - index.qmd
-    - part: 'Getting started'
-      chapters:
-        - vscode_setup.ipynb
-        - python_venv.ipynb
-        - workflow_enhance.ipynb
-    - part: 'Python refresher'
+    - part: 'Python Refresher'
       chapters:
         - python_basics.ipynb
         - data_structures.ipynb
-    - part: 'Core library foundations'
+    - part: 'Setting Up for Data Science'
+      chapters:
+        - python_venv.ipynb
+        - vscode_setup.ipynb
+        - workflow_enhance.ipynb
+    - part: 'Core Library Foundations'
       chapters:
         - Reading_data.ipynb
         - Pandas.ipynb

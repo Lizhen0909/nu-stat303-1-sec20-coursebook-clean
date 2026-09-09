@@ -11,9 +11,10 @@ In this first course, you will:
 
 The book is organized to guide you step-by-step:
 
-- **Chapters 1–3**: Set up your coding environment in VS Code, understand Python environments, and enhance your workflow
-- **Chapters 4–5**: Review key concepts from STAT 201. If you need a refresher, visit the [STAT 201 ebook](https://lizhen0909.github.io/Intro_to_programming_for_data_sci/).
-- New material begins in **Chapter 6 – *Reading Data***
+- **Python Refresher**: Review Python basics and data structures from STAT 201 in two unnumbered chapters. You can use your existing STAT 201 setup for this review. For additional practice, visit the [STAT 201 ebook](https://lizhen0909.github.io/Intro_to_programming_for_data_sci/).
+- **Setting Up for Data Science (Chapters 1–3)**: Learn why different projects need separate Python environments and package dependencies, configure VS Code, and develop your Jupyter notebook workflow. Chapter 1 begins the new STAT 303-1 material.
+- **Core Library Foundations (beginning with Chapter 4, Reading Data)**: Extend your Python programming skills with essential third-party libraries for data science.
+- **From messy to insight**: Prepare, combine, and explore data to answer meaningful questions.
 
 Throughout the quarter, this resource will be updated and refined to improve clarity, depth, and alignment with our teaching objectives.
 
