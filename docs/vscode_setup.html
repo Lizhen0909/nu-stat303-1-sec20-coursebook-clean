@@ -369,7 +369,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#anaconda-vs.-vs-code" id="toc-anaconda-vs.-vs-code" class="nav-link active" data-scroll-target="#anaconda-vs.-vs-code"><span class="header-section-number">1.1</span> Anaconda vs.&nbsp;VS Code</a></li>
-  <li><a href="#check-your-existing-setup" id="toc-check-your-existing-setup" class="nav-link" data-scroll-target="#check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</a></li>
+  <li><a href="#check-your-existing-setup" id="toc-check-your-existing-setup" class="nav-link" data-scroll-target="#check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</a>
+  <ul class="collapse">
+  <li><a href="#find-an-existing-python-installation" id="toc-find-an-existing-python-installation" class="nav-link" data-scroll-target="#find-an-existing-python-installation"><span class="header-section-number">1.2.1</span> Find an Existing Python Installation</a></li>
+  <li><a href="#check-that-it-runs" id="toc-check-that-it-runs" class="nav-link" data-scroll-target="#check-that-it-runs"><span class="header-section-number">1.2.2</span> Check That It Runs</a></li>
+  <li><a href="#if-no-interpreter-appears-or-python-does-not-start" id="toc-if-no-interpreter-appears-or-python-does-not-start" class="nav-link" data-scroll-target="#if-no-interpreter-appears-or-python-does-not-start"><span class="header-section-number">1.2.3</span> If No Interpreter Appears or Python Does Not Start</a></li>
+  </ul></li>
   <li><a href="#open-a-project-folder" id="toc-open-a-project-folder" class="nav-link" data-scroll-target="#open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</a></li>
   <li><a href="#select-a-kernel-and-run-a-cell" id="toc-select-a-kernel-and-run-a-cell" class="nav-link" data-scroll-target="#select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</a></li>
   <li><a href="#code-markdown-and-saved-outputs" id="toc-code-markdown-and-saved-outputs" class="nav-link" data-scroll-target="#code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</a></li>
@@ -471,9 +476,42 @@ Figure&nbsp;1.1: VS Code brings Python code, Jupyter notebooks, a kernel selecto
 </section>
 <section id="check-your-existing-setup" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</h2>
-<p><strong>Already have VS Code?</strong> Open it and verify that the <strong>Python</strong> and <strong>Jupyter</strong> extensions from Microsoft are installed and enabled. Continue to the practice-folder step below.</p>
+<p><strong>Already have VS Code?</strong> Open it and verify that the <strong>Python</strong> and <strong>Jupyter</strong> extensions from Microsoft are installed and enabled. Then check for Python using the steps below.</p>
 <p><strong>Need VS Code?</strong> Install it from <a href="https://code.visualstudio.com/">the official website</a>, then open the Extensions panel and install Microsoft’s Python and Jupyter extensions. On Windows/Linux the shortcut is <code>Ctrl+Shift+X</code>; on macOS it is <code>Cmd+Shift+X</code>.</p>
-<p>First look for your existing Python installation, including one supplied by Anaconda. Do not install another Python simply because you are changing editors. If no working interpreter is available, use the instructor’s supported Python version and the <a href="https://www.python.org/downloads/">official Python installer</a>, or ask for setup assistance.</p>
+<section id="find-an-existing-python-installation" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="find-an-existing-python-installation"><span class="header-section-number">1.2.1</span> Find an Existing Python Installation</h3>
+<p>A <strong>Python interpreter</strong> is the program that runs your Python code. If you used Anaconda in STAT 201, you may already have one installed.</p>
+<ol type="1">
+<li>Open VS Code’s <strong>Command Palette</strong>: <code>Ctrl+Shift+P</code> on Windows/Linux or <code>Cmd+Shift+P</code> on macOS.</li>
+<li>Type <strong>Python: Select Interpreter</strong> and select that command.</li>
+<li>Look for a listed <strong>Python 3</strong> environment. The entry usually shows a version and an installation path; an Anaconda installation may be labeled <strong>conda</strong> or <strong>base</strong>, or have <code>anaconda3</code> or <code>miniconda3</code> in its path.</li>
+<li>Select the installation you recognize from STAT 201. If several appear and you are unsure which to use, ask for help choosing one; you do not need to install another copy.</li>
+</ol>
+</section>
+<section id="check-that-it-runs" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="check-that-it-runs"><span class="header-section-number">1.2.2</span> Check That It Runs</h3>
+<p>Finding an interpreter in the list is a first check. Next, verify that it can execute code:</p>
+<ol type="1">
+<li>Open the Command Palette again and run <strong>Python: Start Terminal REPL</strong>. This starts an interactive Python session using the selected interpreter.</li>
+<li>When the <code>&gt;&gt;&gt;</code> prompt appears, enter these lines <strong>one at a time</strong>, pressing Enter after each. Do not type the <code>&gt;&gt;&gt;</code> prompt itself.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see a <strong>Python 3 version</strong>, the <strong>path to its executable</strong>, and <strong><code>5</code></strong>. This confirms that the selected Python installation runs. Keep the executable path so you can identify the same environment later. Type <code>exit()</code> and press Enter to leave Python, then continue to <strong>Open a Project Folder</strong> below.</p>
+</section>
+<section id="if-no-interpreter-appears-or-python-does-not-start" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="if-no-interpreter-appears-or-python-does-not-start"><span class="header-section-number">1.2.3</span> If No Interpreter Appears or Python Does Not Start</h3>
+<p>An empty list does <strong>not</strong> necessarily mean Python is missing; VS Code may not have found it.</p>
+<ul>
+<li><strong>No “Python: Select Interpreter” command?</strong> Check that Microsoft’s Python extension is installed and enabled, then restart VS Code.</li>
+<li><strong>Previously used Anaconda?</strong> Open Anaconda Navigator and try launching a local Jupyter notebook as you did in STAT 201. Run <code>import sys</code> followed by <code>print(sys.executable)</code> in a code cell. If it works, Python is installed. Copy that path, return to <strong>Python: Select Interpreter</strong>, and use <strong>Enter interpreter path…</strong> if available to locate that executable.</li>
+<li><strong>Still cannot find or run Python?</strong> Ask for setup assistance and share the error message. If no working installation is available, install the instructor’s supported Python version from the <a href="https://www.python.org/downloads/">official Python website</a>.</li>
+</ul>
+<p>Selecting an interpreter here does not automatically select your notebook’s kernel. You will choose and check the notebook kernel in <strong>Select a Kernel and Run a Cell</strong> below.</p>
+<p>For more detail, see Microsoft’s guides to <a href="https://code.visualstudio.com/docs/languages/python">Python in VS Code</a> and <a href="https://code.visualstudio.com/docs/python/environments">Python environments</a>.</p>
+</section>
 </section>
 <section id="open-a-project-folder" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</h2>
@@ -500,10 +538,10 @@ Figure&nbsp;1.1: VS Code brings Python code, Jupyter notebooks, a kernel selecto
 <h2 data-number="1.4" class="anchored" data-anchor-id="select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</h2>
 <p>Open <code>activity01.ipynb</code>. Use its kernel picker to choose an existing Python environment you recognize from STAT 201. Labels vary with installed extensions; a route such as <strong>Select Another Kernel → Python Environments</strong> may be available. For this first check, your existing environment is sufficient. Chapter 2 establishes a separate course environment.</p>
 <p>Run this in a <strong>notebook code cell</strong>, not the terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Notebook is running"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Notebook is running"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The executable path identifies the Python used by this notebook. A kernel name such as <code>Python 3</code> is not enough to distinguish multiple installations.</p>
 <p>If VS Code reports that <code>ipykernel</code> is required, install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment; do not install into an arbitrary system interpreter.</p>
 </section>
