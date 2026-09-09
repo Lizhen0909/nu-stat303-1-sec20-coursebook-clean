@@ -367,18 +367,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#check-your-starting-point" id="toc-check-your-starting-point" class="nav-link active" data-scroll-target="#check-your-starting-point">Check your starting point</a></li>
-  <li><a href="#variables-types-and-expressions" id="toc-variables-types-and-expressions" class="nav-link" data-scroll-target="#variables-types-and-expressions">Variables, types, and expressions</a>
+  <li><a href="#check-your-starting-point" id="toc-check-your-starting-point" class="nav-link active" data-scroll-target="#check-your-starting-point">Check Your Starting Point</a></li>
+  <li><a href="#variables-types-and-expressions" id="toc-variables-types-and-expressions" class="nav-link" data-scroll-target="#variables-types-and-expressions">Variables, Types, and Expressions</a>
   <ul class="collapse">
   <li><a href="#convert-deliberately" id="toc-convert-deliberately" class="nav-link" data-scroll-target="#convert-deliberately">Convert deliberately</a></li>
   <li><a href="#operators-and-assignment" id="toc-operators-and-assignment" class="nav-link" data-scroll-target="#operators-and-assignment">Operators and assignment</a></li>
   </ul></li>
-  <li><a href="#conditions-and-decisions" id="toc-conditions-and-decisions" class="nav-link" data-scroll-target="#conditions-and-decisions">Conditions and decisions</a>
+  <li><a href="#conditions-and-logic" id="toc-conditions-and-logic" class="nav-link" data-scroll-target="#conditions-and-logic">Conditions and Logic</a>
   <ul class="collapse">
   <li><a href="#combine-conditions" id="toc-combine-conditions" class="nav-link" data-scroll-target="#combine-conditions">Combine conditions</a></li>
   <li><a href="#truth-values-are-not-data-quality-rules" id="toc-truth-values-are-not-data-quality-rules" class="nav-link" data-scroll-target="#truth-values-are-not-data-quality-rules">Truth values are not data-quality rules</a></li>
   </ul></li>
-  <li><a href="#loops-and-repeated-work" id="toc-loops-and-repeated-work" class="nav-link" data-scroll-target="#loops-and-repeated-work">Loops and repeated work</a>
+  <li><a href="#loops-and-iteration" id="toc-loops-and-iteration" class="nav-link" data-scroll-target="#loops-and-iteration">Loops and Iteration</a>
   <ul class="collapse">
   <li><a href="#start-with-a-for-loop" id="toc-start-with-a-for-loop" class="nav-link" data-scroll-target="#start-with-a-for-loop">Start with a <code>for</code> loop</a></li>
   <li><a href="#use-range-when-you-need-integer-steps" id="toc-use-range-when-you-need-integer-steps" class="nav-link" data-scroll-target="#use-range-when-you-need-integer-steps">Use <code>range()</code> when you need integer steps</a></li>
@@ -386,16 +386,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#use-a-while-loop-for-a-stopping-condition" id="toc-use-a-while-loop-for-a-stopping-condition" class="nav-link" data-scroll-target="#use-a-while-loop-for-a-stopping-condition">Use a <code>while</code> loop for a stopping condition</a></li>
   <li><a href="#diagnose-an-infinite-loop-without-running-it" id="toc-diagnose-an-infinite-loop-without-running-it" class="nav-link" data-scroll-target="#diagnose-an-infinite-loop-without-running-it">Diagnose an infinite loop without running it</a></li>
   </ul></li>
-  <li><a href="#functions-that-return-results" id="toc-functions-that-return-results" class="nav-link" data-scroll-target="#functions-that-return-results">Functions that return results</a>
+  <li><a href="#functions-and-return-values" id="toc-functions-and-return-values" class="nav-link" data-scroll-target="#functions-and-return-values">Functions and Return Values</a>
   <ul class="collapse">
   <li><a href="#return-versus-print" id="toc-return-versus-print" class="nav-link" data-scroll-target="#return-versus-print"><code>return</code> versus <code>print</code></a></li>
   <li><a href="#parameters-keyword-arguments-and-defaults" id="toc-parameters-keyword-arguments-and-defaults" class="nav-link" data-scroll-target="#parameters-keyword-arguments-and-defaults">Parameters, keyword arguments, and defaults</a></li>
   <li><a href="#local-names-and-global-names" id="toc-local-names-and-global-names" class="nav-link" data-scroll-target="#local-names-and-global-names">Local names and global names</a></li>
   </ul></li>
-  <li><a href="#built-ins-and-standard-library-imports" id="toc-built-ins-and-standard-library-imports" class="nav-link" data-scroll-target="#built-ins-and-standard-library-imports">Built-ins and standard-library imports</a></li>
-  <li><a href="#objects-attributes-and-methods" id="toc-objects-attributes-and-methods" class="nav-link" data-scroll-target="#objects-attributes-and-methods">Objects, attributes, and methods</a></li>
-  <li><a href="#reading-and-fixing-errors" id="toc-reading-and-fixing-errors" class="nav-link" data-scroll-target="#reading-and-fixing-errors">Reading and fixing errors</a></li>
-  <li><a href="#readiness-check" id="toc-readiness-check" class="nav-link" data-scroll-target="#readiness-check">Readiness check</a></li>
+  <li><a href="#built-ins-and-imports" id="toc-built-ins-and-imports" class="nav-link" data-scroll-target="#built-ins-and-imports">Built-ins and Imports</a></li>
+  <li><a href="#objects-attributes-and-methods" id="toc-objects-attributes-and-methods" class="nav-link" data-scroll-target="#objects-attributes-and-methods">Objects, Attributes, and Methods</a></li>
+  <li><a href="#understanding-python-errors" id="toc-understanding-python-errors" class="nav-link" data-scroll-target="#understanding-python-errors">Understanding Python Errors</a></li>
+  <li><a href="#readiness-check" id="toc-readiness-check" class="nav-link" data-scroll-target="#readiness-check">Readiness Check</a></li>
   </ul>
 </nav>
     </div>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Begin with the diagnostic. If you can explain your answers, skim the corresponding sections; otherwise, work through the examples and checks. For a fuller explanation of prerequisite material, return to the <a href="https://lizhen0909.github.io/Intro_to_programming_for_data_sci/">STAT 201 book</a>.</p>
 <p>By the end of this review, you should be able to trace assignments, choose conditions and loops, write functions that return reusable results, import a standard-library module, distinguish attributes from methods, and interpret common error messages.</p>
 <section id="check-your-starting-point" class="level2">
-<h2 class="anchored" data-anchor-id="check-your-starting-point">Check your starting point</h2>
+<h2 class="anchored" data-anchor-id="check-your-starting-point">Check Your Starting Point</h2>
 <p>Without running the code, predict each result. Then test your predictions in a scratch cell.</p>
 <ol type="1">
 <li>After <code>reading = "18.5"</code>, what is <code>type(reading)</code>? How would you add <code>2</code> to its numerical value?</li>
@@ -454,19 +454,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><code>str</code>; use <code>float(reading) + 2</code>, which gives <code>20.5</code>. Review <strong>Variables, types, and expressions</strong>.</li>
-<li><code>False</code>. Review <strong>Conditions and decisions</strong>.</li>
-<li><code>1</code>, <code>2</code>, <code>3</code>; the stop value is excluded. Review <strong>Loops and repeated work</strong>.</li>
-<li>The function displays <code>6</code>, but <code>answer</code> is <code>None</code> because there is no <code>return</code> statement. Review <strong>Functions that return results</strong>.</li>
-<li><code>label.upper</code> retrieves a method; <code>label.upper()</code> calls it and returns <code>"NORTH"</code>. Review <strong>Objects, attributes, and methods</strong>.</li>
-<li>Python cannot find that name in the current scope. Check spelling and whether the assignment has run. Review <strong>Reading and fixing errors</strong>.</li>
+<li><code>str</code>; use <code>float(reading) + 2</code>, which gives <code>20.5</code>. Review <strong>Variables, Types, and Expressions</strong>.</li>
+<li><code>False</code>. Review <strong>Conditions and Logic</strong>.</li>
+<li><code>1</code>, <code>2</code>, <code>3</code>; the stop value is excluded. Review <strong>Loops and Iteration</strong>.</li>
+<li>The function displays <code>6</code>, but <code>answer</code> is <code>None</code> because there is no <code>return</code> statement. Review <strong>Functions and Return Values</strong>.</li>
+<li><code>label.upper</code> retrieves a method; <code>label.upper()</code> calls it and returns <code>"NORTH"</code>. Review <strong>Objects, Attributes, and Methods</strong>.</li>
+<li>Python cannot find that name in the current scope. Check spelling and whether the assignment has run. Review <strong>Understanding Python Errors</strong>.</li>
 </ol>
 </div>
 </div>
 </div>
 </section>
 <section id="variables-types-and-expressions" class="level2">
-<h2 class="anchored" data-anchor-id="variables-types-and-expressions">Variables, types, and expressions</h2>
+<h2 class="anchored" data-anchor-id="variables-types-and-expressions">Variables, Types, and Expressions</h2>
 <p>A variable name refers to an object. Assignment binds a name to an object; later assignment can bind the same name to a different object, even one of a different type.</p>
 <p>Use descriptive <code>snake_case</code> names such as <code>temperature_c</code> and <code>valid_count</code>. Names are case-sensitive, cannot start with a digit, and cannot be reserved keywords such as <code>for</code>. Letters, digits, and underscores cover the names we will use; Python also permits many Unicode letters. Avoid hiding built-ins with names such as <code>list</code>, <code>str</code>, or <code>sum</code>.</p>
 <div id="basics-003" class="cell" data-execution_count="1">
@@ -574,8 +574,8 @@ None NoneType</code></pre>
 </div>
 </section>
 </section>
-<section id="conditions-and-decisions" class="level2">
-<h2 class="anchored" data-anchor-id="conditions-and-decisions">Conditions and decisions</h2>
+<section id="conditions-and-logic" class="level2">
+<h2 class="anchored" data-anchor-id="conditions-and-logic">Conditions and Logic</h2>
 <p>A condition determines which code runs. Indent the body consistently with <strong>four spaces</strong>. Configure your editor to insert spaces when you press Tab; mixing tabs and spaces can cause errors.</p>
 <div id="basics-009" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>reading <span class="op">=</span> <span class="dv">105</span></span>
@@ -653,8 +653,8 @@ True</code></pre>
 </div>
 </section>
 </section>
-<section id="loops-and-repeated-work" class="level2">
-<h2 class="anchored" data-anchor-id="loops-and-repeated-work">Loops and repeated work</h2>
+<section id="loops-and-iteration" class="level2">
+<h2 class="anchored" data-anchor-id="loops-and-iteration">Loops and Iteration</h2>
 <section id="start-with-a-for-loop" class="level3">
 <h3 class="anchored" data-anchor-id="start-with-a-for-loop">Start with a <code>for</code> loop</h3>
 <p>A <code>for</code> loop visits each item in an <strong>iterable</strong>, such as a list, string, or range. You do not need a counter just to access each item.</p>
@@ -803,8 +803,8 @@ Recorded: 0.0</code></pre>
 </div>
 </section>
 </section>
-<section id="functions-that-return-results" class="level2">
-<h2 class="anchored" data-anchor-id="functions-that-return-results">Functions that return results</h2>
+<section id="functions-and-return-values" class="level2">
+<h2 class="anchored" data-anchor-id="functions-and-return-values">Functions and Return Values</h2>
 <p>A function gives a reusable operation a name. It can accept zero or more arguments. Defining a function does not run its body; calling it does.</p>
 <section id="return-versus-print" class="level3">
 <h3 class="anchored" data-anchor-id="return-versus-print"><code>return</code> versus <code>print</code></h3>
@@ -923,8 +923,8 @@ South</code></pre>
 </div>
 </section>
 </section>
-<section id="built-ins-and-standard-library-imports" class="level2">
-<h2 class="anchored" data-anchor-id="built-ins-and-standard-library-imports">Built-ins and standard-library imports</h2>
+<section id="built-ins-and-imports" class="level2">
+<h2 class="anchored" data-anchor-id="built-ins-and-imports">Built-ins and Imports</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -976,7 +976,7 @@ Sep 20, 2025</code></pre>
 <p>We will install third-party packages after the review, in <a href="./python_venv.html">Python Environments and Package Management</a>. Different projects can need different packages and versions; that motivates keeping their environments separate.</p>
 </section>
 <section id="objects-attributes-and-methods" class="level2">
-<h2 class="anchored" data-anchor-id="objects-attributes-and-methods">Objects, attributes, and methods</h2>
+<h2 class="anchored" data-anchor-id="objects-attributes-and-methods">Objects, Attributes, and Methods</h2>
 <p>Names refer to objects. An object’s <strong>attributes</strong> are accessed using a dot; its <strong>methods</strong> are operations associated with the object. A method is itself an attribute that you can call.</p>
 <div id="basics-033" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>observed_at <span class="op">=</span> dt.datetime(<span class="dv">2025</span>, <span class="dv">9</span>, <span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">30</span>)</span>
@@ -1012,8 +1012,8 @@ north</code></pre>
 </div>
 </div>
 </section>
-<section id="reading-and-fixing-errors" class="level2">
-<h2 class="anchored" data-anchor-id="reading-and-fixing-errors">Reading and fixing errors</h2>
+<section id="understanding-python-errors" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-python-errors">Understanding Python Errors</h2>
 <p>Read the error type and message, then locate the indicated line in your code. Use the surrounding values and types to explain the cause before changing anything.</p>
 <p>The following examples are shown as text so that running all executable cells does not intentionally fail.</p>
 <table class="caption-top table">
@@ -1077,7 +1077,7 @@ north</code></pre>
 </div>
 </section>
 <section id="readiness-check" class="level2">
-<h2 class="anchored" data-anchor-id="readiness-check">Readiness check</h2>
+<h2 class="anchored" data-anchor-id="readiness-check">Readiness Check</h2>
 <p>Try this task without looking at the solution. Use only ordinary Python.</p>
 <p>For <code>readings = [18.5, None, 21.0, 0.0, 105.0]</code>:</p>
 <ol type="1">
