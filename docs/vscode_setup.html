@@ -410,8 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="anaconda-vs.-vs-code" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="anaconda-vs.-vs-code"><span class="header-section-number">1.1</span> Anaconda vs.&nbsp;VS Code</h2>
-<p>In STAT 201, you used Anaconda to work with Jupyter notebooks. In STAT 303-1, your projects will combine notebooks, data files, installed libraries, and HTML reports. <strong>VS Code brings these parts of a project into one workspace</strong>, making it a good fit for the workflow you will learn in this course.</p>
-<p>Anaconda and VS Code serve different roles:</p>
+<p>Anaconda and Visual Studio Code serve different roles and can be used together. Anaconda provides Python, packages, and environment-management tools; VS Code provides a flexible workspace for writing code and managing projects.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -420,38 +419,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tool</th>
-<th>What it provides</th>
-<th>How it fits your work</th>
+<th></th>
+<th><strong>Anaconda</strong></th>
+<th><strong>Visual Studio Code (VS Code)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Anaconda</td>
-<td>A Python distribution with packages and environment-management tools; Navigator provides a graphical interface for managing environments and launching applications</td>
-<td>Supplies the Python environment you may already have from STAT 201</td>
+<td><strong>Overview</strong></td>
+<td>A Python distribution with environment-management tools</td>
+<td>A powerful, flexible, and lightweight code editor</td>
 </tr>
 <tr class="even">
-<td>VS Code</td>
-<td>An editor that supports notebooks through extensions and includes a file explorer and terminal</td>
-<td>Provides the workspace where you organize files, write code, and issue project commands</td>
+<td><strong>What it is</strong></td>
+<td>A distribution that includes Python, many common packages, and tools such as conda and Navigator</td>
+<td>A free code editor from Microsoft, built on the open-source Code - OSS project</td>
+</tr>
+<tr class="odd">
+<td><strong>Main purpose</strong></td>
+<td>Makes it easy to install Python and manage packages and environments</td>
+<td>Provides a modern, flexible environment to write, run, and debug code in Python and many other languages</td>
+</tr>
+<tr class="even">
+<td><strong>Key features</strong></td>
+<td>Preinstalls many popular data science packages<br><br>Environment management with conda<br><br>Anaconda Navigator graphical interface<br><br>Works on Windows, macOS, and Linux</td>
+<td>Clean, customizable interface<br><br>Python support through extensions<br><br>Integrated terminal and Jupyter notebook support through the Jupyter extension<br><br>Debugging, code navigation, and Git tools<br><br>Extensible through additional extensions<br><br>Works with different Python environments, including Anaconda environments</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical use</strong></td>
+<td>Set up Python and manage environments and packages</td>
+<td>Write, run, debug, and organize code and projects, including Python scripts and Jupyter notebooks</td>
+</tr>
+<tr class="even">
+<td><strong>Limitations</strong></td>
+<td>The distribution and environment-management tools are not themselves a code editor; coding takes place in an application such as Jupyter, Spyder, or VS Code</td>
+<td>Does not include Python or data science packages; install Python separately, for example through Anaconda or python.org, and add the needed extensions and packages</td>
 </tr>
 </tbody>
 </table>
-<p>See <a href="https://www.anaconda.com/products/navigator">Anaconda Navigator</a> for its application and environment-management features.</p>
-<p><strong>Why use VS Code in STAT 303-1?</strong></p>
-<ul>
-<li><strong>Keep the whole project visible.</strong> Open a folder and work with notebooks, Python scripts, data, and report settings together. This helps you see where files belong as an assignment grows.</li>
-<li><strong>Continue using familiar notebooks.</strong> Open your existing <code>.ipynb</code> files, write Markdown, run cells, and view outputs in the editor.</li>
-<li><strong>Get help while coding.</strong> With the Python and Jupyter extensions, code completion, function information, and debugging tools help you explore unfamiliar libraries and investigate errors.</li>
-<li><strong>Use a terminal beside your notebook.</strong> Install packages and run Quarto commands without switching to a separate terminal application. You still need to verify its current folder and Python environment.</li>
-<li><strong>Build a repeatable submission workflow.</strong> Edit and run your notebook, save it, then use the integrated terminal to render your HTML with Quarto. The same workspace supports each stage of the assignment.</li>
-</ul>
-<p>These features are described in the official <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">VS Code notebook guide</a> and <a href="https://code.visualstudio.com/docs/terminal/basics">integrated terminal guide</a>.</p>
-<p><strong>You can use VS Code with your existing Anaconda Python.</strong> Changing editors does not require changing your notebook format or uninstalling Anaconda. In this chapter, you will select a familiar Python kernel; in Chapter 2, you will create a separate project environment. VS Code’s advantage here is the integrated workflow—it does not automatically make Python code run faster or keep environments and paths correct for you.</p>
+<p><strong>Why we use VS Code in STAT 303-1:</strong> You will work with notebooks, local data files, project environments, and HTML reports. VS Code brings the notebook editor, file explorer, and terminal into one workspace, helping you move from writing code to running Quarto for assignment submission. Its coding and debugging tools will also help as you begin using unfamiliar data science libraries.</p>
+<p>You can keep your existing Anaconda installation and select its Python environment in VS Code. You will continue using the same <code>.ipynb</code> notebook format from STAT 201.</p>
 </section>
 <section id="know-your-tools" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="know-your-tools"><span class="header-section-number">1.2</span> Know Your Tools</h2>
+<p>With Anaconda and VS Code’s roles established, let’s distinguish the other tools you will use.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -469,20 +480,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Executes your Python code</td>
 </tr>
 <tr class="even">
-<td>Anaconda</td>
-<td>A distribution that may already provide your Python and packages</td>
-</tr>
-<tr class="odd">
 <td>Jupyter notebook</td>
 <td>A document containing code, Markdown, and saved outputs</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Kernel</td>
 <td>The running process that executes a notebook’s code</td>
-</tr>
-<tr class="odd">
-<td>VS Code</td>
-<td>The editor in which you open folders and work on notebooks</td>
 </tr>
 <tr class="even">
 <td>Terminal</td>
@@ -494,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Installing VS Code does not replace Python, and selecting a notebook kernel is not the same as opening a terminal. You do not need to uninstall Anaconda or discard your STAT 201 notebooks.</p>
+<p>Selecting a notebook kernel is not the same as opening a terminal. Each can use a different Python environment; you will learn to check both.</p>
 </section>
 <section id="check-your-existing-setup" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="check-your-existing-setup"><span class="header-section-number">1.3</span> Check Your Existing Setup</h2>
