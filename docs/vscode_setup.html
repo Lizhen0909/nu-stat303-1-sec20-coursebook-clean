@@ -367,13 +367,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#know-your-tools" id="toc-know-your-tools" class="nav-link active" data-scroll-target="#know-your-tools"><span class="header-section-number">1.1</span> Know Your Tools</a></li>
-  <li><a href="#check-your-existing-setup" id="toc-check-your-existing-setup" class="nav-link" data-scroll-target="#check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</a></li>
-  <li><a href="#open-a-project-folder" id="toc-open-a-project-folder" class="nav-link" data-scroll-target="#open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</a></li>
-  <li><a href="#select-a-kernel-and-run-a-cell" id="toc-select-a-kernel-and-run-a-cell" class="nav-link" data-scroll-target="#select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</a></li>
-  <li><a href="#code-markdown-and-saved-outputs" id="toc-code-markdown-and-saved-outputs" class="nav-link" data-scroll-target="#code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</a></li>
-  <li><a href="#if-something-does-not-work" id="toc-if-something-does-not-work" class="nav-link" data-scroll-target="#if-something-does-not-work"><span class="header-section-number">1.6</span> If Something Does Not Work</a></li>
-  <li><a href="#practice-activity-your-first-vs-code-notebook" id="toc-practice-activity-your-first-vs-code-notebook" class="nav-link" data-scroll-target="#practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</a></li>
+  <li><a href="#anaconda-vs.-vs-code" id="toc-anaconda-vs.-vs-code" class="nav-link active" data-scroll-target="#anaconda-vs.-vs-code"><span class="header-section-number">1.1</span> Anaconda vs.&nbsp;VS Code</a></li>
+  <li><a href="#know-your-tools" id="toc-know-your-tools" class="nav-link" data-scroll-target="#know-your-tools"><span class="header-section-number">1.2</span> Know Your Tools</a></li>
+  <li><a href="#check-your-existing-setup" id="toc-check-your-existing-setup" class="nav-link" data-scroll-target="#check-your-existing-setup"><span class="header-section-number">1.3</span> Check Your Existing Setup</a></li>
+  <li><a href="#open-a-project-folder" id="toc-open-a-project-folder" class="nav-link" data-scroll-target="#open-a-project-folder"><span class="header-section-number">1.4</span> Open a Project Folder</a></li>
+  <li><a href="#select-a-kernel-and-run-a-cell" id="toc-select-a-kernel-and-run-a-cell" class="nav-link" data-scroll-target="#select-a-kernel-and-run-a-cell"><span class="header-section-number">1.5</span> Select a Kernel and Run a Cell</a></li>
+  <li><a href="#code-markdown-and-saved-outputs" id="toc-code-markdown-and-saved-outputs" class="nav-link" data-scroll-target="#code-markdown-and-saved-outputs"><span class="header-section-number">1.6</span> Code, Markdown, and Saved Outputs</a></li>
+  <li><a href="#if-something-does-not-work" id="toc-if-something-does-not-work" class="nav-link" data-scroll-target="#if-something-does-not-work"><span class="header-section-number">1.7</span> If Something Does Not Work</a></li>
+  <li><a href="#practice-activity-your-first-vs-code-notebook" id="toc-practice-activity-your-first-vs-code-notebook" class="nav-link" data-scroll-target="#practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.8</span> Practice Activity: Your First VS Code Notebook</a></li>
   </ul>
 </nav>
     </div>
@@ -407,8 +408,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Identify its Python kernel.</li>
 <li>Explain the roles of the tools you use.</li>
 </ul>
-<section id="know-your-tools" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="know-your-tools"><span class="header-section-number">1.1</span> Know Your Tools</h2>
+<section id="anaconda-vs.-vs-code" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="anaconda-vs.-vs-code"><span class="header-section-number">1.1</span> Anaconda vs.&nbsp;VS Code</h2>
+<p>In STAT 201, you used Anaconda to work with Jupyter notebooks. In STAT 303-1, your projects will combine notebooks, data files, installed libraries, and HTML reports. <strong>VS Code brings these parts of a project into one workspace</strong>, making it a good fit for the workflow you will learn in this course.</p>
+<p>Anaconda and VS Code serve different roles:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What it provides</th>
+<th>How it fits your work</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Anaconda</td>
+<td>A Python distribution with packages and environment-management tools; Navigator provides a graphical interface for managing environments and launching applications</td>
+<td>Supplies the Python environment you may already have from STAT 201</td>
+</tr>
+<tr class="even">
+<td>VS Code</td>
+<td>An editor that supports notebooks through extensions and includes a file explorer and terminal</td>
+<td>Provides the workspace where you organize files, write code, and issue project commands</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="https://www.anaconda.com/products/navigator">Anaconda Navigator</a> for its application and environment-management features.</p>
+<p><strong>Why use VS Code in STAT 303-1?</strong></p>
+<ul>
+<li><strong>Keep the whole project visible.</strong> Open a folder and work with notebooks, Python scripts, data, and report settings together. This helps you see where files belong as an assignment grows.</li>
+<li><strong>Continue using familiar notebooks.</strong> Open your existing <code>.ipynb</code> files, write Markdown, run cells, and view outputs in the editor.</li>
+<li><strong>Get help while coding.</strong> With the Python and Jupyter extensions, code completion, function information, and debugging tools help you explore unfamiliar libraries and investigate errors.</li>
+<li><strong>Use a terminal beside your notebook.</strong> Install packages and run Quarto commands without switching to a separate terminal application. You still need to verify its current folder and Python environment.</li>
+<li><strong>Build a repeatable submission workflow.</strong> Edit and run your notebook, save it, then use the integrated terminal to render your HTML with Quarto. The same workspace supports each stage of the assignment.</li>
+</ul>
+<p>These features are described in the official <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">VS Code notebook guide</a> and <a href="https://code.visualstudio.com/docs/terminal/basics">integrated terminal guide</a>.</p>
+<p><strong>You can use VS Code with your existing Anaconda Python.</strong> Changing editors does not require changing your notebook format or uninstalling Anaconda. In this chapter, you will select a familiar Python kernel; in Chapter 2, you will create a separate project environment. VS Code’s advantage here is the integrated workflow—it does not automatically make Python code run faster or keep environments and paths correct for you.</p>
+</section>
+<section id="know-your-tools" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="know-your-tools"><span class="header-section-number">1.2</span> Know Your Tools</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -453,14 +496,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Installing VS Code does not replace Python, and selecting a notebook kernel is not the same as opening a terminal. You do not need to uninstall Anaconda or discard your STAT 201 notebooks.</p>
 </section>
-<section id="check-your-existing-setup" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</h2>
+<section id="check-your-existing-setup" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="check-your-existing-setup"><span class="header-section-number">1.3</span> Check Your Existing Setup</h2>
 <p><strong>Already have VS Code?</strong> Open it and verify that the <strong>Python</strong> and <strong>Jupyter</strong> extensions from Microsoft are installed and enabled. Continue to the practice-folder step below.</p>
 <p><strong>Need VS Code?</strong> Install it from <a href="https://code.visualstudio.com/">the official website</a>, then open the Extensions panel and install Microsoft’s Python and Jupyter extensions. On Windows/Linux the shortcut is <code>Ctrl+Shift+X</code>; on macOS it is <code>Cmd+Shift+X</code>.</p>
 <p>First look for your existing Python installation, including one supplied by Anaconda. Do not install another Python simply because you are changing editors. If no working interpreter is available, use the instructor’s supported Python version and the <a href="https://www.python.org/downloads/">official Python installer</a>, or ask for setup assistance.</p>
 </section>
-<section id="open-a-project-folder" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</h2>
+<section id="open-a-project-folder" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="open-a-project-folder"><span class="header-section-number">1.4</span> Open a Project Folder</h2>
 <p><a href="downloads/setup-practice.zip">Download the setup practice kit</a>, extract it, and open the extracted <strong><code>stat303-setup</code> folder</strong> using <strong>File → Open Folder</strong>. Do not work inside the ZIP viewer or open only a notebook without its surrounding folder.</p>
 <p>The same kit supports all three chapters and the final assignment:</p>
 <pre class="text"><code>stat303-setup/
@@ -480,8 +523,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Terminal panel:</strong> open it with <strong>Terminal → New Terminal</strong>; note the shell shown in its tab/menu.</li>
 </ul>
 </section>
-<section id="select-a-kernel-and-run-a-cell" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</h2>
+<section id="select-a-kernel-and-run-a-cell" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="select-a-kernel-and-run-a-cell"><span class="header-section-number">1.5</span> Select a Kernel and Run a Cell</h2>
 <p>Open <code>activity01.ipynb</code>. Use its kernel picker to choose an existing Python environment you recognize from STAT 201. Labels vary with installed extensions; a route such as <strong>Select Another Kernel → Python Environments</strong> may be available. For this first check, your existing environment is sufficient. Chapter 2 establishes a separate course environment.</p>
 <p>Run this in a <strong>notebook code cell</strong>, not the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
@@ -491,14 +534,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The executable path identifies the Python used by this notebook. A kernel name such as <code>Python 3</code> is not enough to distinguish multiple installations.</p>
 <p>If VS Code reports that <code>ipykernel</code> is required, install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment; do not install into an arbitrary system interpreter.</p>
 </section>
-<section id="code-markdown-and-saved-outputs" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</h2>
+<section id="code-markdown-and-saved-outputs" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="code-markdown-and-saved-outputs"><span class="header-section-number">1.6</span> Code, Markdown, and Saved Outputs</h2>
 <p>Use code cells for computation and Markdown cells for explanations, headings, and answers. Run cells with their play controls or <code>Shift+Enter</code>. Save the notebook with <code>Ctrl+S</code> or <code>Cmd+S</code>.</p>
 <p>A notebook remembers values from previously executed cells. Moving or editing a cell does not undo its earlier effects. Before considering work complete, <strong>restart the kernel, run all code cells in order, and save again</strong>. A successfully executed notebook should not depend on variables created in deleted cells.</p>
 <p>The HTML submitted later will be generated from this saved notebook. Writing an explanation in a code comment is useful, but Markdown is better for the report’s narrative.</p>
 </section>
-<section id="if-something-does-not-work" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="if-something-does-not-work"><span class="header-section-number">1.6</span> If Something Does Not Work</h2>
+<section id="if-something-does-not-work" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="if-something-does-not-work"><span class="header-section-number">1.7</span> If Something Does Not Work</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -530,8 +573,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="practice-activity-your-first-vs-code-notebook" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</h2>
+<section id="practice-activity-your-first-vs-code-notebook" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.8</span> Practice Activity: Your First VS Code Notebook</h2>
 <p><strong>Goal:</strong> Demonstrate that you can use a familiar notebook in the new editor. <strong>File:</strong> <code>activity01.ipynb</code> from the practice kit. No data science package installation is required for this activity.</p>
 <ol type="1">
 <li>Open the extracted project folder and select your intended kernel.</li>
