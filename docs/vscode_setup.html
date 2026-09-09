@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Setting up your environment with VS Code – Data Science I with python</title>
+<title>1&nbsp; Jupyter Notebooks in VS Code – Data Science I with python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -64,15 +64,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./workflow_enhance.html" rel="next">
-<link href="./python_venv.html" rel="prev">
+<link href="./python_venv.html" rel="next">
+<link href="./data_structures.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,9 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -126,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_venv.html">Setting Up for Data Science</a></li><li class="breadcrumb-item"><a href="./vscode_setup.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vscode_setup.html">Setting Up for Data Science</a></li><li class="breadcrumb-item"><a href="./vscode_setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -195,20 +192,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Environments and Package Management</span></span></a>
+  <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></span></a>
+  <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From Notebook to HTML with Quarto</span></span></a>
   </div>
 </li>
       </ul>
@@ -367,33 +364,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">2.1</span> Learning Objectives</a></li>
-  <li><a href="#why-choose-visual-studio-code-vs-code" id="toc-why-choose-visual-studio-code-vs-code" class="nav-link" data-scroll-target="#why-choose-visual-studio-code-vs-code"><span class="header-section-number">2.2</span> Why Choose Visual Studio Code (VS Code)?</a></li>
-  <li><a href="#quick-start-setting-up-python-vs-code" id="toc-quick-start-setting-up-python-vs-code" class="nav-link" data-scroll-target="#quick-start-setting-up-python-vs-code"><span class="header-section-number">2.3</span> Quick Start: Setting Up Python &amp; VS Code</a></li>
-  <li><a href="#full-setup-reliable-python-environment-in-vs-code" id="toc-full-setup-reliable-python-environment-in-vs-code" class="nav-link" data-scroll-target="#full-setup-reliable-python-environment-in-vs-code"><span class="header-section-number">2.4</span> Full Setup: Reliable Python Environment in VS Code</a></li>
-  <li><a href="#jupyter-notebooks-in-vs-code" id="toc-jupyter-notebooks-in-vs-code" class="nav-link" data-scroll-target="#jupyter-notebooks-in-vs-code"><span class="header-section-number">2.5</span> Jupyter Notebooks in VS Code</a></li>
-  <li><a href="#rendering-notebook-as-html-using-quarto" id="toc-rendering-notebook-as-html-using-quarto" class="nav-link" data-scroll-target="#rendering-notebook-as-html-using-quarto"><span class="header-section-number">2.6</span> Rendering notebook as HTML using Quarto</a>
-  <ul>
-  <li><a href="#installing-and-verifying-quarto" id="toc-installing-and-verifying-quarto" class="nav-link" data-scroll-target="#installing-and-verifying-quarto"><span class="header-section-number">2.6.1</span> Installing and Verifying Quarto</a></li>
-  <li><a href="#converting-the-notebook-to-html" id="toc-converting-the-notebook-to-html" class="nav-link" data-scroll-target="#converting-the-notebook-to-html"><span class="header-section-number">2.6.2</span> Converting the Notebook to HTML</a></li>
-  </ul></li>
-  <li><a href="#independent-study" id="toc-independent-study" class="nav-link" data-scroll-target="#independent-study"><span class="header-section-number">2.7</span> Independent Study</a>
-  <ul>
-  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions"><span class="header-section-number">2.7.1</span> Step-by-Step Instructions</a></li>
-  </ul></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">2.8</span> Reference</a></li>
+  <li><a href="#know-your-tools" id="toc-know-your-tools" class="nav-link active" data-scroll-target="#know-your-tools"><span class="header-section-number">1.1</span> Know Your Tools</a></li>
+  <li><a href="#check-your-existing-setup" id="toc-check-your-existing-setup" class="nav-link" data-scroll-target="#check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</a></li>
+  <li><a href="#open-a-project-folder" id="toc-open-a-project-folder" class="nav-link" data-scroll-target="#open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</a></li>
+  <li><a href="#select-a-kernel-and-run-a-cell" id="toc-select-a-kernel-and-run-a-cell" class="nav-link" data-scroll-target="#select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</a></li>
+  <li><a href="#code-markdown-and-saved-outputs" id="toc-code-markdown-and-saved-outputs" class="nav-link" data-scroll-target="#code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</a></li>
+  <li><a href="#if-something-does-not-work" id="toc-if-something-does-not-work" class="nav-link" data-scroll-target="#if-something-does-not-work"><span class="header-section-number">1.6</span> If Something Does Not Work</a></li>
+  <li><a href="#practice-activity-your-first-vs-code-notebook" id="toc-practice-activity-your-first-vs-code-notebook" class="nav-link" data-scroll-target="#practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_venv.html">Setting Up for Data Science</a></li><li class="breadcrumb-item"><a href="./vscode_setup.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vscode_setup.html">Setting Up for Data Science</a></li><li class="breadcrumb-item"><a href="./vscode_setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your environment with VS Code</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></h1>
 </div>
 
 
@@ -410,306 +399,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
-<img src="./images/vscode_python.webp" width="300" height="180">
-</div>
-</div>
-<section id="learning-objectives" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">2.1</span> Learning Objectives</h2>
-<p>Setting up your Python data science environment is the foundation for all your work in this course. A well-configured setup will save you time, prevent errors, and make your workflow smoother. Whether you’re new to VS Code or Python, these steps will help you build a reliable environment for coding, analysis, and reproducibility.</p>
-<p>By the end of this chapter, you will be able to:</p>
+<p>In STAT 201, you used Jupyter notebooks through Anaconda. In STAT 303-1, you will continue writing <code>.ipynb</code> notebooks, now <strong>inside VS Code</strong>, and use <strong>Quarto</strong> to produce HTML assignment submissions.</p>
+<p>By the end of this chapter, you should be able to open a project folder, run and save a notebook, identify its Python kernel, and explain the roles of the tools you use.</p>
+<section id="know-your-tools" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="know-your-tools"><span class="header-section-number">1.1</span> Know Your Tools</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Its role in this course</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python</td>
+<td>Executes your Python code</td>
+</tr>
+<tr class="even">
+<td>Anaconda</td>
+<td>A distribution that may already provide your Python and packages</td>
+</tr>
+<tr class="odd">
+<td>Jupyter notebook</td>
+<td>A document containing code, Markdown, and saved outputs</td>
+</tr>
+<tr class="even">
+<td>Kernel</td>
+<td>The running process that executes a notebook’s code</td>
+</tr>
+<tr class="odd">
+<td>VS Code</td>
+<td>The editor in which you open folders and work on notebooks</td>
+</tr>
+<tr class="even">
+<td>Terminal</td>
+<td>A place to issue commands to a shell such as PowerShell, zsh, or Bash</td>
+</tr>
+<tr class="odd">
+<td>Quarto</td>
+<td>Converts your saved notebook into a formatted HTML document</td>
+</tr>
+</tbody>
+</table>
+<p>Installing VS Code does not replace Python, and selecting a notebook kernel is not the same as opening a terminal. You do not need to uninstall Anaconda or discard your STAT 201 notebooks.</p>
+</section>
+<section id="check-your-existing-setup" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="check-your-existing-setup"><span class="header-section-number">1.2</span> Check Your Existing Setup</h2>
+<p><strong>Already have VS Code?</strong> Open it and verify that the <strong>Python</strong> and <strong>Jupyter</strong> extensions from Microsoft are installed and enabled. Continue to the practice-folder step below.</p>
+<p><strong>Need VS Code?</strong> Install it from <a href="https://code.visualstudio.com/">the official website</a>, then open the Extensions panel and install Microsoft’s Python and Jupyter extensions. On Windows/Linux the shortcut is <code>Ctrl+Shift+X</code>; on macOS it is <code>Cmd+Shift+X</code>.</p>
+<p>First look for your existing Python installation, including one supplied by Anaconda. Do not install another Python simply because you are changing editors. If no working interpreter is available, use the instructor’s supported Python version and the <a href="https://www.python.org/downloads/">official Python installer</a>, or ask for setup assistance.</p>
+</section>
+<section id="open-a-project-folder" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="open-a-project-folder"><span class="header-section-number">1.3</span> Open a Project Folder</h2>
+<p><a href="downloads/setup-practice.zip">Download the setup practice kit</a>, extract it, and open the extracted <strong><code>stat303-setup</code> folder</strong> using <strong>File → Open Folder</strong>. Do not work inside the ZIP viewer or open only a notebook without its surrounding folder.</p>
+<p>The same kit supports all three chapters and the final assignment:</p>
+<pre class="text"><code>stat303-setup/
+├── activity01.ipynb
+├── activity02.ipynb
+├── activity03.ipynb
+├── setup_assignment.ipynb
+├── data/
+│   └── station_readings.csv
+└── README.md</code></pre>
+<p>You will create <code>.venv/</code> and <code>requirements.txt</code> in Chapter 2. Keep the notebooks alongside <code>data/</code> while learning this workflow. This makes the expected working directory explicit; later assignments may use other layouts.</p>
+<p>Find these areas in VS Code:</p>
 <ul>
-<li>Install and configure <strong>Visual Studio Code (VS Code)</strong> for Python and Jupyter Notebooks.<br>
-</li>
-<li>Create and manage a <strong>virtual environment</strong> for this course.<br>
-</li>
-<li>Install essential <strong>Python libraries</strong> for data science.<br>
-</li>
-<li>Verify that your environment is working properly.</li>
+<li><strong>Explorer:</strong> project folders and files.</li>
+<li><strong>Notebook editor:</strong> code and Markdown cells.</li>
+<li><strong>Kernel picker:</strong> usually at the top right of the notebook.</li>
+<li><strong>Terminal panel:</strong> open it with <strong>Terminal → New Terminal</strong>; note the shell shown in its tab/menu.</li>
 </ul>
 </section>
-<section id="why-choose-visual-studio-code-vs-code" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="why-choose-visual-studio-code-vs-code"><span class="header-section-number">2.2</span> Why Choose Visual Studio Code (VS Code)?</h2>
-<p>Choosing the right editor can make a big difference in your productivity and learning experience. VS Code is a top choice for data science and Python development because it combines power, flexibility, and ease of use.</p>
-<ul>
-<li><p><strong>Free and Lightweight</strong><br>
-VS Code is free, open-source, and runs efficiently on most systems without being resource-heavy.</p></li>
-<li><p><strong>Cross-Platform</strong><br>
-Works consistently on Windows, macOS, and Linux.</p></li>
-<li><p><strong>Rich Python Support</strong><br>
-With the official Python extension, you get:</p>
-<ul>
-<li>Syntax highlighting and IntelliSense (auto-completion, code hints).<br>
-</li>
-<li>Built-in debugging tools.<br>
-</li>
-<li>Easy integration with virtual environments and Jupyter Notebooks.</li>
-</ul></li>
-<li><p><strong>Integrated Jupyter Notebook Support</strong><br>
-You can open and run <code>.ipynb</code> notebooks directly in VS Code.</p></li>
-<li><p><strong>Customizable and Extensible</strong><br>
-Large marketplace of extensions (e.g., formatting, linting, Git, Docker, AI tools).</p></li>
-<li><p><strong>Version Control Integration</strong><br>
-Built-in Git and GitHub support for managing and sharing code.</p></li>
-<li><p><strong>Unified Workflow</strong><br>
-One place for editing, running, debugging, documenting, and version-controlling Python code.</p></li>
-</ul>
-<p>Whether you’re just starting out or working on advanced projects, VS Code provides a modern, unified environment for all your coding needs.</p>
+<section id="select-a-kernel-and-run-a-cell" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</h2>
+<p>Open <code>activity01.ipynb</code>. Use its kernel picker to choose an existing Python environment you recognize from STAT 201. Labels vary with installed extensions; a route such as <strong>Select Another Kernel → Python Environments</strong> may be available. For this first check, your existing environment is sufficient. Chapter 2 establishes a separate course environment.</p>
+<p>Run this in a <strong>notebook code cell</strong>, not the terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Notebook is running"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The executable path identifies the Python used by this notebook. A kernel name such as <code>Python 3</code> is not enough to distinguish multiple installations.</p>
+<p>If VS Code reports that <code>ipykernel</code> is required, install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment; do not install into an arbitrary system interpreter.</p>
 </section>
-<section id="quick-start-setting-up-python-vs-code" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="quick-start-setting-up-python-vs-code"><span class="header-section-number">2.3</span> Quick Start: Setting Up Python &amp; VS Code</h2>
-<p>VS Code is a versatile editor. To use it for data science, you’ll complete a few extra setup steps (e.g., Python &amp; Jupyter extensions). Follow this step-by-step setup guide to get started quickly and avoid common pitfalls.</p>
-<p><strong>Step 1: Install Python</strong></p>
-<ul>
-<li>Download and install the latest version from <a href="https://www.python.org">python.org</a>.</li>
-<li>On Windows, check the box <strong>“Add Python to PATH.”</strong> This makes Python available in your terminal.</li>
-</ul>
-<p><strong>Step 2: Install VS Code &amp; Extensions</strong></p>
-<ul>
-<li>Download VS Code from <a href="https://code.visualstudio.com">code.visualstudio.com</a>.</li>
-<li>Open VS Code, go to the Extensions panel (<code>Ctrl+Shift+X</code>), and install:
-<ul>
-<li><strong>Python (Microsoft)</strong></li>
-<li><strong>Jupyter (Microsoft)</strong></li>
-</ul></li>
-</ul>
-<p><strong>Step 3: Create a Course Folder</strong></p>
-<ul>
-<li>Make a folder for your notebooks (e.g., <code>datasci</code> on Desktop or Documents).</li>
-<li>Open this folder in VS Code.</li>
-</ul>
-<p><strong>Step 4: Create Your First Notebook</strong></p>
-<ul>
-<li><p>In VS Code, go to <strong>File → New File → Save as → <code>test.ipynb</code></strong>.</p></li>
-<li><p>Add a code cell:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello world"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Run the cell. VS Code may prompt you to select or create a Python environment. <img src="images/env_create_option.png" class="img-fluid" alt="Alt Text">:</p></li>
-<li><p>If prompted, create a new environment using the GUI (recommended for beginners).</p></li>
-<li><p>Make sure the kernel (top right) shows <strong>.venv (Python 3.xx.x)</strong>.</p></li>
-<li><p>✅ If you see <code>hello world</code> printed, your setup is working!</p></li>
-</ul>
-<p><strong>If everything works, you can skip the Full Setup below.</strong></p>
-<p>❌ If you run into issues, continue with the detailed setup and troubleshooting steps in the next section.</p>
-<p>This quick start helps you get coding fast, but the full setup ensures your environment is robust and reproducible for all course projects.</p>
+<section id="code-markdown-and-saved-outputs" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</h2>
+<p>Use code cells for computation and Markdown cells for explanations, headings, and answers. Run cells with their play controls or <code>Shift+Enter</code>. Save the notebook with <code>Ctrl+S</code> or <code>Cmd+S</code>.</p>
+<p>A notebook remembers values from previously executed cells. Moving or editing a cell does not undo its earlier effects. Before considering work complete, <strong>restart the kernel, run all code cells in order, and save again</strong>. A successfully executed notebook should not depend on variables created in deleted cells.</p>
+<p>The HTML submitted later will be generated from this saved notebook. Writing an explanation in a code comment is useful, but Markdown is better for the report’s narrative.</p>
 </section>
-<section id="full-setup-reliable-python-environment-in-vs-code" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="full-setup-reliable-python-environment-in-vs-code"><span class="header-section-number">2.4</span> Full Setup: Reliable Python Environment in VS Code</h2>
-<p>If the quick start didn’t work, or you want a more robust setup, follow these step-by-step instructions to ensure your Python environment is reproducible and ready for data science.</p>
-<p><strong>Step 1: Install Python</strong></p>
-<ul>
-<li><p>Go to the <a href="https://www.python.org/downloads/">official Python website</a> and download the latest version for your operating system.</p></li>
-<li><p><strong>Important:</strong> During installation, check the box <strong>“Add Python to PATH”</strong> so Python is available in your terminal.</p></li>
-<li><p>After installation, restart your terminal in VS Code.</p></li>
-<li><p>Verify installation by running:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You should see the installed Python version.</p></li>
-</ul>
-<p><strong>Step 2: Install VS Code Extensions</strong></p>
-<ul>
-<li>Open VS Code.</li>
-<li>Go to Extensions (<code>Ctrl+Shift+X</code>).</li>
-<li>Install:
-<ul>
-<li><strong>Python</strong> (by Microsoft)</li>
-<li><strong>Jupyter</strong> (by Microsoft)</li>
-</ul></li>
-</ul>
-<p><strong>Step 3: Set Up Your Workspace</strong></p>
-<ul>
-<li>Create a new folder for your course work (e.g., <code>STAT303-1</code> on Desktop or Documents).</li>
-<li>Open the folder in VS Code (<code>File &gt; Open Folder</code>).</li>
-</ul>
-<p><strong>Step 4: Create a Notebook for Your Work</strong></p>
-<ul>
-<li><p>In VS Code, go to <code>File &gt; New File</code> and select <code>Jupyter Notebook</code>.</p></li>
-<li><p>Save the file as <code>your_notebook.ipynb</code>.</p></li>
-<li><p>Add a code cell:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello world"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Make sure to select the <code>.venv</code> kernel for your notebook (see next step).</p></li>
-</ul>
-<p><strong>Step 5A: Create a Virtual Environment (GUI Method)</strong></p>
-<ul>
-<li>Run the cell. If prompted, create a Python environment using <code>venv</code> in the current workspace.</li>
-<li>Wait for Jupyter to start and install necessary components (e.g., ipykernel).</li>
-<li>After installation, ensure the selected kernel in the top right of the notebook says <strong>.venv (Python 3.xx.x)</strong>.</li>
-<li>If not, select the <code>.venv</code> kernel manually.</li>
-</ul>
-<p><em>If you successfully created the environment using the GUI, skip Step 5B.</em></p>
-<p><strong>Step 5B: Create a Virtual Environment (Command Line Method)</strong></p>
-<ul>
-<li>If not prompted to create your environment, use the terminal:
-<ul>
-<li><p>Open the terminal in VS Code.</p></li>
-<li><p>Run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv <span class="op">.</span><span class="fu">venv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Activate the environment:</p>
-<ul>
-<li><p>On Windows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>On macOS/Linux:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul></li>
-<li><p>You should see <code>(.venv)</code> at the start of your terminal prompt.</p></li>
-<li><p>Install essential packages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pip install numpy pandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul></li>
-</ul>
-<p><strong>Step 6: Verify Your Setup</strong></p>
-<ul>
-<li><p>Run the code cell again. You should see <code>hello world</code> printed out.</p></li>
-<li><p>In the terminal, check your Python version and installed packages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pip list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul>
-<p><strong>Troubleshooting Tips</strong></p>
-<ul>
-<li>If the kernel does not show <code>.venv</code>, restart VS Code and ensure the environment is activated.</li>
-<li>Make sure the Python and Jupyter extensions are installed and enabled.</li>
-<li>If you see errors, check that your notebook is saved with the <code>.ipynb</code> extension and the correct kernel is selected.</li>
-</ul>
-<p>A reliable environment is essential for reproducible data science. These steps will help you avoid common issues and set yourself up for success throughout the course.</p>
+<section id="if-something-does-not-work" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="if-something-does-not-work"><span class="header-section-number">1.6</span> If Something Does Not Work</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>First check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No kernel is offered</td>
+<td>Python/Jupyter extensions are enabled; a Python interpreter is installed and discoverable</td>
+</tr>
+<tr class="even">
+<td>Code will not run</td>
+<td>The cell is Code rather than Markdown and a kernel is selected</td>
+</tr>
+<tr class="odd">
+<td>Output differs after restarting</td>
+<td>All required assignments/imports occur earlier in the notebook</td>
+</tr>
+<tr class="even">
+<td>You cannot find the data folder</td>
+<td>The ZIP is extracted and the correct project folder is open</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="jupyter-notebooks-in-vs-code" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="jupyter-notebooks-in-vs-code"><span class="header-section-number">2.5</span> Jupyter Notebooks in VS Code</h2>
-<p>After setting up your environment, you can take full advantage of Jupyter Notebooks directly in VS Code. This integration lets you:</p>
-<ul>
-<li>Create, edit, and run <code>.ipynb</code> notebooks without leaving VS Code</li>
-<li>Use interactive code cells for data analysis, visualization, and documentation</li>
-<li>Access rich outputs (plots, tables, markdown) inline with your code</li>
-<li>Switch kernels to use different Python environments for each notebook</li>
-<li>Debug, refactor, and version-control your notebooks with built-in tools</li>
-</ul>
-<p><strong>Getting Started:</strong></p>
-<ul>
-<li>Open or create a notebook file (<code>.ipynb</code>) in VS Code</li>
-<li>Make sure the correct Python kernel/environment is selected (top right corner)</li>
-<li>Add code and markdown cells as needed</li>
-<li>Run cells individually or all at once</li>
-</ul>
-<p><strong>Learn More:</strong></p>
-<ul>
-<li>Explore the official guide: <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks in VS Code</a></li>
-</ul>
-<p>Jupyter Notebooks in VS Code provide a powerful, flexible workflow for data science and Python development.</p>
-</section>
-<section id="rendering-notebook-as-html-using-quarto" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="rendering-notebook-as-html-using-quarto"><span class="header-section-number">2.6</span> Rendering notebook as HTML using Quarto</h2>
-<p>Quarto is designed for high-quality, customizable, and publishable outputs, making it suitable for reports, blogs, or presentations. We’ll use Quarto to print the **.ipynb* file as HTML for your assignment submission.</p>
-<section id="installing-and-verifying-quarto" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="installing-and-verifying-quarto"><span class="header-section-number">2.6.1</span> Installing and Verifying Quarto</h3>
-<ul>
-<li><p>Download and install Quarto from the <a href="https://quarto.org/">official website</a>.</p></li>
-<li><p>Follow the installation instructions for your operating system.</p></li>
-<li><p>Open your terminal within VS Code:</p>
-<ul>
-<li>Go to <code>Terminal</code> -&gt; <code>New Terminal</code>.</li>
-</ul></li>
-<li><p>Run the following command to verify that Quarto and its dependencies are correctly installed: <code>quarto --version</code></p></li>
-<li><p>You should see the installed quarto version. If the command line doesn’t work, you might see an error message like:</p>
-<pre><code>- `quarto is not recognized`
-- `quarto command is not found` </code></pre>
-<p>This issue is often caused by Quarto not being added to the PATH environment variable. Similar to how you added the Python path to the environment variable above, you need to add the Quarto path to the system environment variable so that the command can be recognized by your operating system’s shell.</p>
-<p>On Windows, if you used the default installation path (without changing it), Quarto is installed in: <code>C:\Users\&lt;USER&gt;\AppData\Local\Programs\Quarto\bin</code></p></li>
-</ul>
-<p><strong>Note:</strong><br>
-Before moving forward, ensure that the command <code>quarto --version</code> successfully prints the version of your installed quarto. If it does not, you may need to troubleshoot your quarto installation or add it to the PATH environment variable.</p>
-</section>
-<section id="converting-the-notebook-to-html" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="converting-the-notebook-to-html"><span class="header-section-number">2.6.2</span> Converting the Notebook to HTML</h3>
-<p>Check the procedure for rendering a notebook as HTML <a href="https://quarto.org/docs/output-formats/html-basics.html">here</a>. You have several options to format the file. Here are some points to remember when using Quarto to render your notebook as HTML:</p>
+<section id="practice-activity-your-first-vs-code-notebook" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</h2>
+<p><strong>Goal:</strong> Demonstrate that you can use a familiar notebook in the new editor. <strong>File:</strong> <code>activity01.ipynb</code> from the practice kit. No data science package installation is required for this activity.</p>
 <ol type="1">
-<li><p>The <a href="https://nbsphinx.readthedocs.io/en/0.9.3/raw-cells.html"><code>Raw NBConvert</code></a> cell type is used to render different code formats into HTML or LaTeX. This information is stored in the notebook metadata and converted appropriately. <strong>Use this cell type to put the desired formatting settings for the HTML file.</strong></p></li>
-<li><p>In the formatting settings, remember to use the setting <strong><a href="https://quarto.org/docs/output-formats/html-basics.html#self-contained"><code>embed-resources: true</code></a></strong>. This will ensure that the rendered HTML file is self-contained, and is not dependent on other files. This is especially important when you are sending the HTML file to someone, or uploading it somewhere. If the file is self-contained, then you can send the file by itself without having to attach the dependent files with it.</p></li>
+<li>Open the extracted project folder and select your intended kernel.</li>
+<li>Replace the notebook’s name placeholder with your name in Markdown.</li>
+<li>Run the supplied environment-information cell. Add a Markdown sentence identifying which Python installation you selected.</li>
+<li>Add a code cell that defines three numerical readings in a list and prints their mean using <code>sum()</code> and <code>len()</code>.</li>
+<li>Add a Markdown explanation of what the code does. Explain the difference between a notebook and its kernel.</li>
+<li>Restart the kernel, run all cells, save, close the notebook, and reopen it.</li>
 </ol>
-<p>Once you have entered the desired formatting setting in the <code>Raw NBConver</code> cell, you are ready to render the notebook to HTML. Open the terminal, navigate to the directory containing the notebook <em>(.ipynb file)</em>, and use the command: <code>quarto render filename.ipynb --to html</code>.</p>
-</section>
-</section>
-<section id="independent-study" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="independent-study"><span class="header-section-number">2.7</span> Independent Study</h2>
-<p><strong>Goal:</strong> Get hands-on experience creating a reproducible Python environment using <code>pip</code> and <code>.venv</code> in VS Code.</p>
-<section id="step-by-step-instructions" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="step-by-step-instructions"><span class="header-section-number">2.7.1</span> Step-by-Step Instructions</h3>
-<p><strong>Step 1: Create Your Workspace</strong></p>
-<ul>
-<li><p>Make a folder named <code>STAT303_1</code> for your course work.</p></li>
-<li><p>Open this folder in VS Code.</p></li>
-<li><p>Create a new notebook: <code>setup_test.ipynb</code>.</p></li>
-<li><p>Add a code cell:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, VS Code &amp; .venv!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Run the cell. If prompted, create/select a Python environment (choose <code>.venv</code>).</p></li>
-</ul>
-<p><strong>Step 2: Create the <code>.venv</code> Environment</strong></p>
-<ul>
-<li><p>If VS Code does not prompt you, open the terminal in VS Code.</p></li>
-<li><p>Run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv <span class="op">.</span><span class="fu">venv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Activate the environment:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Install essential packages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pip install numpy pandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul>
-<p><strong>Step 3: Verify Environment Consistency</strong></p>
-<ul>
-<li><p>In the terminal, check your Python version:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>In the notebook, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Make sure the Python path in the notebook matches the one in your terminal. This confirms you are using the same environment.</p></li>
-</ul>
-<p><strong>Step 4: Generate html from the notebook using Quarto</strong></p>
-<ul>
-<li><p>In the terminal, make sure you are in the directory that contains your notebook</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>quarto render setup_test<span class="op">.</span><span class="fu">ipynb</span>  <span class="op">--</span>to html</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Make sure the html file was generated in the same directory</p></li>
-</ul>
-<p><strong>Troubleshooting Tips</strong></p>
-<p>If you run into issues (e.g., kernel not showing <code>.venv</code>, code cell errors):</p>
-<ul>
-<li>Restart VS Code.</li>
-<li>Deactivate/reactivate <code>.venv</code>.</li>
-<li>Make sure <strong>Python</strong> &amp; <strong>Jupyter</strong> extensions are installed.</li>
-<li>Save your notebook with the <code>.ipynb</code> extension.</li>
-<li>If the kernel is missing, use the kernel picker (top right) to select <code>.venv</code>.</li>
-<li>If you see an error like <em>“No such file or directory”</em> or <em>“No valid input files passed to render”</em>:
-<ol type="1">
-<li>Check your current location:
-<ul>
-<li>macOS / Linux: <code>pwd</code><br>
-</li>
-<li>Windows: <code>cd</code></li>
-</ul></li>
-<li>List files in the current directory:
-<ul>
-<li>macOS / Linux: <code>ls</code><br>
-</li>
-<li>Windows: <code>dir</code></li>
-</ul></li>
-<li>If the notebook isn’t there:
-<ul>
-<li>Use <code>cd</code> to move into the correct folder, or<br>
-</li>
-<li>Provide the full (absolute) path to the file.</li>
-</ul></li>
-</ol></li>
-</ul>
-<p><strong>Extra:</strong></p>
-<ul>
-<li>Try installing a package (e.g., <code>seaborn</code>) and import it in a new cell to test.</li>
-<li>Practice switching kernels to see how environments affect your code.</li>
-<li>Practice creating a <code>.conda</code> env and use <code>conda</code> to install the <code>seaborn</code> package</li>
-</ul>
-</section>
-</section>
-<section id="reference" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="reference"><span class="header-section-number">2.8</span> Reference</h2>
-<ul>
-<li><a href="https://code.visualstudio.com/docs/getstarted/userinterface">Getting Started with VS Code</a></li>
-<li><a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks in VS Code</a></li>
-<li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/">Install Python Packages</a></li>
-<li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing environments with <code>conda</code></a></li>
-</ul>
+<p><strong>Completion checks:</strong> Your name and explanation render as text, the calculation produces a visible result, and the outputs remain present after reopening. You can point to Explorer, the kernel picker, and the terminal without confusing their roles.</p>
+<p><strong>Keep:</strong> the saved <code>activity01.ipynb</code> for the next chapters. This is practice; the integrated assignment at the end of Chapter 3 specifies the HTML deliverable.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Self-check">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Self-check
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For readings <code>[18, 20, 22]</code>, the mean is <code>20.0</code>. The notebook is the document; the kernel is the process running its code. Existing outputs can remain visible even when the kernel has stopped, so visible output alone does not establish that a fresh run works.</p>
+</div>
+</div>
+</div>
+<p>Continue to <a href="./python_venv.html">Project Environments, Packages, and File Paths</a>.</p>
+<p>References: <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">VS Code notebooks</a>, <a href="https://code.visualstudio.com/docs/python/environments">Python environments</a>.</p>
 
 
 </section>
@@ -1117,13 +962,13 @@ Before moving forward, ensure that the command <code>quarto --version</code> suc
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./python_venv.html" class="pagination-link" aria-label="Python Environments and Package Management">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Environments and Package Management</span></span>
+      <a href="./data_structures.html" class="pagination-link" aria-label="Data Structures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Structures</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./workflow_enhance.html" class="pagination-link" aria-label="Enhancing Workflow in Jupyter Notebooks">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Enhancing Workflow in Jupyter Notebooks</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./python_venv.html" class="pagination-link" aria-label="Project Environments, Packages, and File Paths">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

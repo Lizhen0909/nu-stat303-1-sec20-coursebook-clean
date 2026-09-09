@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - .nojekyll
+    - downloads/setup-practice.zip
 
 
 book:  
@@ -23,8 +24,8 @@ book:
         - data_structures.ipynb
     - part: 'Setting Up for Data Science'
       chapters:
-        - python_venv.ipynb
         - vscode_setup.ipynb
+        - python_venv.ipynb
         - workflow_enhance.ipynb
     - part: 'Core Library Foundations'
       chapters:
