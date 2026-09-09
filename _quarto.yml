@@ -17,7 +17,7 @@ book:
 
   chapters:
     - index.qmd
-    - part: 'Python Refresher'
+    - part: 'Review of STAT 201: Python Foundations'
       chapters:
         - python_basics.ipynb
         - data_structures.ipynb
