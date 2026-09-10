@@ -241,11 +241,11 @@
     ]
   },
   {
-    "objectID": "vscode_setup.html#know-your-tools",
-    "href": "vscode_setup.html#know-your-tools",
+    "objectID": "vscode_setup.html#anaconda-vs.-vs-code",
+    "href": "vscode_setup.html#anaconda-vs.-vs-code",
     "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.2 Know Your Tools",
-    "text": "1.2 Know Your Tools\nWith Anaconda and VS Code’s roles established, let’s distinguish the other tools you will use.\n\n\n\n\n\n\n\n\nTool\nIts role in this course\n\n\n\n\n Python\nExecutes your Python code\n\n\n Jupyter notebook\nA document containing code, Markdown, and saved outputs\n\n\n Kernel\nThe running process that executes a notebook’s code\n\n\n Terminal\nA place to issue commands to a shell such as PowerShell, zsh, or Bash\n\n\n Quarto\nConverts your saved notebook into a formatted HTML document\n\n\n\n\nSelecting a notebook kernel is not the same as opening a terminal. Each can use a different Python environment; you will learn to check both.",
+    "section": "",
+    "text": "Anaconda\n Visual Studio Code (VS Code)\n\n\n\n\nOverview\nA Python distribution with environment-management tools\nA powerful, flexible, and lightweight code editor\n\n\nWhat it is\nA distribution that includes Python, many common packages, and tools such as conda and Navigator\nA free code editor from Microsoft, built on the open-source Code - OSS project\n\n\nMain purpose\nMakes it easy to install Python and manage packages and environments\nProvides a modern, flexible environment to write, run, and debug code in Python and many other languages\n\n\nKey features\nPreinstalls many popular data science packagesEnvironment management with condaAnaconda Navigator graphical interfaceWorks on Windows, macOS, and Linux\nClean, customizable interfacePython support through extensionsIntegrated terminal and Jupyter notebook support through the Jupyter extensionDebugging, code navigation, and Git toolsExtensible through additional extensionsWorks with different Python environments, including Anaconda environments\n\n\n\n\n\n\n\n\n\n\nFigure 1.1: VS Code brings Python code, Jupyter notebooks, a kernel selector, and an integrated terminal into one workspace. The Python kernel runs in the background and remembers variables between cells.\n\n\n\n\n\n\nKeep the whole project visible. Open a folder and work with notebooks, Python scripts, data, and report settings together. This helps you see where files belong as an assignment grows.\nContinue using familiar notebooks. Open your existing .ipynb files, write Markdown, run cells, and view outputs in the editor.\nGet help while coding. With the Python and Jupyter extensions, code completion, function information, and debugging tools help you explore unfamiliar libraries and investigate errors.\nUse a terminal beside your notebook. Install packages and run Quarto commands without switching to a separate terminal application. You still need to verify its current folder and Python environment.\nBuild a repeatable submission workflow. Edit and run your notebook, save it, then use the integrated terminal to render your HTML with Quarto. The same workspace supports each stage of the assignment.",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
@@ -296,11 +296,11 @@
     ]
   },
   {
-    "objectID": "vscode_setup.html#if-something-does-not-work",
-    "href": "vscode_setup.html#if-something-does-not-work",
+    "objectID": "vscode_setup.html#if-something-does-not-work-while-working-in-a-notebook",
+    "href": "vscode_setup.html#if-something-does-not-work-while-working-in-a-notebook",
     "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.6 If Something Does Not Work",
-    "text": "1.6 If Something Does Not Work\n\n\n\n\n\n\n\nSymptom\nFirst check\n\n\n\n\nNo kernel is offered\nPython/Jupyter extensions are enabled; a Python interpreter is installed and discoverable\n\n\nCode will not run\nThe cell is Code rather than Markdown and a kernel is selected\n\n\nOutput differs after restarting\nAll required assignments/imports occur earlier in the notebook\n\n\nYou cannot find the data folder\nThe ZIP is extracted and the correct project folder is open",
+    "section": "1.6 If Something Does Not Work While Working in a Notebook",
+    "text": "1.6 If Something Does Not Work While Working in a Notebook\nAlready have Python running (see Check Your Existing Setup above) but still stuck? Check these notebook-specific symptoms:\n\n\n\n\n\n\n\nSymptom\nFirst check\n\n\n\n\nNo kernel is offered\nPython/Jupyter extensions are enabled; a Python interpreter is installed and discoverable\n\n\nCode will not run\nThe cell is Code rather than Markdown and a kernel is selected\n\n\nOutput differs after restarting\nAll required assignments/imports occur earlier in the notebook\n\n\nYou cannot find the data folder\nThe ZIP is extracted and the correct project folder is open",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
@@ -2075,17 +2075,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>G</span>  <span class='chapter-title'>Datasets & Templates</span>"
-    ]
-  },
-  {
-    "objectID": "vscode_setup.html#anaconda-vs.-vs-code",
-    "href": "vscode_setup.html#anaconda-vs.-vs-code",
-    "title": "1  Jupyter Notebooks in VS Code",
-    "section": "",
-    "text": "Anaconda\n Visual Studio Code (VS Code)\n\n\n\n\nOverview\nA Python distribution with environment-management tools\nA powerful, flexible, and lightweight code editor\n\n\nWhat it is\nA distribution that includes Python, many common packages, and tools such as conda and Navigator\nA free code editor from Microsoft, built on the open-source Code - OSS project\n\n\nMain purpose\nMakes it easy to install Python and manage packages and environments\nProvides a modern, flexible environment to write, run, and debug code in Python and many other languages\n\n\nKey features\nPreinstalls many popular data science packagesEnvironment management with condaAnaconda Navigator graphical interfaceWorks on Windows, macOS, and Linux\nClean, customizable interfacePython support through extensionsIntegrated terminal and Jupyter notebook support through the Jupyter extensionDebugging, code navigation, and Git toolsExtensible through additional extensionsWorks with different Python environments, including Anaconda environments\n\n\n\n\n\n\n\n\n\n\nFigure 1.1: VS Code brings Python code, Jupyter notebooks, a kernel selector, and an integrated terminal into one workspace. The Python kernel runs in the background and remembers variables between cells.\n\n\n\n\n\n\nKeep the whole project visible. Open a folder and work with notebooks, Python scripts, data, and report settings together. This helps you see where files belong as an assignment grows.\nContinue using familiar notebooks. Open your existing .ipynb files, write Markdown, run cells, and view outputs in the editor.\nGet help while coding. With the Python and Jupyter extensions, code completion, function information, and debugging tools help you explore unfamiliar libraries and investigate errors.\nUse a terminal beside your notebook. Install packages and run Quarto commands without switching to a separate terminal application. You still need to verify its current folder and Python environment.\nBuild a repeatable submission workflow. Edit and run your notebook, save it, then use the integrated terminal to render your HTML with Quarto. The same workspace supports each stage of the assignment.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
     ]
   }
 ]
