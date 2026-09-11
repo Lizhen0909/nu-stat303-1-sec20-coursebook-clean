@@ -379,7 +379,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#select-a-kernel-and-run-a-cell" id="toc-select-a-kernel-and-run-a-cell" class="nav-link" data-scroll-target="#select-a-kernel-and-run-a-cell"><span class="header-section-number">1.4</span> Select a Kernel and Run a Cell</a></li>
   <li><a href="#code-markdown-and-saved-outputs" id="toc-code-markdown-and-saved-outputs" class="nav-link" data-scroll-target="#code-markdown-and-saved-outputs"><span class="header-section-number">1.5</span> Code, Markdown, and Saved Outputs</a></li>
   <li><a href="#if-something-does-not-work-while-working-in-a-notebook" id="toc-if-something-does-not-work-while-working-in-a-notebook" class="nav-link" data-scroll-target="#if-something-does-not-work-while-working-in-a-notebook"><span class="header-section-number">1.6</span> If Something Does Not Work While Working in a Notebook</a></li>
-  <li><a href="#practice-activity-your-first-vs-code-notebook" id="toc-practice-activity-your-first-vs-code-notebook" class="nav-link" data-scroll-target="#practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</a></li>
+  <li><a href="#practice-activity-your-first-vs-code-notebook" id="toc-practice-activity-your-first-vs-code-notebook" class="nav-link" data-scroll-target="#practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</a>
+  <ul class="collapse">
+  <li><a href="#render-and-submit-your-html" id="toc-render-and-submit-your-html" class="nav-link" data-scroll-target="#render-and-submit-your-html"><span class="header-section-number">1.7.1</span> Render and Submit Your HTML</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -415,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="anaconda-vs.-vs-code" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="anaconda-vs.-vs-code"><span class="header-section-number">1.1</span> Anaconda vs.&nbsp;VS Code</h2>
-<p>Anaconda and Visual Studio Code serve different roles: Anaconda provides Python, packages, and environment management tools, while VS Code offers a flexible workspace for writing code and managing projects. The table below compares their purposes and key features.</p>
+<p>Anaconda and Visual Studio Code serve different roles and can be used together. Anaconda bundles Python, hundreds of packages, and environment-management tools, making it convenient but requiring more disk space. VS Code is a lightweight code editor that connects to your Python installation and lets you add extensions as needed. The table below compares their purposes and key features.</p>
 <div class="tools-comparison">
 <table class="caption-top table">
 <colgroup>
@@ -498,9 +501,8 @@ Figure&nbsp;1.2: Find Python in VS Code: open the Command Palette, select Python
 <li><p>Look for a listed <strong>Python 3</strong> environment. The entry usually shows a version and an installation path; an Anaconda installation may be labeled <strong>conda</strong> or <strong>base</strong>, or have <code>anaconda3</code> or <code>miniconda3</code> in its path.</p></li>
 <li><p>Select the <strong>Python 3 environment you used in STAT 201</strong>. If you used Anaconda’s default environment, choose its <strong>base</strong> environment. An environment includes both a Python version and its installed packages.</p></li>
 </ol>
-<p><strong>If multiple Python versions or environments appear:</strong></p>
 <ul>
-<li><strong>Prefer your working STAT 201 environment.</strong> Do not choose solely by the highest version number; a newer installation may not have the packages you used in class. If your instructor specifies a course environment or version, use that instead.</li>
+<li><strong>For this chapter, choose Anaconda’s <code>base</code> environment.</strong> If you did not use Anaconda, choose the working Python 3 environment you used in STAT 201. In the next chapter, you will learn the disadvantages of using <code>base</code> for all Python projects and how to create an isolated, dedicated environment for this course.</li>
 <li><strong>Identify it by its executable path.</strong> Open a local Jupyter notebook using your usual STAT 201 setup, run <code>import sys</code> followed by <code>print(sys.executable)</code>, and match that path to the interpreter in VS Code. Different environments can use the same Python version, so the version number alone is not enough.</li>
 <li><strong>Use the same environment for your notebook kernel.</strong> When you open an <code>.ipynb</code> file in VS Code, use the kernel picker at the top right to choose that environment as well. Selecting an interpreter and selecting a notebook kernel are separate steps.</li>
 <li><strong>If you still cannot identify it, ask for setup assistance.</strong> Share the listed environment names and paths; you do not need to install another copy of Python just because several appear.</li>
@@ -603,17 +605,33 @@ Figure&nbsp;1.2: Find Python in VS Code: open the Command Palette, select Python
 </section>
 <section id="practice-activity-your-first-vs-code-notebook" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="practice-activity-your-first-vs-code-notebook"><span class="header-section-number">1.7</span> Practice Activity: Your First VS Code Notebook</h2>
-<p><strong>Goal:</strong> Demonstrate that you can use a familiar notebook in the new editor. <strong>File:</strong> <code>activity01.ipynb</code> from the practice kit. No data science package installation is required for this activity.</p>
+<p><strong>Goal:</strong> Demonstrate that you can use a familiar notebook in the new editor. <strong>File:</strong> <code>activity01.ipynb</code> from the practice kit. <strong>Submit:</strong> <code>activity01.html</code> through the final file-upload question in the Chapter 1 Canvas quiz. No data science package installation is required for this activity.</p>
+<p>Follow this section for the complete activity instructions, then answer the multiple-choice questions and upload your HTML in Canvas.</p>
 <ol type="1">
 <li>Open the extracted project folder and select your intended kernel.</li>
 <li>Replace the notebook’s name placeholder with your name in Markdown.</li>
 <li>Run the supplied environment-information cell. Add a Markdown sentence identifying which Python installation you selected.</li>
 <li>Add a code cell that defines three numerical readings in a list and prints their mean using <code>sum()</code> and <code>len()</code>.</li>
 <li>Add a Markdown explanation of what the code does. Explain the difference between a notebook and its kernel.</li>
-<li>Restart the kernel, run all cells, save, close the notebook, and reopen it.</li>
+<li>Restart the kernel, run all cells, save, close the notebook, and reopen it. In Markdown, record whether the fresh run and reopening preserved the expected outputs, then save again.</li>
 </ol>
 <p><strong>Completion checks:</strong> Your name and explanation render as text, the calculation produces a visible result, and the outputs remain present after reopening. You can point to Explorer, the kernel picker, and the terminal without confusing their roles.</p>
-<p><strong>Keep:</strong> the saved <code>activity01.ipynb</code> for the next chapters. This is practice; the integrated assignment at the end of Chapter 3 specifies the HTML deliverable.</p>
+<section id="render-and-submit-your-html" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">1.7.1</span> Render and Submit Your HTML</h3>
+<p>Use Quarto, as you did in STAT201, to turn your completed notebook into an HTML report.</p>
+<ol type="1">
+<li>Make sure the notebook has run successfully from top to bottom and is saved.</li>
+<li>Open <strong>Terminal → New Terminal</strong> in VS Code. The terminal should be in the extracted <code>stat303-setup</code> folder containing <code>activity01.ipynb</code>. To check its contents, use <code>ls</code> on macOS, <code>Get-ChildItem</code> in Windows PowerShell, or <code>dir</code> in Windows Command Prompt. If the notebook is not listed, check that you opened the extracted project folder and open a new terminal there.</li>
+<li>Enter this command in the terminal and press Enter:</li>
+</ol>
+<pre class="text"><code>quarto render activity01.ipynb --to html</code></pre>
+<ol start="4" type="1">
+<li>Open the generated <code>activity01.html</code> in a browser. Confirm that your name, Python information, mean calculation and result, Markdown explanations, and completion note appear. The starter notebook includes <code>embed-resources: true</code> so the report can be shared as one HTML file.</li>
+<li>If anything is missing, correct and save the notebook, then render again. Upload <strong><code>activity01.html</code></strong> to the final question in the <strong>Chapter 1 Canvas quiz</strong>.</li>
+</ol>
+<p>If the terminal cannot find Quarto, ask for setup assistance. Rendering uses the notebook’s saved outputs; a successful render does not replace restarting and running the notebook.</p>
+<p><strong>HTML grading (16 points):</strong> name and readable Markdown (2), Python identification (4), mean calculation (4), explanation of code and kernel (4), and completion checks and readable HTML (2). Use your own three numerical readings; the example below is not required.</p>
+<p><strong>Keep:</strong> your saved <code>activity01.ipynb</code> and the practice-kit files for later chapters. Submit only the HTML file to this quiz.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Self-check">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -634,6 +652,7 @@ Figure&nbsp;1.2: Find Python in VS Code: open the Command Palette, select Python
 <p>References: <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">VS Code notebooks</a>, <a href="https://code.visualstudio.com/docs/python/environments">Python environments</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
