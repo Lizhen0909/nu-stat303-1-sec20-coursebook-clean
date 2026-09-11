@@ -4,6 +4,7 @@ project:
   resources:
     - .nojekyll
     - downloads/setup-practice.zip
+    - downloads/assignment-b-setup.zip
 
 
 book:  
@@ -26,7 +27,6 @@ book:
       chapters:
         - vscode_setup.ipynb
         - python_venv.ipynb
-        - workflow_enhance.ipynb
     - part: 'Core Library Foundations'
       chapters:
         - Reading_data.ipynb
@@ -51,7 +51,7 @@ book:
     - Assignment D.ipynb
     - Assignment E.ipynb
     - Assignment F.ipynb
-    # - Assignment G.ipynb
+    - Assignment G.ipynb
     - Datasets.ipynb
     # - references.qmd
 

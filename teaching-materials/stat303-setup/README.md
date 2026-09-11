@@ -1,16 +1,13 @@
-# STAT 303-1 setup practice kit
+# STAT 303-1 chapter practice kit
 
-Extract this entire folder and open stat303-setup in VS Code. Keep the four notebooks beside data/. Do not work inside the ZIP viewer. The textbook provides the instructions for each activity and the integrated assignment.
+Extract this folder and open `stat303-setup` in VS Code. Keep the notebooks beside `data/`. Do not work inside the ZIP viewer.
 
-- activity01.ipynb: notebook/editor practice with an existing Python environment.
-- activity02.ipynb: after creating .venv and installing packages, verify Python and local data.
-- activity03.ipynb: run, save, and render a report with Quarto.
-- setup_assignment.ipynb: complete all written sections and the provided computational workflow; submit setup_assignment.html according to the instructor's directions.
+- `activity01.ipynb`: Chapter 1, Jupyter Notebooks in VS Code; includes the Quarto submission workflow.
+- `activity02.ipynb`: Chapter 2, Project Environments, Packages, and File Paths.
 
-The six temperature records are illustrative. Create your .venv and requirements.txt locally; neither is supplied. Use the same verified project kernel for activities 2–3 and the integrated assignment. Packages: ipykernel, numpy, pandas, matplotlib, seaborn.
+The activity sections in the coursebook are the authoritative instructions. Submit each activity's HTML to its chapter quiz in Canvas. Outputs are initially empty; execute, save, render, and inspect before submitting.
 
-All notebook outputs are initially empty. Run and save the notebook before rendering. From this folder:
+Create `.venv` and `requirements.txt` locally in Chapter 2. Neither is supplied. The six station-temperature records are illustrative.
 
-    quarto render setup_assignment.ipynb --to html
-
-Quarto is a separately installed application. The template embeds ordinary assets into HTML. Copy the rendered HTML alone to a separate folder and inspect it. Keep your notebook/data/requirements for reproducibility, but do not submit .venv. The templates contain work areas, not completed student answers.
+The formal Assignment B has a separate download and project folder. See its coursebook page:
+https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Assignment%20B.html

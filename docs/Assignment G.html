@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix B — Assignment B – Data Science I with python</title>
+<title>Appendix G — Assignment G – Data Science I with python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Assignment C.html" rel="next">
-<link href="./Assignment A.html" rel="prev">
+<link href="./Datasets.html" rel="next">
+<link href="./Assignment F.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment B.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment G.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -280,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></span></a>
   </div>
 </li>
@@ -310,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Assignment G.html" class="sidebar-item-text sidebar-link">
+  <a href="./Assignment G.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></span></a>
   </div>
 </li>
@@ -329,55 +329,53 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#organize-the-project-and-explain-the-tools-10-points" id="toc-organize-the-project-and-explain-the-tools-10-points" class="nav-link" data-scroll-target="#organize-the-project-and-explain-the-tools-10-points">1. Organize the Project and Explain the Tools (10 points)</a>
+  <li><a href="#canadian-fish-biodiversity" id="toc-canadian-fish-biodiversity" class="nav-link" data-scroll-target="#canadian-fish-biodiversity"><span class="header-section-number">G.1</span> Canadian Fish Biodiversity</a>
+  <ul>
+  <li><a href="#top-3-projects" id="toc-top-3-projects" class="nav-link" data-scroll-target="#top-3-projects"><span class="header-section-number">G.1.1</span> Top 3 projects</a></li>
+  <li><a href="#missing-value-imputation-with-groupby" id="toc-missing-value-imputation-with-groupby" class="nav-link" data-scroll-target="#missing-value-imputation-with-groupby"><span class="header-section-number">G.1.2</span> Missing value imputation with <code>groupby()</code></a>
   <ul class="collapse">
-  <li><a href="#project-evidence-4-points" id="toc-project-evidence-4-points" class="nav-link" data-scroll-target="#project-evidence-4-points">1.1 Project evidence (4 points)</a></li>
-  <li><a href="#tool-roles-6-points" id="toc-tool-roles-6-points" class="nav-link" data-scroll-target="#tool-roles-6-points">1.2 Tool roles (6 points)</a></li>
+  <li><a href="#number-of-missing-values" id="toc-number-of-missing-values" class="nav-link" data-scroll-target="#number-of-missing-values"><span class="header-section-number">G.1.2.1</span> Number of missing values</a></li>
+  <li><a href="#missing-value-imputation-attempt-1" id="toc-missing-value-imputation-attempt-1" class="nav-link" data-scroll-target="#missing-value-imputation-attempt-1"><span class="header-section-number">G.1.2.2</span> Missing value imputation: attempt 1</a></li>
+  <li><a href="#missing-values-remaining-after-attempt-1" id="toc-missing-values-remaining-after-attempt-1" class="nav-link" data-scroll-target="#missing-values-remaining-after-attempt-1"><span class="header-section-number">G.1.2.3</span> Missing values remaining after attempt 1</a></li>
+  <li><a href="#missing-value-imputation-attempt-2" id="toc-missing-value-imputation-attempt-2" class="nav-link" data-scroll-target="#missing-value-imputation-attempt-2"><span class="header-section-number">G.1.2.4</span> Missing value imputation: attempt 2</a></li>
+  <li><a href="#missing-values-remaining-after-attempt-2" id="toc-missing-values-remaining-after-attempt-2" class="nav-link" data-scroll-target="#missing-values-remaining-after-attempt-2"><span class="header-section-number">G.1.2.5</span> Missing values remaining after attempt 2</a></li>
+  <li><a href="#air-water-temperatures-correlation" id="toc-air-water-temperatures-correlation" class="nav-link" data-scroll-target="#air-water-temperatures-correlation"><span class="header-section-number">G.1.2.6</span> Air-water temperatures correlation</a></li>
+  <li><a href="#missing-values-remaning-after-hypothetical-attempt-3" id="toc-missing-values-remaning-after-hypothetical-attempt-3" class="nav-link" data-scroll-target="#missing-values-remaning-after-hypothetical-attempt-3"><span class="header-section-number">G.1.2.7</span> Missing values remaning after hypothetical attempt 3</a></li>
+  <li><a href="#visualizing-missing-value-imputation" id="toc-visualizing-missing-value-imputation" class="nav-link" data-scroll-target="#visualizing-missing-value-imputation"><span class="header-section-number">G.1.2.8</span> Visualizing missing value imputation</a></li>
   </ul></li>
-  <li><a href="#create-and-verify-a-project-environment-25-points" id="toc-create-and-verify-a-project-environment-25-points" class="nav-link" data-scroll-target="#create-and-verify-a-project-environment-25-points">2. Create and Verify a Project Environment (25 points)</a>
+  <li><a href="#living-conditions" id="toc-living-conditions" class="nav-link" data-scroll-target="#living-conditions"><span class="header-section-number">G.1.3</span> Living conditions</a>
   <ul class="collapse">
-  <li><a href="#a-separate-environment-8-points" id="toc-a-separate-environment-8-points" class="nav-link" data-scroll-target="#a-separate-environment-8-points">2.1 A separate environment (8 points)</a></li>
-  <li><a href="#check-before-installing-7-points" id="toc-check-before-installing-7-points" class="nav-link" data-scroll-target="#check-before-installing-7-points">2.2 Check before installing (7 points)</a></li>
-  <li><a href="#connect-the-notebook-10-points" id="toc-connect-the-notebook-10-points" class="nav-link" data-scroll-target="#connect-the-notebook-10-points">2.3 Connect the notebook (10 points)</a></li>
+  <li><a href="#air-water-temperatures-summary-statistics" id="toc-air-water-temperatures-summary-statistics" class="nav-link" data-scroll-target="#air-water-temperatures-summary-statistics"><span class="header-section-number">G.1.3.1</span> Air-water temperatures: Summary statistics</a></li>
+  <li><a href="#air-water-temperatures-visualizing-yearly-trend" id="toc-air-water-temperatures-visualizing-yearly-trend" class="nav-link" data-scroll-target="#air-water-temperatures-visualizing-yearly-trend"><span class="header-section-number">G.1.3.2</span> Air-water temperatures: visualizing yearly trend</a></li>
   </ul></li>
-  <li><a href="#install-and-verify-packages-15-points" id="toc-install-and-verify-packages-15-points" class="nav-link" data-scroll-target="#install-and-verify-packages-15-points">3. Install and Verify Packages (15 points)</a>
+  <li><a href="#fish-diversity" id="toc-fish-diversity" class="nav-link" data-scroll-target="#fish-diversity"><span class="header-section-number">G.1.4</span> Fish diversity</a>
   <ul class="collapse">
-  <li><a href="#terminal-installation-5-points" id="toc-terminal-installation-5-points" class="nav-link" data-scroll-target="#terminal-installation-5-points">3.1 Terminal installation (5 points)</a></li>
-  <li><a href="#notebook-installation-4-points" id="toc-notebook-installation-4-points" class="nav-link" data-scroll-target="#notebook-installation-4-points">3.2 Notebook installation (4 points)</a></li>
-  <li><a href="#verify-the-imports-6-points" id="toc-verify-the-imports-6-points" class="nav-link" data-scroll-target="#verify-the-imports-6-points">3.3 Verify the imports (6 points)</a></li>
+  <li><a href="#top-3-species-by-region" id="toc-top-3-species-by-region" class="nav-link" data-scroll-target="#top-3-species-by-region"><span class="header-section-number">G.1.4.1</span> Top 3 species by <code>Region</code></a></li>
+  <li><a href="#species-spread-across-region" id="toc-species-spread-across-region" class="nav-link" data-scroll-target="#species-spread-across-region"><span class="header-section-number">G.1.4.2</span> Species spread across <code>Region</code></a></li>
+  <li><a href="#exclusive-fishes-by-region" id="toc-exclusive-fishes-by-region" class="nav-link" data-scroll-target="#exclusive-fishes-by-region"><span class="header-section-number">G.1.4.3</span> Exclusive fishes by region</a></li>
+  <li><a href="#turbidity" id="toc-turbidity" class="nav-link" data-scroll-target="#turbidity"><span class="header-section-number">G.1.4.4</span> Turbidity</a></li>
+  <li><a href="#fish-dimensions" id="toc-fish-dimensions" class="nav-link" data-scroll-target="#fish-dimensions"><span class="header-section-number">G.1.4.5</span> Fish dimensions</a></li>
   </ul></li>
-  <li><a href="#navigate-folders-and-locate-the-data-20-points" id="toc-navigate-folders-and-locate-the-data-20-points" class="nav-link" data-scroll-target="#navigate-folders-and-locate-the-data-20-points">4. Navigate Folders and Locate the Data (20 points)</a>
-  <ul class="collapse">
-  <li><a href="#compare-two-working-directories-8-points" id="toc-compare-two-working-directories-8-points" class="nav-link" data-scroll-target="#compare-two-working-directories-8-points">4.1 Compare two working directories (8 points)</a></li>
-  <li><a href="#construct-and-verify-a-path-8-points" id="toc-construct-and-verify-a-path-8-points" class="nav-link" data-scroll-target="#construct-and-verify-a-path-8-points">4.2 Construct and verify a path (8 points)</a></li>
-  <li><a href="#reason-about-a-different-starting-folder-4-points" id="toc-reason-about-a-different-starting-folder-4-points" class="nav-link" data-scroll-target="#reason-about-a-different-starting-folder-4-points">4.3 Reason about a different starting folder (4 points)</a></li>
   </ul></li>
-  <li><a href="#record-dependencies-and-diagnose-a-problem-15-points" id="toc-record-dependencies-and-diagnose-a-problem-15-points" class="nav-link" data-scroll-target="#record-dependencies-and-diagnose-a-problem-15-points">5. Record Dependencies and Diagnose a Problem (15 points)</a>
-  <ul class="collapse">
-  <li><a href="#requirements-record-8-points" id="toc-requirements-record-8-points" class="nav-link" data-scroll-target="#requirements-record-8-points">5.1 Requirements record (8 points)</a></li>
-  <li><a href="#diagnose-an-incorrect-filename-7-points" id="toc-diagnose-an-incorrect-filename-7-points" class="nav-link" data-scroll-target="#diagnose-an-incorrect-filename-7-points">5.2 Diagnose an incorrect filename (7 points)</a></li>
+  <li><a href="#gdp-surplus-and-compensation" id="toc-gdp-surplus-and-compensation" class="nav-link" data-scroll-target="#gdp-surplus-and-compensation"><span class="header-section-number">G.2</span> GDP, surplus, and compensation</a>
+  <ul>
+  <li><a href="#combining-datasets" id="toc-combining-datasets" class="nav-link" data-scroll-target="#combining-datasets"><span class="header-section-number">G.2.1</span> Combining datasets</a></li>
+  <li><a href="#time-trend-gdp-with-region" id="toc-time-trend-gdp-with-region" class="nav-link" data-scroll-target="#time-trend-gdp-with-region"><span class="header-section-number">G.2.2</span> Time trend: GDP with region</a></li>
   </ul></li>
-  <li><a href="#run-and-interpret-the-supplied-analysis-10-points" id="toc-run-and-interpret-the-supplied-analysis-10-points" class="nav-link" data-scroll-target="#run-and-interpret-the-supplied-analysis-10-points">6. Run and Interpret the Supplied Analysis (10 points)</a>
-  <ul class="collapse">
-  <li><a href="#verify-the-result-4-points" id="toc-verify-the-result-4-points" class="nav-link" data-scroll-target="#verify-the-result-4-points">6.1 Verify the result (4 points)</a></li>
-  <li><a href="#interpret-the-figure-6-points" id="toc-interpret-the-figure-6-points" class="nav-link" data-scroll-target="#interpret-the-figure-6-points">6.2 Interpret the figure (6 points)</a></li>
-  </ul></li>
-  <li><a href="#prepare-the-html-submission-5-points" id="toc-prepare-the-html-submission-5-points" class="nav-link" data-scroll-target="#prepare-the-html-submission-5-points">7. Prepare the HTML Submission (5 points)</a></li>
-  <li><a href="#points-summary" id="toc-points-summary" class="nav-link" data-scroll-target="#points-summary">Points Summary</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment B.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment G.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix B — Assignment B</h1>
-<p class="subtitle lead">Setting Up a Reproducible Python Project</p>
+<h1 class="title">Appendix G — Assignment G</h1>
+<p class="subtitle lead">Data Wrangling</p>
 </div>
 
 
@@ -397,171 +395,155 @@ ul.task-list li input[type="checkbox"] {
 <section id="instructions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="instructions">Instructions</h2>
 <ol type="1">
-<li>Complete this assignment after Chapters 1–2 and their practice activities. It is worth <strong>100 points</strong>. <strong>See Canvas for the due date.</strong></li>
-<li>You may discuss approaches with classmates, but write your own code and explanations and record evidence from your own computer. Put Python computations in Code cells and explanations and copied terminal evidence in Markdown cells.</li>
-<li><a href="downloads/assignment-b-setup.zip">Download the Assignment B project kit</a>. Extract it and open <strong><code>stat303-assignment-b</code></strong> with <strong>File → Open Folder</strong> in VS Code. Work in the supplied <code>assignment_b.ipynb</code>. This is a new project, separate from the chapter practice folder.</li>
-<li><strong>This page contains the complete assignment instructions.</strong> The starter notebook contains numbered answer spaces and supplied demonstration code. Keep those sections in order and answer every numbered part below.</li>
-<li>Submit <strong>one file, <code>assignment_b.html</code></strong>, to the <strong>Assignment B submission in Canvas</strong>. Keep the notebook, data, and <code>requirements.txt</code> locally. Do not submit your <code>.venv</code> folder or the ZIP. You may replace your personal username in copied paths with <code>[username]</code>, retaining enough detail to identify the project and environment.</li>
-<li>The data are fictional library-branch visit counts for one illustrative day. Pandas and plotting code are supplied in the notebook; you are assessing and explaining the workflow, not being asked to write unfamiliar analysis code.</li>
+<li><p>You may talk to a friend, discuss the questions and potential directions for solving them. However, you need to write your own solutions and code separately, and not as a group activity.</p></li>
+<li><p>Write your code in the <em>Code</em> cells and your answer in the <em>Markdown</em> cells of the Jupyter notebook. Ensure that the solution is written neatly enough to understand and grade.</p></li>
+<li><p>Use <a href="https://quarto.org/docs/output-formats/html-basics.html">Quarto</a> to print the <em>.ipynb</em> file as HTML. You will need to open the command prompt, navigate to the directory containing the file, and use the command: <code>quarto render filename.ipynb --to html</code>. Submit the HTML file.</p></li>
+<li><p>The assignment is worth 100 points. <strong>See Canvas for the due date.</strong></p></li>
+<li><p>You are <strong>not allowed to use a <code>for</code> loop in this assignment</strong>.</p></li>
+<li><p>If you are updating a dataset (imputing missing values / creating new variables), then use the updated dataset in a subsequent question.</p></li>
+<li><p><strong>Five points are properly formatting the assignment</strong>. The breakdown is as follows:</p></li>
 </ol>
-<p>The extracted kit starts with:</p>
-<pre class="text"><code>stat303-assignment-b/
-├── assignment_b.ipynb
-├── data/
-│   └── library_visits.csv
-└── README.md</code></pre>
-<p>You will create this project’s own <code>.venv/</code> and <code>requirements.txt</code>. Use the <a href="./vscode_setup.html#render-and-submit-with-quarto">Chapter 1 Quarto refresher</a> and <a href="./python_venv.html#create-a-course-environment">Chapter 2 environment instructions</a> as references. The Quarto VS Code extension is optional; the Quarto application performs rendering.</p>
-</section>
-<section id="organize-the-project-and-explain-the-tools-10-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="organize-the-project-and-explain-the-tools-10-points">1. Organize the Project and Explain the Tools (10 points)</h2>
-<section id="project-evidence-4-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="project-evidence-4-points">1.1 Project evidence (4 points)</h3>
-<p>Open the extracted assignment folder and add your name to the notebook. In the terminal, show the current directory and list its contents. Copy the commands and relevant output into your answer, demonstrating that <code>assignment_b.ipynb</code> and <code>data</code> are in the project folder.</p>
-<p><em>Credit: project location and listing evidence, 3 points; name, 1 point.</em></p>
-</section>
-<section id="tool-roles-6-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="tool-roles-6-points">1.2 Tool roles (6 points)</h3>
-<p>In your own words, explain the role of each of these five tools in completing this assignment: <strong>VS Code, the Jupyter notebook, its Python kernel, the terminal, and Quarto</strong>. Then explain why a visible saved output does not by itself prove that the current notebook runs correctly.</p>
-<p><em>Credit: five tool roles, 1 point each; saved-output explanation, 1 point.</em></p>
-</section>
-</section>
-<section id="create-and-verify-a-project-environment-25-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="create-and-verify-a-project-environment-25-points">2. Create and Verify a Project Environment (25 points)</h2>
-<section id="a-separate-environment-8-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="a-separate-environment-8-points">2.1 A separate environment (8 points)</h3>
-<p>Create or identify a <code>.venv</code> inside <code>stat303-assignment-b</code>, using an existing appropriate Python installation. Do not copy the practice project’s <code>.venv</code>. Record which existing Python you used to create it and the creation method (VS Code or terminal). Explain why this assignment gets its own environment and how that helps when two projects need different package versions.</p>
-<p><em>Credit: creation method and source Python, 4 points; isolation explanation, 4 points.</em></p>
-</section>
-<section id="check-before-installing-7-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="check-before-installing-7-points">2.2 Check before installing (7 points)</h3>
-<p>Activate the environment using the command for your shell, or use Chapter 2’s direct-executable method. <strong>Before installing packages</strong>, answer the three questions: Where am I typing? Which Python am I using? Which folder is current?</p>
-<p>Record your shell, the activation command or direct-executable method, and the commands and outputs identifying the Python executable and current directory. Explain which part of the Python path identifies this assignment’s <code>.venv</code>.</p>
-<p><em>Credit: method and shell, 2 points; three answers, 3 points; executable-path interpretation, 2 points.</em></p>
-</section>
-<section id="connect-the-notebook-10-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="connect-the-notebook-10-points">2.3 Connect the notebook (10 points)</h3>
-<p>After installing the required packages in Question 3, select the assignment’s <code>.venv</code> as the notebook kernel. In a notebook code cell, display the Python version, executable path, and current working directory. Compare the notebook executable with the terminal executable and explain how you know both refer to this assignment’s environment. Explain why choosing a workspace interpreter alone is not sufficient to verify the notebook kernel.</p>
-<p><em>Credit: notebook output, 4 points; comparison and evidence, 4 points; interpreter/kernel distinction, 2 points.</em></p>
-</section>
-</section>
-<section id="install-and-verify-packages-15-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="install-and-verify-packages-15-points">3. Install and Verify Packages (15 points)</h2>
-<section id="terminal-installation-5-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="terminal-installation-5-points">3.1 Terminal installation (5 points)</h3>
-<p>Use the VS Code terminal to install <code>ipykernel</code>, <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code> into the assignment environment. Record the command and explain why <code>python -m pip</code> (or the verified full Python executable followed by <code>-m pip</code>) targets the intended environment.</p>
-</section>
-<section id="notebook-installation-4-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="notebook-installation-4-points">3.2 Notebook installation (4 points)</h3>
-<p>After selecting the assignment kernel, install Seaborn with <code>%pip</code> in a temporary notebook code cell. Record the command and explain which environment it targets. Restart the kernel if needed, then remove the temporary installation cell so a fresh run does not reinstall packages. Keep the command in Markdown.</p>
-</section>
-<section id="verify-the-imports-6-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="verify-the-imports-6-points">3.3 Verify the imports (6 points)</h3>
-<p>In a code cell, import NumPy, Pandas, Matplotlib, and Seaborn and print their version numbers. Explain your first diagnostic step if an installation succeeds in the terminal but the notebook cannot import the package.</p>
-<p><em>Credit: four successful imports/version outputs, 4 points; diagnosis, 2 points. Package versions may differ across computers.</em></p>
-</section>
-</section>
-<section id="navigate-folders-and-locate-the-data-20-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="navigate-folders-and-locate-the-data-20-points">4. Navigate Folders and Locate the Data (20 points)</h2>
-<section id="compare-two-working-directories-8-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="compare-two-working-directories-8-points">4.1 Compare two working directories (8 points)</h3>
-<p>Record the notebook’s current directory. In the terminal, enter <code>data</code>, show the terminal’s directory, and list the CSV file. <strong>While the terminal is still inside <code>data</code>, check the notebook directory again.</strong> Record the evidence and explain why the two processes can have different current directories. Return the terminal to the project root and verify it.</p>
-<p><em>Credit: navigation and CSV listing, 3 points; simultaneous directory comparison and explanation, 3 points; verified return, 2 points.</em></p>
-</section>
-<section id="construct-and-verify-a-path-8-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="construct-and-verify-a-path-8-points">4.2 Construct and verify a path (8 points)</h3>
-<p>Use <code>pathlib</code> in the notebook to construct the relative path to <code>data/library_visits.csv</code>. Display its resolved path and confirm that it is a file before reading it. Explain what the relative path is relative to, and distinguish it from the displayed absolute path.</p>
-<p><em>Credit: path construction, resolved path, and successful file check, 5 points; explanation, 3 points.</em></p>
-</section>
-<section id="reason-about-a-different-starting-folder-4-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="reason-about-a-different-starting-folder-4-points">4.3 Reason about a different starting folder (4 points)</h3>
-<p>Suppose a notebook process had <code>stat303-assignment-b/notebooks</code> as its current working directory, with <code>data</code> still in the project root. Write the relative <code>Path</code> expression that would reach <code>library_visits.csv</code> and explain the role of <code>..</code>. This is a written hypothetical question; do not move the supplied notebook or create an extra folder.</p>
-</section>
-</section>
-<section id="record-dependencies-and-diagnose-a-problem-15-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="record-dependencies-and-diagnose-a-problem-15-points">5. Record Dependencies and Diagnose a Problem (15 points)</h2>
-<section id="requirements-record-8-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="requirements-record-8-points">5.1 Requirements record (8 points)</h3>
-<p>With the terminal back in the project root and using the assignment Python, export <code>requirements.txt</code>. Record the command and where the file was created. Open it, copy two actual package/version entries into Markdown, and explain what the file records. State one reason it does not guarantee identical behavior on every computer. Your Python version is already recorded in Question 2.</p>
-<p><em>Credit: export command and location, 3 points; two entries and interpretation, 3 points; limitation, 2 points.</em></p>
-</section>
-<section id="diagnose-an-incorrect-filename-7-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="diagnose-an-incorrect-filename-7-points">5.2 Diagnose an incorrect filename (7 points)</h3>
-<p>Create a separate path for an intentionally nonexistent filename in <code>data</code>. Predict the result of <code>.is_file()</code>, run the check, and explain the observed result. Describe how you would diagnose this result if you expected the file to exist, then demonstrate that the original correct path still returns <code>True</code>. Do not rename/delete data or deliberately leave an exception in the notebook.</p>
-<p><em>Credit: prediction and false check, 2 points; diagnosis, 3 points; correct-path verification, 2 points.</em></p>
-</section>
-</section>
-<section id="run-and-interpret-the-supplied-analysis-10-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="run-and-interpret-the-supplied-analysis-10-points">6. Run and Interpret the Supplied Analysis (10 points)</h2>
-<p>Run the supplied data-reading and plotting cells. They display the six records, calculate the mean number of visits, and create a labeled bar chart. Keep their output in your report.</p>
-<section id="verify-the-result-4-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="verify-the-result-4-points">6.1 Verify the result (4 points)</h3>
-<p>Report the number of records and mean visits shown by the supplied code. Check that the table and plot use the same branch identifiers.</p>
-</section>
-<section id="interpret-the-figure-6-points" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="interpret-the-figure-6-points">6.2 Interpret the figure (6 points)</h3>
-<p>Explain what each axis represents and identify the branch with the most visits and the branch with the fewest. Explain why these fictional counts for one day do not establish a general pattern for real libraries.</p>
-<p><em>Credit: axes, 2 points; largest and smallest branches, 2 points; limitation, 2 points. You do not need to rewrite the Pandas or plotting code.</em></p>
-</section>
-</section>
-<section id="prepare-the-html-submission-5-points" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="prepare-the-html-submission-5-points">7. Prepare the HTML Submission (5 points)</h2>
-<p>Restart the selected kernel, run all cells in order, resolve unexpected errors, and save. Record a brief fresh-run verification note. From the assignment project folder, render with:</p>
-<pre class="text"><code>quarto render assignment_b.ipynb --to html</code></pre>
-<p>Open <code>assignment_b.html</code>, then copy the HTML alone into another folder and open that copy. Check that your explanations, code, table, and plot are visible. Add a short verification statement to the notebook, save, and render again so it appears in the final report. Upload the final HTML to Assignment B in Canvas.</p>
-<p>Formatting points follow the existing assignment style:</p>
 <ul>
-<li>A Quarto-rendered HTML file that opens with its table, plot, and final verification note (2 points).</li>
-<li>Relevant, concise output without unnecessary installation logs or large extraneous printouts (1 point).</li>
-<li>Final written answers in Markdown (1 point).</li>
-<li>No unnecessary/redundant code or text; required code runs in order (1 point).</li>
+<li>Must be an HTML file rendered using Quarto (2 pts).</li>
+<li>There aren’t excessively long outputs of extraneous information (e.g.&nbsp;no printouts of entire data frames without good reason, there aren’t long printouts of which iteration a loop is on, there aren’t long sections of commented-out code, etc.) (1 pt)</li>
+<li>Final answers of each question are written in Markdown cells (1 pt).</li>
+<li>There is no piece of unnecessary / redundant code, and no unnecessary / redundant text (1 pt)</li>
 </ul>
 </section>
-<section id="points-summary" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="points-summary">Points Summary</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Section</th>
-<th style="text-align: right;">Points</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1. Project and tools</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td>2. Environment</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="odd">
-<td>3. Packages</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="even">
-<td>4. Navigation and paths</td>
-<td style="text-align: right;">20</td>
-</tr>
-<tr class="odd">
-<td>5. Dependencies and diagnosis</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="even">
-<td>6. Supplied analysis and interpretation</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td>7. HTML submission</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td><strong>Total</strong></td>
-<td style="text-align: right;"><strong>100</strong></td>
-</tr>
-</tbody>
-</table>
+<section id="canadian-fish-biodiversity" class="level2" data-number="G.1">
+<h2 data-number="G.1" class="anchored" data-anchor-id="canadian-fish-biodiversity"><span class="header-section-number">G.1</span> Canadian Fish Biodiversity</h2>
+<p>Read data from the file <em>Canadian_Fish_Biodiversity.csv</em> on Canvas. Each row records a unique fishing event from a 2013 sample of fish populations in Ontario, Canada. To analyze the results of these fishing surveys, we need to understand the dynamics of projects, sites, and geographic locations.</p>
+<section id="top-3-projects" class="level3" data-number="G.1.1">
+<h3 data-number="G.1.1" class="anchored" data-anchor-id="top-3-projects"><span class="header-section-number">G.1.1</span> Top 3 projects</h3>
+<p>Each site (identified by the column <code>SITEID</code>) represents a time and place at which fishing events occurred. Sites are grouped into broader projects (identified by the column <code>Project Name</code>). We want to understand the scope of these projects.</p>
+<p>Using <code>groupby()</code>, find the top three projects by number of unique sites.</p>
+<p><em>(4 points)</em></p>
+</section>
+<section id="missing-value-imputation-with-groupby" class="level3" data-number="G.1.2">
+<h3 data-number="G.1.2" class="anchored" data-anchor-id="missing-value-imputation-with-groupby"><span class="header-section-number">G.1.2</span> Missing value imputation with <code>groupby()</code></h3>
+<section id="number-of-missing-values" class="level4" data-number="G.1.2.1">
+<h4 data-number="G.1.2.1" class="anchored" data-anchor-id="number-of-missing-values"><span class="header-section-number">G.1.2.1</span> Number of missing values</h4>
+<p>How many values are missing for the air temperature column (<code>Air Temperature (C)</code>)?</p>
+<p><em>(1 point)</em></p>
+</section>
+<section id="missing-value-imputation-attempt-1" class="level4" data-number="G.1.2.2">
+<h4 data-number="G.1.2.2" class="anchored" data-anchor-id="missing-value-imputation-attempt-1"><span class="header-section-number">G.1.2.2</span> Missing value imputation: attempt 1</h4>
+<p>Using <code>groupby()</code>, impute the missing values of air temperature with the median air temperature of the corresponding water body (<code>Waterbody Name</code>) and <code>Month</code>.</p>
+<p><em>(4 points)</em></p>
+</section>
+<section id="missing-values-remaining-after-attempt-1" class="level4" data-number="G.1.2.3">
+<h4 data-number="G.1.2.3" class="anchored" data-anchor-id="missing-values-remaining-after-attempt-1"><span class="header-section-number">G.1.2.3</span> Missing values remaining after attempt 1</h4>
+<p>How many missing values still remain for the air temperature column after the imputation in the previous question?</p>
+<p><em>(1 point)</em></p>
+</section>
+<section id="missing-value-imputation-attempt-2" class="level4" data-number="G.1.2.4">
+<h4 data-number="G.1.2.4" class="anchored" data-anchor-id="missing-value-imputation-attempt-2"><span class="header-section-number">G.1.2.4</span> Missing value imputation: attempt 2</h4>
+<p>We will try to impute the remaining missing values for air temperature. Try to impute the remaining missing values of air temperature with the median air temperature of the corresponding project (<code>Project Name</code>) and <code>Month</code>.</p>
+<p><em>(4 points)</em></p>
+</section>
+<section id="missing-values-remaining-after-attempt-2" class="level4" data-number="G.1.2.5">
+<h4 data-number="G.1.2.5" class="anchored" data-anchor-id="missing-values-remaining-after-attempt-2"><span class="header-section-number">G.1.2.5</span> Missing values remaining after attempt 2</h4>
+<p>How many missing values still remain for the air temperature column after the imputation in the previous question?</p>
+<p><em>(1 point)</em></p>
+</section>
+<section id="air-water-temperatures-correlation" class="level4" data-number="G.1.2.6">
+<h4 data-number="G.1.2.6" class="anchored" data-anchor-id="air-water-temperatures-correlation"><span class="header-section-number">G.1.2.6</span> Air-water temperatures correlation</h4>
+<p>Find the correlation between air temperature and water temperature.</p>
+<p><em>(1 point)</em></p>
+</section>
+<section id="missing-values-remaning-after-hypothetical-attempt-3" class="level4" data-number="G.1.2.7">
+<h4 data-number="G.1.2.7" class="anchored" data-anchor-id="missing-values-remaning-after-hypothetical-attempt-3"><span class="header-section-number">G.1.2.7</span> Missing values remaning after hypothetical attempt 3</h4>
+<p>As you found a high correlation between air temperature and water temperature, you can use water temperature to estimate the air temperature <em>(using the trendline, like you did in <a href="./Assignment F.html">Assignment F</a>)</em>. Assuming you already did that, how many missing values will still remain for the air temperature column?</p>
+<p><strong>Note:</strong> Do not impute the missing values using the trendline, just assume you already did that.</p>
+<p><em>(3 points)</em></p>
+</section>
+<section id="visualizing-missing-value-imputation" class="level4" data-number="G.1.2.8">
+<h4 data-number="G.1.2.8" class="anchored" data-anchor-id="visualizing-missing-value-imputation"><span class="header-section-number">G.1.2.8</span> Visualizing missing value imputation</h4>
+<p>Make a scatterplot of air temperature against water temperature. Highlight the points for which the air temperature was imputed in attempts 1 and 2 with a different color.</p>
+<p><em>(8 points)</em></p>
+</section>
+</section>
+<section id="living-conditions" class="level3" data-number="G.1.3">
+<h3 data-number="G.1.3" class="anchored" data-anchor-id="living-conditions"><span class="header-section-number">G.1.3</span> Living conditions</h3>
+<p>This section begins to investigate the living conditions of fish at different locations and time periods. Continue using the updated dataset with the imputed missing values in attempts 1 and 2 of the previous section.</p>
+<section id="air-water-temperatures-summary-statistics" class="level4" data-number="G.1.3.1">
+<h4 data-number="G.1.3.1" class="anchored" data-anchor-id="air-water-temperatures-summary-statistics"><span class="header-section-number">G.1.3.1</span> Air-water temperatures: Summary statistics</h4>
+<p>Use a single <code>groupby</code> statement to view the minimum, mean, standard deviation, and maximum air temperature and water temperature for each project during the month of August (use the <code>Month</code> column).</p>
+<p><em>(5 points)</em></p>
+</section>
+<section id="air-water-temperatures-visualizing-yearly-trend" class="level4" data-number="G.1.3.2">
+<h4 data-number="G.1.3.2" class="anchored" data-anchor-id="air-water-temperatures-visualizing-yearly-trend"><span class="header-section-number">G.1.3.2</span> Air-water temperatures: visualizing yearly trend</h4>
+<p>Make lineplots showing maximum air temperature and water temperature by <code>Month</code> and <code>Region</code>. To construct <code>Region</code>, use the Pandas function <code>cut()</code> to satisfy the following conditions:</p>
+<ul>
+<li>Rows with a latitude lower than 42.4 should have <em>Southern</em> in the <code>Region</code> column</li>
+<li>Rows with a latitude between 42.4 and 42.8 should have <em>Central</em> in the <code>Region</code> column</li>
+<li>Rows with a latitude higher than 42.8 should have <em>Northern</em> in the <code>Region</code> column</li>
+</ul>
+<p>You can have the month on the horizontal axis, the temperature on the vertical axis, different colors for different regions, and different styles (solid line / dotted line) to indicate air/water temperature.</p>
+<p>Does anything in the visualization surprise you? Why or why not?</p>
+<p><em>(14 points)</em></p>
+</section>
+</section>
+<section id="fish-diversity" class="level3" data-number="G.1.4">
+<h3 data-number="G.1.4" class="anchored" data-anchor-id="fish-diversity"><span class="header-section-number">G.1.4</span> Fish diversity</h3>
+<p>Finally let’s focus on the stars of this survey—the fish, of course.</p>
+<section id="top-3-species-by-region" class="level4" data-number="G.1.4.1">
+<h4 data-number="G.1.4.1" class="anchored" data-anchor-id="top-3-species-by-region"><span class="header-section-number">G.1.4.1</span> Top 3 species by <code>Region</code></h4>
+<p>Let’s continue using our <code>Region</code> categorization. Find the top three fish <code>Species</code> in each region by <code>Number Captured</code>.</p>
+<p><em>(10 points)</em></p>
+</section>
+<section id="species-spread-across-region" class="level4" data-number="G.1.4.2">
+<h4 data-number="G.1.4.2" class="anchored" data-anchor-id="species-spread-across-region"><span class="header-section-number">G.1.4.2</span> Species spread across <code>Region</code></h4>
+<p>Are certain fish only found in some regions? Visualize how many species are in all three regions, how many are in two of three, and how many were only captured in one region.</p>
+<p><em>(10 points)</em></p>
+</section>
+<section id="exclusive-fishes-by-region" class="level4" data-number="G.1.4.3">
+<h4 data-number="G.1.4.3" class="anchored" data-anchor-id="exclusive-fishes-by-region"><span class="header-section-number">G.1.4.3</span> Exclusive fishes by region</h4>
+<p>What percentage of all species are exclusively captured in the Southern region? How about the Northern Region? And the Central region?</p>
+<p><em>(10 points)</em></p>
+<p><strong>Hint:</strong></p>
+<ol type="1">
+<li>Find the number of distinct regions in which each species is found.</li>
+<li>Filter the species that are found only in one region.</li>
+<li>Group the data, containing only the species found in (2), by region, count the number of unique species in each group, and divide by the total number of distinct species.</li>
+</ol>
+</section>
+<section id="turbidity" class="level4" data-number="G.1.4.4">
+<h4 data-number="G.1.4.4" class="anchored" data-anchor-id="turbidity"><span class="header-section-number">G.1.4.4</span> Turbidity</h4>
+<p>Turbidity (<code>Turbidity (ntu)</code>) quantifies the level of cloudiness in liquid. For fish in each of the three regions, is there a linear association between turbidity and number of fish caught? You may consider a correlation higher than 50% in magnitude as presence of a linear association.</p>
+<p><em>(5 points)</em></p>
+</section>
+<section id="fish-dimensions" class="level4" data-number="G.1.4.5">
+<h4 data-number="G.1.4.5" class="anchored" data-anchor-id="fish-dimensions"><span class="header-section-number">G.1.4.5</span> Fish dimensions</h4>
+<p>Now let’s turn to the length of fish captured, given by <code>Maximum (mm)</code> and <code>Minimum (mm)</code>. Find the overall maximum and minimum lengths of all fish in each region. Which region has the largest range in captured fish length?</p>
+<p><em>(4 points)</em></p>
+</section>
+</section>
+</section>
+<section id="gdp-surplus-and-compensation" class="level2" data-number="G.2">
+<h2 data-number="G.2" class="anchored" data-anchor-id="gdp-surplus-and-compensation"><span class="header-section-number">G.2</span> GDP, surplus, and compensation</h2>
+<p>The dataset <em>Real GDP.csv</em> contains the GDP of each US State for all years starting from 1997 until 2020. The data is at <em>State</em> level, i.e., each observation corresponds to a unique State.</p>
+<p>The dataset <em>Surplus.csv</em> contains the surplus of each US State for all years starting from 1997 until 2020. The data is at <em>year</em> level, i.e., each observation corresponds to a unique year.</p>
+<p>The dataset <em>Compensation.csv</em> contains <em>Compensation</em> and <em>Chain-type quantity indexes for real GDP</em> for each US State and year starting from 1997 to 2020. The dataset is at <em>Year-State-Description</em> level, i.e., each observation corresponds to a unique <code>Year</code>-<code>State</code>-<code>Description</code> combination where <code>Description</code> refers to either <em>Compensation</em> or <em>Chain-type quantity indexes for real GDP</em>.</p>
+<section id="combining-datasets" class="level3" data-number="G.2.1">
+<h3 data-number="G.2.1" class="anchored" data-anchor-id="combining-datasets"><span class="header-section-number">G.2.1</span> Combining datasets</h3>
+<p>Combine all these datasets to obtain a dataset at <em>State-Year</em> level, i.e., each observation corresponds to a unique <code>State</code>-<code>Year</code> combination. The combined dataset must contain the GDP, surplus, <em>Compensation</em>, and <em>Chain-type quantity indexes for real GDP</em> for each US State and all years starting from 1997 until 2020. <em>Note that each observation must contain the name of the US State, year, and the four values (GDP, surplus, compensation, and Chain-type quantity indexes for real GDP).</em></p>
+<p><strong>Hint</strong>: Here is one way to do it:</p>
+<ol type="1">
+<li><p>Melt the GDP dataset to year-State level</p></li>
+<li><p>Melt the Surplus dataset to year-State level</p></li>
+<li><p>Pivot the compensation dataset to year-State level</p></li>
+<li><p>Now that all the datasets are at the year-State level, merge them!</p></li>
+</ol>
+<p><em>(3 + 3 + 3 + 1 = 10 points)</em></p>
+</section>
+<section id="time-trend-gdp-with-region" class="level3" data-number="G.2.2">
+<h3 data-number="G.2.2" class="anchored" data-anchor-id="time-trend-gdp-with-region"><span class="header-section-number">G.2.2</span> Time trend: GDP with region</h3>
+<p>Merge the file <em>State_region_mapping.csv</em> with the dataset obtained in the previous question. Make a lineplot showing the mean GDP for each of the five regions with year. Do not display the confidence interval. Which two regions seems to have the least growth in GDP over the past 24 years?</p>
+<p><em>(5 points)</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -967,13 +949,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Assignment A.html" class="pagination-link" aria-label="Assignment A">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span>
+      <a href="./Assignment F.html" class="pagination-link" aria-label="Assignment F">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Assignment C.html" class="pagination-link" aria-label="Assignment C">
-        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Assignment C</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Datasets.html" class="pagination-link" aria-label="Datasets &amp; Templates">
+        <span class="nav-page-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

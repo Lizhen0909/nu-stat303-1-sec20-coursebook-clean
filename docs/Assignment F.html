@@ -26,17 +26,52 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Datasets.html" rel="next">
+<link href="./Assignment G.html" rel="next">
 <link href="./Assignment E.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -75,7 +110,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -167,12 +234,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./workflow_enhance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">From Notebook to HTML with Quarto</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -187,43 +248,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vectorized_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization Fundamentals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Advanced_Data_Visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Visualization Intermediate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization Intermediate</span></span></a>
   </div>
 </li>
       </ul>
@@ -240,31 +301,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data_cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data_preparation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data_reshaping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,8 +377,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Assignment G.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
 </li>
       </ul>
@@ -333,38 +400,40 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#canadian-fish-biodiversity" id="toc-canadian-fish-biodiversity" class="nav-link" data-scroll-target="#canadian-fish-biodiversity"><span class="header-section-number">F.1</span> Canadian Fish Biodiversity</a>
+  <li><a href="#missing-value-imputation" id="toc-missing-value-imputation" class="nav-link" data-scroll-target="#missing-value-imputation"><span class="header-section-number">F.1</span> Missing value imputation</a>
   <ul>
-  <li><a href="#top-3-projects" id="toc-top-3-projects" class="nav-link" data-scroll-target="#top-3-projects"><span class="header-section-number">F.1.1</span> Top 3 projects</a></li>
-  <li><a href="#missing-value-imputation-with-groupby" id="toc-missing-value-imputation-with-groupby" class="nav-link" data-scroll-target="#missing-value-imputation-with-groupby"><span class="header-section-number">F.1.2</span> Missing value imputation with <code>groupby()</code></a>
+  <li><a href="#number-of-missing-values" id="toc-number-of-missing-values" class="nav-link" data-scroll-target="#number-of-missing-values"><span class="header-section-number">F.1.1</span> Number of missing values</a></li>
+  <li><a href="#indices-of-missing-values" id="toc-indices-of-missing-values" class="nav-link" data-scroll-target="#indices-of-missing-values"><span class="header-section-number">F.1.2</span> Indices of missing values</a></li>
+  <li><a href="#correlation-of-continuous-variables-with-price" id="toc-correlation-of-continuous-variables-with-price" class="nav-link" data-scroll-target="#correlation-of-continuous-variables-with-price"><span class="header-section-number">F.1.3</span> Correlation of continuous variables with <code>price</code></a></li>
+  <li><a href="#missing-value-imputation-using-correlated-continuous-variable" id="toc-missing-value-imputation-using-correlated-continuous-variable" class="nav-link" data-scroll-target="#missing-value-imputation-using-correlated-continuous-variable"><span class="header-section-number">F.1.4</span> Missing value imputation using correlated continuous variable</a></li>
+  <li><a href="#correlation-of-categorical-variables-with-price" id="toc-correlation-of-categorical-variables-with-price" class="nav-link" data-scroll-target="#correlation-of-categorical-variables-with-price"><span class="header-section-number">F.1.5</span> Correlation of categorical variables with <code>price</code></a></li>
+  <li><a href="#missing-value-imputation-using-correlated-categorical-variable" id="toc-missing-value-imputation-using-correlated-categorical-variable" class="nav-link" data-scroll-target="#missing-value-imputation-using-correlated-categorical-variable"><span class="header-section-number">F.1.6</span> Missing value imputation using correlated categorical variable</a></li>
+  <li><a href="#missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable" id="toc-missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable" class="nav-link" data-scroll-target="#missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable"><span class="header-section-number">F.1.7</span> Missing value imputation using correlated continuous variable within the categories of correlated categorical variable</a></li>
+  <li><a href="#bonus-question-missing-value-imputation-with-knn" id="toc-bonus-question-missing-value-imputation-with-knn" class="nav-link" data-scroll-target="#bonus-question-missing-value-imputation-with-knn"><span class="header-section-number">F.1.8</span> <strong>Bonus</strong> question: Missing value imputation with KNN</a>
   <ul class="collapse">
-  <li><a href="#number-of-missing-values" id="toc-number-of-missing-values" class="nav-link" data-scroll-target="#number-of-missing-values"><span class="header-section-number">F.1.2.1</span> Number of missing values</a></li>
-  <li><a href="#missing-value-imputation-attempt-1" id="toc-missing-value-imputation-attempt-1" class="nav-link" data-scroll-target="#missing-value-imputation-attempt-1"><span class="header-section-number">F.1.2.2</span> Missing value imputation: attempt 1</a></li>
-  <li><a href="#missing-values-remaining-after-attempt-1" id="toc-missing-values-remaining-after-attempt-1" class="nav-link" data-scroll-target="#missing-values-remaining-after-attempt-1"><span class="header-section-number">F.1.2.3</span> Missing values remaining after attempt 1</a></li>
-  <li><a href="#missing-value-imputation-attempt-2" id="toc-missing-value-imputation-attempt-2" class="nav-link" data-scroll-target="#missing-value-imputation-attempt-2"><span class="header-section-number">F.1.2.4</span> Missing value imputation: attempt 2</a></li>
-  <li><a href="#missing-values-remaining-after-attempt-2" id="toc-missing-values-remaining-after-attempt-2" class="nav-link" data-scroll-target="#missing-values-remaining-after-attempt-2"><span class="header-section-number">F.1.2.5</span> Missing values remaining after attempt 2</a></li>
-  <li><a href="#air-water-temperatures-correlation" id="toc-air-water-temperatures-correlation" class="nav-link" data-scroll-target="#air-water-temperatures-correlation"><span class="header-section-number">F.1.2.6</span> Air-water temperatures correlation</a></li>
-  <li><a href="#missing-values-remaning-after-hypothetical-attempt-3" id="toc-missing-values-remaning-after-hypothetical-attempt-3" class="nav-link" data-scroll-target="#missing-values-remaning-after-hypothetical-attempt-3"><span class="header-section-number">F.1.2.7</span> Missing values remaning after hypothetical attempt 3</a></li>
-  <li><a href="#visualizing-missing-value-imputation" id="toc-visualizing-missing-value-imputation" class="nav-link" data-scroll-target="#visualizing-missing-value-imputation"><span class="header-section-number">F.1.2.8</span> Visualizing missing value imputation</a></li>
+  <li><a href="#identifying-optimal-k-by-k-fold-cross-validation" id="toc-identifying-optimal-k-by-k-fold-cross-validation" class="nav-link" data-scroll-target="#identifying-optimal-k-by-k-fold-cross-validation"><span class="header-section-number">F.1.8.1</span> Identifying optimal <span class="math inline">\(K\)</span> by <span class="math inline">\(k\)</span>-fold cross validation</a></li>
+  <li><a href="#implementing-knn-with-optimal-k" id="toc-implementing-knn-with-optimal-k" class="nav-link" data-scroll-target="#implementing-knn-with-optimal-k"><span class="header-section-number">F.1.8.2</span> Implementing KNN with optimal <span class="math inline">\(K\)</span></a></li>
   </ul></li>
-  <li><a href="#living-conditions" id="toc-living-conditions" class="nav-link" data-scroll-target="#living-conditions"><span class="header-section-number">F.1.3</span> Living conditions</a>
-  <ul class="collapse">
-  <li><a href="#air-water-temperatures-summary-statistics" id="toc-air-water-temperatures-summary-statistics" class="nav-link" data-scroll-target="#air-water-temperatures-summary-statistics"><span class="header-section-number">F.1.3.1</span> Air-water temperatures: Summary statistics</a></li>
-  <li><a href="#air-water-temperatures-visualizing-yearly-trend" id="toc-air-water-temperatures-visualizing-yearly-trend" class="nav-link" data-scroll-target="#air-water-temperatures-visualizing-yearly-trend"><span class="header-section-number">F.1.3.2</span> Air-water temperatures: visualizing yearly trend</a></li>
+  <li><a href="#ultra-bonus-question" id="toc-ultra-bonus-question" class="nav-link" data-scroll-target="#ultra-bonus-question"><span class="header-section-number">F.1.9</span> <strong>Ultra-bonus</strong> question</a></li>
   </ul></li>
-  <li><a href="#fish-diversity" id="toc-fish-diversity" class="nav-link" data-scroll-target="#fish-diversity"><span class="header-section-number">F.1.4</span> Fish diversity</a>
-  <ul class="collapse">
-  <li><a href="#top-3-species-by-region" id="toc-top-3-species-by-region" class="nav-link" data-scroll-target="#top-3-species-by-region"><span class="header-section-number">F.1.4.1</span> Top 3 species by <code>Region</code></a></li>
-  <li><a href="#species-spread-across-region" id="toc-species-spread-across-region" class="nav-link" data-scroll-target="#species-spread-across-region"><span class="header-section-number">F.1.4.2</span> Species spread across <code>Region</code></a></li>
-  <li><a href="#exclusive-fishes-by-region" id="toc-exclusive-fishes-by-region" class="nav-link" data-scroll-target="#exclusive-fishes-by-region"><span class="header-section-number">F.1.4.3</span> Exclusive fishes by region</a></li>
-  <li><a href="#turbidity" id="toc-turbidity" class="nav-link" data-scroll-target="#turbidity"><span class="header-section-number">F.1.4.4</span> Turbidity</a></li>
-  <li><a href="#fish-dimensions" id="toc-fish-dimensions" class="nav-link" data-scroll-target="#fish-dimensions"><span class="header-section-number">F.1.4.5</span> Fish dimensions</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#gdp-surplus-and-compensation" id="toc-gdp-surplus-and-compensation" class="nav-link" data-scroll-target="#gdp-surplus-and-compensation"><span class="header-section-number">F.2</span> GDP, surplus, and compensation</a>
+  <li><a href="#binning" id="toc-binning" class="nav-link" data-scroll-target="#binning"><span class="header-section-number">F.2</span> Binning</a>
   <ul>
-  <li><a href="#combining-datasets" id="toc-combining-datasets" class="nav-link" data-scroll-target="#combining-datasets"><span class="header-section-number">F.2.1</span> Combining datasets</a></li>
-  <li><a href="#time-trend-gdp-with-region" id="toc-time-trend-gdp-with-region" class="nav-link" data-scroll-target="#time-trend-gdp-with-region"><span class="header-section-number">F.2.2</span> Time trend: GDP with region</a></li>
+  <li><a href="#trend-with-house_age" id="toc-trend-with-house_age" class="nav-link" data-scroll-target="#trend-with-house_age"><span class="header-section-number">F.2.1</span> Trend with <code>house_age</code></a></li>
+  <li><a href="#trend-with-bins-of-house_age" id="toc-trend-with-bins-of-house_age" class="nav-link" data-scroll-target="#trend-with-bins-of-house_age"><span class="header-section-number">F.2.2</span> Trend with bins of <code>house_age</code></a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">F.2.2.1</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">F.2.2.2</span> </a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">F.2.2.3</span> </a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">F.2.2.4</span> </a></li>
+  </ul></li>
+  <li><a href="#trend-with-number_convenience_stores" id="toc-trend-with-number_convenience_stores" class="nav-link" data-scroll-target="#trend-with-number_convenience_stores"><span class="header-section-number">F.2.3</span> Trend with <code>number_convenience_stores</code></a></li>
+  <li><a href="#trend-with-bins-of-number_convenience_stores" id="toc-trend-with-bins-of-number_convenience_stores" class="nav-link" data-scroll-target="#trend-with-bins-of-number_convenience_stores"><span class="header-section-number">F.2.4</span> Trend with bins of <code>number_convenience_stores</code></a></li>
+  <li><a href="#size-of-number_convenience_stores-bins" id="toc-size-of-number_convenience_stores-bins" class="nav-link" data-scroll-target="#size-of-number_convenience_stores-bins"><span class="header-section-number">F.2.5</span> Size of <code>number_convenience_stores</code> bins</a></li>
+  </ul></li>
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><span class="header-section-number">F.3</span> Outliers</a>
+  <ul>
+  <li><a href="#identifying-outlying-prices" id="toc-identifying-outlying-prices" class="nav-link" data-scroll-target="#identifying-outlying-prices"><span class="header-section-number">F.3.1</span> Identifying outlying prices</a></li>
+  <li><a href="#quick-eda" id="toc-quick-eda" class="nav-link" data-scroll-target="#quick-eda"><span class="header-section-number">F.3.2</span> Quick EDA</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -375,7 +444,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Assignment A.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment F.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Appendix F — Assignment F</h1>
-<p class="subtitle lead">Data Wrangling</p>
+<p class="subtitle lead">Data cleaning &amp; preparation</p>
 </div>
 
 
@@ -396,151 +465,209 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="unnumbered anchored" data-anchor-id="instructions">Instructions</h2>
 <ol type="1">
 <li><p>You may talk to a friend, discuss the questions and potential directions for solving them. However, you need to write your own solutions and code separately, and not as a group activity.</p></li>
+<li><p>Do not write your name on the assignment.</p></li>
 <li><p>Write your code in the <em>Code</em> cells and your answer in the <em>Markdown</em> cells of the Jupyter notebook. Ensure that the solution is written neatly enough to understand and grade.</p></li>
 <li><p>Use <a href="https://quarto.org/docs/output-formats/html-basics.html">Quarto</a> to print the <em>.ipynb</em> file as HTML. You will need to open the command prompt, navigate to the directory containing the file, and use the command: <code>quarto render filename.ipynb --to html</code>. Submit the HTML file.</p></li>
-<li><p>The assignment is worth 100 points, and is due on <strong>17th Nov 2025 at 11:59 pm</strong>. No extension is possible on this assignment due to tight grading deadlines.</p></li>
-<li><p>You are <strong>not allowed to use a <code>for</code> loop in this assignment</strong>.</p></li>
-<li><p>If you are updating a dataset (imputing missing values / creating new variables), then use the updated dataset in a subsequent question.</p></li>
-<li><p><strong>Five points are properly formatting the assignment</strong>. The breakdown is as follows:</p></li>
+<li><p>The assignment is worth 100 points. <strong>See Canvas for the due date.</strong></p></li>
+<li><p>There is a bonus question worth 20 points, and an ultra bonus question worth 30 points. However, there is no partial credit for these questions. You will get 20 or 0 for the bonus question, and 30 or 0 for the ultra-bonus question. If everything is correct, you can score 150 out of 100 in the assignment.</p></li>
 </ol>
-<ul>
-<li>Must be an HTML file rendered using Quarto (2 pts).</li>
-<li>There aren’t excessively long outputs of extraneous information (e.g.&nbsp;no printouts of entire data frames without good reason, there aren’t long printouts of which iteration a loop is on, there aren’t long sections of commented-out code, etc.) (1 pt)</li>
-<li>Final answers of each question are written in Markdown cells (1 pt).</li>
-<li>There is no piece of unnecessary / redundant code, and no unnecessary / redundant text (1 pt)</li>
-</ul>
 </section>
-<section id="canadian-fish-biodiversity" class="level2" data-number="F.1">
-<h2 data-number="F.1" class="anchored" data-anchor-id="canadian-fish-biodiversity"><span class="header-section-number">F.1</span> Canadian Fish Biodiversity</h2>
-<p>Read data from the file <em>Canadian_Fish_Biodiversity.csv</em> on Canvas. Each row records a unique fishing event from a 2013 sample of fish populations in Ontario, Canada. To analyze the results of these fishing surveys, we need to understand the dynamics of projects, sites, and geographic locations.</p>
-<section id="top-3-projects" class="level3" data-number="F.1.1">
-<h3 data-number="F.1.1" class="anchored" data-anchor-id="top-3-projects"><span class="header-section-number">F.1.1</span> Top 3 projects</h3>
-<p>Each site (identified by the column <code>SITEID</code>) represents a time and place at which fishing events occurred. Sites are grouped into broader projects (identified by the column <code>Project Name</code>). We want to understand the scope of these projects.</p>
-<p>Using <code>groupby()</code>, find the top three projects by number of unique sites.</p>
-<p><em>(4 points)</em></p>
-</section>
-<section id="missing-value-imputation-with-groupby" class="level3" data-number="F.1.2">
-<h3 data-number="F.1.2" class="anchored" data-anchor-id="missing-value-imputation-with-groupby"><span class="header-section-number">F.1.2</span> Missing value imputation with <code>groupby()</code></h3>
-<section id="number-of-missing-values" class="level4" data-number="F.1.2.1">
-<h4 data-number="F.1.2.1" class="anchored" data-anchor-id="number-of-missing-values"><span class="header-section-number">F.1.2.1</span> Number of missing values</h4>
-<p>How many values are missing for the air temperature column (<code>Air Temperature (C)</code>)?</p>
-<p><em>(1 point)</em></p>
-</section>
-<section id="missing-value-imputation-attempt-1" class="level4" data-number="F.1.2.2">
-<h4 data-number="F.1.2.2" class="anchored" data-anchor-id="missing-value-imputation-attempt-1"><span class="header-section-number">F.1.2.2</span> Missing value imputation: attempt 1</h4>
-<p>Using <code>groupby()</code>, impute the missing values of air temperature with the median air temperature of the corresponding water body (<code>Waterbody Name</code>) and <code>Month</code>.</p>
-<p><em>(4 points)</em></p>
-</section>
-<section id="missing-values-remaining-after-attempt-1" class="level4" data-number="F.1.2.3">
-<h4 data-number="F.1.2.3" class="anchored" data-anchor-id="missing-values-remaining-after-attempt-1"><span class="header-section-number">F.1.2.3</span> Missing values remaining after attempt 1</h4>
-<p>How many missing values still remain for the air temperature column after the imputation in the previous question?</p>
-<p><em>(1 point)</em></p>
-</section>
-<section id="missing-value-imputation-attempt-2" class="level4" data-number="F.1.2.4">
-<h4 data-number="F.1.2.4" class="anchored" data-anchor-id="missing-value-imputation-attempt-2"><span class="header-section-number">F.1.2.4</span> Missing value imputation: attempt 2</h4>
-<p>We will try to impute the remaining missing values for air temperature. Try to impute the remaining missing values of air temperature with the median air temperature of the corresponding project (<code>Project Name</code>) and <code>Month</code>.</p>
-<p><em>(4 points)</em></p>
-</section>
-<section id="missing-values-remaining-after-attempt-2" class="level4" data-number="F.1.2.5">
-<h4 data-number="F.1.2.5" class="anchored" data-anchor-id="missing-values-remaining-after-attempt-2"><span class="header-section-number">F.1.2.5</span> Missing values remaining after attempt 2</h4>
-<p>How many missing values still remain for the air temperature column after the imputation in the previous question?</p>
-<p><em>(1 point)</em></p>
-</section>
-<section id="air-water-temperatures-correlation" class="level4" data-number="F.1.2.6">
-<h4 data-number="F.1.2.6" class="anchored" data-anchor-id="air-water-temperatures-correlation"><span class="header-section-number">F.1.2.6</span> Air-water temperatures correlation</h4>
-<p>Find the correlation between air temperature and water temperature.</p>
-<p><em>(1 point)</em></p>
-</section>
-<section id="missing-values-remaning-after-hypothetical-attempt-3" class="level4" data-number="F.1.2.7">
-<h4 data-number="F.1.2.7" class="anchored" data-anchor-id="missing-values-remaning-after-hypothetical-attempt-3"><span class="header-section-number">F.1.2.7</span> Missing values remaning after hypothetical attempt 3</h4>
-<p>As you found a high correlation between air temperature and water temperature, you can use water temperature to estimate the air temperature <em>(using the trendline, like you did in assignment 5)</em>. Assuming you already did that, how many missing values will still remain for the air temperature column?</p>
-<p><strong>Note:</strong> Do not impute the missing values using the trendline, just assume you already did that.</p>
+<section id="missing-value-imputation" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="missing-value-imputation"><span class="header-section-number">F.1</span> Missing value imputation</h2>
+<p>Read <em>Housing_missing_price.csv</em> as <code>housing_missing_price</code> and <em>Housing_complete.csv</em> as <code>housing_complete</code>. The datasets consist of housing features, like number of bedrooms, bathrooms, etc., and the price. Both datasets are exactly the same, except that <em>Housing_missing_price.csv</em> has some missing values of price. In this question, you will try different methods to impute the missing values of house price in the file <em>Housing_missing_price.csv</em>. You will use the prices in <em>Housing_complete.csv</em> to check the accuracy of your imputation.</p>
+<p>Note that you <strong>cannot</strong> use <em>Housing_complete.csv</em> to impute missing <code>price</code> in any of the questions. <em>Housing_complete.csv</em> is just to check the accuracy of your imputation, after you have done the imputation. Before imputing the missing <code>price</code>, assume you do not have <em>Housing_complete.csv</em>.</p>
+<section id="number-of-missing-values" class="level3" data-number="F.1.1">
+<h3 data-number="F.1.1" class="anchored" data-anchor-id="number-of-missing-values"><span class="header-section-number">F.1.1</span> Number of missing values</h3>
+<p>How many values of <code>price</code> are missing in <em>Housing_missing_price.csv</em>?</p>
 <p><em>(3 points)</em></p>
 </section>
-<section id="visualizing-missing-value-imputation" class="level4" data-number="F.1.2.8">
-<h4 data-number="F.1.2.8" class="anchored" data-anchor-id="visualizing-missing-value-imputation"><span class="header-section-number">F.1.2.8</span> Visualizing missing value imputation</h4>
-<p>Make a scatterplot of air temperature against water temperature. Highlight the points for which the air temperature was imputed in attempts 1 and 2 with a different color.</p>
-<p><em>(8 points)</em></p>
+<section id="indices-of-missing-values" class="level3" data-number="F.1.2">
+<h3 data-number="F.1.2" class="anchored" data-anchor-id="indices-of-missing-values"><span class="header-section-number">F.1.2</span> Indices of missing values</h3>
+<p>Find the row labels, where the <code>price</code> is missing. Assign those row labels as an array or a list to <code>index_null_price</code>.</p>
+<p><em>(4 points)</em></p>
 </section>
+<section id="correlation-of-continuous-variables-with-price" class="level3" data-number="F.1.3">
+<h3 data-number="F.1.3" class="anchored" data-anchor-id="correlation-of-continuous-variables-with-price"><span class="header-section-number">F.1.3</span> Correlation of continuous variables with <code>price</code></h3>
+<p>Find the continuous variable having the highest correlation with <code>price</code>. Let the variable be <span class="math inline">\(A_{cont}\)</span>.</p>
+<p><em>(2 points)</em></p>
 </section>
-<section id="living-conditions" class="level3" data-number="F.1.3">
-<h3 data-number="F.1.3" class="anchored" data-anchor-id="living-conditions"><span class="header-section-number">F.1.3</span> Living conditions</h3>
-<p>This section begins to investigate the living conditions of fish at different locations and time periods. Continue using the updated dataset with the imputed missing values in attempts 1 and 2 of the previous section.</p>
-<section id="air-water-temperatures-summary-statistics" class="level4" data-number="F.1.3.1">
-<h4 data-number="F.1.3.1" class="anchored" data-anchor-id="air-water-temperatures-summary-statistics"><span class="header-section-number">F.1.3.1</span> Air-water temperatures: Summary statistics</h4>
-<p>Use a single <code>groupby</code> statement to view the minimum, mean, standard deviation, and maximum air temperature and water temperature for each project during the month of August (use the <code>Month</code> column).</p>
-<p><em>(5 points)</em></p>
-</section>
-<section id="air-water-temperatures-visualizing-yearly-trend" class="level4" data-number="F.1.3.2">
-<h4 data-number="F.1.3.2" class="anchored" data-anchor-id="air-water-temperatures-visualizing-yearly-trend"><span class="header-section-number">F.1.3.2</span> Air-water temperatures: visualizing yearly trend</h4>
-<p>Make lineplots showing maximum air temperature and water temperature by <code>Month</code> and <code>Region</code>. To construct <code>Region</code>, use the Pandas function <code>cut()</code> to satisfy the following conditions:</p>
-<ul>
-<li>Rows with a latitude lower than 42.4 should have <em>Southern</em> in the <code>Region</code> column</li>
-<li>Rows with a latitude between 42.4 and 42.8 should have <em>Central</em> in the <code>Region</code> column</li>
-<li>Rows with a latitude higher than 42.8 should have <em>Northern</em> in the <code>Region</code> column</li>
-</ul>
-<p>You can have the month on the horizontal axis, the temperature on the vertical axis, different colors for different regions, and different styles (solid line / dotted line) to indicate air/water temperature.</p>
-<p>Does anything in the visualization surprise you? Why or why not?</p>
-<p><em>(14 points)</em></p>
-</section>
-</section>
-<section id="fish-diversity" class="level3" data-number="F.1.4">
-<h3 data-number="F.1.4" class="anchored" data-anchor-id="fish-diversity"><span class="header-section-number">F.1.4</span> Fish diversity</h3>
-<p>Finally let’s focus on the stars of this survey—the fish, of course.</p>
-<section id="top-3-species-by-region" class="level4" data-number="F.1.4.1">
-<h4 data-number="F.1.4.1" class="anchored" data-anchor-id="top-3-species-by-region"><span class="header-section-number">F.1.4.1</span> Top 3 species by <code>Region</code></h4>
-<p>Let’s continue using our <code>Region</code> categorization. Find the top three fish <code>Species</code> in each region by <code>Number Captured</code>.</p>
-<p><em>(10 points)</em></p>
-</section>
-<section id="species-spread-across-region" class="level4" data-number="F.1.4.2">
-<h4 data-number="F.1.4.2" class="anchored" data-anchor-id="species-spread-across-region"><span class="header-section-number">F.1.4.2</span> Species spread across <code>Region</code></h4>
-<p>Are certain fish only found in some regions? Visualize how many species are in all three regions, how many are in two of three, and how many were only captured in one region.</p>
-<p><em>(10 points)</em></p>
-</section>
-<section id="exclusive-fishes-by-region" class="level4" data-number="F.1.4.3">
-<h4 data-number="F.1.4.3" class="anchored" data-anchor-id="exclusive-fishes-by-region"><span class="header-section-number">F.1.4.3</span> Exclusive fishes by region</h4>
-<p>What percentage of all species are exclusively captured in the Southern region? How about the Northern Region? And the Central region?</p>
+<section id="missing-value-imputation-using-correlated-continuous-variable" class="level3" data-number="F.1.4">
+<h3 data-number="F.1.4" class="anchored" data-anchor-id="missing-value-imputation-using-correlated-continuous-variable"><span class="header-section-number">F.1.4</span> Missing value imputation using correlated continuous variable</h3>
+<p>Make a scatterplot of <code>price</code> against <span class="math inline">\(A_{cont}\)</span>, with a trendline. Using the trendline, impute the missing values of <code>price</code>.</p>
+<p>Plot the imputed <code>price</code> vs true <code>price</code> (from <em>Housing_complete.csv</em>) and print the RMSE (<em>Root mean squared error</em>). This is to be done only for the imputed values of <code>price</code>.</p>
 <p><em>(10 points)</em></p>
 <p><strong>Hint:</strong></p>
 <ol type="1">
-<li>Find the number of distinct regions in which each species is found.</li>
-<li>Filter the species that are found only in one region.</li>
-<li>Group the data, containing only the species found in (2), by region, count the number of unique species in each group, and divide by the total number of distinct species.</li>
+<li><p>Make the trendline using non-missing values of <code>price</code> and <span class="math inline">\(A_{cont}\)</span>.</p></li>
+<li><p>Impute the missing values of <code>price</code> only where they are missing, i.e., at row indices <code>index_null_price</code>.</p></li>
+<li><p>You may use the function below to plot the imputed price vs true price (<em>from Housing_complete.csv</em>) and print the RMSE. The function assumes that <code>housing_imputed_price</code> is the <em>Housing_missing_price.csv</em> dataset, with imputed values of <code>price</code>.</p></li>
 </ol>
+<div id="64981570" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Defining a function to plot the imputed values vs actual values </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_actual_vs_predicted():</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    plt.rc(<span class="st">'xtick'</span>, labelsize<span class="op">=</span><span class="dv">15</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    plt.rc(<span class="st">'ytick'</span>, labelsize<span class="op">=</span><span class="dv">15</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> housing_complete.loc[index_null_price,<span class="st">'price'</span>]<span class="op">/</span><span class="fl">1e3</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> housing_imputed_price.loc[index_null_price,<span class="st">'price'</span>]<span class="op">/</span><span class="fl">1e3</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    plt.scatter(x,y)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    z<span class="op">=</span>np.polyfit(x,y,<span class="dv">1</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    p<span class="op">=</span>np.poly1d(z)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,x,color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Actual price'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Imputed price'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    ax.xaxis.set_major_formatter(<span class="st">'$</span><span class="sc">{x:,.0f}</span><span class="st">k'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.set_major_formatter(<span class="st">'$</span><span class="sc">{x:,.0f}</span><span class="st">k'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> np.sqrt(((x<span class="op">-</span>y).<span class="bu">pow</span>(<span class="dv">2</span>)).mean())</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"RMSE= $"</span><span class="op">+</span><span class="bu">str</span>(np.<span class="bu">round</span>(rmse,<span class="dv">2</span>))<span class="op">+</span><span class="st">"k"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="turbidity" class="level4" data-number="F.1.4.4">
-<h4 data-number="F.1.4.4" class="anchored" data-anchor-id="turbidity"><span class="header-section-number">F.1.4.4</span> Turbidity</h4>
-<p>Turbidity (<code>Turbidity (ntu)</code>) quantifies the level of cloudiness in liquid. For fish in each of the three regions, is there a linear association between turbidity and number of fish caught? You may consider a correlation higher than 50% in magnitude as presence of a linear association.</p>
-<p><em>(5 points)</em></p>
+<section id="correlation-of-categorical-variables-with-price" class="level3" data-number="F.1.5">
+<h3 data-number="F.1.5" class="anchored" data-anchor-id="correlation-of-categorical-variables-with-price"><span class="header-section-number">F.1.5</span> Correlation of categorical variables with <code>price</code></h3>
+<p>Split the categorical columns of the <em>Housing_missing_price.csv</em>, such that they transform into dummy variables with each category corresponding to a column of 0s and 1s. The continuous variables remain as they were in the original dataset. Name this dataset as <code>housing_dummy</code>.</p>
+<p>Which categorical variable is the most highly correlated with <code>price</code>? Let that variable be <span class="math inline">\(V_{cat}\)</span>.</p>
+<p><em>(3 + 2 points)</em></p>
+<p><strong>Hint:</strong> <code>pd.get_dummies()</code></p>
 </section>
-<section id="fish-dimensions" class="level4" data-number="F.1.4.5">
-<h4 data-number="F.1.4.5" class="anchored" data-anchor-id="fish-dimensions"><span class="header-section-number">F.1.4.5</span> Fish dimensions</h4>
-<p>Now let’s turn to the length of fish captured, given by <code>Maximum (mm)</code> and <code>Minimum (mm)</code>. Find the overall maximum and minimum lengths of all fish in each region. Which region has the largest range in captured fish length?</p>
+<section id="missing-value-imputation-using-correlated-categorical-variable" class="level3" data-number="F.1.6">
+<h3 data-number="F.1.6" class="anchored" data-anchor-id="missing-value-imputation-using-correlated-categorical-variable"><span class="header-section-number">F.1.6</span> Missing value imputation using correlated categorical variable</h3>
+<p>Impute the missing value of the <code>price</code> of a house as the average price of all the houses that have the same value of <span class="math inline">\(V_{cat}\)</span>. For example, if <span class="math inline">\(V_{cat}\)</span> is <code>basement</code>, the missing price of a house that has a basement must be imputed as the average price of all the houses that have a basement, and the missing price of a house that lacks a basement must be imputed as the average price of all the houses that lack a basement.</p>
+<p>Plot the imputed <code>price</code> vs true <code>price</code> (from <em>Housing_complete.csv</em>) and print the RMSE (Root mean squared error). This is to be done only for the imputed values of <code>price</code>.</p>
+<p><em>(10 points)</em></p>
+<p><strong>Hint:</strong> You may use the following code to get the mean house price for each level of the variable <span class="math inline">\(V_{cat}\)</span>:</p>
+<div id="e8f6bb25" class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Replace 'Vcat' by the variable that you found to be the most correlated with 'price'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>price_Vcat <span class="op">=</span> housing_missing_price[<span class="st">'price'</span>].groupby(housing_missing_price[Vcat]).mean()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>price_Vcat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable" class="level3" data-number="F.1.7">
+<h3 data-number="F.1.7" class="anchored" data-anchor-id="missing-value-imputation-using-correlated-continuous-variable-within-the-categories-of-correlated-categorical-variable"><span class="header-section-number">F.1.7</span> Missing value imputation using correlated continuous variable within the categories of correlated categorical variable</h3>
+<p>Execute the following code. Note that the trendlines of <code>price</code> against <code>area</code> are different based on <code>airconditioning</code>.</p>
+<p>For each house, select the appropriate trendline to impute the missing <code>price</code>.</p>
+<p>Plot the imputed price vs true price (from <em>Housing_complete.csv</em>) and print the RMSE (Root mean squared error). This is to be done only for the imputed values of <code>price</code>.</p>
+<p><em>(15 points)</em></p>
+<div id="14da9d22" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.25</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.FacetGrid(housing_missing_price, hue <span class="op">=</span> <span class="st">'airconditioning'</span>,height<span class="op">=</span><span class="dv">6</span>, aspect<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a.<span class="bu">map</span>(sns.regplot,<span class="st">'area'</span>,<span class="st">'price'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>a.add_legend()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="f3729017" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<img src="./Datasets/assnE_image.png" width="675">
+</div>
+</div>
+</section>
+<section id="bonus-question-missing-value-imputation-with-knn" class="level3" data-number="F.1.8">
+<h3 data-number="F.1.8" class="anchored" data-anchor-id="bonus-question-missing-value-imputation-with-knn"><span class="header-section-number">F.1.8</span> <strong>Bonus</strong> question: Missing value imputation with KNN</h3>
+<p><em>(20 points)</em></p>
+<section id="identifying-optimal-k-by-k-fold-cross-validation" class="level4" data-number="F.1.8.1">
+<h4 data-number="F.1.8.1" class="anchored" data-anchor-id="identifying-optimal-k-by-k-fold-cross-validation"><span class="header-section-number">F.1.8.1</span> Identifying optimal <span class="math inline">\(K\)</span> by <span class="math inline">\(k\)</span>-fold cross validation</h4>
+<p>You need to impute the missing <code>price</code> using the KNN (<span class="math inline">\(K\)</span>-nearest neighbor) algorithm. However, before implementing the algorithm, find the optimal value of <span class="math inline">\(K\)</span>, using <span class="math inline">\(k\)</span>-fold cross-validation. Use all the variables in <code>housing_dummy</code>.</p>
+<p>Note that you <strong>cannot</strong> use <em>Housing_complete.csv</em> to find the optimal <span class="math inline">\(K\)</span>.</p>
+<p>Follow the <span class="math inline">\(k\)</span>-fold cross validation procedure below to find the optimal <span class="math inline">\(K\)</span>, i.e., the optimal number of nearest neighbors to consider when imputing missing values:</p>
+<ol type="1">
+<li><p>Remove observations with missing <code>price</code> from <code>housing_dummy</code>. Let us call the resulting DataFrame as <code>housing_missing_removed</code>.</p></li>
+<li><p>Split <code>housing_missing_removed</code> into <span class="math inline">\(k\)</span>-folds. Take <span class="math inline">\(k=10\)</span>. Each fold will have one-tenth of the observations of <code>housing_missing_removed</code>.</p></li>
+<li><p>Iterate over the <span class="math inline">\(K^{th}\)</span> potential value of <span class="math inline">\(K\)</span>, where <span class="math inline">\(K \in \{1,2,...,50\}\)</span>.</p>
+<p>A. Iterate over the <span class="math inline">\(i^{th}\)</span> fold, where <span class="math inline">\(i \in \{1,2,...,10\}\)</span></p>
+<p>I. Assume that the all the <code>price</code> values of the <span class="math inline">\(i^{th}\)</span> fold are missing. Impute the value of <code>price</code> for an observation in the <span class="math inline">\(i^{th}\)</span> fold as the mean <code>price</code> of the <span class="math inline">\(K\)</span>-nearest neighbors to the observation, where the neighbors are from among the observations in the remaining 9 folds.</p>
+<ol start="2" type="I">
+<li>Compute the RMSE (Root mean squared error) for the <span class="math inline">\(i^{th}\)</span> fold. Let us denote the RMSE for <span class="math inline">\(i^{th}\)</span> fold, and considering <span class="math inline">\(K\)</span> nearest neighbors as <span class="math inline">\(RMSE_{iK}\)</span>.</li>
+</ol>
+<p>B. Find the average of the 10 RMSEs obtained in 3(A). Let us denote it as <span class="math inline">\(RMSE_K\)</span>, i.e., RMSE for a given value of <span class="math inline">\(K\)</span>. Then, <span class="math display">\[RMSE_K = \frac{1}{10} \sum_{i=1}^{i=10} RMSE_{iK}\]</span></p></li>
+<li><p>The optimal value of <span class="math inline">\(K\)</span> is the one for which <span class="math inline">\(RMSE_K\)</span> is the minimum, i.e., <span class="math display">\[K_{optimal}=\underset{K \in \{1,...,50\}}{\operatorname{\ argmin}} RMSE_K\]</span></p></li>
+</ol>
+<p><strong>Assumption to make it a bit simpler:</strong> Ideally you should split the dataset randomly into <span class="math inline">\(k\)</span>-folds. However, to make it simpler, you may assume that the data is already shuffled, and you may take the first <span class="math inline">\(1/10^{th}\)</span> observations to be in the <span class="math inline">\(1^{st}\)</span> fold, the next <span class="math inline">\(1/10^{th}\)</span> to be in the <span class="math inline">\(2^{nd}\)</span> fold and so on.</p>
+<p><strong>More explanation</strong> about <span class="math inline">\(k\)</span>-fold cross validation and the optimal <span class="math inline">\(K\)</span>:</p>
+<p>You need to impute the missing price using the KNN (K-nearest neighbor) algorithm. However, before implementing the algorithm, find the optimal value of <span class="math inline">\(K\)</span>, using <span class="math inline">\(k\)</span>-fold cross-validation. This is an optimization method used for more advanced Machine Learning methods, such as KNN. In KNN, the number of neighbors, <span class="math inline">\(K\)</span>, is called a hyperparameter, which cannot be optimized with a mathematical method. Therefore, it needs a more coding-based optimization method called cross-validation.</p>
+<p>The idea of cross-validation is to split the dataset into subsets, called folds. After that a range of <span class="math inline">\(K\)</span> values is picked. For each <span class="math inline">\(K\)</span> value in the range, the KNN imputer is created and evaluated on each fold separately, returning an RMSE value for each fold. The average value of these RMSE values is the cross-validation RMSE value of that <span class="math inline">\(K\)</span> value. Cross-validation is a robust method to find the best <span class="math inline">\(K\)</span> in the KNN algorithm for the data at hand because it evaluates different parts of the data separately and takes the average of all results. It is called <span class="math inline">\(k\)</span>-fold cross-validation, with <span class="math inline">\(k\)</span> as the number of folds we want to use, usually 3, 5 or 10. In this problem, we will use 10-fold cross-validation. Note that you need nested for loops to iterate over both each <span class="math inline">\(K\)</span> value and each fold for this algorithm.</p>
+</section>
+<section id="implementing-knn-with-optimal-k" class="level4" data-number="F.1.8.2">
+<h4 data-number="F.1.8.2" class="anchored" data-anchor-id="implementing-knn-with-optimal-k"><span class="header-section-number">F.1.8.2</span> Implementing KNN with optimal <span class="math inline">\(K\)</span></h4>
+<p>Using the optimal value of <span class="math inline">\(K = K_{optimal}\)</span> obtained in the previous question, impute the missing values of <code>price</code> in <code>housing_missing_price</code>. Use all the variables in <code>housing_dummy</code> for implementing the KNN algorithm. Plot the imputed price vs true price (from <em>Housing_complete.csv</em>) and print the RMSE (Root mean squared error). This is to be done only for the imputed values of <code>price</code>.</p>
+<p>Answer check: The RMSE obtained with KNN should be lower than that obtained with any of the earlier methods. If not, then there may be some mistake in your KNN implementation.</p>
+</section>
+</section>
+<section id="ultra-bonus-question" class="level3" data-number="F.1.9">
+<h3 data-number="F.1.9" class="anchored" data-anchor-id="ultra-bonus-question"><span class="header-section-number">F.1.9</span> <strong>Ultra-bonus</strong> question</h3>
+<p><em>(30 points)</em></p>
+<p>Develop an algorithm to impute the missing <code>price</code>, such that it reduces the imputation RMSE to below $650k. Plot the imputed price vs true price (from <em>Housing_complete.csv</em>) and print the RMSE (Root mean squared error). This is to be done only for the imputed values of <code>price</code>.</p>
+<p><em>Note that we have not attempted to solve this question yet. We are not sure if a solution exists. However, if you find a solution, you will get 30 points.</em></p>
+<p><strong>Hint:</strong> In the bonus question, all variables were given equal weights when imputing missing values with KNN. However, shouldn’t some variables be given higher weight than others?</p>
+</section>
+</section>
+<section id="binning" class="level2" data-number="F.2">
+<h2 data-number="F.2" class="anchored" data-anchor-id="binning"><span class="header-section-number">F.2</span> Binning</h2>
+<p>Read <em>house_features_and_price.csv</em>. We will bin a couple of variables to better analyze the trend of <code>house_price</code> with those variables.</p>
+<section id="trend-with-house_age" class="level3" data-number="F.2.1">
+<h3 data-number="F.2.1" class="anchored" data-anchor-id="trend-with-house_age"><span class="header-section-number">F.2.1</span> Trend with <code>house_age</code></h3>
+<p>Make a scatterplot of <code>house_price</code> against <code>house_age</code>, along with the trendline. What is the trend indicated by the trendline?</p>
+<p><em>(4 points)</em></p>
+</section>
+<section id="trend-with-bins-of-house_age" class="level3" data-number="F.2.2">
+<h3 data-number="F.2.2" class="anchored" data-anchor-id="trend-with-bins-of-house_age"><span class="header-section-number">F.2.2</span> Trend with bins of <code>house_age</code></h3>
+<section id="section" class="level4" data-number="F.2.2.1">
+<h4 data-number="F.2.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">F.2.2.1</span> </h4>
+<p>Bin <code>house_age</code> into 5 approximately equal-sized bins.</p>
+<p><em>(3 points)</em></p>
+</section>
+<section id="section-1" class="level4" data-number="F.2.2.2">
+<h4 data-number="F.2.2.2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">F.2.2.2</span> </h4>
+<p>After binning, plot the mean <code>house_price</code> against the house age bins.</p>
+<p><em>(3 points)</em></p>
+</section>
+<section id="section-2" class="level4" data-number="F.2.2.3">
+<h4 data-number="F.2.2.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">F.2.2.3</span> </h4>
+<p>Is the trend seen with this plot different from that seen with the trendline in the previous question? If yes, then is one of the trends incorrect? Why or why not?</p>
+<p><em>(4 points)</em></p>
+</section>
+<section id="section-3" class="level4" data-number="F.2.2.4">
+<h4 data-number="F.2.2.4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">F.2.2.4</span> </h4>
+<p>Is one of the trends more informative? If yes, then which one and how?</p>
 <p><em>(4 points)</em></p>
 </section>
 </section>
+<section id="trend-with-number_convenience_stores" class="level3" data-number="F.2.3">
+<h3 data-number="F.2.3" class="anchored" data-anchor-id="trend-with-number_convenience_stores"><span class="header-section-number">F.2.3</span> Trend with <code>number_convenience_stores</code></h3>
+<p>Make a barplot to visualize the mean <code>house_price</code> against <code>number_convenience_stores</code>.</p>
+<p><em>(3 points)</em></p>
 </section>
-<section id="gdp-surplus-and-compensation" class="level2" data-number="F.2">
-<h2 data-number="F.2" class="anchored" data-anchor-id="gdp-surplus-and-compensation"><span class="header-section-number">F.2</span> GDP, surplus, and compensation</h2>
-<p>The dataset <em>Real GDP.csv</em> contains the GDP of each US State for all years starting from 1997 until 2020. The data is at <em>State</em> level, i.e., each observation corresponds to a unique State.</p>
-<p>The dataset <em>Surplus.csv</em> contains the surplus of each US State for all years starting from 1997 until 2020. The data is at <em>year</em> level, i.e., each observation corresponds to a unique year.</p>
-<p>The dataset <em>Compensation.csv</em> contains <em>Compensation</em> and <em>Chain-type quantity indexes for real GDP</em> for each US State and year starting from 1997 to 2020. The dataset is at <em>Year-State-Description</em> level, i.e., each observation corresponds to a unique <code>Year</code>-<code>State</code>-<code>Description</code> combination where <code>Description</code> refers to either <em>Compensation</em> or <em>Chain-type quantity indexes for real GDP</em>.</p>
-<section id="combining-datasets" class="level3" data-number="F.2.1">
-<h3 data-number="F.2.1" class="anchored" data-anchor-id="combining-datasets"><span class="header-section-number">F.2.1</span> Combining datasets</h3>
-<p>Combine all these datasets to obtain a dataset at <em>State-Year</em> level, i.e., each observation corresponds to a unique <code>State</code>-<code>Year</code> combination. The combined dataset must contain the GDP, surplus, <em>Compensation</em>, and <em>Chain-type quantity indexes for real GDP</em> for each US State and all years starting from 1997 until 2020. <em>Note that each observation must contain the name of the US State, year, and the four values (GDP, surplus, compensation, and Chain-type quantity indexes for real GDP).</em></p>
-<p><strong>Hint</strong>: Here is one way to do it:</p>
-<ol type="1">
-<li><p>Melt the GDP dataset to year-State level</p></li>
-<li><p>Melt the Surplus dataset to year-State level</p></li>
-<li><p>Pivot the compensation dataset to year-State level</p></li>
-<li><p>Now that all the datasets are at the year-State level, merge them!</p></li>
-</ol>
-<p><em>(3 + 3 + 3 + 1 = 10 points)</em></p>
+<section id="trend-with-bins-of-number_convenience_stores" class="level3" data-number="F.2.4">
+<h3 data-number="F.2.4" class="anchored" data-anchor-id="trend-with-bins-of-number_convenience_stores"><span class="header-section-number">F.2.4</span> Trend with bins of <code>number_convenience_stores</code></h3>
+<p>Bin <code>number_convenience_stores</code> into an appropriate number of bins such that the non-linear trend of the variation of <code>house_price</code> with the bins of <code>number_convenience_stores</code> is retained, while minimizing the number of bins.</p>
+<p>After binning, plot the mean <code>house_price</code> against the <code>number_convenience_stores</code> bins.</p>
+<p><em>(8 points)</em></p>
 </section>
-<section id="time-trend-gdp-with-region" class="level3" data-number="F.2.2">
-<h3 data-number="F.2.2" class="anchored" data-anchor-id="time-trend-gdp-with-region"><span class="header-section-number">F.2.2</span> Time trend: GDP with region</h3>
-<p>Merge the file <em>State_region_mapping.csv</em> with the dataset obtained in the previous question. Make a lineplot showing the mean GDP for each of the five regions with year. Do not display the confidence interval. Which two regions seems to have the least growth in GDP over the past 24 years?</p>
-<p><em>(5 points)</em></p>
+<section id="size-of-number_convenience_stores-bins" class="level3" data-number="F.2.5">
+<h3 data-number="F.2.5" class="anchored" data-anchor-id="size-of-number_convenience_stores-bins"><span class="header-section-number">F.2.5</span> Size of <code>number_convenience_stores</code> bins</h3>
+<p>Print the size of bins obtained in the previous question. Are the bins of approximately equal size? If not, is it reasonable to have bins of unequal sizes to visualize the trend of <code>house_price</code> with <code>number_convenience_stores</code>.?</p>
+<p><em>(2 + 4 points)</em></p>
+</section>
+</section>
+<section id="outliers" class="level2" data-number="F.3">
+<h2 data-number="F.3" class="anchored" data-anchor-id="outliers"><span class="header-section-number">F.3</span> Outliers</h2>
+<section id="identifying-outlying-prices" class="level3" data-number="F.3.1">
+<h3 data-number="F.3.1" class="anchored" data-anchor-id="identifying-outlying-prices"><span class="header-section-number">F.3.1</span> Identifying outlying prices</h3>
+<p>Continue working with <code>house_features_and_price.csv</code>. Determine how many houses have outlying values in <code>house_price</code> using both the Z-score method and the IQR method.</p>
+<ul>
+<li><strong>Question</strong>: Which method is more conservative for this dataset? <em>(6 + 2 points)</em></li>
+</ul>
+</section>
+<section id="quick-eda" class="level3" data-number="F.3.2">
+<h3 data-number="F.3.2" class="anchored" data-anchor-id="quick-eda"><span class="header-section-number">F.3.2</span> Quick EDA</h3>
+<p>How are these houses (identified in the previous question as outliers) different from the houses in the rest of the dataset, which might be making them extremely expensive / extremely cheap? Explore the data and mention your hypothesis.</p>
+<p><em>(8 points)</em></p>
 
 
 </section>
@@ -954,8 +1081,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Datasets.html" class="pagination-link" aria-label="Datasets &amp; Templates">
-        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Assignment G.html" class="pagination-link" aria-label="Assignment G">
+        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

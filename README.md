@@ -1,17 +1,26 @@
 # Data Science I with Python — STAT 303-1, Section 20
 
-Free coursebook by Lizhen Shi for Northwestern University's Department of Statistics and Data Science. This clean edition preserves the 25 pages of the original online book, including its assignments, saved notebook outputs, navigation, and search.
+Free coursebook by Lizhen Shi for Northwestern University's Department of Statistics and Data Science. This edition retains the original teaching material and saved outputs while updating the setup sequence and assignments.
 
 **Read the book:** https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/
 
 ## Repository contents
 
-- `_quarto.yml`, `index.qmd`, and 24 chapter/appendix notebooks: editable book sources.
+- `_quarto.yml`, `index.qmd`, and chapter/appendix notebooks: editable book sources.
 - `Datasets/`, `images/`, and referenced root-level data files: materials used in the active chapters. Geographic shapefiles include all companion files.
 - `docs/`: the published HTML book and its required browser assets. GitHub Pages serves this directory from `main`.
 - `references.bib`, `NU_Stat_logo.png`, and `LICENSE.txt`: bibliography, branding, and original license.
 
 The initial `docs/` pages are copied unchanged from the original published repository. The original repository and website remain available and unchanged.
+
+## Teaching sequence
+
+- Assignment A reviews prerequisite Python skills.
+- Chapters 1–2 cover VS Code, a Quarto refresher, project environments, packages, and paths.
+- Assignment B applies setup in a separate project; download `downloads/assignment-b-setup.zip`.
+- Assignments C–G cover Pandas, NumPy, visualization, cleaning/preparation, and wrangling (formerly B–F).
+- `downloads/setup-practice.zip` contains only the two chapter practice notebooks and their data.
+- Chapter practice instructions and formal assignment instructions each have one authoritative coursebook page. Instructor quiz artifacts are not public website resources.
 
 ## Update the book
 
