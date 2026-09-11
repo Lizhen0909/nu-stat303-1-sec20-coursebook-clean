@@ -420,6 +420,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Calculate interpretable summaries and proportions with explicit denominators.</li>
 </ul>
 <p>You do not need NumPy for this chapter. NumPy Fundamentals follows and will develop array shapes, positional operations, and axes.</p>
+<section id="how-to-use-this-chapter" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="how-to-use-this-chapter"><span class="header-section-number">4.0.1</span> How to Use This Chapter</h3>
+<p>Read the worked lesson in order, then complete the final practice activity. Supporting examples give you a reference for other common tasks; they do not add requirements to the Canvas quiz. The album and survey exercises provide further independent practice.</p>
+<p>Pandas provides labeled Series and DataFrames for organizing and analyzing data. NumPy supplies array operations used throughout scientific Python; plotting libraries visualize results, and statistical and machine-learning libraries can consume prepared tables. We will introduce these connections as the course develops.</p>
+<p>For deeper examples, follow the links in <a href="#optional-extensions">Optional Extensions</a>. Those topics are developed in Pandas Intermediate after NumPy Fundamentals.</p>
+</section>
 <section id="set-up-your-practice-files" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="set-up-your-practice-files"><span class="header-section-number">4.1</span> Set Up Your Practice Files</h2>
 <p>Download the <a href="downloads/pandas-fundamentals-practice.zip">Pandas Fundamentals practice kit</a>, extract it, and place <code>stat303-pandas-fundamentals</code> inside your existing <code>stat303-setup</code> project. Select the project environment verified in the setup chapters. The examples need pandas, which you already installed.</p>
@@ -434,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         ├── Top 10 Albums By Year.csv
         └── STAT303-1 survey for data analysis.csv</code></pre>
 <p>Use <code>pandas_examples.ipynb</code> for worked examples and <code>activity04.ipynb</code> for your own report. Both should run with <code>stat303-pandas-fundamentals</code> as the notebook’s working directory. Keep the input files unchanged.</p>
-<div id="pandas-002" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.036645Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.036521Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.142276Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.141982Z&quot;}}" data-execution_count="1">
+<div id="pandas-002" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.587656Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.587511Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.692585Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.692098Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -451,7 +457,7 @@ Movie file found: True</code></pre>
 <section id="a-small-table" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="a-small-table"><span class="header-section-number">4.2</span> A Small Table for Learning Selection</h2>
 <p>A dictionary of lists builds a DataFrame: the keys become column names, and each list supplies a column. The lists here have equal lengths. We deliberately use row labels that differ from row positions.</p>
-<div id="pandas-004" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.143363Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.143277Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.152127Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.151764Z&quot;}}" data-execution_count="2">
+<div id="pandas-004" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.693624Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.693538Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.698255Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.697862Z&quot;}}" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>screenings <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Title'</span>: [<span class="st">'Cedar'</span>, <span class="st">'Harbor'</span>, <span class="st">'Orbit'</span>, <span class="st">'Meadow'</span>, <span class="st">'Ember'</span>],</span>
@@ -513,7 +519,7 @@ Movie file found: True</code></pre>
 </div>
 <p>These are invented screenings for illustration. One row is one screening; <code>Title</code>, <code>Rating</code>, and <code>Tickets</code> are variables. The first row’s <strong>label</strong> is 104 and its <strong>position</strong> is 0. Position describes where a row currently appears; it is not another stored index column.</p>
 <p>For comparison, a list of dictionaries represents one row per dictionary, with dictionary keys identifying columns. A Series can be created from a list or a dictionary of label–value pairs:</p>
-<div id="pandas-006" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.152963Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.152904Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.154620Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.154340Z&quot;}}" data-execution_count="3">
+<div id="pandas-006" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.699243Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.699180Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.700988Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.700685Z&quot;}}" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ticket_prices <span class="op">=</span> pd.Series({<span class="st">'weekday'</span>: <span class="dv">10</span>, <span class="st">'weekend'</span>: <span class="dv">12</span>})</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ticket_prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -523,22 +529,63 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>The main work in this chapter uses the imported movie DataFrame. Small tables such as <code>screenings</code> make selection rules easier to see before applying them to thousands of rows.</p>
+<section id="creating-series-and-dataframes" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="creating-series-and-dataframes"><span class="header-section-number">4.2.1</span> Create a Series from a List or Dictionary</h3>
+<p>A Series contains one sequence of values and an index. A list supplies the values; without an explicit index, pandas supplies positions 0, 1, and so on as labels. A dictionary supplies both labels (keys) and values. A Series also has a dtype describing how its values are stored.</p>
+<div id="8784dfdd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.701795Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.701732Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.703689Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.703358Z&quot;}}" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prices_from_list <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">12</span>], index<span class="op">=</span>[<span class="st">'weekday'</span>, <span class="st">'weekend'</span>], name<span class="op">=</span><span class="st">'price'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prices_from_dict <span class="op">=</span> pd.Series({<span class="st">'weekday'</span>: <span class="dv">10</span>, <span class="st">'weekend'</span>: <span class="dv">12</span>}, name<span class="op">=</span><span class="st">'price'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices_from_list)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Same values and labels:'</span>, prices_from_list.equals(prices_from_dict))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>weekday    10
+weekend    12
+Name: price, dtype: int64
+Same values and labels: True</code></pre>
+</div>
+</div>
+</section>
+<section id="create-a-dataframe-by-columns-or-by-records" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="create-a-dataframe-by-columns-or-by-records"><span class="header-section-number">4.2.2</span> Create a DataFrame by Columns or by Records</h3>
+<p>A dictionary of equal-length lists describes columns. A list of dictionaries describes records: each dictionary contributes a row, and its keys identify columns. A missing key creates a missing entry, so inspect the result before calculating with it.</p>
+<div id="3e592d1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.704456Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.704398Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.707001Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.706661Z&quot;}}" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>by_columns <span class="op">=</span> pd.DataFrame({<span class="st">'Title'</span>: [<span class="st">'Cedar'</span>, <span class="st">'Harbor'</span>], <span class="st">'Tickets'</span>: [<span class="dv">120</span>, <span class="dv">80</span>]})</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>by_records <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'Title'</span>: <span class="st">'Cedar'</span>, <span class="st">'Tickets'</span>: <span class="dv">120</span>},</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'Title'</span>: <span class="st">'Harbor'</span>, <span class="st">'Tickets'</span>: <span class="dv">80</span>},</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(by_records)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Same table:'</span>, by_columns.equals(by_records))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame([{<span class="st">'Title'</span>: <span class="st">'Cedar'</span>, <span class="st">'Tickets'</span>: <span class="dv">120</span>}, {<span class="st">'Title'</span>: <span class="st">'Harbor'</span>}]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Title  Tickets
+0   Cedar      120
+1  Harbor       80
+Same table: True
+    Title  Tickets
+0   Cedar    120.0
+1  Harbor      NaN</code></pre>
+</div>
+</div>
+<p>Use these constructors for small examples or data assembled in Python. For CSV, Excel, JSON, HTML, and SQL sources, use the readers introduced in <a href="./Reading_data.html">Reading Data</a>. Constructing a DataFrame does not establish that its values are complete or correct.</p>
+<p><strong>Check your understanding:</strong> Create a three-row table with columns <code>item</code> and <code>price</code> using each construction method. What happens when one record omits <code>price</code>?</p>
+</section>
 </section>
 <section id="select-columns-and-filter-rows" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="select-columns-and-filter-rows"><span class="header-section-number">4.3</span> Select Columns and Filter Rows</h2>
 <section id="one-column-can-be-a-series-or-a-dataframe" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="one-column-can-be-a-series-or-a-dataframe"><span class="header-section-number">4.3.1</span> One Column Can Be a Series or a DataFrame</h3>
-<div id="pandas-008" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.155411Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.155356Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.157905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.157578Z&quot;}}" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rating_series <span class="op">=</span> screenings[<span class="st">'Rating'</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rating_table <span class="op">=</span> screenings[[<span class="st">'Rating'</span>]]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Single name:'</span>, <span class="bu">type</span>(rating_series).<span class="va">__name__</span>, rating_series.shape)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'List of names:'</span>, <span class="bu">type</span>(rating_table).<span class="va">__name__</span>, rating_table.shape)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>rating_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-008" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.707764Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.707713Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.710320Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.710024Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rating_series <span class="op">=</span> screenings[<span class="st">'Rating'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>rating_table <span class="op">=</span> screenings[[<span class="st">'Rating'</span>]]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Single name:'</span>, <span class="bu">type</span>(rating_series).<span class="va">__name__</span>, rating_series.shape)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'List of names:'</span>, <span class="bu">type</span>(rating_table).<span class="va">__name__</span>, rating_table.shape)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>rating_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Single name: Series (5,)
 List of names: DataFrame (5, 1)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -578,9 +625,9 @@ List of names: DataFrame (5, 1)</code></pre>
 </div>
 <p><code>screenings['Rating']</code> selects a Series. <code>screenings[['Rating']]</code> passes a <strong>list containing one column name</strong> and preserves a two-dimensional DataFrame. The inner brackets construct the list; the outer brackets perform selection.</p>
 <p>Prefer bracket notation for columns. It handles names containing spaces, such as <code>movies['IMDB Rating']</code>, and avoids collisions with methods such as <code>count</code>. With these unique column names, selecting a single name returns a Series; a list of names returns a DataFrame.</p>
-<div id="pandas-010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.158607Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.158554Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.160841Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.160506Z&quot;}}" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>screenings[[<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="pandas-010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.711191Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.711141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.713418Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.713117Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>screenings[[<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -628,10 +675,10 @@ List of names: DataFrame (5, 1)</code></pre>
 <section id="build-a-mask-before-filtering" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="build-a-mask-before-filtering"><span class="header-section-number">4.3.2</span> Build a Mask Before Filtering</h3>
 <p>A comparison applied to a Series produces a Boolean Series. Each Boolean value answers the question for its corresponding row.</p>
-<div id="pandas-012" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.161627Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.161572Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.164357Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.164042Z&quot;}}" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>high_rating <span class="op">=</span> screenings[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(high_rating)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>screenings.loc[high_rating, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-012" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.714137Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.714088Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.716722Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.716432Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>high_rating <span class="op">=</span> screenings[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(high_rating)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>screenings.loc[high_rating, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>104    False
 101     True
@@ -640,7 +687,7 @@ List of names: DataFrame (5, 1)</code></pre>
 109    False
 Name: Rating, dtype: bool</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -674,10 +721,10 @@ Name: Rating, dtype: bool</code></pre>
 <section id="combine-conditions" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="combine-conditions"><span class="header-section-number">4.3.3</span> Combine Conditions</h3>
 <p>Use <code>&amp;</code> for elementwise AND, <code>|</code> for elementwise OR, and <code>~</code> to negate a Boolean mask. Put parentheses around each comparison. Python’s <code>and</code> and <code>or</code> do not combine pandas Series in this way.</p>
-<div id="pandas-014" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.165051Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.165002Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.167453Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.167150Z&quot;}}" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> (screenings[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>) <span class="op">&amp;</span> (screenings[<span class="st">'Tickets'</span>] <span class="op">&lt;</span> <span class="dv">90</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>screenings.loc[selected, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="pandas-014" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.717465Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.717416Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.719879Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.719559Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> (screenings[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>) <span class="op">&amp;</span> (screenings[<span class="st">'Tickets'</span>] <span class="op">&lt;</span> <span class="dv">90</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>screenings.loc[selected, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -705,10 +752,10 @@ Name: Rating, dtype: bool</code></pre>
 </div>
 <p>Both conditions must hold for the same row. Replacing <code>&amp;</code> with <code>|</code> would keep a row satisfying either condition.</p>
 <p>For membership in a set of categories, use <code>.isin()</code> rather than writing many equality comparisons:</p>
-<div id="pandas-016" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.168131Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.168085Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.170458Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.170112Z&quot;}}" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>chosen_titles <span class="op">=</span> screenings[<span class="st">'Title'</span>].isin([<span class="st">'Harbor'</span>, <span class="st">'Meadow'</span>])</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>screenings.loc[chosen_titles, [<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="pandas-016" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.720566Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.720519Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.722898Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.722568Z&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>chosen_titles <span class="op">=</span> screenings[<span class="st">'Title'</span>].isin([<span class="st">'Harbor'</span>, <span class="st">'Meadow'</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>screenings.loc[chosen_titles, [<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -782,11 +829,11 @@ Name: Rating, dtype: bool</code></pre>
 </tbody>
 </table>
 <p>The colon alone means all entries on that axis.</p>
-<div id="pandas-018" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.171165Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.171120Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.173458Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.173099Z&quot;}}" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Labels 101 and 103:'</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.loc[[<span class="dv">101</span>, <span class="dv">103</span>], [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]])</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Positions 1 and 2:'</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-018" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.723657Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.723610Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.726036Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.725651Z&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Labels 101 and 103:'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.loc[[<span class="dv">101</span>, <span class="dv">103</span>], [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Positions 1 and 2:'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Labels 101 and 103:
       Title  Rating
@@ -803,9 +850,9 @@ Positions 1 and 2:
 <section id="label-slices-follow-the-current-row-order" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="label-slices-follow-the-current-row-order"><span class="header-section-number">4.4.2</span> Label Slices Follow the Current Row Order</h3>
 <p>With the unique labels in this example, a label slice starts at the first endpoint and continues through the second endpoint in the table’s current order. Both endpoints are included.</p>
-<div id="pandas-020" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.174095Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.174047Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.176193Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.175949Z&quot;}}" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>screenings.loc[<span class="dv">101</span>:<span class="dv">103</span>, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="pandas-020" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.726722Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.726679Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.728786Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.728503Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>screenings.loc[<span class="dv">101</span>:<span class="dv">103</span>, [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -843,10 +890,10 @@ Positions 1 and 2:
 </section>
 <section id="sorting-changes-positions-not-row-identity" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="sorting-changes-positions-not-row-identity"><span class="header-section-number">4.4.3</span> Sorting Changes Positions, Not Row Identity</h3>
-<div id="pandas-022" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.176914Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.176854Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.179402Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.179071Z&quot;}}" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ordered <span class="op">=</span> screenings.sort_values(<span class="st">'Rating'</span>, ascending<span class="op">=</span><span class="va">False</span>, kind<span class="op">=</span><span class="st">'stable'</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ordered</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="pandas-022" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.729518Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.729474Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.731942Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.731722Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ordered <span class="op">=</span> screenings.sort_values(<span class="st">'Rating'</span>, ascending<span class="op">=</span><span class="va">False</span>, kind<span class="op">=</span><span class="st">'stable'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ordered</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -896,9 +943,9 @@ Positions 1 and 2:
 </div>
 </div>
 </div>
-<div id="pandas-023" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.180175Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.180121Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.181570Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.181267Z&quot;}}" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'First row after sorting:'</span>, ordered.iloc[<span class="dv">0</span>][<span class="st">'Title'</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Row still labeled 104:'</span>, ordered.loc[<span class="dv">104</span>, <span class="st">'Title'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-023" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.732824Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.732775Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.734324Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.734067Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'First row after sorting:'</span>, ordered.iloc[<span class="dv">0</span>][<span class="st">'Title'</span>])</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Row still labeled 104:'</span>, ordered.loc[<span class="dv">104</span>, <span class="st">'Title'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>First row after sorting: Harbor
 Row still labeled 104: Cedar</code></pre>
@@ -910,15 +957,15 @@ Row still labeled 104: Cedar</code></pre>
 <section id="change-an-index-deliberately" class="level3" data-number="4.4.4">
 <h3 data-number="4.4.4" class="anchored" data-anchor-id="change-an-index-deliberately"><span class="header-section-number">4.4.4</span> Change an Index Deliberately</h3>
 <p>When a column supplies meaningful row labels, <code>set_index()</code> can move it into the index. <code>reset_index()</code> normally moves those labels back into a column and supplies a new default index.</p>
-<div id="pandas-025" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.182268Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.182223Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.184711Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.184451Z&quot;}}" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>by_title <span class="op">=</span> screenings.set_index(<span class="st">'Title'</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'New index:'</span>, by_title.index.tolist())</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>restored <span class="op">=</span> by_title.reset_index()</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>restored.head(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-025" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.735066Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.735004Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.737800Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.737418Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>by_title <span class="op">=</span> screenings.set_index(<span class="st">'Title'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'New index:'</span>, by_title.index.tolist())</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>restored <span class="op">=</span> by_title.reset_index()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>restored.head(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>New index: ['Cedar', 'Harbor', 'Orbit', 'Meadow', 'Ember']</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -956,14 +1003,14 @@ Row still labeled 104: Cedar</code></pre>
 <section id="sort-and-find-extremes" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="sort-and-find-extremes"><span class="header-section-number">4.5</span> Sort Movies and Find Extremes</h2>
 <p>Return to the historical movie data from Reading Data. We will load it once and use separate names for derived tables.</p>
-<div id="pandas-027" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.185438Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.185397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.190542Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.190236Z&quot;}}" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_csv(movie_path)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Movie table shape:'</span>, movies.shape)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>movies[[<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>, <span class="st">'Production Budget'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-027" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.738545Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.738488Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.743631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.743314Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_csv(movie_path)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Movie table shape:'</span>, movies.shape)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>movies[[<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>, <span class="st">'Production Budget'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Movie table shape: (2228, 11)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
@@ -1004,13 +1051,13 @@ Row still labeled 104: Cedar</code></pre>
 <section id="sort-by-one-or-more-variables" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="sort-by-one-or-more-variables"><span class="header-section-number">4.5.1</span> Sort by One or More Variables</h3>
 <p><strong>Question:</strong> Which movies have the highest ratings? For tied ratings, show larger vote counts first.</p>
-<div id="pandas-029" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.191214Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.191161Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.195081Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.194754Z&quot;}}" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ranked_movies <span class="op">=</span> movies.sort_values(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'IMDB Rating'</span>, <span class="st">'IMDB Votes'</span>, <span class="st">'Title'</span>],</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>],</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ranked_movies[[<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>, <span class="st">'IMDB Votes'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="pandas-029" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.744422Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.744373Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.748138Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.747880Z&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ranked_movies <span class="op">=</span> movies.sort_values(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'IMDB Rating'</span>, <span class="st">'IMDB Votes'</span>, <span class="st">'Title'</span>],</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>],</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>ranked_movies[[<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>, <span class="st">'IMDB Votes'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
@@ -1063,25 +1110,140 @@ Row still labeled 104: Cedar</code></pre>
 <p>The sorting keys are applied in order: rating descending, then votes descending within rating ties, then title alphabetically within remaining ties. Sorting preserves existing row labels unless you explicitly request a new index.</p>
 <p><code>movies.nlargest(5, 'Worldwide Gross')</code> is a convenient alternative when you only want the largest few values of a numeric variable. The default keeps the first rows encountered at a tied cutoff; <code>keep='all'</code> may return more than five rows when the cutoff is tied. State the tie rule when it matters.</p>
 </section>
-<section id="extreme-value-versus-record-containing-it" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="extreme-value-versus-record-containing-it"><span class="header-section-number">4.5.2</span> Extreme Value Versus Record Containing It</h3>
-<div id="pandas-031" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.195778Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.195727Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.197975Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.197701Z&quot;}}" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>maximum_gross <span class="op">=</span> movies[<span class="st">'Worldwide Gross'</span>].<span class="bu">max</span>()</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>maximum_label <span class="op">=</span> movies[<span class="st">'Worldwide Gross'</span>].idxmax()</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Maximum worldwide gross:'</span>, maximum_gross)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Label of first maximum:'</span>, maximum_label)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>movies.loc[maximum_label, [<span class="st">'Title'</span>, <span class="st">'Worldwide Gross'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="top-and-bottom-records-sorting-the-index" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="top-and-bottom-records-sorting-the-index"><span class="header-section-number">4.5.2</span> Top and Bottom Records; Sorting the Index</h3>
+<p>Use <code>nlargest()</code> or <code>nsmallest()</code> to select a few records by a numeric column. Use a full sort when you need a complete ordering or several explicit tie-breaking rules. <code>sort_index()</code> orders labels, whereas <code>sort_values()</code> orders measurements.</p>
+<div id="a421dffa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.748906Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.748856Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.753556Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.753265Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Two largest ticket counts:'</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.nlargest(<span class="dv">2</span>, <span class="st">'Tickets'</span>)[[<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Two smallest ticket counts:'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.nsmallest(<span class="dv">2</span>, <span class="st">'Tickets'</span>)[[<span class="st">'Title'</span>, <span class="st">'Tickets'</span>]])</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Rows ordered by their labels:'</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.sort_index())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Two largest ticket counts:
+     Title  Tickets
+107  Orbit      150
+104  Cedar      120
+
+Two smallest ticket counts:
+      Title  Tickets
+101  Harbor       80
+103  Meadow       90
+
+Rows ordered by their labels:
+      Title  Rating  Tickets
+101  Harbor     8.1       80
+103  Meadow     8.1       90
+104   Cedar     7.2      120
+107   Orbit     6.5      150
+109   Ember     7.8      110</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-ranking" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="basic-ranking"><span class="header-section-number">4.5.3</span> Basic Ranking and Ties</h3>
+<p>Sorting changes row order. Ranking assigns a number to each row while retaining that order. With <code>ascending=False</code>, the highest rating receives the best (smallest) rank. The default averages the ranks occupied by a tie; <code>method='min'</code> gives every tied record the smallest of those ranks.</p>
+<div id="db2c1326" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.754486Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.754426Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.757554Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.757270Z&quot;}}" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>screening_ranks <span class="op">=</span> screenings[[<span class="st">'Title'</span>, <span class="st">'Rating'</span>]].copy()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>screening_ranks[<span class="st">'average_rank'</span>] <span class="op">=</span> screenings[<span class="st">'Rating'</span>].rank(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>screening_ranks[<span class="st">'competition_rank'</span>] <span class="op">=</span> screenings[<span class="st">'Rating'</span>].rank(ascending<span class="op">=</span><span class="va">False</span>, method<span class="op">=</span><span class="st">'min'</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>screening_ranks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Rating</th>
+<th data-quarto-table-cell-role="th">average_rank</th>
+<th data-quarto-table-cell-role="th">competition_rank</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>Cedar</td>
+<td>7.2</td>
+<td>4.0</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">101</th>
+<td>Harbor</td>
+<td>8.1</td>
+<td>1.5</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">107</th>
+<td>Orbit</td>
+<td>6.5</td>
+<td>5.0</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>Meadow</td>
+<td>8.1</td>
+<td>1.5</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">109</th>
+<td>Ember</td>
+<td>7.8</td>
+<td>3.0</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Harbor and Meadow occupy ranks 1 and 2, so their average ranks are both 1.5 and their competition ranks are both 1. The next rank is 3. A rank is not a rating difference: moving one rank does not imply a fixed change in rating.</p>
+<p><strong>Try it:</strong> Add <code>method='dense'</code>. Which rank follows the two tied leaders? See <a href="./data_types_in_pandas.html#ranking-and-percentiles">ranking conventions and percentiles</a> for a worked comparison.</p>
+</section>
+<section id="extreme-value-versus-record-containing-it" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="extreme-value-versus-record-containing-it"><span class="header-section-number">4.5.4</span> Extreme Value Versus Record Containing It</h3>
+<div id="pandas-031" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.758366Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.758298Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.760723Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.760399Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>maximum_gross <span class="op">=</span> movies[<span class="st">'Worldwide Gross'</span>].<span class="bu">max</span>()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>maximum_label <span class="op">=</span> movies[<span class="st">'Worldwide Gross'</span>].idxmax()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Maximum worldwide gross:'</span>, maximum_gross)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Label of first maximum:'</span>, maximum_label)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>movies.loc[maximum_label, [<span class="st">'Title'</span>, <span class="st">'Worldwide Gross'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Maximum worldwide gross: 2767891499
 Label of first maximum: 2094</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>Title                  Avatar
 Worldwide Gross    2767891499
 Name: 2094, dtype: object</code></pre>
 </div>
 </div>
 <p><code>.max()</code> returns the value. <code>.idxmax()</code> returns the label of its first occurrence; <code>.loc</code> then retrieves the record. This works as a single-record lookup here because the imported index is unique. Ties, duplicate labels, and columns with no observed values need explicit handling.</p>
+<div id="ced7c09a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.761384Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.761339Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.763670Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.763369Z&quot;}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'All records tied at the maximum rating:'</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.loc[screenings[<span class="st">'Rating'</span>].eq(screenings[<span class="st">'Rating'</span>].<span class="bu">max</span>()), [<span class="st">'Title'</span>, <span class="st">'Rating'</span>]])</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum rating:'</span>, screenings[<span class="st">'Rating'</span>].<span class="bu">min</span>())</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Label of first minimum:'</span>, screenings[<span class="st">'Rating'</span>].idxmin())</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Position of first maximum:'</span>, screenings[<span class="st">'Rating'</span>].argmax())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All records tied at the maximum rating:
+      Title  Rating
+101  Harbor     8.1
+103  Meadow     8.1
+Minimum rating: 6.5
+Label of first minimum: 107
+Position of first maximum: 1</code></pre>
+</div>
+</div>
+<p><code>argmax()</code> gives a position for use with <code>.iloc</code>; <code>idxmax()</code> gives a label for use with <code>.loc</code>. Their numerical values can happen to match under a default index, which is why we use nonconsecutive labels here. Check that there is at least one observed value before asking for an extreme record.</p>
 <p><strong>Pause and explain:</strong> Why would passing <code>maximum_label</code> to <code>.iloc</code> be unsafe after sorting?</p>
 </section>
 </section>
@@ -1090,13 +1252,13 @@ Name: 2094, dtype: object</code></pre>
 <section id="calculate-a-variable-with-meaningful-units" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="calculate-a-variable-with-meaningful-units"><span class="header-section-number">4.6.1</span> Calculate a Variable with Meaningful Units</h3>
 <p><strong>Question:</strong> By how many millions of dollars does worldwide gross exceed the recorded production budget?</p>
-<div id="pandas-033" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.198648Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.198603Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.201369Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.201146Z&quot;}}" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>movie_analysis <span class="op">=</span> movies.copy()</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>movie_analysis[<span class="st">'gross_minus_budget_millions'</span>] <span class="op">=</span> (</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    movie_analysis[<span class="st">'Worldwide Gross'</span>] <span class="op">-</span> movie_analysis[<span class="st">'Production Budget'</span>]</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> <span class="dv">1_000_000</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>movie_analysis[[<span class="st">'Title'</span>, <span class="st">'gross_minus_budget_millions'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="pandas-033" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.764430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.764382Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.767150Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.766838Z&quot;}}" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>movie_analysis <span class="op">=</span> movies.copy()</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>movie_analysis[<span class="st">'gross_minus_budget_millions'</span>] <span class="op">=</span> (</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    movie_analysis[<span class="st">'Worldwide Gross'</span>] <span class="op">-</span> movie_analysis[<span class="st">'Production Budget'</span>]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> <span class="dv">1_000_000</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>movie_analysis[[<span class="st">'Title'</span>, <span class="st">'gross_minus_budget_millions'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -1132,20 +1294,20 @@ Name: 2094, dtype: object</code></pre>
 </div>
 <p>Pandas performs the arithmetic across corresponding rows without an explicit Python loop. The result is measured in <strong>millions of dollars</strong>. It is not actual profit: the file does not account for all costs or how ticket revenue is distributed.</p>
 <p>For a ratio, keep only records with an observed, positive denominator. Do not replace zero budgets with 1 to make division run; that would invent budget information.</p>
-<div id="pandas-035" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.202162Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.202106Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.206572Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.206257Z&quot;}}" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>positive_budget <span class="op">=</span> movie_analysis[<span class="st">'Production Budget'</span>].notna() <span class="op">&amp;</span> (</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    movie_analysis[<span class="st">'Production Budget'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>budget_movies <span class="op">=</span> movie_analysis.loc[positive_budget].copy()</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>budget_movies[<span class="st">'gross_to_budget'</span>] <span class="op">=</span> (</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    budget_movies[<span class="st">'Worldwide Gross'</span>] <span class="op">/</span> budget_movies[<span class="st">'Production Budget'</span>]</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Rows excluded for missing or nonpositive budgets:'</span>, <span class="bu">len</span>(movie_analysis) <span class="op">-</span> <span class="bu">len</span>(budget_movies))</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>budget_movies[[<span class="st">'Title'</span>, <span class="st">'gross_to_budget'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-035" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.767887Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.767839Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.770891Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.770571Z&quot;}}" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>positive_budget <span class="op">=</span> movie_analysis[<span class="st">'Production Budget'</span>].notna() <span class="op">&amp;</span> (</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    movie_analysis[<span class="st">'Production Budget'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>budget_movies <span class="op">=</span> movie_analysis.loc[positive_budget].copy()</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>budget_movies[<span class="st">'gross_to_budget'</span>] <span class="op">=</span> (</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    budget_movies[<span class="st">'Worldwide Gross'</span>] <span class="op">/</span> budget_movies[<span class="st">'Production Budget'</span>]</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Rows excluded for missing or nonpositive budgets:'</span>, <span class="bu">len</span>(movie_analysis) <span class="op">-</span> <span class="bu">len</span>(budget_movies))</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>budget_movies[[<span class="st">'Title'</span>, <span class="st">'gross_to_budget'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows excluded for missing or nonpositive budgets: 0</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -1183,10 +1345,10 @@ Name: 2094, dtype: object</code></pre>
 </section>
 <section id="assign-the-return-value-when-you-want-a-new-table" class="level3" data-number="4.6.2">
 <h3 data-number="4.6.2" class="anchored" data-anchor-id="assign-the-return-value-when-you-want-a-new-table"><span class="header-section-number">4.6.2</span> Assign the Return Value When You Want a New Table</h3>
-<div id="pandas-037" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.207302Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.207250Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.208920Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.208619Z&quot;}}" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>renamed <span class="op">=</span> movie_analysis.rename(columns<span class="op">=</span>{<span class="st">'IMDB Rating'</span>: <span class="st">'rating'</span>})</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Original still has IMDB Rating:'</span>, <span class="st">'IMDB Rating'</span> <span class="kw">in</span> movie_analysis.columns)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Returned table has rating:'</span>, <span class="st">'rating'</span> <span class="kw">in</span> renamed.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-037" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.771637Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.771582Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.773182Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.772936Z&quot;}}" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>renamed <span class="op">=</span> movie_analysis.rename(columns<span class="op">=</span>{<span class="st">'IMDB Rating'</span>: <span class="st">'rating'</span>})</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Original still has IMDB Rating:'</span>, <span class="st">'IMDB Rating'</span> <span class="kw">in</span> movie_analysis.columns)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Returned table has rating:'</span>, <span class="st">'rating'</span> <span class="kw">in</span> renamed.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Original still has IMDB Rating: True
 Returned table has rating: True</code></pre>
@@ -1194,23 +1356,99 @@ Returned table has rating: True</code></pre>
 </div>
 <p>Methods such as <code>rename()</code>, <code>drop()</code>, and <code>sort_values()</code> return a result by default. Calling them without assignment does not replace the original variable. A clear default is <code>result = df.method(...)</code>, or <code>df = df.method(...)</code> when you intend to keep the transformed result under the same name.</p>
 <p>Use <code>columns=</code> when removing columns to make the intent explicit:</p>
-<div id="pandas-039" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.209605Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.209557Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.211113Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.210858Z&quot;}}" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>compact <span class="op">=</span> renamed.drop(columns<span class="op">=</span>[<span class="st">'IMDB Votes'</span>])</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Column counts before and after:'</span>, renamed.shape[<span class="dv">1</span>], compact.shape[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-039" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.773900Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.773855Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.775440Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.775167Z&quot;}}" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>compact <span class="op">=</span> renamed.drop(columns<span class="op">=</span>[<span class="st">'IMDB Votes'</span>])</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Column counts before and after:'</span>, renamed.shape[<span class="dv">1</span>], compact.shape[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Column counts before and after: 12 11</code></pre>
 </div>
 </div>
 <p>By contrast, <code>df.drop(index=[104])</code> removes a row <strong>labeled</strong> 104, not the row at position 104. For removal based on values, a mask describing the rows to keep is usually clearer.</p>
 </section>
-<section id="update-the-intended-dataframe-in-one-step" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="update-the-intended-dataframe-in-one-step"><span class="header-section-number">4.6.3</span> Update the Intended DataFrame in One Step</h3>
-<div id="pandas-041" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.211908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.211814Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.214633Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.214276Z&quot;}}" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>flags <span class="op">=</span> screenings.copy()</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>flags[<span class="st">'high_rating'</span>] <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>flags.loc[flags[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>, <span class="st">'high_rating'</span>] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>flags</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<section id="adding-and-removing-reference" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="adding-and-removing-reference"><span class="header-section-number">4.6.3</span> Place a New Column with <code>insert()</code></h3>
+<p>Direct assignment adds a new column at the end, or replaces a column of the same name. <code>insert()</code> lets you choose its position. It changes the target table and returns <code>None</code>; work on a copy when you want to preserve your starting table.</p>
+<div id="070345bf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.776195Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.776138Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.778006Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.777736Z&quot;}}" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>screening_report <span class="op">=</span> screenings.copy()</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>screening_report.insert(<span class="dv">1</span>, <span class="st">'Venue'</span>, [<span class="st">'North'</span>, <span class="st">'South'</span>, <span class="st">'North'</span>, <span class="st">'South'</span>, <span class="st">'North'</span>])</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screening_report.head(<span class="dv">2</span>))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Original columns:'</span>, screenings.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Title  Venue  Rating  Tickets
+104   Cedar  North     7.2      120
+101  Harbor  South     8.1       80
+Original columns: ['Title', 'Rating', 'Tickets']</code></pre>
+</div>
+</div>
+<p>The position <code>1</code> places <code>Venue</code> after <code>Title</code>. The list is assigned in row order. If you assign a Series instead, pandas aligns its values by index labels; verify those labels before assigning.</p>
+</section>
+<section id="remove-rows-by-label-or-by-condition" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="remove-rows-by-label-or-by-condition"><span class="header-section-number">4.6.4</span> Remove Rows by Label or by Condition</h3>
+<p>Name the axis explicitly with <code>columns=</code> or <code>index=</code>. A list lets you remove several labels at once. A misspelled or absent label raises an error by default, which helps reveal mistakes.</p>
+<div id="ac9e885f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.778680Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.778638Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.780666Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.780299Z&quot;}}" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>without_cedar <span class="op">=</span> screenings.drop(index<span class="op">=</span>[<span class="dv">104</span>])</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>without_ratings <span class="op">=</span> screenings.drop(columns<span class="op">=</span>[<span class="st">'Rating'</span>])</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>at_least_100 <span class="op">=</span> screenings.loc[screenings[<span class="st">'Tickets'</span>] <span class="op">&gt;=</span> <span class="dv">100</span>].copy()</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'After dropping label 104:'</span>, without_cedar[<span class="st">'Title'</span>].tolist())</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Remaining columns:'</span>, without_ratings.columns.tolist())</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'At least 100 tickets:'</span>, at_least_100[<span class="st">'Title'</span>].tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>After dropping label 104: ['Harbor', 'Orbit', 'Meadow', 'Ember']
+Remaining columns: ['Title', 'Tickets']
+At least 100 tickets: ['Cedar', 'Orbit', 'Ember']</code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Expression pattern</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Add or replace a column</td>
+<td><code>df['new'] = values</code></td>
+<td>Changes <code>df</code></td>
+</tr>
+<tr class="even">
+<td>Insert at a position</td>
+<td><code>df.insert(1, 'new', values)</code></td>
+<td>Changes <code>df</code>; returns <code>None</code></td>
+</tr>
+<tr class="odd">
+<td>Remove named columns</td>
+<td><code>result = df.drop(columns=['name'])</code></td>
+<td>Keeps the returned table</td>
+</tr>
+<tr class="even">
+<td>Remove labeled rows</td>
+<td><code>result = df.drop(index=[104])</code></td>
+<td>Keeps the returned table</td>
+</tr>
+<tr class="odd">
+<td>Keep rows meeting a condition</td>
+<td><code>result = df.loc[mask].copy()</code></td>
+<td>Creates a table for further work</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Try it:</strong> Build a screening report with a <code>high_rating</code> column, place a venue column second, and remove <code>Tickets</code> from the report. Verify that <code>screenings</code> still has its original columns.</p>
+</section>
+<section id="update-the-intended-dataframe-in-one-step" class="level3" data-number="4.6.5">
+<h3 data-number="4.6.5" class="anchored" data-anchor-id="update-the-intended-dataframe-in-one-step"><span class="header-section-number">4.6.5</span> Update the Intended DataFrame in One Step</h3>
+<div id="pandas-041" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.781349Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.781306Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.783946Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.783632Z&quot;}}" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>flags <span class="op">=</span> screenings.copy()</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>flags[<span class="st">'high_rating'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>flags.loc[flags[<span class="st">'Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>, <span class="st">'high_rating'</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>flags</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
@@ -1268,18 +1506,18 @@ Returned table has rating: True</code></pre>
 </div>
 <p>This names the target DataFrame, target rows, and target column together. Avoid chained assignment such as <code>flags[mask]['high_rating'] = True</code>; it does not reliably express an update to <code>flags</code>, and under pandas 3 Copy-on-Write it does not update the original table.</p>
 <p>When you want an independently editable subset, make that choice explicit:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> movies[<span class="st">'IMDB Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> movies.loc[mask, [<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>]].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> movies[<span class="st">'IMDB Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> movies.loc[mask, [<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>]].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Do not use <code>other = movies</code> to make a copy: that gives the same object another name.</p>
 </section>
-<section id="what-does-inplacetrue-mean" class="level3" data-number="4.6.4">
-<h3 data-number="4.6.4" class="anchored" data-anchor-id="what-does-inplacetrue-mean"><span class="header-section-number">4.6.4</span> What Does <code>inplace=True</code> Mean?</h3>
+<section id="what-does-inplacetrue-mean" class="level3" data-number="4.6.6">
+<h3 data-number="4.6.6" class="anchored" data-anchor-id="what-does-inplacetrue-mean"><span class="header-section-number">4.6.6</span> What Does <code>inplace=True</code> Mean?</h3>
 <p>Some methods offer <code>inplace=True</code>, which changes the receiving object and returns <code>None</code>. It is not a general promise of lower memory use or faster execution. For this course, prefer assigning returned results until you have a reason to use another style.</p>
-<div id="pandas-043" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.215323Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.215256Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.216908Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.216624Z&quot;}}" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rename_demo <span class="op">=</span> screenings.copy()</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>returned <span class="op">=</span> rename_demo.rename(columns<span class="op">=</span>{<span class="st">'Tickets'</span>: <span class="st">'tickets_sold'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Return value:'</span>, returned)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Columns after the operation:'</span>, rename_demo.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-043" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.784611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.784563Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.786188Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.785909Z&quot;}}" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>rename_demo <span class="op">=</span> screenings.copy()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>returned <span class="op">=</span> rename_demo.rename(columns<span class="op">=</span>{<span class="st">'Tickets'</span>: <span class="st">'tickets_sold'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Return value:'</span>, returned)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Columns after the operation:'</span>, rename_demo.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Return value: None
 Columns after the operation: ['Title', 'Rating', 'tickets_sold']</code></pre>
@@ -1291,17 +1529,119 @@ Columns after the operation: ['Title', 'Rating', 'tickets_sold']</code></pre>
 <section id="convert-text-and-dates" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="convert-text-and-dates"><span class="header-section-number">4.7</span> Convert Text and Dates with Checks</h2>
 <p>Reading Data introduced type inspection. Here we convert columns because a specific operation requires it, and check what the conversion changed. Text dtype names can vary between pandas versions; <code>object</code> is not the only way text can be represented.</p>
-<section id="convert-numbers-stored-as-text" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="convert-numbers-stored-as-text"><span class="header-section-number">4.7.1</span> Convert Numbers Stored as Text</h3>
-<div id="pandas-045" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.217532Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.217489Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.219709Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.219404Z&quot;}}" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>raw_counts <span class="op">=</span> pd.Series([<span class="st">'1,200'</span>, <span class="st">' 850 '</span>, <span class="st">'unknown'</span>, <span class="va">None</span>], name<span class="op">=</span><span class="st">'followers'</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>cleaned_counts <span class="op">=</span> raw_counts.<span class="bu">str</span>.strip().<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> pd.to_numeric(cleaned_counts, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>conversion_failed <span class="op">=</span> raw_counts.notna() <span class="op">&amp;</span> counts.isna()</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Converted values:'</span>)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts)</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing inputs that failed conversion:'</span>)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw_counts.loc[conversion_failed])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="inspecting-data-types" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="inspecting-data-types"><span class="header-section-number">4.7.1</span> Inspect Types Before Choosing an Operation</h3>
+<p>A column’s storage type and its meaning are different. An integer year or identifier is numeric in storage, but averaging it may not answer a useful question. Inspect both the dtype and representative values.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind of data</th>
+<th>Common dtype examples</th>
+<th>Operations to consider</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Whole-number counts</td>
+<td><code>int64</code>, nullable <code>Int64</code></td>
+<td>Counts and arithmetic; check missing values</td>
+</tr>
+<tr class="even">
+<td>Measurements</td>
+<td><code>float64</code>, nullable <code>Float64</code></td>
+<td>Arithmetic and numerical summaries</td>
+</tr>
+<tr class="odd">
+<td>Text</td>
+<td><code>str</code>, <code>string</code>, or <code>object</code></td>
+<td>Inspect values, then use <code>.str</code> methods</td>
+</tr>
+<tr class="even">
+<td>Logical flags</td>
+<td><code>bool</code>, nullable <code>boolean</code></td>
+<td>Conditions and masks</td>
+</tr>
+<tr class="odd">
+<td>Dates/times</td>
+<td><code>datetime64[...]</code></td>
+<td><code>.dt</code> components and date differences</td>
+</tr>
+<tr class="even">
+<td>Durations</td>
+<td><code>timedelta64[...]</code></td>
+<td>Elapsed-time calculations</td>
+</tr>
+<tr class="odd">
+<td>Categories</td>
+<td><code>category</code></td>
+<td>Repeated labels; ordering must be meaningful</td>
+</tr>
+</tbody>
+</table>
+<p>Capitalized nullable types can represent missing values using <code>pd.NA</code>. An <code>object</code> column may contain mixed Python objects, so it does not guarantee that all values are strings. Exact inferred dtype names depend on pandas version and input.</p>
+<div id="d9c62e8b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.786892Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.786846Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.789913Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.789591Z&quot;}}" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Pandas version:'</span>, pd.__version__)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings.dtypes)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>screenings.info()</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>numeric_screenings <span class="op">=</span> screenings.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Numeric columns:'</span>, numeric_screenings.columns.tolist())</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-numeric columns:'</span>, screenings.select_dtypes(exclude<span class="op">=</span><span class="st">'number'</span>).columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pandas version: 3.0.5
+Title          str
+Rating     float64
+Tickets      int64
+dtype: object
+&lt;class 'pandas.DataFrame'&gt;
+Index: 5 entries, 104 to 109
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   Title    5 non-null      str    
+ 1   Rating   5 non-null      float64
+ 2   Tickets  5 non-null      int64  
+dtypes: float64(1), int64(1), str(1)
+memory usage: 332.0 bytes
+Numeric columns: ['Rating', 'Tickets']
+Non-numeric columns: ['Title']</code></pre>
+</div>
+</div>
+<p><code>select_dtypes()</code> selects columns by storage type; it does not convert their contents. <code>include='number'</code> is useful for finding numerical columns, but inspect their meanings before summarizing them. Select known text columns by name when you need predictable behavior across pandas versions.</p>
+</section>
+<section id="choose-a-conversion-deliberately" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="choose-a-conversion-deliberately"><span class="header-section-number">4.7.2</span> Choose a Conversion Deliberately</h3>
+<p>Use <code>astype()</code> when the intended type is known and the values are valid. Use <code>to_numeric()</code> or <code>to_datetime()</code> when parsing text and auditing failed conversions. <code>convert_dtypes()</code> can infer nullable types, but it is not a substitute for cleaning currency symbols or checking invalid dates.</p>
+<div id="85697f25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.790654Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.790609Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.792486Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.792160Z&quot;}}" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>optional_counts <span class="op">=</span> pd.Series([<span class="dv">120</span>, <span class="va">None</span>, <span class="dv">80</span>], dtype<span class="op">=</span><span class="st">'Int64'</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(optional_counts)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Tickets as floating point:'</span>, screenings[<span class="st">'Tickets'</span>].astype(<span class="st">'float64'</span>).dtype)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Title as explicit string dtype:'</span>, screenings[<span class="st">'Title'</span>].astype(<span class="st">'string'</span>).dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     120
+1    &lt;NA&gt;
+2      80
+dtype: Int64
+Tickets as floating point: float64
+Title as explicit string dtype: string</code></pre>
+</div>
+</div>
+</section>
+<section id="convert-numbers-stored-as-text" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="convert-numbers-stored-as-text"><span class="header-section-number">4.7.3</span> Convert Numbers Stored as Text</h3>
+<div id="pandas-045" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.793146Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.793091Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.795296Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.794963Z&quot;}}" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>raw_counts <span class="op">=</span> pd.Series([<span class="st">'1,200'</span>, <span class="st">' 850 '</span>, <span class="st">'unknown'</span>, <span class="va">None</span>], name<span class="op">=</span><span class="st">'followers'</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>cleaned_counts <span class="op">=</span> raw_counts.<span class="bu">str</span>.strip().<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> pd.to_numeric(cleaned_counts, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>conversion_failed <span class="op">=</span> raw_counts.notna() <span class="op">&amp;</span> counts.isna()</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Converted values:'</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing inputs that failed conversion:'</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw_counts.loc[conversion_failed])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Converted values:
 0    1200.0
@@ -1317,12 +1657,12 @@ Name: followers, dtype: str</code></pre>
 <p><code>errors='coerce'</code> creates missing values for inputs it cannot convert. It does not repair the source information. The audit distinguishes an originally missing value from an observed string such as <code>unknown</code> that failed conversion. Check the failed values before calculating summaries.</p>
 <p>Use <code>.astype('string')</code> to request a string dtype. <code>.to_string()</code> instead produces a formatted textual display; it is not the equivalent dtype-conversion method.</p>
 </section>
-<section id="apply-string-methods-to-a-column" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="apply-string-methods-to-a-column"><span class="header-section-number">4.7.2</span> Apply String Methods to a Column</h3>
-<div id="pandas-047" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.220387Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.220343Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.223089Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.222788Z&quot;}}" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>love_in_title <span class="op">=</span> movies[<span class="st">'Title'</span>].<span class="bu">str</span>.contains(<span class="st">'Love'</span>, case<span class="op">=</span><span class="va">False</span>, regex<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>movies.loc[love_in_title, [<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<section id="apply-string-methods-to-a-column" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="apply-string-methods-to-a-column"><span class="header-section-number">4.7.4</span> Apply String Methods to a Column</h3>
+<div id="pandas-047" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.795975Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.795931Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.798809Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.798465Z&quot;}}" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>love_in_title <span class="op">=</span> movies[<span class="st">'Title'</span>].<span class="bu">str</span>.contains(<span class="st">'Love'</span>, case<span class="op">=</span><span class="va">False</span>, regex<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>movies.loc[love_in_title, [<span class="st">'Title'</span>, <span class="st">'IMDB Rating'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 
 
@@ -1368,20 +1708,20 @@ Name: followers, dtype: str</code></pre>
 </div>
 <p>Here, <code>regex=False</code> requests a literal substring, and <code>na=False</code> treats missing titles as not matching. It finds the text <code>Love</code> anywhere in a title, not necessarily as a whole word. Methods such as <code>.str.strip()</code>, <code>.str.lower()</code>, and <code>.str.replace()</code> operate on the values of a Series. Regular expressions belong in later work.</p>
 </section>
-<section id="parse-dates-then-use-.dt" class="level3" data-number="4.7.3">
-<h3 data-number="4.7.3" class="anchored" data-anchor-id="parse-dates-then-use-.dt"><span class="header-section-number">4.7.3</span> Parse Dates, Then Use <code>.dt</code></h3>
-<div id="pandas-049" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.223787Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.223744Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.228115Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.227734Z&quot;}}" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>raw_dates <span class="op">=</span> movies[<span class="st">'Release Date'</span>]</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>release_dates <span class="op">=</span> pd.to_datetime(raw_dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%b </span><span class="sc">%d</span><span class="st"> %Y'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>failed_dates <span class="op">=</span> raw_dates.notna() <span class="op">&amp;</span> release_dates.isna()</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing dates that failed conversion:'</span>, failed_dates.<span class="bu">sum</span>())</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Examples:'</span>, raw_dates.loc[failed_dates].head().tolist())</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>release_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="parse-dates-then-use-.dt" class="level3" data-number="4.7.5">
+<h3 data-number="4.7.5" class="anchored" data-anchor-id="parse-dates-then-use-.dt"><span class="header-section-number">4.7.5</span> Parse Dates, Then Use <code>.dt</code></h3>
+<div id="pandas-049" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.799526Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.799480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.803755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.803425Z&quot;}}" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>raw_dates <span class="op">=</span> movies[<span class="st">'Release Date'</span>]</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>release_dates <span class="op">=</span> pd.to_datetime(raw_dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%b </span><span class="sc">%d</span><span class="st"> %Y'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>failed_dates <span class="op">=</span> raw_dates.notna() <span class="op">&amp;</span> release_dates.isna()</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing dates that failed conversion:'</span>, failed_dates.<span class="bu">sum</span>())</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Examples:'</span>, raw_dates.loc[failed_dates].head().tolist())</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>release_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Non-missing dates that failed conversion: 0
 Examples: []</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>0   2006-11-22
 1   1965-04-07
 2   2009-04-24
@@ -1389,13 +1729,13 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 </div>
 </div>
 <p>The declared format matches text such as <code>Nov 22 2006</code>. A date that fails conversion becomes <code>NaT</code>, pandas’ missing datetime value. If a source uses more than one format, inspect it before choosing a parsing strategy.</p>
-<div id="pandas-051" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.228780Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.228737Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.231706Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.231374Z&quot;}}" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>movie_dates <span class="op">=</span> movies[[<span class="st">'Title'</span>]].copy()</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'release_year'</span>] <span class="op">=</span> release_dates.dt.year</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>reference_date <span class="op">=</span> pd.Timestamp(<span class="st">'2024-01-01'</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'days_since_release'</span>] <span class="op">=</span> (reference_date <span class="op">-</span> release_dates).dt.days</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>movie_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div id="pandas-051" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.804458Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.804404Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.807449Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.807132Z&quot;}}" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>movie_dates <span class="op">=</span> movies[[<span class="st">'Title'</span>]].copy()</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'release_year'</span>] <span class="op">=</span> release_dates.dt.year</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>reference_date <span class="op">=</span> pd.Timestamp(<span class="st">'2024-01-01'</span>)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'days_since_release'</span>] <span class="op">=</span> (reference_date <span class="op">-</span> release_dates).dt.days</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>movie_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -1440,10 +1780,10 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 <h2 data-number="4.8" class="anchored" data-anchor-id="summaries-and-denominators"><span class="header-section-number">4.8</span> Summarize Values and Define Denominators</h2>
 <section id="summarize-a-variable-you-can-interpret" class="level3" data-number="4.8.1">
 <h3 data-number="4.8.1" class="anchored" data-anchor-id="summarize-a-variable-you-can-interpret"><span class="header-section-number">4.8.1</span> Summarize a Variable You Can Interpret</h3>
-<div id="pandas-053" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.232431Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.232388Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.234221Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.233933Z&quot;}}" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Median IMDB rating:'</span>, movies[<span class="st">'IMDB Rating'</span>].median())</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean worldwide gross:'</span>, movies[<span class="st">'Worldwide Gross'</span>].mean())</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Observed rating count:'</span>, movies[<span class="st">'IMDB Rating'</span>].count())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-053" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.808168Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.808122Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.809877Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.809587Z&quot;}}" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Median IMDB rating:'</span>, movies[<span class="st">'IMDB Rating'</span>].median())</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean worldwide gross:'</span>, movies[<span class="st">'Worldwide Gross'</span>].mean())</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Observed rating count:'</span>, movies[<span class="st">'IMDB Rating'</span>].count())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Median IMDB rating: 6.4
 Mean worldwide gross: 101937019.3016158
@@ -1452,15 +1792,87 @@ Observed rating count: 2228</code></pre>
 </div>
 <p>These summaries answer different questions and have different units. Do not average an IMDB rating and a vote count across a row: although Python can calculate the number, the result has no useful common unit. The mean and median alone also cannot establish a distribution’s shape; examine a plot when that is the question.</p>
 </section>
-<section id="understand-axis-with-comparable-measurements" class="level3" data-number="4.8.2">
-<h3 data-number="4.8.2" class="anchored" data-anchor-id="understand-axis-with-comparable-measurements"><span class="header-section-number">4.8.2</span> Understand <code>axis</code> with Comparable Measurements</h3>
-<div id="pandas-055" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.234889Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.234846Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.237073Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.236722Z&quot;}}" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'Q1'</span>: [<span class="dv">100</span>, <span class="dv">150</span>], <span class="st">'Q2'</span>: [<span class="dv">120</span>, <span class="dv">170</span>], <span class="st">'Q3'</span>: [<span class="dv">110</span>, <span class="dv">160</span>]},</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">'North'</span>, <span class="st">'South'</span>],</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>quarterly_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<section id="choose-a-summary-for-the-question" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="choose-a-summary-for-the-question"><span class="header-section-number">4.8.2</span> Choose a Summary for the Question</h3>
+<p><code>describe()</code> gives a compact numerical summary by default for a mixed table. Select a text column to see its count, number of unique values, and most common value instead. For specific questions, request the statistic directly.</p>
+<div id="7a00a51b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.810512Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.810468Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.814413Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.814124Z&quot;}}" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings[[<span class="st">'Rating'</span>, <span class="st">'Tickets'</span>]].describe())</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Text summary:'</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings[<span class="st">'Title'</span>].describe())</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Rating quartiles:'</span>)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(screenings[<span class="st">'Rating'</span>].quantile([<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>]))</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Rating sample standard deviation:'</span>, screenings[<span class="st">'Rating'</span>].std())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Rating     Tickets
+count  5.00000    5.000000
+mean   7.54000  110.000000
+std    0.68775   27.386128
+min    6.50000   80.000000
+25%    7.20000   90.000000
+50%    7.80000  110.000000
+75%    8.10000  120.000000
+max    8.10000  150.000000
+
+Text summary:
+count         5
+unique        5
+top       Cedar
+freq          1
+Name: Title, dtype: object
+
+Rating quartiles:
+0.25    7.2
+0.50    7.8
+0.75    8.1
+Name: Rating, dtype: float64
+Rating sample standard deviation: 0.6877499545619757</code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>count()</code></td>
+<td>How many values are observed?</td>
+</tr>
+<tr class="even">
+<td><code>mean()</code>, <code>median()</code></td>
+<td>Where is the center?</td>
+</tr>
+<tr class="odd">
+<td><code>min()</code>, <code>max()</code></td>
+<td>What are the observed extremes?</td>
+</tr>
+<tr class="even">
+<td><code>std()</code></td>
+<td>How spread out are the values? (Sample standard deviation by default.)</td>
+</tr>
+<tr class="odd">
+<td><code>quantile(0.25)</code></td>
+<td>What value marks the lower quartile under the chosen interpolation rule?</td>
+</tr>
+</tbody>
+</table>
+<p>These methods generally skip missing values by default. Report the observed count with your summary. A median is less sensitive to extreme magnitudes than a mean; neither alone describes the full distribution.</p>
+</section>
+<section id="understand-axis-with-comparable-measurements" class="level3" data-number="4.8.3">
+<h3 data-number="4.8.3" class="anchored" data-anchor-id="understand-axis-with-comparable-measurements"><span class="header-section-number">4.8.3</span> Understand <code>axis</code> with Comparable Measurements</h3>
+<div id="pandas-055" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.815169Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.815125Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.817394Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.817074Z&quot;}}" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'Q1'</span>: [<span class="dv">100</span>, <span class="dv">150</span>], <span class="st">'Q2'</span>: [<span class="dv">120</span>, <span class="dv">170</span>], <span class="st">'Q3'</span>: [<span class="dv">110</span>, <span class="dv">160</span>]},</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">'North'</span>, <span class="st">'South'</span>],</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>quarterly_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
@@ -1492,11 +1904,11 @@ Observed rating count: 2228</code></pre>
 </div>
 </div>
 </div>
-<div id="pandas-056" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.237727Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.237685Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.239399Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.239140Z&quot;}}" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total per quarter across regions:'</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quarterly_sales.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Total per region across quarters:'</span>)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quarterly_sales.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-056" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.818114Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.818068Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.819860Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.819545Z&quot;}}" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total per quarter across regions:'</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quarterly_sales.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Total per region across quarters:'</span>)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quarterly_sales.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Total per quarter across regions:
 Q1    250
@@ -1512,18 +1924,18 @@ dtype: int64</code></pre>
 </div>
 <p>All entries are sales in the same unit. <code>axis=0</code> reduces across the row axis, leaving one answer per column. <code>axis=1</code> reduces across the column axis, leaving one answer per row. This prepares you for axes in NumPy without requiring arrays yet.</p>
 </section>
-<section id="proportions-need-an-eligible-group" class="level3" data-number="4.8.3">
-<h3 data-number="4.8.3" class="anchored" data-anchor-id="proportions-need-an-eligible-group"><span class="header-section-number">4.8.3</span> Proportions Need an Eligible Group</h3>
+<section id="proportions-need-an-eligible-group" class="level3" data-number="4.8.4">
+<h3 data-number="4.8.4" class="anchored" data-anchor-id="proportions-need-an-eligible-group"><span class="header-section-number">4.8.4</span> Proportions Need an Eligible Group</h3>
 <p><strong>Question:</strong> Among movie records with an observed rating, what proportion have a rating of at least 8?</p>
-<div id="pandas-058" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.240085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.240026Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.241982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.241673Z&quot;}}" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>observed_rating <span class="op">=</span> movies[<span class="st">'IMDB Rating'</span>].notna()</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>rated_movies <span class="op">=</span> movies.loc[observed_rating]</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>numerator <span class="op">=</span> (rated_movies[<span class="st">'IMDB Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>).<span class="bu">sum</span>()</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>denominator <span class="op">=</span> <span class="bu">len</span>(rated_movies)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>proportion <span class="op">=</span> numerator <span class="op">/</span> denominator <span class="cf">if</span> denominator <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="va">None</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Numerator:'</span>, numerator)</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Denominator:'</span>, denominator)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion:'</span>, proportion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="pandas-058" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.820596Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.820544Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.822438Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.822139Z&quot;}}" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>observed_rating <span class="op">=</span> movies[<span class="st">'IMDB Rating'</span>].notna()</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>rated_movies <span class="op">=</span> movies.loc[observed_rating]</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>numerator <span class="op">=</span> (rated_movies[<span class="st">'IMDB Rating'</span>] <span class="op">&gt;=</span> <span class="dv">8</span>).<span class="bu">sum</span>()</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>denominator <span class="op">=</span> <span class="bu">len</span>(rated_movies)</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>proportion <span class="op">=</span> numerator <span class="op">/</span> denominator <span class="cf">if</span> denominator <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Numerator:'</span>, numerator)</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Denominator:'</span>, denominator)</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion:'</span>, proportion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Numerator: 134
 Denominator: 2228
@@ -1533,13 +1945,13 @@ Proportion: 0.06014362657091562</code></pre>
 <p>Summing a Boolean Series counts <code>True</code> values. <code>len(table)</code> counts rows, while <code>series.count()</code> counts non-missing values. Excluding missing ratings answers a question about <strong>observed ratings</strong>; dividing by all records would answer a different question. If the eligible group is empty, the proportion is undefined rather than zero.</p>
 <p>For a conditional proportion, build the subgroup first, then decide which records have the observations needed for the question. Report both numerator and denominator alongside the proportion.</p>
 </section>
-<section id="count-categories" class="level3" data-number="4.8.4">
-<h3 data-number="4.8.4" class="anchored" data-anchor-id="count-categories"><span class="header-section-number">4.8.4</span> Count Categories</h3>
-<div id="pandas-060" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:58:59.242679Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:58:59.242634Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:58:59.244834Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:58:59.244547Z&quot;}}" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Movie records by genre:'</span>)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies[<span class="st">'Major Genre'</span>].value_counts())</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Proportions among non-missing genres:'</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies[<span class="st">'Major Genre'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="count-categories" class="level3" data-number="4.8.5">
+<h3 data-number="4.8.5" class="anchored" data-anchor-id="count-categories"><span class="header-section-number">4.8.5</span> Count Categories</h3>
+<div id="pandas-060" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.823149Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.823092Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.824969Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.824750Z&quot;}}" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Movie records by genre:'</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies[<span class="st">'Major Genre'</span>].value_counts())</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">Proportions among non-missing genres:'</span>)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(movies[<span class="st">'Major Genre'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Movie records by genre:
 Major Genre
@@ -1567,20 +1979,41 @@ Name: proportion, dtype: float64</code></pre>
 </section>
 <section id="optional-extensions" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="optional-extensions"><span class="header-section-number">4.9</span> Optional Extensions</h2>
-<p>These are reference examples, not prerequisites for the in-class activity.</p>
-<ul>
-<li><strong>Ranks and ties:</strong> <code>movies['IMDB Rating'].rank(ascending=False, method='min')</code> assigns tied values the smallest rank in their tied group. Ranking assigns values; sorting changes row order. Try a small tied example before interpreting percentile ranks.</li>
-<li><strong>Custom sorting:</strong> <code>sort_values(key=...)</code> transforms values for sorting. Return to it after learning functions and lambda expressions in more detail.</li>
-<li><strong>Extreme positions:</strong> <code>Series.argmax()</code> returns a position, whereas <code>idxmax()</code> returns a label. The NumPy chapter will provide more practice with positions.</li>
-<li><strong>More date features:</strong> Explore <code>.dt.quarter</code> or <code>.dt.day_name()</code> after checking the date conversion. ISO week numbers are available through <code>.dt.isocalendar().week</code>.</li>
-</ul>
-<p>Performance depends on the task, data, and implementation. Choose clear, correct operations first; benchmark a real bottleneck when necessary.</p>
+<p>The supporting examples above remain part of this chapter’s reference material. For a second pass after NumPy Fundamentals, these topics now have worked sections in <a href="./data_types_in_pandas.html">Pandas Intermediate</a>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Continue with</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ranking methods, ties, and percentile ranks</td>
+<td><a href="./data_types_in_pandas.html#ranking-and-percentiles">Ranking and percentiles</a></td>
+</tr>
+<tr class="even">
+<td>Case-insensitive sorting and custom keys</td>
+<td><a href="./data_types_in_pandas.html#custom-sorting-keys">Custom sorting</a></td>
+</tr>
+<tr class="odd">
+<td>Expanded string cleaning and date features</td>
+<td><a href="./data_types_in_pandas.html#extended-strings-and-dates">Strings, dates, and durations</a></td>
+</tr>
+<tr class="even">
+<td>Sorting benchmarks, vectorization, and memory</td>
+<td><a href="./data_types_in_pandas.html#performance-and-copies">Measure performance and understand copies</a></td>
+</tr>
+</tbody>
+</table>
+<p>These extensions are not prerequisites for the Chapter 4 in-class activity. More extensive missing-data decisions belong in <a href="./Data_cleaning.html">Data Cleaning</a>, and group-specific summaries belong in <a href="./Data aggregation.html">Data Grouping and Aggregation</a>.</p>
 </section>
 <section id="independent-practice" class="level2" data-number="4.10">
 <h2 data-number="4.10" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">4.10</span> Independent Practice</h2>
 <p>Use a separate notebook beside <code>data/</code>. These longer exercises are additional practice, not requirements for the Chapter 4 quiz. Include your code, outputs, and explanations.</p>
 <section id="album-sales" class="level3" data-number="4.10.1">
 <h3 data-number="4.10.1" class="anchored" data-anchor-id="album-sales"><span class="header-section-number">4.10.1</span> Album Sales</h3>
+<p>Start by displaying <code>head()</code>, <code>shape</code>, and <code>dtypes</code>. Write what one row represents. Keep the raw table and create a working copy for transformations. Useful tools for the questions below are <code>notna()</code>, <code>isna()</code>, <code>.loc</code>, and <code>idxmax()</code>; use a Boolean equality mask if you want every tied maximum. Add a Markdown interpretation after each output.</p>
 <p>Read <code>data/Top 10 Albums By Year.csv</code>; treat each row as an album entry for a year rather than assuming each title is unique.</p>
 <ol type="1">
 <li>Inspect <code>Worldwide Sales</code> and its dtype. Convert it with <code>pd.to_numeric(..., errors='coerce')</code>. Report how many non-missing inputs become missing and show those original values.</li>
@@ -1592,11 +2025,12 @@ Name: proportion, dtype: float64</code></pre>
 </section>
 <section id="survey-responses" class="level3" data-number="4.10.2">
 <h3 data-number="4.10.2" class="anchored" data-anchor-id="survey-responses"><span class="header-section-number">4.10.2</span> Survey Responses</h3>
+<p>Begin with <code>shape</code>, <code>columns.tolist()</code>, and a few rows. For each proportion, write the eligible group in words before coding; then show the numerator and denominator. For the follower comparison, inspect missing counts before splitting the ordered records. These checks make the analysis reproducible without supplying its answers.</p>
 <p>Read <code>data/STAT303-1 survey for data analysis.csv</code>. Inspect the header before renaming. This historical file already uses short names for many variables. Its parties question has a long name; use the following mapping after inspecting it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>survey <span class="op">=</span> pd.read_csv(Path(<span class="st">'data'</span>) <span class="op">/</span> <span class="st">'STAT303-1 survey for data analysis.csv'</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>survey <span class="op">=</span> survey.rename(columns<span class="op">=</span>{</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'On average (approx.) how many parties a month do you attend during the school year? Enter a whole number (0, 1, 2, 3, 4, ...)'</span>: <span class="st">'parties_per_month'</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>survey <span class="op">=</span> pd.read_csv(Path(<span class="st">'data'</span>) <span class="op">/</span> <span class="st">'STAT303-1 survey for data analysis.csv'</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>survey <span class="op">=</span> survey.rename(columns<span class="op">=</span>{</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'On average (approx.) how many parties a month do you attend during the school year? Enter a whole number (0, 1, 2, 3, 4, ...)'</span>: <span class="st">'parties_per_month'</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li>Convert <code>parties_per_month</code> to numeric and audit conversion failures. Among respondents with an observed numeric answer, calculate the proportion reporting more than four parties per month.</li>
 <li>Within that subgroup, calculate the proportion whose <code>introvert_extrovert</code> answer is <code>Introvert</code>, excluding missing answers to that question. Show both counts; inspect category labels before filtering.</li>
