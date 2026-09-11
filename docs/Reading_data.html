@@ -378,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#export-and-verify-a-csv" id="toc-export-and-verify-a-csv" class="nav-link" data-scroll-target="#export-and-verify-a-csv"><span class="header-section-number">3.6</span> Export and Verify a CSV</a></li>
   <li><a href="#optional-other-formats" id="toc-optional-other-formats" class="nav-link" data-scroll-target="#optional-other-formats"><span class="header-section-number">3.7</span> Optional Extension: JSON and HTML Tables</a></li>
   <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">3.8</span> Independent Practice</a></li>
-  <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">3.9</span> Before You Move On</a></li>
-  <li><a href="#practice-activity-read-inspect-and-export-movie-data" id="toc-practice-activity-read-inspect-and-export-movie-data" class="nav-link" data-scroll-target="#practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.10</span> Practice Activity: Read, Inspect, and Export Movie Data</a></li>
+  <li><a href="#practice-activity-read-inspect-and-export-movie-data" id="toc-practice-activity-read-inspect-and-export-movie-data" class="nav-link" data-scroll-target="#practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.9</span> Practice Activity: Read, Inspect, and Export Movie Data</a></li>
+  <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</a></li>
   </ul>
 </nav>
     </div>
@@ -1469,14 +1469,8 @@ Same column names and order: True</code></pre>
 <p>Read the local JSON preview and, if you installed the optional parser, the HTML preview. Compare their row counts and column names. Explain why the HTML reader returns a list while the JSON example returns a DataFrame.</p>
 </section>
 </section>
-<section id="before-you-move-on" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">3.9</span> Before You Move On</h2>
-<p>You should now be able to explain why a file that loads without an error can still have been read incorrectly. Keep checking what one row means, how fields were separated, whether types and counts are plausible, and what information survives an export.</p>
-<p><a href="./Pandas.html">Pandas Fundamentals</a> continues with selecting and filtering records, sorting, and creating variables. NumPy Fundamentals follows that chapter to introduce arrays and shape rules before the intermediate pandas material.</p>
-<p>For reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas CSV reader</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html">DataFrame inspection</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">descriptive summaries</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">CSV writer</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_json.html">JSON reader</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html">HTML reader</a>.</p>
-</section>
-<section id="practice-activity-read-inspect-and-export-movie-data" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.10</span> Practice Activity: Read, Inspect, and Export Movie Data</h2>
+<section id="practice-activity-read-inspect-and-export-movie-data" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.9</span> Practice Activity: Read, Inspect, and Export Movie Data</h2>
 <p><strong>Goal:</strong> Read a local dataset, check whether it was imported correctly, and verify an exported CSV. <strong>Time:</strong> approximately 30–40 minutes. <strong>File:</strong> <code>activity03.ipynb</code>. <strong>Submit:</strong> <code>activity03.html</code> through the final upload question in the Chapter 3 Canvas quiz.</p>
 <p><strong>These are the complete Activity 3 instructions.</strong> Use this section for the task list; the notebook contains spaces to record your work. The earlier independent-study exercises are additional practice and are not required for this quiz.</p>
 <p>Download and extract the <a href="downloads/reading-data-practice.zip">Reading Data practice kit</a>. Move its <code>stat303-reading-data</code> folder into your existing <code>stat303-setup</code> project folder. Open <code>activity03.ipynb</code> and select the project environment you verified in Chapter 2; pandas should already be installed. Work with <code>stat303-reading-data</code> as the notebook and rendering terminal’s current folder. Confirm with <code>Path.cwd()</code>; if needed, use <code>os.chdir()</code> once with the actual folder path before continuing.</p>
@@ -1489,8 +1483,8 @@ Same column names and order: True</code></pre>
         ├── movie_ratings.csv
         └── movie_ratings_semicolon.txt</code></pre>
 <p>Both data files contain the same course movie records, serialized with different delimiters. They are historical teaching data, not current ratings. Use the exact lowercase <code>data</code> folder in this kit. The other kit files support the worked examples and independent practice; only the two movie files are required for this activity. No live website or API access is needed after downloading it.</p>
-<section id="a.-read-and-orient-yourself" class="level3" data-number="3.10.1">
-<h3 data-number="3.10.1" class="anchored" data-anchor-id="a.-read-and-orient-yourself"><span class="header-section-number">3.10.1</span> A. Read and Orient Yourself</h3>
+<section id="a.-read-and-orient-yourself" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="a.-read-and-orient-yourself"><span class="header-section-number">3.9.1</span> A. Read and Orient Yourself</h3>
 <ul>
 <li>Replace <code>Your Name</code> in the Raw cell and Markdown name field. Keep the report settings.</li>
 <li>Run the supplied imports and current-folder/file checks. Both file checks should be <code>True</code> before you continue.</li>
@@ -1498,8 +1492,8 @@ Same column names and order: True</code></pre>
 <li>Explain what one row represents and name two variables. Interpret both numbers in <code>shape</code>; explain whether the displayed row index is counted as a data column.</li>
 </ul>
 </section>
-<section id="b.-inspect-and-explain" class="level3" data-number="3.10.2">
-<h3 data-number="3.10.2" class="anchored" data-anchor-id="b.-inspect-and-explain"><span class="header-section-number">3.10.2</span> B. Inspect and Explain</h3>
+<section id="b.-inspect-and-explain" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="b.-inspect-and-explain"><span class="header-section-number">3.9.2</span> B. Inspect and Explain</h3>
 <ul>
 <li>Display <code>movies.dtypes</code>, run <code>movies.info()</code>, and display <code>movies.describe()</code>.</li>
 <li>Explain whether <code>IMDB Rating</code> has missing values according to its non-null count and the total row count. Use the output as evidence; a non-null value is not necessarily a valid value.</li>
@@ -1508,8 +1502,8 @@ Same column names and order: True</code></pre>
 <li>Identify one attribute and one method you used and explain the difference in their parentheses.</li>
 </ul>
 </section>
-<section id="c.-diagnose-a-delimiter" class="level3" data-number="3.10.3">
-<h3 data-number="3.10.3" class="anchored" data-anchor-id="c.-diagnose-a-delimiter"><span class="header-section-number">3.10.3</span> C. Diagnose a Delimiter</h3>
+<section id="c.-diagnose-a-delimiter" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="c.-diagnose-a-delimiter"><span class="header-section-number">3.9.3</span> C. Diagnose a Delimiter</h3>
 <ul>
 <li>Run the supplied raw-text preview of <code>movie_ratings_semicolon.txt</code>. Identify the delimiter from the header and first record.</li>
 <li>Before running an import, predict what may go wrong if pandas assumes commas. Record your prediction in Markdown.</li>
@@ -1517,8 +1511,8 @@ Same column names and order: True</code></pre>
 <li>Read the file again into <code>movies_text</code> using an explicit <code>sep</code> value. Display <code>head()</code>, <code>shape</code>, and <code>columns</code>; compare the dimensions and column names with <code>movies</code>.</li>
 </ul>
 </section>
-<section id="d.-export-and-check" class="level3" data-number="3.10.4">
-<h3 data-number="3.10.4" class="anchored" data-anchor-id="d.-export-and-check"><span class="header-section-number">3.10.4</span> D. Export and Check</h3>
+<section id="d.-export-and-check" class="level3" data-number="3.9.4">
+<h3 data-number="3.9.4" class="anchored" data-anchor-id="d.-export-and-check"><span class="header-section-number">3.9.4</span> D. Export and Check</h3>
 <ul>
 <li>Export <code>movies</code> to <code>movies_export.csv</code> beside the notebook with <code>index=False</code>. Keep the supplied input files unchanged.</li>
 <li>Read the export into <code>reloaded</code>; display its <code>shape</code>, <code>columns</code>, and <code>head()</code> and compare the dimensions and column names with the original. These checks verify structure, not every value or data type.</li>
@@ -1526,16 +1520,22 @@ Same column names and order: True</code></pre>
 <li>In a different dataset where the index contains meaningful IDs, explain why dropping it without first preserving those IDs could lose information.</li>
 </ul>
 </section>
-<section id="render-and-submit-your-html" class="level3" data-number="3.10.5">
-<h3 data-number="3.10.5" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">3.10.5</span> Render and Submit Your HTML</h3>
+<section id="render-and-submit-your-html" class="level3" data-number="3.9.5">
+<h3 data-number="3.9.5" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">3.9.5</span> Render and Submit Your HTML</h3>
 <p>Restart the kernel, run all cells in order, resolve unexpected errors, and save. Add a brief Markdown completion note, then save again. The deliberately caught diagnostic in C may report a parser error; the corrected import must work.</p>
 <p>In the terminal, from <code>stat303-reading-data</code>, run:</p>
 <pre class="text"><code>quarto render activity03.ipynb --to html</code></pre>
 <p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Chapter 1 Quarto refresher</a>: inspect the HTML and a copy opened outside the project folder. Confirm your name, code, current outputs, and explanations for A–D appear. Upload only <code>activity03.html</code> to the Chapter 3 Canvas quiz. Keep your notebook and CSV files locally.</p>
 <p><strong>HTML grading (16 points):</strong> import and dataset interpretation (3), inspection and Series explanation (5), delimiter diagnosis and correction (4), export and verification (3), and readable HTML with name and completion note (1).</p>
-
-
 </section>
+</section>
+<section id="before-you-move-on" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</h2>
+<p>You should now be able to explain why a file that loads without an error can still have been read incorrectly. Keep checking what one row means, how fields were separated, whether types and counts are plausible, and what information survives an export.</p>
+<p><a href="./Pandas.html">Pandas Fundamentals</a> continues with selecting and filtering records, sorting, and creating variables. NumPy Fundamentals follows that chapter to introduce arrays and shape rules before the intermediate pandas material.</p>
+<p>For reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas CSV reader</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html">DataFrame inspection</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">descriptive summaries</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">CSV writer</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_json.html">JSON reader</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html">HTML reader</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
