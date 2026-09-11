@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - .nojekyll
+    - downloads/reading-data-practice.zip
     - downloads/setup-practice.zip
     - downloads/assignment-b-setup.zip
 
@@ -31,8 +32,8 @@ book:
       chapters:
         - Reading_data.ipynb
         - Pandas.ipynb
-        - data_types_in_pandas.ipynb
         - Numpy.ipynb
+        - data_types_in_pandas.ipynb
         - vectorized_numpy.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
