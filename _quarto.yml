@@ -2,6 +2,7 @@ project:
   type: book
   output-dir: docs
   resources:
+    - downloads/numpy-fundamentals-practice.zip
     - .nojekyll
     - downloads/pandas-fundamentals-practice.zip
     - downloads/reading-data-practice.zip

@@ -20,6 +20,7 @@ The initial `docs/` pages are copied unchanged from the original published repos
 - Assignment B applies setup in a separate project; download `downloads/assignment-b-setup.zip`.
 - Assignments C–G cover Pandas, NumPy, visualization, cleaning/preparation, and wrangling (formerly B–F).
 - `downloads/setup-practice.zip` contains only the two chapter practice notebooks and their data.
+- Chapters 4–5 have local practice kits: `downloads/pandas-fundamentals-practice.zip` and `downloads/numpy-fundamentals-practice.zip`. Each contains a worked notebook and an unfinished activity starter.
 - Chapter practice instructions and formal assignment instructions each have one authoritative coursebook page. Instructor quiz artifacts are not public website resources.
 
 ## Update the book
