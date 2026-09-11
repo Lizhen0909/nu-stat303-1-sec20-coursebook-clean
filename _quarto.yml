@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - .nojekyll
+    - downloads/pandas-fundamentals-practice.zip
     - downloads/reading-data-practice.zip
     - downloads/setup-practice.zip
     - downloads/assignment-b-setup.zip
