@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760" role="img" aria-labelledby="title desc">
+  <title id="title">Separate Python environments for separate projects</title>
+  <desc id="desc">Two projects on the same computer connect to their own Python environments. Project A uses Python 3.11 and shared library version 1. Project B uses Python 3.12 and shared library version 2. Changing packages in one environment does not change the other. All versions are illustrative.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M 0 0 L 8 5 L 0 10" fill="none" stroke="#5d6470" stroke-width="1.5"/></marker>
+  </defs>
+  <rect x="1" y="1" width="1098" height="758" rx="22" fill="#f7f8fc" stroke="#d8dce5"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#202639">
+    <text x="44" y="54" font-size="30" font-weight="700">One computer, separate project environments</text>
+    <text x="44" y="88" font-size="21" fill="#525c6d">Each notebook uses the Python and packages in its selected environment.</text>
+
+    <rect x="44" y="117" width="1012" height="72" rx="12" fill="#ede9f5"/>
+    <text x="66" y="147" font-size="22" font-weight="700" fill="#4e2a84">Anaconda base · your STAT201 starting point</text>
+    <text x="66" y="175" font-size="20" fill="#525c6d">Keep new projects in their own environments.</text>
+
+    <rect x="44" y="217" width="490" height="430" rx="16" fill="#fff" stroke="#b8a4d5" stroke-width="2"/>
+    <rect x="566" y="217" width="490" height="430" rx="16" fill="#fff" stroke="#7fb8bc" stroke-width="2"/>
+    <text x="70" y="254" font-size="25" font-weight="700" fill="#4e2a84">PROJECT A</text>
+    <text x="592" y="254" font-size="25" font-weight="700" fill="#12646b">PROJECT B</text>
+
+    <rect x="70" y="277" width="438" height="66" rx="9" fill="#f3f0f8"/>
+    <rect x="592" y="277" width="438" height="66" rx="9" fill="#eaf5f4"/>
+    <text x="289" y="317" text-anchor="middle" font-size="23">Notebook A</text>
+    <text x="811" y="317" text-anchor="middle" font-size="23">Notebook B</text>
+    <path d="M289 350 V399" fill="none" stroke="#5d6470" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M811 350 V399" fill="none" stroke="#5d6470" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="310" y="380" font-size="18" fill="#525c6d">kernel uses</text>
+    <text x="832" y="380" font-size="18" fill="#525c6d">kernel uses</text>
+
+    <rect x="70" y="417" width="438" height="204" rx="12" fill="#f3f0f8" stroke="#b8a4d5"/>
+    <rect x="592" y="417" width="438" height="204" rx="12" fill="#eaf5f4" stroke="#7fb8bc"/>
+    <text x="92" y="452" font-size="23" font-weight="700" fill="#4e2a84">Environment A · .venv</text>
+    <text x="614" y="452" font-size="23" font-weight="700" fill="#12646b">Environment B · .venv</text>
+    <text x="92" y="495" font-size="23">Python 3.11</text>
+    <text x="614" y="495" font-size="23">Python 3.12</text>
+    <text x="92" y="536" font-size="23">Shared library: version 1</text>
+    <text x="614" y="536" font-size="23">Shared library: version 2</text>
+    <text x="92" y="586" font-size="20" fill="#525c6d">Other packages needed by A</text>
+    <text x="614" y="586" font-size="20" fill="#525c6d">Other packages needed by B</text>
+
+    <text x="550" y="691" text-anchor="middle" font-size="23" font-weight="700">Updating B’s packages leaves A’s packages unchanged.</text>
+    <text x="550" y="726" text-anchor="middle" font-size="19" fill="#525c6d">Illustrative versions only. Each .venv belongs to a different project folder.</text>
+  </g>
+</svg>
