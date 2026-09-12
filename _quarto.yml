@@ -2,6 +2,7 @@ project:
   type: book
   output-dir: docs
   resources:
+    - workflow_enhance.html
     - downloads/numpy-fundamentals-practice.zip
     - .nojekyll
     - downloads/pandas-fundamentals-practice.zip

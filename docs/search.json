@@ -252,17 +252,6 @@
     ]
   },
   {
-    "objectID": "vscode_setup.html#check-your-existing-setup",
-    "href": "vscode_setup.html#check-your-existing-setup",
-    "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.3 Check Your Existing Setup",
-    "text": "1.3 Check Your Existing Setup\nOpen the Extensions panel and verify that the Python and Jupyter extensions from Microsoft are installed and enabled. On Windows/Linux the shortcut is Ctrl+Shift+X; on macOS it is Cmd+Shift+X.\n\n1.3.1 Select an Existing Python Environment\nA Python interpreter is the program that runs your Python code. A Python environment includes an interpreter and its installed packages. Since you completed STAT 201, you should already have a working environment that VS Code can use.\n\nOpen VS Code’s Command Palette: Ctrl+Shift+P on Windows/Linux or Cmd+Shift+P on macOS.\nType Python: Select Interpreter and select that command.\n\n\n\n\n\n\nFigure 1.2: Find Python in VS Code: open the Command Palette, select Python: Select Interpreter, and identify an existing installation by its version and path. Versions and paths shown are examples.\n\n\n\nSelect the working Python 3 environment you used in STAT 201. If you used Anaconda’s default environment, choose base. An Anaconda environment may be labeled conda or base, or have anaconda3 or miniconda3 in its path.\n\nFor this first chapter, your existing environment is sufficient. Chapter 2 explains why projects benefit from separate environments and guides you through creating one for this course. We recommend a recent Python 3 release, preferably Python 3.10 or newer, but the course does not require one exact version.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
-    ]
-  },
-  {
     "objectID": "vscode_setup.html#open-a-project-folder",
     "href": "vscode_setup.html#open-a-project-folder",
     "title": "1  Jupyter Notebooks in VS Code",
@@ -274,11 +263,22 @@
     ]
   },
   {
-    "objectID": "vscode_setup.html#select-a-kernel-and-run-a-cell",
-    "href": "vscode_setup.html#select-a-kernel-and-run-a-cell",
+    "objectID": "vscode_setup.html#check-your-vs-code-extensions",
+    "href": "vscode_setup.html#check-your-vs-code-extensions",
     "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.4 Select a Kernel and Run a Cell",
-    "text": "1.4 Select a Kernel and Run a Cell\nOpen activity01.ipynb. Use its kernel picker to choose an existing Python environment you recognize from STAT 201. Labels vary with installed extensions; a route such as Select Another Kernel → Python Environments may be available. For this first check, your existing environment is sufficient. Chapter 2 establishes a separate course environment.\nRun this in a notebook code cell, not the terminal:\nimport sys\nprint(\"Notebook is running\")\nprint(sys.version)\nprint(sys.executable)\nThe executable path identifies the Python used by this notebook. A kernel name such as Python 3 is not enough to distinguish multiple installations.\nIf VS Code reports that ipykernel is required, install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment; do not install into an arbitrary system interpreter.",
+    "section": "1.3 Check Your VS Code Extensions",
+    "text": "1.3 Check Your VS Code Extensions\nOpen the Extensions panel and verify that the Python and Jupyter extensions from Microsoft are installed and enabled. On Windows/Linux the shortcut is Ctrl+Shift+X; on macOS it is Cmd+Shift+X. These extensions allow VS Code to open notebooks, discover Python environments, and run notebook cells.",
+    "crumbs": [
+      "Setting Up for Data Science",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "vscode_setup.html#select-a-notebook-kernel-and-run-a-test-cell",
+    "href": "vscode_setup.html#select-a-notebook-kernel-and-run-a-test-cell",
+    "title": "1  Jupyter Notebooks in VS Code",
+    "section": "1.4 Select a Notebook Kernel and Run a Test Cell",
+    "text": "1.4 Select a Notebook Kernel and Run a Test Cell\nOpen activity01.ipynb, then use Select Kernel at the top right of the notebook to choose a working Python 3 environment. If the environment is not shown immediately, choose Select Another Kernel → Python Environments.\n\n\n\n\n\n\nFigure 1.2: Choose a notebook kernel in VS Code by opening activity01.ipynb, selecting Select Kernel, and then choosing Python Environments.\n\n\n\nFor this chapter, choose the environment you used in STAT 201. If you used Anaconda’s default environment, choose base; it may be labeled conda or have anaconda3 or miniconda3 in its path. Your existing environment is sufficient for this first check. Chapter 2 guides you through creating a separate environment for this course. We recommend a recent Python 3 release, preferably Python 3.10 or newer, but the course does not require one exact version.\nRun this in a notebook code cell, not the terminal:\nimport sys\nprint(\"Notebook is running\")\nprint(sys.version)\nprint(sys.executable)\nprint(2 + 3)\nYou should see a Python version, the path to its executable, and 5. The executable path identifies the environment used by this notebook; a kernel name such as Python 3 is not enough to distinguish multiple installations.\n\n1.4.1 If Python or the Notebook Does Not Start\nIf no kernel appears, Python may still be installed; VS Code may not have found its environment.\n\nNo kernel is offered? Check that Microsoft’s Python and Jupyter extensions are enabled, restart VS Code, and open the kernel picker again. Choose Select Another Kernel → Python Environments if that option appears.\nPreviously used Anaconda? Open Anaconda Navigator and launch a local Jupyter notebook as you did in STAT 201. Run import sys followed by print(sys.executable). If it works, return to the VS Code kernel picker and look for an environment with the same path.\nVS Code says ipykernel is required? Install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment.\nStill cannot find or run Python? Ask for setup assistance and share the error message. If no working installation is available, install a recent Python 3 release from the official Python website; Python 3.10 or newer is recommended.",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
@@ -417,6 +417,17 @@
     ]
   },
   {
+    "objectID": "python_venv.html#record-and-recreate-dependencies",
+    "href": "python_venv.html#record-and-recreate-dependencies",
+    "title": "2  Project Environments, Packages, and File Paths",
+    "section": "2.8 Record and Recreate Dependencies",
+    "text": "2.8 Record and Recreate Dependencies\nYour .venv contains installed packages. A requirements file records package names and versions as text so you can install them again in another environment. Create this record after completing the installations and import checks above, including Seaborn.\n\n2.8.1 Save the Package Record\nIn the terminal, confirm that the current folder is stat303-setup and that your (.venv) environment is active. Then save the environment’s package list to requirements.txt using the command for your shell:\n\nmacOS: zsh or BashWindows PowerShellWindows Command Prompt\n\n\npython -m pip freeze &gt; requirements.txt\n\n\npython -m pip freeze | Out-File -Encoding utf8 requirements.txt\n\n\npython -m pip freeze &gt; requirements.txt\n\n\n\nHere &gt; writes output into a file. In PowerShell, | passes output to Out-File, and -Encoding utf8 specifies the text encoding. This avoids the different default used by Windows PowerShell 5.1. See PowerShell’s encoding reference and pip’s requirements-file encoding.\nAll three commands write requirements.txt in the current folder and replace it if it already exists. The command may finish without displaying output; open the file in Explorer and check that it contains package entries before continuing.\nA line such as numpy==2.2.0 means “install NumPy version 2.2.0.” This is an illustration, not a required course version. Keep the actual entries generated from your environment. Expect more names than you explicitly installed because the packages also need dependencies.\nWhen sharing requirements.txt, also tell your collaborator which Python version you used.\n\n\n2.8.2 Use the Record in a New Environment\nTo recreate your project environment on another computer or share it with a collaborator, follow these steps:\n\nUse an installed, compatible Python version to create a new project .venv, following Section 2.6.\nActivate it and verify its Python executable.\nIn the terminal, move to the folder containing requirements.txt and run:\npython -m pip install -r requirements.txt\nSelect the new environment as the notebook kernel and repeat the import checks from Section 2.7.\n\n-r requirements.txt tells pip to read the installation requirements from that file. Recreate the environment on the destination computer instead of copying the .venv folder. Matching package versions helps repeat the setup, though Python version and operating-system differences can still matter.\n\n\n\n\n\n\nNoteCheck your understanding\n\n\n\n\n\nDoes pip freeze install packages? No. It reports what is installed; pip install -r requirements.txt performs installation.\nWhat if you export while the terminal uses a different project’s Python? You record that other environment’s packages. Check sys.executable, switch to the intended environment, and export again.\nWhat if you install another package afterward? Repeat the import check and export again when you want the requirements file to reflect the updated environment.\n\n\n\nFor details, see pip’s requirements-file guide.",
+    "crumbs": [
+      "Setting Up for Data Science",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Environments, Packages, and File Paths</span>"
+    ]
+  },
+  {
     "objectID": "python_venv.html#find-local-data-with-paths",
     "href": "python_venv.html#find-local-data-with-paths",
     "title": "2  Project Environments, Packages, and File Paths",
@@ -428,11 +439,11 @@
     ]
   },
   {
-    "objectID": "python_venv.html#record-and-recreate-dependencies",
-    "href": "python_venv.html#record-and-recreate-dependencies",
+    "objectID": "python_venv.html#when-you-return-to-the-project",
+    "href": "python_venv.html#when-you-return-to-the-project",
     "title": "2  Project Environments, Packages, and File Paths",
-    "section": "2.8 Record and Recreate Dependencies",
-    "text": "2.8 Record and Recreate Dependencies\nYour .venv contains installed packages. A requirements file records package names and versions as text so you can install them again in another environment. Create this record after completing the installations and import checks above, including Seaborn.\n\n2.8.1 Save the Package Record\nIn the terminal, confirm that the current folder is stat303-setup and that your (.venv) environment is active. Then save the environment’s package list to requirements.txt using the command for your shell:\n\nmacOS: zsh or BashWindows PowerShellWindows Command Prompt\n\n\npython -m pip freeze &gt; requirements.txt\n\n\npython -m pip freeze | Out-File -Encoding utf8 requirements.txt\n\n\npython -m pip freeze &gt; requirements.txt\n\n\n\nHere &gt; writes output into a file. In PowerShell, | passes output to Out-File, and -Encoding utf8 specifies the text encoding. This avoids the different default used by Windows PowerShell 5.1. See PowerShell’s encoding reference and pip’s requirements-file encoding.\nAll three commands write requirements.txt in the current folder and replace it if it already exists. The command may finish without displaying output; open the file in Explorer and check that it contains package entries before continuing.\nA line such as numpy==2.2.0 means “install NumPy version 2.2.0.” This is an illustration, not a required course version. Keep the actual entries generated from your environment. Expect more names than you explicitly installed because the packages also need dependencies.\nWhen sharing requirements.txt, also tell your collaborator which Python version you used.\n\n\n2.8.2 Use the Record in a New Environment\nTo recreate your project environment on another computer or share it with a collaborator, follow these steps:\n\nUse an installed, compatible Python version to create a new project .venv, following Section 2.6.\nActivate it and verify its Python executable.\nIn the terminal, move to the folder containing requirements.txt and run:\npython -m pip install -r requirements.txt\nSelect the new environment as the notebook kernel and repeat the import checks from Section 2.7.\n\n-r requirements.txt tells pip to read the installation requirements from that file. Recreate the environment on the destination computer instead of copying the .venv folder. Matching package versions helps repeat the setup, though Python version and operating-system differences can still matter.\n\n\n\n\n\n\nNoteCheck your understanding\n\n\n\n\n\nDoes pip freeze install packages? No. It reports what is installed; pip install -r requirements.txt performs installation.\nWhat if you export while the terminal uses a different project’s Python? You record that other environment’s packages. Check sys.executable, switch to the intended environment, and export again.\nWhat if you install another package afterward? Repeat the import check and export again when you want the requirements file to reflect the updated environment.\n\n\n\nFor details, see pip’s requirements-file guide.",
+    "section": "When You Return to the Project",
+    "text": "When You Return to the Project\nUse this checklist when you resume work after closing VS Code:\n\nOpen the same stat303-setup folder and select its .venv as the notebook kernel.\nOpen a terminal, check its current folder, and activate .venv if needed. Compare the terminal and notebook Python paths before installing anything.\nRun the notebook from the top, including imports and the data-path check. Reuse the installed packages; creating .venv and installing the same packages are not daily steps.\n\nIf you restart only the kernel, rerun the code cells to restore imports and variables. The files and installed packages remain on disk.",
     "crumbs": [
       "Setting Up for Data Science",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Environments, Packages, and File Paths</span>"
@@ -2229,50 +2240,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>H</span>  <span class='chapter-title'>Datasets & Templates</span>"
-    ]
-  },
-  {
-    "objectID": "vscode_setup.html#select-a-notebook-kernel-and-run-a-test-cell",
-    "href": "vscode_setup.html#select-a-notebook-kernel-and-run-a-test-cell",
-    "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.4 Select a Notebook Kernel and Run a Test Cell",
-    "text": "1.4 Select a Notebook Kernel and Run a Test Cell\nOpen activity01.ipynb, then use Select Kernel at the top right of the notebook to choose a working Python 3 environment. If the environment is not shown immediately, choose Select Another Kernel → Python Environments.\n\n\n\n\n\n\nFigure 1.2: Choose a notebook kernel in VS Code by opening activity01.ipynb, selecting Select Kernel, and then choosing Python Environments.\n\n\n\nFor this chapter, choose the environment you used in STAT 201. If you used Anaconda’s default environment, choose base; it may be labeled conda or have anaconda3 or miniconda3 in its path. Your existing environment is sufficient for this first check. Chapter 2 guides you through creating a separate environment for this course. We recommend a recent Python 3 release, preferably Python 3.10 or newer, but the course does not require one exact version.\nRun this in a notebook code cell, not the terminal:\nimport sys\nprint(\"Notebook is running\")\nprint(sys.version)\nprint(sys.executable)\nprint(2 + 3)\nYou should see a Python version, the path to its executable, and 5. The executable path identifies the environment used by this notebook; a kernel name such as Python 3 is not enough to distinguish multiple installations.\n\n1.4.1 If Python or the Notebook Does Not Start\nIf no kernel appears, Python may still be installed; VS Code may not have found its environment.\n\nNo kernel is offered? Check that Microsoft’s Python and Jupyter extensions are enabled, restart VS Code, and open the kernel picker again. Choose Select Another Kernel → Python Environments if that option appears.\nPreviously used Anaconda? Open Anaconda Navigator and launch a local Jupyter notebook as you did in STAT 201. Run import sys followed by print(sys.executable). If it works, return to the VS Code kernel picker and look for an environment with the same path.\nVS Code says ipykernel is required? Install it for the selected environment using the VS Code prompt. If that environment is managed or read-only, ask for assistance or follow Chapter 2 to create your own environment.\nStill cannot find or run Python? Ask for setup assistance and share the error message. If no working installation is available, install a recent Python 3 release from the official Python website; Python 3.10 or newer is recommended.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
-    ]
-  },
-  {
-    "objectID": "vscode_setup.html#check-your-vs-code-extensions",
-    "href": "vscode_setup.html#check-your-vs-code-extensions",
-    "title": "1  Jupyter Notebooks in VS Code",
-    "section": "1.3 Check Your VS Code Extensions",
-    "text": "1.3 Check Your VS Code Extensions\nOpen the Extensions panel and verify that the Python and Jupyter extensions from Microsoft are installed and enabled. On Windows/Linux the shortcut is Ctrl+Shift+X; on macOS it is Cmd+Shift+X. These extensions allow VS Code to open notebooks, discover Python environments, and run notebook cells.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
-    ]
-  },
-  {
-    "objectID": "python_venv.html#three-checks-before-a-setup-command",
-    "href": "python_venv.html#three-checks-before-a-setup-command",
-    "title": "2  Project Environments, Packages, and File Paths",
-    "section": "2.4 Three Checks Before a Setup Command",
-    "text": "2.4 Three Checks Before a Setup Command\nA command can be written correctly and still run in the wrong place, use the wrong Python installation, or create a file in the wrong folder. Before a command that creates an environment, installs a package, runs a script, or works with a file, pause for these three checks.\n\n\n\nCheck\nWhat it means and how to answer\n\n\n\n\n1. Where will I type it?\nUse a notebook code cell for Python statements such as import pandas as pd. Use the terminal for shell commands such as cd data or the file-listing command for your shell. If the terminal shows &gt;&gt;&gt;, enter exit() to return to the shell before typing a shell command.\n\n\n2. Which Python will the command use?\nThis matters when a terminal command contains python, python3, or pip, and when a notebook runs Python code. In the terminal, run python -c \"import sys; print(sys.executable)\"; on macOS, use python3 instead if needed. In a notebook, run import sys followed by print(sys.executable). The printed path identifies the Python in use.\n\n\n3. Which folder is current?\nRelative filenames and commands that list, open, or create files are interpreted from the current folder. Use the command for your shell from Navigate in the Terminal to check it. The folder shown in Explorer does not prove that an already-open terminal or notebook is using that folder.\n\n\n\n\n\n\n\n\n\nTipWorked example: list the project files\n\n\n\nSuppose you want to list the files in stat303-setup using ls, Get-ChildItem, or dir, depending on your shell. Before running the command, your answers should be:\n\n\n\n\n\n\n\nCheck\nAnswer for this command\n\n\n\n\nWhere am I typing?\nIn the terminal’s shell.\n\n\nWhich Python am I using?\nNot applicable. The shell lists the files; this command does not use Python.\n\n\nWhich folder is current?\nstat303-setup, because the command lists the contents of the current folder. If another folder is current, you will see a different list.\n\n\n\n\n\nNot every command depends on all three checks. For example, cd data does not use Python, but you still need to know that you are typing in the terminal and which folder is current. The goal is to decide which checks apply before you press Enter.\nBefore moving on: confirm that you are in the terminal’s shell, record the Python executable you intend to use, and verify that the terminal’s current folder is stat303-setup. After creating the course environment, you will repeat the Python check to confirm that the terminal and notebook both use the project’s .venv.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Environments, Packages, and File Paths</span>"
-    ]
-  },
-  {
-    "objectID": "python_venv.html#when-you-return-to-the-project",
-    "href": "python_venv.html#when-you-return-to-the-project",
-    "title": "2  Project Environments, Packages, and File Paths",
-    "section": "When You Return to the Project",
-    "text": "When You Return to the Project\nUse this checklist when you resume work after closing VS Code:\n\nOpen the same stat303-setup folder and select its .venv as the notebook kernel.\nOpen a terminal, check its current folder, and activate .venv if needed. Compare the terminal and notebook Python paths before installing anything.\nRun the notebook from the top, including imports and the data-path check. Reuse the installed packages; creating .venv and installing the same packages are not daily steps.\n\nIf you restart only the kernel, rerun the code cells to restore imports and variables. The files and installed packages remain on disk.",
-    "crumbs": [
-      "Setting Up for Data Science",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Project Environments, Packages, and File Paths</span>"
     ]
   }
 ]
