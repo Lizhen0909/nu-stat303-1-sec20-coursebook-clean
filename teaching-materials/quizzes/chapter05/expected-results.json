@@ -1,0 +1,76 @@
+{
+  "numpy_version": "2.5.3",
+  "revenue": [
+    [
+      60.0,
+      40.0,
+      24.0,
+      40.0
+    ],
+    [
+      50.0,
+      30.0,
+      36.0,
+      32.0
+    ],
+    [
+      60.0,
+      36.0,
+      27.0,
+      40.0
+    ]
+  ],
+  "adjusted": [
+    [
+      60.0,
+      40.0,
+      24.0,
+      40.0
+    ],
+    [
+      45.0,
+      27.0,
+      32.4,
+      28.8
+    ],
+    [
+      48.0,
+      28.8,
+      21.6,
+      32.0
+    ]
+  ],
+  "store_totals": [
+    164.0,
+    148.0,
+    163.0
+  ],
+  "product_totals": [
+    170.0,
+    106.0,
+    87.0,
+    112.0
+  ],
+  "minimum_store": "South",
+  "maximum_store": "North",
+  "maximum_cell": 60.0,
+  "first_maximum_coordinate": [
+    0,
+    0
+  ],
+  "all_maximum_coordinates": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "expanded_shape": [
+    4,
+    4
+  ],
+  "capital_candidate_count": 233
+}

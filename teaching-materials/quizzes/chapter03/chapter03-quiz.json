@@ -1,0 +1,146 @@
+{
+  "id": "stat303_chapter03_quiz_v1",
+  "title": "Chapter 3 Quiz: Reading Data",
+  "instructions_url": "https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Reading_data.html#practice-activity-read-inspect-and-export-movie-data",
+  "instructions_label": "Chapter 3 Practice Activity",
+  "total_points": 20,
+  "mcqs": [
+    {
+      "id": "shape",
+      "title": "Interpreting dimensions",
+      "stem": "After a default CSV import, movies.shape is (2228, 11). What does this tell you?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "There are 2,228 movies and 11 data columns; the row index is not one of the 11 columns."
+        },
+        {
+          "id": "B",
+          "text": "There are 2,228 movies and 10 data columns plus the row index."
+        },
+        {
+          "id": "C",
+          "text": "There are 11 movies and 2,228 variables."
+        },
+        {
+          "id": "D",
+          "text": "Only the 5 rows shown by head() were imported."
+        }
+      ],
+      "correct": "A",
+      "rationale": "shape reports data rows and columns, excluding the index."
+    },
+    {
+      "id": "series",
+      "title": "Selecting a variable",
+      "stem": "You assign ratings = movies['IMDB Rating']. Which description is correct?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "ratings is a two-dimensional DataFrame with 11 columns."
+        },
+        {
+          "id": "B",
+          "text": "ratings is a Python list without row labels."
+        },
+        {
+          "id": "C",
+          "text": "ratings is a one-dimensional Series that retains the corresponding row labels."
+        },
+        {
+          "id": "D",
+          "text": "ratings is the mean rating as a single number."
+        }
+      ],
+      "correct": "C",
+      "rationale": "Selecting one named column with a single pair of brackets produces a Series."
+    },
+    {
+      "id": "delimiter",
+      "title": "Diagnosing an import",
+      "stem": "A text file header is Title;Year;Rating. Reading it with the default pd.read_csv() returns one column named Title;Year;Rating. What is the best next step?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "Use head(3) to split the column into three variables."
+        },
+        {
+          "id": "B",
+          "text": "Read it again with sep=\";\", then inspect its shape and column names."
+        },
+        {
+          "id": "C",
+          "text": "Rename the file to .csv; pandas will then infer three columns from the extension."
+        },
+        {
+          "id": "D",
+          "text": "Use index_col=0 to separate the three variables."
+        }
+      ],
+      "correct": "B",
+      "rationale": "The semicolon delimiter must be parsed; a successful function call alone does not prove the table was read correctly."
+    },
+    {
+      "id": "export",
+      "title": "Preserving the intended columns",
+      "stem": "movies has a default RangeIndex containing only row numbers. You want a CSV with its existing data columns and no extra row-number column. Which export fits that goal?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "movies.to_csv(\"movies_export.csv\", header=False)"
+        },
+        {
+          "id": "B",
+          "text": "movies.to_csv(\"movies_export.csv\", index=True)"
+        },
+        {
+          "id": "C",
+          "text": "movies.to_csv(\"movies_export.csv\", sep=\";\")"
+        },
+        {
+          "id": "D",
+          "text": "movies.to_csv(\"movies_export.csv\", index=False)"
+        }
+      ],
+      "correct": "D",
+      "rationale": "index=False omits the row index; meaningful IDs stored in an index would need to be preserved when required."
+    }
+  ],
+  "upload": {
+    "id": "html-report",
+    "title": "Upload Your Activity 3 HTML Report",
+    "filename": "activity03.html",
+    "points": 16,
+    "rubric": [
+      {
+        "criterion": "Import and dataset interpretation",
+        "points": 3,
+        "evidence": "1 point: correct CSV import and requested previews; 1: correct shape/column evidence; 1: observation, variables, and index interpretation."
+      },
+      {
+        "criterion": "Inspection and Series explanation",
+        "points": 5,
+        "evidence": "1 point: dtypes and info output; 1: non-null count interpreted against total rows; 1: describe output with correct rating mean and median; 1: Series type/shape and explanation; 1: head limitation and attribute/method distinction (0.5 each)."
+      },
+      {
+        "criterion": "Delimiter diagnosis and correction",
+        "points": 4,
+        "evidence": "1 point: raw preview and prediction; 1: default-import evidence interpreted; 1: correct explicit separator and successful import; 1: dimension/column comparison with CSV."
+      },
+      {
+        "criterion": "Export and verification",
+        "points": 3,
+        "evidence": "1 point: export with index=False and successful reimport; 1: visible structural checks interpreted; 1: default-row-number prediction and meaningful-ID explanation (0.5 each)."
+      },
+      {
+        "criterion": "Readable completed HTML",
+        "points": 1,
+        "evidence": "0.5 point: name and organized code, outputs, and Markdown; 0.5: completion note describing fresh run, save, and HTML inspection. HTML alone does not prove execution history."
+      }
+    ]
+  }
+}

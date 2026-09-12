@@ -10,7 +10,7 @@
     <text x="44" y="88" font-size="21" fill="#525c6d">Each notebook uses the Python and packages in its selected environment.</text>
 
     <rect x="44" y="117" width="1012" height="72" rx="12" fill="#ede9f5"/>
-    <text x="66" y="147" font-size="22" font-weight="700" fill="#4e2a84">Anaconda base · your STAT201 starting point</text>
+    <text x="66" y="147" font-size="22" font-weight="700" fill="#4e2a84">Existing Python · your Chapter 1 starting point</text>
     <text x="66" y="175" font-size="20" fill="#525c6d">Keep new projects in their own environments.</text>
 
     <rect x="44" y="217" width="490" height="430" rx="16" fill="#fff" stroke="#b8a4d5" stroke-width="2"/>

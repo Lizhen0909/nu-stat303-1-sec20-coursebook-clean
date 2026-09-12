@@ -1,0 +1,146 @@
+{
+  "id": "stat303_chapter01_quiz_v1",
+  "title": "Chapter 1 Quiz: Jupyter Notebooks in VS Code",
+  "instructions_url": "https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/vscode_setup.html#practice-activity-your-first-vs-code-notebook",
+  "instructions_label": "Chapter 1 Practice Activity",
+  "total_points": 20,
+  "mcqs": [
+    {
+      "id": "project-folder",
+      "title": "Open the practice project",
+      "stem": "You downloaded the setup practice kit and want to work on `activity01.ipynb` with its related files visible in VS Code. Which approach follows Chapter 1?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "Open the notebook directly inside the ZIP viewer and leave the kit compressed."
+        },
+        {
+          "id": "B",
+          "text": "Extract the kit and use File → Open Folder to open the extracted `stat303-setup` folder."
+        },
+        {
+          "id": "C",
+          "text": "Move the notebook out of the kit and open only that file, leaving the related files behind."
+        },
+        {
+          "id": "D",
+          "text": "Use File → Open Folder to open the folder containing the Python executable."
+        }
+      ],
+      "correct": "B",
+      "rationale": "Opening the extracted project folder keeps the notebook and related files together and visible in Explorer. The Python installation folder is not the project folder."
+    },
+    {
+      "id": "kernel-selection",
+      "title": "Verify the notebook Python",
+      "stem": "You select your familiar STAT201 Python installation using Python: Select Interpreter. Your open notebook still prints an executable path belonging to a different installation. What should you do?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "Assume the notebook is correct because selecting an interpreter automatically changes every open notebook kernel."
+        },
+        {
+          "id": "B",
+          "text": "Choose whichever kernel has the highest Python version number, regardless of its path."
+        },
+        {
+          "id": "C",
+          "text": "Install another copy of Python before checking the available notebook kernels."
+        },
+        {
+          "id": "D",
+          "text": "Use the notebook kernel picker to select the intended environment, then rerun the cell that prints `sys.executable`."
+        }
+      ],
+      "correct": "D",
+      "rationale": "Workspace interpreter selection and notebook kernel selection are separate. The executable path printed by the notebook verifies which Python actually runs its cells. Chapter 1 uses a familiar existing environment, not a required new .venv."
+    },
+    {
+      "id": "markdown-explanation",
+      "title": "Choose the right cell type",
+      "stem": "You have a code cell that calculates the mean of three readings. You now want to add a heading and a paragraph explaining the calculation in your report. What should you use?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "A Markdown cell for the heading and explanation, while keeping the calculation in a code cell."
+        },
+        {
+          "id": "B",
+          "text": "A Python code cell containing the paragraph as ordinary text without quotes or comments."
+        },
+        {
+          "id": "C",
+          "text": "The terminal, because text entered there automatically becomes part of the notebook."
+        },
+        {
+          "id": "D",
+          "text": "Only a Python comment, because Markdown cells cannot display explanations alongside code."
+        }
+      ],
+      "correct": "A",
+      "rationale": "Markdown cells provide formatted narrative and headings. Code cells perform computations. Terminal text is not automatically saved as notebook content."
+    },
+    {
+      "id": "fresh-run",
+      "title": "Check that the notebook runs from the beginning",
+      "stem": "Your mean calculation worked, but you then deleted the earlier cell that defined `readings`. The old result is still visible. What is the best check before considering the notebook complete?",
+      "points": 1,
+      "options": [
+        {
+          "id": "A",
+          "text": "Keep the old output; a visible result proves the current cells still run successfully."
+        },
+        {
+          "id": "B",
+          "text": "Run only the mean calculation again without restarting, since the kernel may remember `readings`."
+        },
+        {
+          "id": "C",
+          "text": "Restart the kernel and run all remaining code cells in order; restore the missing definition if needed, then save the successfully rerun notebook."
+        },
+        {
+          "id": "D",
+          "text": "Save and reopen without rerunning; saved output proves that every required definition is present."
+        }
+      ],
+      "correct": "C",
+      "rationale": "A running kernel can retain values from deleted cells, and a notebook can retain saved output. Restarting and running all cells checks that the current notebook includes the definitions it needs."
+    }
+  ],
+  "upload": {
+    "id": "html-report",
+    "title": "Upload Your Activity 1 HTML Report",
+    "filename": "activity01.html",
+    "points": 16,
+    "rubric": [
+      {
+        "criterion": "Name and readable Markdown",
+        "points": 2,
+        "evidence": "1 point for the student name in the notebook/report; 1 point for explanations displayed as readable Markdown text. Do not require the name to appear in a particular metadata field."
+      },
+      {
+        "criterion": "Python identification",
+        "points": 4,
+        "evidence": "2 points for visible output from the supplied environment-information cell (Python version, executable, and working directory); 2 points for a Markdown sentence identifying the selected Python installation consistently with the output. Accept the familiar working STAT201 environment; do not require .venv or any fixed Python version or path."
+      },
+      {
+        "criterion": "Mean calculation",
+        "points": 4,
+        "evidence": "1 point for defining a list of three numerical readings; 2 points for computing their mean using sum() and len(); 1 point for a visible correct result for the student’s chosen values. The example readings are not mandatory."
+      },
+      {
+        "criterion": "Explanation of code and kernel",
+        "points": 4,
+        "evidence": "2 points for explaining how the code computes the mean; 2 points for distinguishing the notebook document from the kernel process that executes its code and retains values. Award 1 point within each component for a partially correct explanation."
+      },
+      {
+        "criterion": "Completion and submitted HTML",
+        "points": 2,
+        "evidence": "1 point for the starter notebook’s requested record of restart/run-all and reopening checks; 1 point for a readable HTML file containing the completed code and outputs without unexplained execution errors. Treat the fresh-run record as student-reported evidence, not proof of execution history."
+      }
+    ]
+  }
+}

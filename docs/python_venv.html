@@ -381,21 +381,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#different-projects-need-different-tools" id="toc-different-projects-need-different-tools" class="nav-link" data-scroll-target="#different-projects-need-different-tools"><span class="header-section-number">2.5.1</span> Different Projects Need Different Tools</a></li>
   <li><a href="#give-each-project-its-own-environment" id="toc-give-each-project-its-own-environment" class="nav-link" data-scroll-target="#give-each-project-its-own-environment"><span class="header-section-number">2.5.2</span> Give Each Project Its Own Environment</a></li>
+  <li><a href="#share-and-recreate-your-project-environment" id="toc-share-and-recreate-your-project-environment" class="nav-link" data-scroll-target="#share-and-recreate-your-project-environment"><span class="header-section-number">2.5.3</span> Share and Recreate Your Project Environment</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">2.5.4</span> Check Your Understanding</a></li>
   </ul></li>
   <li><a href="#create-a-course-environment" id="toc-create-a-course-environment" class="nav-link" data-scroll-target="#create-a-course-environment"><span class="header-section-number">2.6</span> Create a Course Environment</a>
   <ul class="collapse">
-  <li><a href="#activate-and-verify" id="toc-activate-and-verify" class="nav-link" data-scroll-target="#activate-and-verify"><span class="header-section-number">2.6.1</span> Activate and Verify</a></li>
+  <li><a href="#method-1-create-.venv-from-the-notebook-kernel-picker" id="toc-method-1-create-.venv-from-the-notebook-kernel-picker" class="nav-link" data-scroll-target="#method-1-create-.venv-from-the-notebook-kernel-picker"><span class="header-section-number">2.6.1</span> Method 1: Create <code>.venv</code> from the Notebook Kernel Picker</a></li>
+  <li><a href="#method-2-create-.venv-in-the-terminal" id="toc-method-2-create-.venv-in-the-terminal" class="nav-link" data-scroll-target="#method-2-create-.venv-in-the-terminal"><span class="header-section-number">2.6.2</span> Method 2: Create <code>.venv</code> in the Terminal</a></li>
+  <li><a href="#restart-the-terminal-and-verify-both-places" id="toc-restart-the-terminal-and-verify-both-places" class="nav-link" data-scroll-target="#restart-the-terminal-and-verify-both-places"><span class="header-section-number">2.6.3</span> Restart the Terminal and Verify Both Places</a></li>
   </ul></li>
   <li><a href="#install-packages-in-the-intended-environment" id="toc-install-packages-in-the-intended-environment" class="nav-link" data-scroll-target="#install-packages-in-the-intended-environment"><span class="header-section-number">2.7</span> Install Packages in the Intended Environment</a>
   <ul class="collapse">
-  <li><a href="#from-the-terminal" id="toc-from-the-terminal" class="nav-link" data-scroll-target="#from-the-terminal"><span class="header-section-number">2.7.1</span> From the Terminal</a></li>
-  <li><a href="#from-a-notebook" id="toc-from-a-notebook" class="nav-link" data-scroll-target="#from-a-notebook"><span class="header-section-number">2.7.2</span> From a Notebook</a></li>
+  <li><a href="#method-1-install-from-the-terminal" id="toc-method-1-install-from-the-terminal" class="nav-link" data-scroll-target="#method-1-install-from-the-terminal"><span class="header-section-number">2.7.1</span> Method 1: Install from the Terminal</a></li>
+  <li><a href="#method-2-install-from-the-notebook" id="toc-method-2-install-from-the-notebook" class="nav-link" data-scroll-target="#method-2-install-from-the-notebook"><span class="header-section-number">2.7.2</span> Method 2: Install from the Notebook</a></li>
+  <li><a href="#install-once-import-in-every-notebook" id="toc-install-once-import-in-every-notebook" class="nav-link" data-scroll-target="#install-once-import-in-every-notebook"><span class="header-section-number">2.7.3</span> Install Once, Import in Every Notebook</a></li>
   </ul></li>
-  <li><a href="#find-local-data-with-paths" id="toc-find-local-data-with-paths" class="nav-link" data-scroll-target="#find-local-data-with-paths"><span class="header-section-number">2.8</span> Find Local Data with Paths</a>
+  <li><a href="#record-and-recreate-dependencies" id="toc-record-and-recreate-dependencies" class="nav-link" data-scroll-target="#record-and-recreate-dependencies"><span class="header-section-number">2.8</span> Record and Recreate Dependencies</a>
   <ul class="collapse">
-  <li><a href="#what-changes-when-a-notebook-moves" id="toc-what-changes-when-a-notebook-moves" class="nav-link" data-scroll-target="#what-changes-when-a-notebook-moves"><span class="header-section-number">2.8.1</span> What Changes When a Notebook Moves?</a></li>
+  <li><a href="#save-the-package-record" id="toc-save-the-package-record" class="nav-link" data-scroll-target="#save-the-package-record"><span class="header-section-number">2.8.1</span> Save the Package Record</a></li>
+  <li><a href="#use-the-record-in-a-new-environment" id="toc-use-the-record-in-a-new-environment" class="nav-link" data-scroll-target="#use-the-record-in-a-new-environment"><span class="header-section-number">2.8.2</span> Use the Record in a New Environment</a></li>
   </ul></li>
-  <li><a href="#record-and-recreate-dependencies" id="toc-record-and-recreate-dependencies" class="nav-link" data-scroll-target="#record-and-recreate-dependencies"><span class="header-section-number">2.9</span> Record and Recreate Dependencies</a></li>
+  <li><a href="#find-local-data-with-paths" id="toc-find-local-data-with-paths" class="nav-link" data-scroll-target="#find-local-data-with-paths"><span class="header-section-number">2.9</span> Find Local Data with Paths</a>
+  <ul class="collapse">
+  <li><a href="#what-changes-when-the-working-directory-changes" id="toc-what-changes-when-the-working-directory-changes" class="nav-link" data-scroll-target="#what-changes-when-the-working-directory-changes"><span class="header-section-number">2.9.1</span> What Changes When the Working Directory Changes?</a></li>
+  </ul></li>
   <li><a href="#practice-activity-find-your-python-and-your-data" id="toc-practice-activity-find-your-python-and-your-data" class="nav-link" data-scroll-target="#practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</a>
   <ul class="collapse">
   <li><a href="#a.-identify-your-tools-and-starting-folder" id="toc-a.-identify-your-tools-and-starting-folder" class="nav-link" data-scroll-target="#a.-identify-your-tools-and-starting-folder"><span class="header-section-number">2.10.1</span> A. Identify Your Tools and Starting Folder</a></li>
@@ -438,12 +447,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check your current folder, list its contents, and move between folders.</li>
 <li>Ask three questions before running a command: where am I typing, which Python am I using, and which folder is current?</li>
 <li>Create and verify a project environment, install packages, and record its dependencies.</li>
+<li>Build a relative data path and diagnose a missing-file result.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Before you begin">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Before you begin
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete the <a href="./vscode_setup.html">Chapter 1 setup</a> first so that Python, VS Code, its Python and Jupyter extensions, and Quarto are ready. Continue with the extracted <a href="downloads/setup-practice.zip">setup practice kit</a>. Open the <strong><code>stat303-setup</code> folder</strong> in VS Code, then open <code>activity02.ipynb</code> inside it. If you already used this folder in Chapter 1, continue with that copy.</p>
+<p>Before you create the environment, the relevant files should look like this:</p>
+<pre class="text"><code>stat303-setup/
+├── activity01.ipynb
+├── activity02.ipynb
+└── data/
+    └── station_readings.csv</code></pre>
+<p>Later in this chapter, you will create a project environment and save a record of its installed packages alongside the notebooks. Follow the examples in <code>activity02.ipynb</code>; the practice activity at the end explains what evidence to keep for submission.</p>
+</div>
+</div>
 <section id="what-is-a-terminal" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="what-is-a-terminal"><span class="header-section-number">2.1</span> What Is a Terminal?</h2>
 <p>A <strong>terminal</strong> is a text interface where you type commands and read their output. Instead of clicking a folder or a button, you describe an action in text. A <strong>shell</strong> is the program that reads those commands and carries them out. Common shells include zsh or Bash on macOS, and PowerShell or Command Prompt on Windows.</p>
 <p>If you typed a command such as <code>quarto render assignment.ipynb --to html</code> in STAT 201, you have already used a terminal: you asked the shell to start Quarto, gave it a notebook filename, and requested HTML output. You do not need to run this example now.</p>
 <p>In VS Code, open <strong>Terminal → New Terminal</strong>. This integrated terminal lets you work beside your notebook without opening a separate application. Check its tab or dropdown for the shell name; this chapter provides separate commands where shells differ. See the <a href="https://code.visualstudio.com/docs/terminal/getting-started">VS Code terminal introduction</a> for more about the interface.</p>
+<div id="fig-vscode-integrated-terminal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Annotated VS Code screenshot with a purple frame around the integrated terminal panel. Labels identify the panel, the zsh shell, the plus button used to start a new terminal, and the terminal prompt before the typed pwd command.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vscode-integrated-terminal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/vscode-integrated-terminal-annotated-v2.png" class="img-fluid figure-img" style="width:100.0%" alt="Annotated VS Code screenshot with a purple frame around the integrated terminal panel. Labels identify the panel, the zsh shell, the plus button used to start a new terminal, and the terminal prompt before the typed pwd command.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vscode-integrated-terminal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: The VS Code integrated terminal. This macOS example identifies the terminal prompt, uses the zsh shell, and shows the plus button for starting a new terminal.
+</figcaption>
+</figure>
+</div>
 <section id="read-the-prompt-and-enter-a-command" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="read-the-prompt-and-enter-a-command"><span class="header-section-number">2.1.1</span> Read the Prompt and Enter a Command</h3>
 <p>The <strong>prompt</strong> is the text that appears when the shell is ready for input. Yours might look like one of these examples:</p>
@@ -451,6 +491,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 PS C:\Users\student\stat303-setup&gt;</code></pre>
 <p>Type after the prompt and press <strong>Enter</strong> to run a command. Do not copy the prompt itself. Read any output, then wait for the prompt to return before entering the next command. Some successful commands produce no output.</p>
 <p>A terminal can also run an interactive Python session. If you see <code>&gt;&gt;&gt;</code>, Python is waiting for Python code; type <code>exit()</code> and press Enter to return to the shell before using the navigation commands below. In a notebook, Python code goes in a <strong>code cell</strong> and runs through the selected <strong>kernel</strong>.</p>
+<div id="fig-python-interactive-session" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Annotated VS Code terminal screenshot. The first label points to the python command typed at the shell prompt. The second label points to the three-angle-bracket prompt that marks the Python interactive session. The example evaluates 2 plus 3 and displays 5.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-python-interactive-session-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/python-interactive-session.png" class="img-fluid figure-img" style="width:100.0%" alt="Annotated VS Code terminal screenshot. The first label points to the python command typed at the shell prompt. The second label points to the three-angle-bracket prompt that marks the Python interactive session. The example evaluates 2 plus 3 and displays 5.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-python-interactive-session-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Starting an interactive Python session in the VS Code terminal. Type <code>python</code> at the shell prompt and press Enter; the <code>&gt;&gt;&gt;</code> prompt shows that Python is ready for Python code.
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="why-use-the-terminal-for-python-data-science" class="level2" data-number="2.2">
@@ -467,43 +517,36 @@ PS C:\Users\student\stat303-setup&gt;</code></pre>
 <section id="navigate-in-the-terminal" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="navigate-in-the-terminal"><span class="header-section-number">2.3</span> Navigate in the Terminal</h2>
 <p>The terminal always has a <strong>current working directory</strong>, meaning the folder from which it interprets relative file and folder names. Here, <em>directory</em> and <em>folder</em> mean the same thing. Think of it as your current location in the folder tree: listing files shows what is here, and <code>cd</code> (change directory) moves you somewhere else.</p>
-<p>With the extracted <code>stat303-setup</code> folder open in VS Code, open a terminal and use the column for your shell. Windows PowerShell and Windows Command Prompt are different shells. Run one command at a time.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Task</th>
-<th>macOS zsh/Bash</th>
-<th>Windows PowerShell</th>
-<th>Windows Command Prompt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Show current directory</td>
-<td><code>pwd</code></td>
-<td><code>Get-Location</code></td>
-<td><code>cd</code></td>
-</tr>
-<tr class="even">
-<td>List files and folders</td>
-<td><code>ls</code></td>
-<td><code>Get-ChildItem</code></td>
-<td><code>dir</code></td>
-</tr>
-<tr class="odd">
-<td>Enter a child folder</td>
-<td><code>cd data</code></td>
-<td><code>cd data</code></td>
-<td><code>cd data</code></td>
-</tr>
-<tr class="even">
-<td>Move to parent folder</td>
-<td><code>cd ..</code></td>
-<td><code>cd ..</code></td>
-<td><code>cd ..</code></td>
-</tr>
-</tbody>
-</table>
+<p>With the extracted <code>stat303-setup</code> folder open in VS Code, open a terminal and select the tab matching your shell. Windows PowerShell and Windows Command Prompt are different shells. Run one command at a time.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">macOS: zsh or Bash</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Windows PowerShell</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Windows Command Prompt</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ul>
+<li>Show the current directory: <code>pwd</code></li>
+<li>List files and folders: <code>ls</code></li>
+<li>Enter the <code>data</code> folder: <code>cd data</code></li>
+<li>Move to the parent folder: <code>cd ..</code></li>
+</ul>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ul>
+<li>Show the current directory: <code>Get-Location</code></li>
+<li>List files and folders: <code>Get-ChildItem</code></li>
+<li>Enter the <code>data</code> folder: <code>cd data</code></li>
+<li>Move to the parent folder: <code>cd ..</code></li>
+</ul>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<ul>
+<li>Show the current directory: <code>cd</code></li>
+<li>List files and folders: <code>dir</code></li>
+<li>Enter the <code>data</code> folder: <code>cd data</code></li>
+<li>Move to the parent folder: <code>cd ..</code></li>
+</ul>
+</div>
+</div>
+</div>
 <p><code>.</code> means the current directory and <code>..</code> its parent. A <strong>child folder</strong> is a folder directly inside the current one; the <strong>parent folder</strong> is the folder containing it. Put paths containing spaces in quotes, for example <code>cd "course practice"</code> when that folder exists inside your current directory. To change drives as well as folders in Command Prompt, use <code>cd /d "D:\your\folder"</code>, replacing the example path with your actual path.</p>
 <section id="try-it-visit-the-data-folder-and-come-back" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="try-it-visit-the-data-folder-and-come-back"><span class="header-section-number">2.3.1</span> Try It: Visit the Data Folder and Come Back</h3>
@@ -514,13 +557,14 @@ PS C:\Users\student\stat303-setup&gt;</code></pre>
 <li><strong>Check what is inside.</strong> List the contents again. You should see <code>station_readings.csv</code>.</li>
 <li><strong>Return to the project folder.</strong> Run <code>cd ..</code>, then show the current directory and list its contents. You should see the notebooks again.</li>
 </ol>
-<p>These commands inspect folders and change the terminal’s location; they do not move your files. If <code>cd data</code> reports that the folder does not exist, check your current directory and its contents before trying again. Clicking a file in Explorer does not change an existing terminal’s working directory, and <code>cd</code> in the terminal does not change a running notebook’s working directory.</p>
+<p>These commands inspect folders and change the terminal’s location; they do not move your files. Navigation commands such as <code>cd</code> are shell commands and do not use Python, so you do not need to identify a Python environment before running them. If <code>cd data</code> reports that the folder does not exist, check your current directory and its contents before trying again. Clicking a file in Explorer does not change an existing terminal’s working directory, and <code>cd</code> in the terminal does not change a running notebook’s working directory.</p>
 <p><strong>Starting-folder check:</strong> finish in <code>stat303-setup</code>. This is where you will create the environment and write the requirements file later in this chapter.</p>
 </section>
 </section>
 <section id="ask-three-questions-before-a-command" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="ask-three-questions-before-a-command"><span class="header-section-number">2.4</span> Ask Three Questions Before a Command</h2>
-<p>Now that you can find your way around, build this habit before running setup or analysis commands. The answers determine how a command is interpreted, which Python installation it uses, and where it looks for or writes files.</p>
+<p>Throughout this course, you will use both notebooks and the terminal. Some tasks can be completed in either place, but the commands may differ. Your notebook and terminal may also use different Python environments or work from different folders.</p>
+<p>Before running a command, ask these three questions to help avoid syntax errors, installing packages in the wrong environment, or failing to find files.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -552,34 +596,35 @@ PS C:\Users\student\stat303-setup&gt;</code></pre>
 </tr>
 </tbody>
 </table>
-<p>The terminal command <code>python -c "import sys; print(sys.executable)"</code> starts Python, runs the code inside the quotes, and exits back to the shell. On macOS, your installation may use <code>python3</code>; use that in place of <code>python</code> when needed. If neither command works, return to the previous chapter’s Python setup checks. Navigation commands such as <code>cd</code> do not use Python, so question 2 is <strong>not applicable</strong> for those commands.</p>
-<p>The notebook and terminal can use <strong>different Python environments and different working directories</strong>. The folder visible in Explorer does not prove either process’s current directory. An active-environment prompt is a hint, not proof that the notebook kernel matches.</p>
-<p><strong>Apply the check:</strong> before moving to the next section, you should be able to say: “I am typing in my terminal’s shell, I have identified the Python installation I intend to use, and my current folder is <code>stat303-setup</code>.” After creating the course environment, you will check again to confirm that both the terminal and notebook use the project’s Python.</p>
+<p>The terminal command <code>python -c "import sys; print(sys.executable)"</code> starts Python, prints the executable path, and exits back to the shell. On macOS, use <code>python3</code> instead if <code>python</code> is not available. Navigation commands such as <code>cd</code> do not use Python, so you do not need to check which Python environment is active before running them.</p>
+<p>The notebook and terminal can use <strong>different Python installations and different working directories</strong>. Choosing a notebook kernel does not necessarily change which Python the terminal uses. Compare the two <code>sys.executable</code> outputs to identify which Python each uses; at this point, simply record what you find.</p>
+<p>Similarly, the folder visible in Explorer does not prove either one’s current directory. Check the current directory in each place. A terminal command may find or create a file in one folder while the notebook looks for it in another.</p>
+<p><strong>Apply the check:</strong> identify where you are typing, record the Python executable used in each place, and confirm that the terminal’s current folder is <code>stat303-setup</code>. The next sections explain project environments and guide you through setting one up.</p>
 </section>
 <section id="why-use-a-python-virtual-environment" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="why-use-a-python-virtual-environment"><span class="header-section-number">2.5</span> Why Use a Python Virtual Environment?</h2>
 <p>In Chapter 1, you selected Anaconda’s <strong><code>base</code> environment</strong> from STAT 201 to check that your notebook could run in VS Code. That gave you a familiar starting point. As you begin new projects, use a <strong>separate environment for each project</strong> instead of installing everything into <code>base</code>.</p>
 <section id="different-projects-need-different-tools" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="different-projects-need-different-tools"><span class="header-section-number">2.5.1</span> Different Projects Need Different Tools</h3>
-<p>A computer can have <strong>multiple Python versions</strong> installed. One project might require Python 3.11, while another uses Python 3.12. These are examples, not instructions to install both versions for this course. Code and packages written for one version may need changes to work with another.</p>
+<p>Your computer may have <strong>multiple Python versions</strong> installed to support different projects. One project might require Python 3.11, while another uses Python 3.12. These are examples, not instructions to install both versions for this course. Code and packages that work with one Python version may need changes to work with another.</p>
 <p>Projects also use different <strong>libraries</strong>, installed as packages. For example, Pandas helps analyze tables, while Matplotlib helps create plots. Each package has its own versions, separate from Python’s version, and may depend on other packages. These required packages are called <strong>dependencies</strong>.</p>
 <p>Conflicts can arise when two tools need incompatible versions of the same dependency. As a hypothetical example, an older analysis tool might require version 1 of a shared library, while a newer tool requires version 2. Installing or upgrading packages for one project in a shared environment can make another project’s previously working code fail.</p>
 </section>
 <section id="give-each-project-its-own-environment" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="give-each-project-its-own-environment"><span class="header-section-number">2.5.2</span> Give Each Project Its Own Environment</h3>
 <p>A <strong>Python virtual environment</strong> gives a project access to a particular Python interpreter and its own set of installed packages. Think of it as a toolbox assigned to that project. Two projects can use different Python versions, different packages, or different versions of the same package. They can also use the same Python version while keeping their packages separate.</p>
-<div id="fig-python-project-environments" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two projects on one computer use separate environments. Project A uses Python 3.11 and shared library version 1; Project B uses Python 3.12 and shared library version 2. Each notebook connects to its own environment, so changing packages in one does not change the other. Anaconda base remains the familiar STAT201 setup.">
+<div id="fig-python-project-environments" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two projects on one computer use separate environments. Project A uses Python 3.11 and shared library version 1; Project B uses Python 3.12 and shared library version 2. Each notebook connects to its own environment, so changing packages in one does not change the other. An existing Python installation is shown as the Chapter 1 starting point.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-python-project-environments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/python-project-environments.svg" class="img-fluid figure-img" style="width:100.0%" alt="Two projects on one computer use separate environments. Project A uses Python 3.11 and shared library version 1; Project B uses Python 3.12 and shared library version 2. Each notebook connects to its own environment, so changing packages in one does not change the other. Anaconda base remains the familiar STAT201 setup.">
+<img src="images/python-project-environments.svg" class="img-fluid figure-img" style="width:100.0%" alt="Two projects on one computer use separate environments. Project A uses Python 3.11 and shared library version 1; Project B uses Python 3.12 and shared library version 2. Each notebook connects to its own environment, so changing packages in one does not change the other. An existing Python installation is shown as the Chapter 1 starting point.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-python-project-environments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Each project uses its own Python environment. The versions and shared library shown are hypothetical examples, not course installation requirements.
+Figure&nbsp;2.3: Each project uses its own Python environment. The versions and shared library shown are hypothetical examples, not course installation requirements.
 </figcaption>
 </figure>
 </div>
 <p>With separate environments, changing packages in Project B does not change the packages installed in Project A. Isolation does not make incompatible libraries work together inside one environment; each project still needs a compatible set of dependencies.</p>
-<p><strong>For STAT303:</strong> keep the notebooks in <code>stat303-setup</code> together as one course project and give that project one environment named <code>.venv</code>. You do not need a new environment for every notebook. Later, an unrelated project should get its own environment. In VS Code, connect each notebook to its project’s environment through the kernel picker.</p>
+<p><strong>For STAT303:</strong> keep the notebooks in <code>stat303-setup</code> together as one course project and give that project one environment. You do not need a new environment for every notebook. Later, an unrelated project should get its own environment. In VS Code, connect each notebook to its project’s environment through the kernel picker.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Python version, environment, and kernel">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -591,121 +636,346 @@ Figure&nbsp;2.1: Each project uses its own Python environment. The versions and 
 </div>
 <div class="callout-body-container callout-body">
 <p>The <strong>Python version</strong> identifies the language/interpreter release. The <strong>environment</strong> provides that interpreter and a set of packages. The <strong>kernel</strong> is the running process that executes your notebook’s code using the selected environment.</p>
-<p>Python’s built-in <code>venv</code> tool creates an environment from an <strong>already installed interpreter</strong>. It does not download a different Python version, and by default it does not include packages installed in <code>base</code>. You will install the course packages into the new environment. See the <a href="https://docs.python.org/3/tutorial/venv.html">Python virtual environment tutorial</a>.</p>
+<p>The environment-creation method we will use starts from an <strong>already installed Python interpreter</strong>. It does not download a different Python version, and by default it does not include packages installed in another environment. You will install the course packages into the new environment. See the <a href="https://docs.python.org/3/tutorial/venv.html">Python virtual environment tutorial</a>.</p>
 </div>
 </div>
-<p>Now that you know why projects need separate environments, create one for this course and verify that your terminal and notebook both use it.</p>
 </section>
+<section id="share-and-recreate-your-project-environment" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="share-and-recreate-your-project-environment"><span class="header-section-number">2.5.3</span> Share and Recreate Your Project Environment</h3>
+<p>You can record the packages installed in your project environment and their versions in a <strong>requirements file</strong>, then share it with a collaborator. Even if your environment contains <strong>100 packages</strong>, your collaborator can use this file to install them in a new environment without finding and installing each package individually. You can also use the same file to set up your project again on another computer, saving time and helping you reproduce your work.</p>
+<p>The requirements file records the packages, so also share the Python version your project uses. Later in this chapter, you will create a requirements file and use it to reinstall the packages in a new environment.</p>
 </section>
-<section id="create-a-course-environment" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="create-a-course-environment"><span class="header-section-number">2.6</span> Create a Course Environment</h2>
-<p>For these activities, use one <code>.venv</code> in <code>stat303-setup</code>. <code>venv</code> is Python’s environment-creation module; <code>.venv</code> is the folder name we choose. Do not put notebooks or data inside that folder or copy it between computers.</p>
-<p>From the VS Code Command Palette, use <strong>Python: Create Environment</strong> if available, choose <strong>Venv</strong>, and select the existing Python version supported for the course. In newer environment interfaces, use the environment manager’s create/custom-create action to choose the interpreter explicitly. If <code>.venv</code> already exists for this project, inspect and reuse it rather than creating another by accident.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Alternative: create the environment in the terminal">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<section id="check-your-understanding" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">2.5.4</span> Check Your Understanding</h3>
+<p>Suppose <code>activity01.ipynb</code> and <code>activity02.ipynb</code> belong to the same project and need the same packages. Do they need separate environments? If you close VS Code, must you create the project environment again?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Check your reasoning">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Alternative: create the environment in the terminal
+<span class="screen-reader-only">Note</span>Check your reasoning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Run in the terminal, starting in <code>stat303-setup</code>.</strong> First identify the intended Python. If <code>python</code> refers to that installation:</p>
+<p>Both notebooks can use the same project environment. Closing VS Code stops your working session but does not delete the environment folder or its installed packages. When you return, select that environment again as needed.</p>
+</div>
+</div>
+</div>
+<p>Next, create the environment, connect the notebook to it, and verify the terminal separately.</p>
+</section>
+</section>
+<section id="create-a-course-environment" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="create-a-course-environment"><span class="header-section-number">2.6</span> Create a Course Environment</h2>
+<p>For STAT303, use Python’s built-in <strong><code>venv</code> module</strong> rather than a Conda environment. Anaconda is not required. The module is named <code>venv</code>; <strong><code>.venv</code> is the conventional name of the folder it creates inside the project</strong>. Keep notebooks and data outside <code>.venv</code>, and do not copy the environment folder between computers.</p>
+<p>Before starting, use the navigation commands from Section 2.3 to confirm that the terminal is in <code>stat303-setup</code> and that the activity notebooks are visible. Keep this as your working folder.</p>
+<p>Create <code>.venv</code> using <strong>one</strong> of the following methods. The GUI method is the most direct when you are already working in a notebook. The terminal method performs the same setup with a command. If <code>.venv</code> already exists in <code>stat303-setup</code>, do not create another one; select and verify the existing environment instead.</p>
+<section id="method-1-create-.venv-from-the-notebook-kernel-picker" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="method-1-create-.venv-from-the-notebook-kernel-picker"><span class="header-section-number">2.6.1</span> Method 1: Create <code>.venv</code> from the Notebook Kernel Picker</h3>
+<ol type="1">
+<li><p>Open <code>activity02.ipynb</code> and select <strong>Select Kernel</strong> at the top right.</p></li>
+<li><p>Choose <strong>Python Environments</strong>. If you see only recently used kernels, choose <strong>Select Another Kernel</strong> first.</p></li>
+<li><p>Choose <strong>Create Python Environment</strong>.</p>
+<div id="fig-vscode-create-venv-gui" class="quarto-float quarto-figure quarto-figure-center anchored" alt="VS Code notebook kernel selection interface with Create Python Environment highlighted and a purple annotation pointing to it.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vscode-create-venv-gui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/vscode-create-venv-gui.png" class="img-fluid figure-img" style="width:100.0%" alt="VS Code notebook kernel selection interface with Create Python Environment highlighted and a purple annotation pointing to it.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vscode-create-venv-gui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Choose Create Python Environment from the notebook kernel picker.
+</figcaption>
+</figure>
+</div></li>
+<li><p>Choose <strong>Venv</strong> when VS Code asks for the environment type. Do not choose Conda for this course setup.</p></li>
+<li><p>Choose the working Python 3 installation you used in Chapter 1. Use the course-recommended version if one has been specified; the example version numbers earlier in this chapter are not installation requirements.</p></li>
+<li><p>Wait while VS Code creates the <code>.venv</code> folder inside <code>stat303-setup</code>. If the new environment is not selected automatically, open <strong>Select Kernel → Python Environments</strong> again and choose the entry whose path contains <code>stat303-setup/.venv</code> or <code>stat303-setup\.venv</code>.</p></li>
+</ol>
+<p>If your menus differ from the screenshot, open the Command Palette (<code>Cmd+Shift+P</code> on macOS or <code>Ctrl+Shift+P</code> on Windows), run <strong>Python: Create Environment</strong>, and choose <strong>Venv</strong>. After creation, select <code>.venv</code> in the notebook’s kernel picker. See <a href="https://code.visualstudio.com/docs/python/environments">VS Code’s environment guide</a>.</p>
+</section>
+<section id="method-2-create-.venv-in-the-terminal" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="method-2-create-.venv-in-the-terminal"><span class="header-section-number">2.6.2</span> Method 2: Create <code>.venv</code> in the Terminal</h3>
+<p>Start in the <code>stat303-setup</code> folder. First identify the Python that will create the environment, then create <code>.venv</code>:</p>
 <pre class="text"><code>python -c "import sys; print(sys.executable)"
 python -m venv .venv</code></pre>
-<p>On macOS, your existing installation may use <code>python3</code>; substitute it in both commands before activation. If neither command identifies the intended interpreter, use the environment-creation interface or a verified full executable path. Do not guess among multiple installations.</p>
+<p>In the first command, <code>-c</code> tells Python to run the quoted code and then exit back to the shell. In the second, <code>-m venv</code> runs Python’s environment-creation module, and <code>.venv</code> names the folder to create. A successful creation may produce no output; look for <code>.venv</code> in Explorer. On macOS, use <code>python3</code> in both commands if <code>python</code> is not available. After the command finishes, open <code>activity02.ipynb</code> and choose the new <code>.venv</code> from <strong>Select Kernel → Python Environments</strong>.</p>
+</section>
+<section id="restart-the-terminal-and-verify-both-places" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="restart-the-terminal-and-verify-both-places"><span class="header-section-number">2.6.3</span> Restart the Terminal and Verify Both Places</h3>
+<p>Use <strong>Python: Select Interpreter</strong> in the Command Palette to select the same project <code>.venv</code> for the workspace. This selection supports terminal activation; verify the notebook kernel separately. See <a href="https://code.visualstudio.com/docs/datascience/jupyter-kernel-management">VS Code’s kernel guide</a>.</p>
+<p>After using either method, close the current terminal and start a new one with <strong>Terminal → New Terminal</strong>. VS Code may activate the selected project environment automatically in the new terminal; verify it below. A prompt beginning with <code>(.venv)</code> means that <code>.venv</code> is activated in that terminal.</p>
+<div id="fig-vscode-venv-terminal-active" class="quarto-float quarto-figure quarto-figure-center anchored" alt="VS Code terminal after activating the project environment. A purple annotation highlights the dot-venv marker at the beginning of the terminal prompt and explains that this terminal is using the project environment.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vscode-venv-terminal-active-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/vscode-venv-terminal-active.png" class="img-fluid figure-img" style="width:100.0%" alt="VS Code terminal after activating the project environment. A purple annotation highlights the dot-venv marker at the beginning of the terminal prompt and explains that this terminal is using the project environment.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vscode-venv-terminal-active-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Troubleshooting: Activate the environment manually">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Troubleshooting: Activate the environment manually
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <code>(.venv)</code> does not appear, activate the environment using the command for your shell:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">macOS: zsh or Bash</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Windows PowerShell</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Windows Command Prompt</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<pre class="text"><code>source .venv/bin/activate</code></pre>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\Activate<span class="op">.</span><span class="fu">ps1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<pre class="text"><code>.venv\Scripts\activate.bat</code></pre>
 </div>
 </div>
 </div>
-<section id="activate-and-verify" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="activate-and-verify"><span class="header-section-number">2.6.1</span> Activate and Verify</h3>
-<p><strong>Starting folder: <code>stat303-setup</code>. Run only the command for your shell.</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Shell</th>
-<th>Activation command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>macOS zsh/Bash</td>
-<td><code>source .venv/bin/activate</code></td>
-</tr>
-<tr class="even">
-<td>Windows PowerShell</td>
-<td><code>.\.venv\Scripts\Activate.ps1</code></td>
-</tr>
-<tr class="odd">
-<td>Windows Command Prompt</td>
-<td><code>.venv\Scripts\activate.bat</code></td>
-</tr>
-</tbody>
-</table>
-<p>After activation, verify in the terminal:</p>
-<pre class="text"><code>python -c "import sys; print(sys.executable)"
-python -m pip --version</code></pre>
-<p>Both should identify this project’s <code>.venv</code>. If PowerShell blocks the activation script, you can use the executable directly without changing execution policy:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\python<span class="op">.</span><span class="fu">exe</span> <span class="op">-</span>m pip <span class="op">--</span>version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>On macOS, the equivalent direct executable is <code>.venv/bin/python</code>. Activation is a convenience that changes terminal command lookup; invoking the correct executable directly also works.</p>
-<p>Now select the project’s <code>.venv</code> in the <strong>notebook kernel picker</strong>. Selecting an interpreter for a workspace and activating a terminal do not replace checking the notebook kernel.</p>
+</div>
+</div>
+</div>
+<p>The <code>(.venv)</code> marker is a useful visual check. Verify the exact environment before installing packages. In the terminal, run:</p>
+<pre class="text"><code>python -c "import sys; print(sys.executable)"</code></pre>
+<p>In a notebook code cell, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Both outputs should identify Python inside the <strong>same project’s</strong> <code>.venv</code>, typically ending in <code>.venv/bin/python</code> on macOS or <code>.venv\Scripts\python.exe</code> on Windows. Two different projects can both have a folder named <code>.venv</code>, so compare the project portion too. If they differ, activate the intended environment in the terminal or reselect the notebook kernel, then repeat the checks.</p>
+<p>If VS Code prompts you to install <code>ipykernel</code> before the notebook can run, accept the installation for the selected <code>.venv</code>. This package lets the environment run notebook cells. The next section also includes it in the terminal installation command.</p>
+<p><strong>Before continuing:</strong> <code>.venv</code> exists alongside your notebooks, and both executable checks identify that environment. Creating an environment does not install the data science packages; that is the next step.</p>
 </section>
 </section>
 <section id="install-packages-in-the-intended-environment" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="install-packages-in-the-intended-environment"><span class="header-section-number">2.7</span> Install Packages in the Intended Environment</h2>
-<section id="from-the-terminal" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="from-the-terminal"><span class="header-section-number">2.7.1</span> From the Terminal</h3>
-<p><strong>Starting folder: <code>stat303-setup</code>; verified <code>.venv</code> Python active.</strong></p>
-<pre class="text"><code>python -m pip install ipykernel numpy pandas matplotlib</code></pre>
-<p>If using the PowerShell direct-executable route, replace <code>python</code> with <code>.\.venv\Scripts\python.exe</code> in these commands. <code>python -m pip</code> uses the pip belonging to that Python; bare <code>pip</code> can be ambiguous.</p>
+<p>Throughout the STAT303 sequence, you will use essential Python packages and libraries for your data science tasks. Now that you have created your project environment, the next step is to install the required packages inside it.</p>
+<p>A new virtual environment normally includes <strong>pip</strong>, Python’s package installer. Pip supports installing from <a href="https://pypi.org/">PyPI</a>. Installing a package puts it in an environment; importing it makes it available in a running Python session. We will install the course tools now and check that they can be imported. Their data-analysis features come in later chapters.</p>
+<p><strong>Practice both methods below.</strong> They demonstrate two ways to install packages into the same environment: the terminal installs the first four tools, and the notebook installs Seaborn.</p>
+<section id="method-1-install-from-the-terminal" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="method-1-install-from-the-terminal"><span class="header-section-number">2.7.1</span> Method 1: Install from the Terminal</h3>
+<p>Open a new terminal in VS Code and confirm that <code>(.venv)</code> appears at the beginning of the prompt. This indicates that your virtual environment is active.</p>
+<p>Install the packages by running:</p>
+<pre class="text"><code>pip install ipykernel numpy pandas matplotlib</code></pre>
+<p>These packages will be installed in your project’s virtual environment.</p>
+<blockquote class="blockquote">
+<p>If <code>(.venv)</code> does not appear, activate your virtual environment before installing packages.</p>
+</blockquote>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Why we install it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ipykernel</code></td>
+<td>Allows this environment to run notebook code cells</td>
+</tr>
+<tr class="even">
+<td><code>numpy</code></td>
+<td>Supplies numerical tools used later in the course</td>
+</tr>
+<tr class="odd">
+<td><code>pandas</code></td>
+<td>Supplies tools for tabular data used later</td>
+</tr>
+<tr class="even">
+<td><code>matplotlib</code></td>
+<td>Supplies plotting tools used later</td>
+</tr>
+</tbody>
+</table>
+<p>Wait for the shell prompt to return and check for errors. Pip may install additional packages required by these tools; those are dependencies. <code>Requirement already satisfied</code> means the requested package is already installed with a version meeting the request.</p>
 </section>
-<section id="from-a-notebook" class="level3" data-number="2.7.2">
-<h3 data-number="2.7.2" class="anchored" data-anchor-id="from-a-notebook"><span class="header-section-number">2.7.2</span> From a Notebook</h3>
-<p><strong>Run in a code cell after selecting <code>.venv</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>%pip</code> targets the current IPython kernel’s environment. Prefer the explicit <code>%</code> over relying on automagic. <code>!pip</code> invokes a shell command and may find a different pip. Restart the notebook kernel after installation when needed, then verify:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sns.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Compare the notebook executable with the terminal’s executable. A successful terminal installation does not prove that another notebook kernel can import the package. Keep installation work in a temporary setup cell or terminal, rather than rerunning installations every time an assignment is executed.</p>
+<section id="method-2-install-from-the-notebook" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="method-2-install-from-the-notebook"><span class="header-section-number">2.7.2</span> Method 2: Install from the Notebook</h3>
+<p>Select your project’s <code>.venv</code> as the notebook kernel. Then run this in a code cell to install Seaborn:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This installs Seaborn into the environment used by your notebook. Restart the kernel if prompted.</p>
+<p><code>pip</code> is an IPython magic command. With automagic enabled by default, you can omit the <code>%</code> in <code>%pip</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pip install seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="install-once-import-in-every-notebook" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3" class="anchored" data-anchor-id="install-once-import-in-every-notebook"><span class="header-section-number">2.7.3</span> Install Once, Import in Every Notebook</h3>
+<p>In a notebook code cell, check the installations:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"NumPy:"</span>, np.__version__)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pandas:"</span>, pd.__version__)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matplotlib:"</span>, matplotlib.__version__)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Seaborn:"</span>, sns.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>as</code> gives an imported package a shorter name, such as <code>np</code>. Each package’s <code>__version__</code> attribute reports its version; type two underscores on each side. Your version numbers may differ from a classmate’s. These checks use imports, attributes, and <code>print()</code> from the Python review.</p>
+<p>Installation persists in <code>.venv</code> after you close a notebook. Imports belong to the running kernel session, so rerun the import cells after restarting the kernel and include them in each notebook that needs the packages.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Check: installation succeeded, but the import fails">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Check: installation succeeded, but the import fails
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If a notebook reports <code>ModuleNotFoundError</code> after a terminal installation, compare <code>sys.executable</code> in both places first. The package may have been installed for another Python. Correct the environment selection and install into the intended <code>.venv</code> if needed. If both paths are correct, check the package name and whether installation completed, then restart the kernel and rerun the imports.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="find-local-data-with-paths" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="find-local-data-with-paths"><span class="header-section-number">2.8</span> Find Local Data with Paths</h2>
-<p>An <strong>absolute path</strong> begins at the filesystem root (including the appropriate drive on Windows). A <strong>relative path</strong> is interpreted from the process’s current working directory. Forward slashes alone do not make an absolute path portable to another person’s computer.</p>
-<p>Use <code>pathlib</code> to build paths without manually joining platform-specific separators. In a <strong>notebook code cell</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Path.cwd())</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"data"</span>) <span class="op">/</span> <span class="st">"station_readings.csv"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.resolve())</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.is_file())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For these root-level practice notebooks, the expected working directory is the extracted <code>stat303-setup</code> folder. If <code>is_file()</code> is false, inspect the displayed directory, filename, capitalization, and extracted folder layout. VS Code settings or a different notebook location can change the working directory; always check rather than assume.</p>
-<p>Once it is true, inspect a few lines without needing data-analysis syntax:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>).splitlines()[:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A path expression describes a location; it does not establish that a file exists. <code>.exists()</code> checks for an existing path, while <code>.is_file()</code> checks specifically for a file.</p>
-<section id="what-changes-when-a-notebook-moves" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="what-changes-when-a-notebook-moves"><span class="header-section-number">2.8.1</span> What Changes When a Notebook Moves?</h3>
-<p>If a notebook runs with <code>stat303-setup/notebooks</code> as its working directory, <code>Path("data")</code> refers to a folder inside <code>notebooks</code>. The sibling data folder would instead be:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">".."</span>) <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"station_readings.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This works only when the actual working directory has that relationship. Do not repeatedly add <code>..</code> until a path happens to work.</p>
-<p>The terminal’s <code>cd</code> changes that terminal’s directory, not an already running notebook’s directory. A notebook’s <code>%cd</code> changes its working directory persistently; <code>!cd</code> runs in a temporary shell and generally does not persist. For the main workflow, keep a consistent layout and explicit paths rather than scattering directory changes through the notebook.</p>
-</section>
-</section>
-<section id="record-and-recreate-dependencies" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="record-and-recreate-dependencies"><span class="header-section-number">2.9</span> Record and Recreate Dependencies</h2>
-<p><strong>Terminal, starting in <code>stat303-setup</code>, with the project Python verified:</strong></p>
+<section id="record-and-recreate-dependencies" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="record-and-recreate-dependencies"><span class="header-section-number">2.8</span> Record and Recreate Dependencies</h2>
+<p>Your <code>.venv</code> contains installed packages. A <strong>requirements file</strong> records package names and versions as text so you can install them again in another environment. Create this record after completing the installations and import checks above, including Seaborn.</p>
+<section id="save-the-package-record" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="save-the-package-record"><span class="header-section-number">2.8.1</span> Save the Package Record</h3>
+<p>In the terminal, confirm that the current folder is <code>stat303-setup</code> and that your <code>(.venv)</code> environment is active. Then save the environment’s package list to <code>requirements.txt</code> using the command for your shell:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">macOS: zsh or Bash</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Windows PowerShell</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Windows Command Prompt</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <pre class="text"><code>python -m pip freeze &gt; requirements.txt</code></pre>
-<p>The shell writes <code>requirements.txt</code> into its current directory. <code>&gt;</code> replaces an existing file with that name. Review the file and confirm that it records your project environment rather than Anaconda’s entire base environment.</p>
-<p>In a new compatible environment, install from it with:</p>
-<pre class="text"><code>python -m pip install -r requirements.txt</code></pre>
-<p>Package versions help reproduce an environment but do not guarantee identical behavior across Python versions, operating systems, or external services. Record the Python version too. Incompatible requirements can cause pip’s resolver to report an error; it does not simply select the last version mentioned.</p>
-<p>Conda, Poetry, and uv provide other workflows. They are optional background here; use the single course workflow until you can verify it reliably.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m pip freeze <span class="op">|</span> <span class="fu">Out-File</span> <span class="op">-</span>Encoding utf8 requirements<span class="op">.</span><span class="fu">txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<pre class="text"><code>python -m pip freeze &gt; requirements.txt</code></pre>
+</div>
+</div>
+</div>
+<p>Here <code>&gt;</code> writes output into a file. In PowerShell, <code>|</code> passes output to <code>Out-File</code>, and <code>-Encoding utf8</code> specifies the text encoding. This avoids the different default used by Windows PowerShell 5.1. See <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding">PowerShell’s encoding reference</a> and <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/#encoding">pip’s requirements-file encoding</a>.</p>
+<p>All three commands write <code>requirements.txt</code> in the current folder and <strong>replace it if it already exists</strong>. The command may finish without displaying output; open the file in Explorer and check that it contains package entries before continuing.</p>
+<p>A line such as <code>numpy==2.2.0</code> means “install NumPy version 2.2.0.” This is an illustration, not a required course version. Keep the actual entries generated from your environment. Expect more names than you explicitly installed because the packages also need dependencies.</p>
+<p>When sharing <code>requirements.txt</code>, also tell your collaborator which Python version you used.</p>
+</section>
+<section id="use-the-record-in-a-new-environment" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="use-the-record-in-a-new-environment"><span class="header-section-number">2.8.2</span> Use the Record in a New Environment</h3>
+<p>To recreate your project environment on another computer or share it with a collaborator, follow these steps:</p>
+<ol type="1">
+<li><p>Use an installed, compatible Python version to create a new project <code>.venv</code>, following Section 2.6.</p></li>
+<li><p>Activate it and verify its Python executable.</p></li>
+<li><p>In the terminal, move to the folder containing <code>requirements.txt</code> and run:</p>
+<pre class="text"><code>python -m pip install -r requirements.txt</code></pre></li>
+<li><p>Select the new environment as the notebook kernel and repeat the import checks from Section 2.7.</p></li>
+</ol>
+<p><code>-r requirements.txt</code> tells pip to read the installation requirements from that file. Recreate the environment on the destination computer instead of copying the <code>.venv</code> folder. Matching package versions helps repeat the setup, though Python version and operating-system differences can still matter.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Check your understanding">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Check your understanding
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Does <code>pip freeze</code> install packages?</strong> No.&nbsp;It reports what is installed; <code>pip install -r requirements.txt</code> performs installation.</p>
+<p><strong>What if you export while the terminal uses a different project’s Python?</strong> You record that other environment’s packages. Check <code>sys.executable</code>, switch to the intended environment, and export again.</p>
+<p><strong>What if you install another package afterward?</strong> Repeat the import check and export again when you want the requirements file to reflect the updated environment.</p>
+</div>
+</div>
+</div>
+<p>For details, see <a href="https://pip.pypa.io/en/stable/user_guide/#requirements-files">pip’s requirements-file guide</a>.</p>
+</section>
+</section>
+<section id="find-local-data-with-paths" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="find-local-data-with-paths"><span class="header-section-number">2.9</span> Find Local Data with Paths</h2>
+<p>A <strong>path</strong> describes where a file or folder is located. There are two ways to write one:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path type</th>
+<th>Example</th>
+<th>Where it starts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Absolute</strong></td>
+<td><code>/Users/student/stat303-setup/data/station_readings.csv</code> on macOS, or <code>C:/Users/student/stat303-setup/data/station_readings.csv</code> on Windows</td>
+<td>The filesystem root, including the drive on Windows</td>
+</tr>
+<tr class="even">
+<td><strong>Relative</strong></td>
+<td><code>data/station_readings.csv</code></td>
+<td>The current working directory of the program using the path</td>
+</tr>
+</tbody>
+</table>
+<p>The absolute examples include a particular user’s folders, so they will usually differ on your computer. The relative example works when the notebook’s current working directory is <code>stat303-setup</code> and the supplied folder layout is preserved.</p>
+<p>The notebook and terminal can have different working directories. The folder visible in VS Code’s Explorer does not prove either one’s current directory. As a result, the terminal may find or create a file in one folder while the notebook looks for it in another. Check the current directory in each place when working with files.</p>
+<p>Use Python’s built-in <code>pathlib</code> module to build paths. With <code>Path</code>, <code>/</code> joins folder and file names and handles the separators for your operating system. In a <strong>notebook code cell</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Path.cwd())</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"data"</span>) <span class="op">/</span> <span class="st">"station_readings.csv"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Resolved path:"</span>, data_path.resolve())</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File found:"</span>, data_path.is_file())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For the practice notebooks stored directly inside <code>stat303-setup</code>, the expected working directory is the extracted <code>stat303-setup</code> folder. If <code>is_file()</code> returns <code>False</code>, inspect the displayed directory, filename, capitalization, and extracted folder layout. VS Code settings or a different notebook location can change the working directory; always check rather than assume.</p>
+<p>Once the file check returns <code>True</code>, inspect a few lines without needing data-analysis syntax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>).splitlines()[:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For this supplied file, <code>read_text()</code> reads the text, <code>splitlines()</code> separates it into lines, and <code>[:3]</code> selects the first three. The result is a list of text lines, not yet a Pandas table.</p>
+<p>A path expression describes a location; it does not establish that a file exists. In particular, <code>resolve()</code> displays an absolute path; it does not find a misplaced file or prove that the file exists.</p>
+<section id="what-changes-when-the-working-directory-changes" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="what-changes-when-the-working-directory-changes"><span class="header-section-number">2.9.1</span> What Changes When the Working Directory Changes?</h3>
+<p>Suppose a different project has this layout. This is a hypothetical example; you do not need to create a <code>notebooks</code> folder in the practice kit.</p>
+<pre class="text"><code>example-project/
+├── notebooks/
+│   └── analysis.ipynb
+└── data/
+    └── station_readings.csv</code></pre>
+<p>If the notebook’s current working directory is <code>example-project/notebooks</code>, <code>Path("data")</code> refers to a folder inside <code>notebooks</code>. To reach the CSV shown above, start with <code>..</code> to go up to <code>example-project</code>, then enter <code>data</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">".."</span>) <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"station_readings.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This works only when the actual working directory has that relationship. Do not repeatedly add <code>..</code> until a path happens to work.</p>
+<p>For the main workflow, keep a consistent folder layout and check <code>Path.cwd()</code> before building your data path.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional troubleshooting: Directory changes and other path checks">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Optional troubleshooting: Directory changes and other path checks
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The terminal’s <code>cd</code> changes that terminal’s directory, not an already running notebook’s directory. In a notebook, <code>%cd</code> changes the working directory for subsequent cells in the current kernel session. <code>!cd</code> runs in a temporary shell and generally does not persist. Avoid scattering directory changes through your notebook; they can make results depend on the order in which cells run.</p>
+<p><code>data_path.exists()</code> checks whether the path exists, whether it is a file or a folder. For this activity, use <code>data_path.is_file()</code> because you are looking specifically for a file.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="when-you-return-to-the-project" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="when-you-return-to-the-project">When You Return to the Project</h2>
+<p>Use this checklist when you resume work after closing VS Code:</p>
+<ol type="1">
+<li>Open the same <code>stat303-setup</code> folder and select its <code>.venv</code> as the notebook kernel.</li>
+<li>Open a terminal, check its current folder, and activate <code>.venv</code> if needed. Compare the terminal and notebook Python paths before installing anything.</li>
+<li>Run the notebook from the top, including imports and the data-path check. Reuse the installed packages; creating <code>.venv</code> and installing the same packages are not daily steps.</li>
+</ol>
+<p>If you restart only the kernel, rerun the code cells to restore imports and variables. The files and installed packages remain on disk.</p>
 </section>
 <section id="practice-activity-find-your-python-and-your-data" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</h2>
@@ -717,7 +987,7 @@ python -m pip --version</code></pre>
 <ul>
 <li>Replace <code>Your Name</code> in the opening Raw cell and the notebook’s Markdown name field with your name.</li>
 <li>Record your terminal shell: for example, zsh, Bash, PowerShell, or Command Prompt.</li>
-<li>In one or two sentences, explain one use of the terminal in your Python data science work and why the course project should have its own environment instead of sharing Anaconda <code>base</code> with every project.</li>
+<li>In one or two sentences, explain one use of the terminal in your Python data science work and why the course project should have its own environment instead of sharing one environment with every project.</li>
 <li>Show your terminal’s current directory and list its contents. Copy the commands and enough output to show the project folder, the activity notebook, and <code>data</code>.</li>
 </ul>
 </section>
@@ -753,7 +1023,7 @@ python -m pip --version</code></pre>
 <section id="e.-record-dependencies-and-finish" class="level3" data-number="2.10.5">
 <h3 data-number="2.10.5" class="anchored" data-anchor-id="e.-record-dependencies-and-finish"><span class="header-section-number">2.10.5</span> E. Record Dependencies and Finish</h3>
 <ul>
-<li>From <code>stat303-setup</code>, use the verified project Python to export <code>requirements.txt</code>. Record the command and the file’s location.</li>
+<li>From <code>stat303-setup</code>, use the verified project Python and the export command for your shell in Section 2.8 to write <code>requirements.txt</code>. Record the command and the file’s location.</li>
 <li>Open the file. Copy two actual package/version entries into Markdown and explain what they record. The number of entries may exceed the number of packages you explicitly installed because packages have dependencies.</li>
 <li>Restart the notebook kernel, run all code cells from top to bottom, resolve unexpected errors, and save. Add a brief note stating what you checked; save again.</li>
 </ul>
