@@ -35,7 +35,7 @@ book:
       chapters:
         - Reading_data.ipynb
         - Pandas.ipynb
-        - Numpy.ipynb
+        - numpy_fundamentals.ipynb
         - data_types_in_pandas.ipynb
         - vectorized_numpy.ipynb
         - Data visualization.ipynb

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">Selecting one DataFrame column produces a Series</title>
+<desc id="desc">A simplified movie DataFrame shows three rows with index labels 0, 1, and 2, and two columns: Title and IMDB Rating. Selecting IMDB Rating produces a Series containing 6.5, 6.7, and 5.2 with the same index labels. The illustrated DataFrame has shape (3, 2); the Series has shape (3,).</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10" fill="#15665e"/></marker></defs>
+<rect width="1200" height="650" rx="20" fill="#f7f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#202639">
+<text x="36" y="49" font-size="31" fill="#202639" font-weight="700">From a DataFrame to a Series</text>
+<text x="36" y="82" font-size="20" fill="#525c6d" font-weight="normal">Simplified view: three movie records and two data columns.</text>
+<rect x="28" y="110" width="598" height="464" rx="10" fill="white" stroke="#d8dce5"/>
+<rect x="754" y="110" width="418" height="464" rx="10" fill="white" stroke="#d8dce5"/>
+<text x="50" y="154" font-size="28" fill="#4e2a84" font-weight="700">DataFrame</text>
+<text x="777" y="154" font-size="28" fill="#15665e" font-weight="700">Series</text>
+<text x="50" y="188" font-size="20" fill="#202639" font-weight="normal">Two-dimensional table</text>
+<text x="777" y="188" font-size="20" fill="#202639" font-weight="normal">One-dimensional labeled values</text>
+<rect x="52" y="234" width="552" height="204" rx="5" fill="#faf9fc" stroke="#d8dce5"/>
+<rect x="408" y="234" width="196" height="204" rx="5" fill="#e2f2ed" stroke="#80b5a8"/>
+<path d="M52 282 H604" stroke="#d8dce5"/>
+<path d="M52 334 H604" stroke="#d8dce5"/>
+<path d="M52 386 H604" stroke="#d8dce5"/>
+<path d="M116 234 V438" stroke="#d8dce5"/>
+<path d="M408 234 V438" stroke="#d8dce5"/>
+<text x="57" y="219" font-size="16" fill="#525c6d" font-weight="normal">index</text>
+<text x="132" y="267" font-size="20" fill="#4e2a84" font-weight="700">Title</text>
+<text x="426" y="267" font-size="20" fill="#15665e" font-weight="700">IMDB Rating</text>
+<text x="78" y="316" font-size="20" fill="#202639" font-weight="700">0</text>
+<text x="132" y="316" font-size="20" fill="#202639" font-weight="normal">Opal Dreams</text>
+<text x="480" y="316" font-size="20" fill="#15665e" font-weight="700">6.5</text>
+<text x="78" y="368" font-size="20" fill="#202639" font-weight="700">1</text>
+<text x="132" y="368" font-size="20" fill="#202639" font-weight="normal">Major Dundee</text>
+<text x="480" y="368" font-size="20" fill="#15665e" font-weight="700">6.7</text>
+<text x="78" y="420" font-size="20" fill="#202639" font-weight="700">2</text>
+<text x="132" y="420" font-size="20" fill="#202639" font-weight="normal">The Informers</text>
+<text x="480" y="420" font-size="20" fill="#15665e" font-weight="700">5.2</text>
+<text x="50" y="481" font-size="21" fill="#4e2a84" font-weight="700">Shape in this illustration: (3, 2)</text>
+<text x="50" y="515" font-size="19" fill="#202639" font-weight="normal">3 rows × 2 data columns; index is separate.</text>
+<text x="50" y="545" font-size="19" fill="#525c6d" font-weight="normal">Each column can have a different dtype.</text>
+<path d="M635 351 H741" fill="none" stroke="#15665e" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="642" y="321" font-size="18" fill="#15665e" font-weight="700">Select</text>
+<text x="642" y="342" font-size="18" fill="#15665e" font-weight="700">column</text>
+<text x="778" y="224" font-size="19" fill="#15665e" font-weight="700">Name: IMDB Rating</text>
+<rect x="778" y="282" width="370" height="156" rx="5" fill="#e2f2ed" stroke="#80b5a8"/>
+<path d="M861 282 V438 M778 334 H1148 M778 386 H1148" stroke="#a2c9bd"/>
+<text x="782" y="267" font-size="16" fill="#525c6d" font-weight="normal">index</text>
+<text x="917" y="267" font-size="16" fill="#525c6d" font-weight="normal">values</text>
+<text x="814" y="316" font-size="20" fill="#202639" font-weight="700">0</text>
+<text x="952" y="316" font-size="20" fill="#15665e" font-weight="700">6.5</text>
+<text x="814" y="368" font-size="20" fill="#202639" font-weight="700">1</text>
+<text x="952" y="368" font-size="20" fill="#15665e" font-weight="700">6.7</text>
+<text x="814" y="420" font-size="20" fill="#202639" font-weight="700">2</text>
+<text x="952" y="420" font-size="20" fill="#15665e" font-weight="700">5.2</text>
+<text x="778" y="481" font-size="21" fill="#15665e" font-weight="700">Shape in this illustration: (3,)</text>
+<text x="778" y="515" font-size="19" fill="#202639" font-weight="normal">Same row labels; one dtype.</text>
+<text x="778" y="545" font-size="18" fill="#525c6d" font-weight="normal">The selected column name is retained.</text>
+<rect x="28" y="590" width="1144" height="40" rx="7" fill="#ede9f5" stroke="#ede9f5"/>
+<text x="47" y="617" font-size="21" fill="#4e2a84" font-weight="700" font-family="Menlo, Consolas, monospace">ratings = movies[&#x27;IMDB Rating&#x27;]</text>
+<text x="646" y="617" font-size="20" fill="#4e2a84" font-weight="normal">Select one column with single brackets.</text>
+</g></svg>

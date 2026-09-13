@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Three ways to organize movie information</title>
+<desc id="desc">Structured data uses rows and columns: two movies have title, year, and rating fields. Semi-structured JSON uses named fields, including a nested ratings object and a genres list. Unstructured data includes a free-form movie review, a poster image, or an audio interview.</desc>
+<rect width="1200" height="630" rx="20" fill="#f7f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#202639">
+<text x="36" y="50" font-size="30" font-weight="700">Three ways to organize movie information</text>
+<text x="36" y="83" font-size="19" fill="#525c6d">The same subject can appear in different data structures. Examples are illustrative.</text>
+<rect x="30" y="112" width="360" height="456" rx="14" fill="white" stroke="#d8dce5"/>
+<path d="M 44 112 H 376 Q 390 112 390 126 V 124 H 30 V 126 Q 30 112 44 112" fill="#4e2a84"/>
+<text x="50" y="158" font-size="25" fill="#4e2a84" font-weight="700">Structured</text>
+<text x="50" y="190" font-size="17" fill="#525c6d" font-weight="normal">Rows and columns</text>
+<rect x="420" y="112" width="360" height="456" rx="14" fill="white" stroke="#d8dce5"/>
+<path d="M 434 112 H 766 Q 780 112 780 126 V 124 H 420 V 126 Q 420 112 434 112" fill="#15665e"/>
+<text x="440" y="158" font-size="25" fill="#15665e" font-weight="700">Semi-structured</text>
+<text x="440" y="190" font-size="17" fill="#525c6d" font-weight="normal">Named fields with flexible structure</text>
+<rect x="810" y="112" width="360" height="456" rx="14" fill="white" stroke="#d8dce5"/>
+<path d="M 824 112 H 1156 Q 1170 112 1170 126 V 124 H 810 V 126 Q 810 112 824 112" fill="#8c4b1c"/>
+<text x="830" y="158" font-size="25" fill="#8c4b1c" font-weight="700">Unstructured</text>
+<text x="830" y="190" font-size="17" fill="#525c6d" font-weight="normal">Free-form content</text>
+<rect x="48" y="222" width="324" height="156" rx="6" fill="#f6f2fa" stroke="#cfc4df"/>
+<path d="M48 264 H372" stroke="#cfc4df"/>
+<path d="M48 321 H372" stroke="#cfc4df"/>
+<path d="M209 222 V378" stroke="#cfc4df"/>
+<path d="M281 222 V378" stroke="#cfc4df"/>
+<text x="60" y="250" font-size="17" fill="#4e2a84" font-weight="700">Title</text>
+<text x="220" y="250" font-size="17" fill="#4e2a84" font-weight="700">Year</text>
+<text x="292" y="250" font-size="17" fill="#4e2a84" font-weight="700">Rating</text>
+<text x="60" y="299" font-size="17" fill="#202639" font-weight="normal">Opal Dreams</text>
+<text x="220" y="299" font-size="17" fill="#202639" font-weight="normal">2006</text>
+<text x="300" y="299" font-size="17" fill="#202639" font-weight="normal">6.6</text>
+<text x="60" y="356" font-size="17" fill="#202639" font-weight="normal">Night Train</text>
+<text x="220" y="356" font-size="17" fill="#202639" font-weight="normal">2009</text>
+<text x="300" y="356" font-size="17" fill="#202639" font-weight="normal">5.7</text>
+<text x="50" y="421" font-size="18" fill="#202639" font-weight="700">One row = one movie record</text>
+<text x="50" y="452" font-size="18" fill="#202639" font-weight="normal">One column = one variable</text>
+<text x="50" y="511" font-size="17" fill="#525c6d" font-weight="normal">Example: a CSV or spreadsheet</text>
+<text x="50" y="537" font-size="17" fill="#525c6d" font-weight="normal">with consistent columns.</text>
+<rect x="438" y="214" width="324" height="241" rx="7" fill="#eef7f5"/>
+<text x="451" y="241" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">{</text>
+<text x="451" y="268" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">  &quot;title&quot;: &quot;Opal Dreams&quot;,</text>
+<text x="451" y="295" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">  &quot;year&quot;: 2006,</text>
+<text x="451" y="322" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">  &quot;ratings&quot;: {&quot;imdb&quot;: 6.6},</text>
+<text x="451" y="349" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">  &quot;genres&quot;: [</text>
+<text x="451" y="376" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">    &quot;Drama&quot;, &quot;Family&quot;</text>
+<text x="451" y="403" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">  ]</text>
+<text x="451" y="430" font-size="16" fill="#184f49" font-weight="normal" font-family="Menlo, Consolas, monospace">}</text>
+<text x="440" y="489" font-size="17" fill="#202639" font-weight="normal">Keys identify fields; values can</text>
+<text x="440" y="514" font-size="17" fill="#202639" font-weight="normal">contain nested objects or lists.</text>
+<text x="440" y="541" font-size="17" fill="#525c6d" font-weight="normal">Example: JSON movie records.</text>
+<rect x="828" y="222" width="324" height="173" rx="7" fill="#fff5eb" stroke="#ead7c4"/>
+<text x="846" y="253" font-size="15" fill="#8c4b1c" font-weight="700">MOVIE REVIEW</text>
+<text x="846" y="285" font-size="18" fill="#202639" font-weight="normal">“A gentle story about family</text>
+<text x="846" y="313" font-size="18" fill="#202639" font-weight="normal">and imagination. The quiet</text>
+<text x="846" y="341" font-size="18" fill="#202639" font-weight="normal">moments stayed with me</text>
+<text x="846" y="369" font-size="18" fill="#202639" font-weight="normal">after the credits.”</text>
+<text x="830" y="435" font-size="18" fill="#202639" font-weight="normal">Also: poster images and</text>
+<text x="830" y="462" font-size="18" fill="#202639" font-weight="normal">recorded interviews.</text>
+<text x="830" y="511" font-size="17" fill="#525c6d" font-weight="normal">The content is not already</text>
+<text x="830" y="537" font-size="17" fill="#525c6d" font-weight="normal">a table of defined variables.</text>
+<text x="36" y="608" font-size="20" fill="#4e2a84" font-weight="700">First identify the structure. For a table, also ask: what does one row represent?</text>
+</g></svg>

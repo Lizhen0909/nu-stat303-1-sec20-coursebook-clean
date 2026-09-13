@@ -1,0 +1,105 @@
+{
+  "competition_title": "STAT303 Chapter 1: Jupyter Notebooks in VS Code",
+  "questions": [
+    {
+      "title": "In the STAT303 workflow, which tool actually executes the Python code in a notebook?",
+      "options": [
+        "The VS Code Explorer",
+        "The selected Python kernel",
+        "The Quarto application",
+        "The notebook’s HTML report"
+      ],
+      "correct_option": 2
+    },
+    {
+      "title": "You have downloaded setup-practice.zip. How should you start working with its notebooks in VS Code?",
+      "options": [
+        "Open activity01.ipynb inside the ZIP viewer.",
+        "Move activity01.ipynb to a new folder without the other kit files.",
+        "Open the ZIP file as the project folder.",
+        "Extract the ZIP and open the stat303-setup folder."
+      ],
+      "correct_option": 4
+    },
+    {
+      "title": "Which pair of Microsoft extensions does Chapter 1 ask you to enable for Python notebooks in VS Code?",
+      "options": [
+        "Python and Jupyter",
+        "Python and Quarto",
+        "Jupyter and Quarto",
+        "Python and GitHub Copilot"
+      ],
+      "correct_option": 1
+    },
+    {
+      "title": "Two installed environments have similar “Python 3” labels. Which notebook code best identifies the Python executable used by the current kernel?",
+      "options": [
+        "import sys\nprint(sys.version)",
+        "print(\"Python 3\")",
+        "import sys\nprint(sys.executable)",
+        "print(2 + 3)"
+      ],
+      "correct_option": 3
+    },
+    {
+      "title": "Your mean calculation runs correctly. You want to add a heading and a paragraph explaining the result in the report. Where should you write them?",
+      "options": [
+        "In a Markdown cell near the calculation",
+        "In a Raw cell alongside the report settings",
+        "At the terminal prompt after rendering",
+        "In the notebook kernel picker"
+      ],
+      "correct_option": 1
+    },
+    {
+      "title": "In a Python notebook, you ran x = 8 and then deleted that cell. A remaining cell contains print(x + 2). No other cell defines x. What happens when you run the remaining cell now, then restart the kernel and run it again?",
+      "options": [
+        "It prints 10 both times.",
+        "It raises NameError both times.",
+        "It raises NameError first, then prints 10.",
+        "It prints 10 first, then raises NameError."
+      ],
+      "correct_option": 4
+    },
+    {
+      "title": "In the VS Code terminal, quarto --version prints a version number. The Quarto VS Code extension is not installed. What does this tell you about rendering from the terminal?",
+      "options": [
+        "You must install the extension before quarto render can work.",
+        "The terminal can find Quarto; the extension is optional for rendering.",
+        "The notebook has already been rerun successfully.",
+        "The notebook kernel must use the same Python as the terminal."
+      ],
+      "correct_option": 2
+    },
+    {
+      "title": "The supplied notebook starts with YAML settings for title, author, and HTML output. You need to put your name on the report. What should you do?",
+      "options": [
+        "Move the settings into a Code cell and run them.",
+        "Replace the settings with a Markdown heading containing your name.",
+        "Edit author in the existing Raw cell, preserving indentation and the --- lines.",
+        "Type author: followed by your name in the terminal."
+      ],
+      "correct_option": 3
+    },
+    {
+      "title": "A saved notebook shows an old result. You change its calculation, save without rerunning, and successfully render the .ipynb using the chapter’s default Quarto workflow. Which conclusion is justified?",
+      "options": [
+        "The HTML may still show the old result because rendering normally uses saved outputs.",
+        "The successful render proves that the edited calculation ran correctly.",
+        "Saving automatically updates the output to match the edited calculation.",
+        "Quarto checks that every saved output matches its current code before rendering."
+      ],
+      "correct_option": 1
+    },
+    {
+      "title": "Your report uses embed-resources: true. A copy of only the HTML opens in another folder with its ordinary figures and formatting intact. What has this check established?",
+      "options": [
+        "The HTML contains the input CSV files needed to rerun the analysis.",
+        "The copied HTML carries the ordinary display resources checked, but you should keep the notebook and data for future work.",
+        "The HTML contains the Python environment needed to rerun the analysis.",
+        "Every external website or service referenced by the report will work offline."
+      ],
+      "correct_option": 2
+    }
+  ]
+}

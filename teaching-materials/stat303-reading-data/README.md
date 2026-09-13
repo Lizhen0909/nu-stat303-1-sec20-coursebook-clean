@@ -10,6 +10,8 @@ Use the [Reading Data chapter](https://lizhen0909.github.io/nu-stat303-1-sec20-c
 4. Run `reading_examples.ipynb` to follow the worked examples. Complete your own `activity03.ipynb` using the chapter's A–D instructions.
 5. Restart, run all, and save your activity. From this folder in the terminal, run `quarto render activity03.ipynb --to html`. Inspect the result and upload only `activity03.html` to the Canvas quiz.
 
+Keep the included `images/` folder beside `reading_examples.ipynb`. It contains the data-structure and DataFrame-versus-Series figures used in the worked examples; these figures display locally without an internet connection.
+
 The examples write `movies_export.csv` and `movies_with_index.csv` beside the notebooks. Rerunning an export replaces that generated file; the inputs under `data/` are not modified. The activity also writes `movies_export.csv` from the same original dataset.
 
 The HTML-reading extension is optional and needs an HTML parser such as lxml. Its code is shown in Markdown, so running all ordinary example cells does not require that parser or network access. The local JSON example uses pandas alone.

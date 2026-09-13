@@ -405,8 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Before analyzing a dataset, ask: <strong>Did I read the file into the table I intended?</strong> A command can run successfully while producing the wrong columns, interpreting an identifier as a number, or including an old row index as data.</p>
-<p>This chapter introduces a workflow you will reuse throughout STAT303:</p>
+<p>Before analyzing a dataset, first we need to <strong>load the data into Python</strong>. This chapter introduces a workflow you will reuse throughout STAT303:</p>
 <p><strong>Read → inspect → diagnose → export → verify.</strong></p>
 <p>By the end, you should be able to:</p>
 <ul>
@@ -416,7 +415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Diagnose a delimiter problem and choose an appropriate <code>sep</code> value.</li>
 <li>Export a CSV while making an explicit decision about its index, then read it back to check the result.</li>
 </ul>
-<p>You need the notebook, environment, and file-path skills from the previous two setup chapters. No prior NumPy knowledge is needed. <a href="./Pandas.html">Pandas Fundamentals</a> will develop selection, filtering, and transformations after this introduction.</p>
 <section id="set-up-the-chapter-files" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="set-up-the-chapter-files"><span class="header-section-number">3.1</span> Set Up the Chapter Files</h2>
 <p>Download and extract the <a href="downloads/reading-data-practice.zip">Reading Data practice kit</a>. Place <code>stat303-reading-data</code> inside the <code>stat303-setup</code> project you used in the previous chapters. Select that project’s verified Python environment as the notebook kernel; it should already contain pandas.</p>
@@ -453,10 +451,20 @@ Movie CSV found: True</code></pre>
 </section>
 <section id="recognize-the-structure" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="recognize-the-structure"><span class="header-section-number">3.2</span> Recognize the Structure Before Reading</h2>
-<section id="tables-records-and-variables" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="tables-records-and-variables"><span class="header-section-number">3.2.1</span> Tables, Records, and Variables</h3>
+<section id="data-structure-and-what-a-row-represents" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="data-structure-and-what-a-row-represents"><span class="header-section-number">3.2.1</span> Data Structure and What a Row Represents</h3>
 <p><strong>Structured data</strong> follows a defined organization. In the movie table, one row is a movie record and each column is a variable, such as title, production budget, or IMDB rating. A CSV or spreadsheet can represent this table.</p>
 <p><strong>Unstructured data</strong> includes free-form text, images, and audio that are not already organized as a table of variables. A movie review is unstructured text; a table with a review’s author, date, and rating is structured. <strong>Semi-structured formats</strong>, such as JSON, can organize records using keys while allowing nested or varying fields.</p>
+<div id="fig-data-structure-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels compare movie data: a table with title, year, and rating columns; JSON with named fields, a nested ratings object, and a genres list; and a free-form review with images and audio as other examples. In the table, each row is a movie record and each column is a variable.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-structure-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/data-structure-comparison.svg" class="img-fluid figure-img" style="width:100.0%" alt="Three panels compare movie data: a table with title, year, and rating columns; JSON with named fields, a nested ratings object, and a genres list; and a free-form review with images and audio as other examples. In the table, each row is a movie record and each column is a variable.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-structure-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Movie information can be structured as a table, semi-structured as nested JSON, or unstructured as free-form text, images, or audio.
+</figcaption>
+</figure>
+</div>
 <p>The format and the unit of observation are separate questions. A table of movie reviews might have one row per review, with many rows for the same movie. Always determine what a row represents before interpreting counts or summaries.</p>
 </section>
 <section id="inspect-a-csv-as-text" class="level3" data-number="3.2.2">
@@ -587,6 +595,16 @@ Major Dundee,14873,14873,3800000,Apr 07 1965,PG/PG-13,Adapted screenplay,Western
 <section id="a-dataframe-and-a-series" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="a-dataframe-and-a-series"><span class="header-section-number">3.3.1</span> A DataFrame and a Series</h3>
 <p>A DataFrame holds multiple columns, which may have different data types. Selecting a single named column with <code>movies['IMDB Rating']</code> gives a <strong>Series</strong>: a one-dimensional sequence of values with row labels.</p>
+<div id="fig-dataframe-vs-series" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A movie DataFrame with Title and IMDB Rating columns and index labels 0, 1, and 2 points to a Series named IMDB Rating. The Series contains ratings 6.5, 6.7, and 5.2 with the same index labels. The illustrated shapes are (3, 2) for the DataFrame and (3,) for the Series.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dataframe-vs-series-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dataframe-vs-series.svg" class="img-fluid figure-img" style="width:100.0%" alt="A movie DataFrame with Title and IMDB Rating columns and index labels 0, 1, and 2 points to a Series named IMDB Rating. The Series contains ratings 6.5, 6.7, and 5.2 with the same index labels. The illustrated shapes are (3, 2) for the DataFrame and (3,) for the Series.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataframe-vs-series-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Selecting one column from a DataFrame produces a Series with the same row labels. This simplified illustration shows only three rows and two columns of the movie data.
+</figcaption>
+</figure>
+</div>
 <div id="reading-008" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:13.449350Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:13.449283Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.451893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.451540Z&quot;}}" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> movies[<span class="st">'IMDB Rating'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Table type:"</span>, <span class="bu">type</span>(movies))</span>
@@ -704,7 +722,7 @@ dtype: object</code></pre>
 </div>
 <p>Look for numeric types in columns such as <code>IMDB Rating</code> and <code>Production Budget</code>. Text may appear as <code>str</code>, <code>string</code>, or <code>object</code>, depending on the pandas version and how the data were read. <code>object</code> can also hold mixed kinds of values, so it is not a guarantee that every value is a string.</p>
 <p>A date-looking value does <strong>not</strong> establish a datetime dtype. In this default CSV import, <code>Release Date</code> remains text. Later, you can request date parsing with <code>parse_dates=['Release Date']</code> and verify the result. Similarly, a numeric-looking ID such as <code>00123</code> may need <code>dtype={'ID': 'string'}</code> to preserve leading zeros. The correct type depends on the meaning of the variable.</p>
-<p>Type inference is convenient, but it cannot decide whether an identifier should be averaged or whether a recorded budget is accurate. Detailed conversions belong in Pandas Fundamentals.</p>
+<p>Type inference is convenient, but it cannot decide whether an identifier should be averaged or whether a recorded budget is accurate. Detailed conversions are covered in the next chapter, <a href="./Pandas.html">Pandas Fundamentals</a>.</p>
 </section>
 <section id="non-null-counts-and-missing-values" class="level3" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="non-null-counts-and-missing-values"><span class="header-section-number">3.4.4</span> Non-null Counts and Missing Values</h3>
@@ -733,7 +751,6 @@ memory usage: 191.6 KB</code></pre>
 </div>
 <p><code>info()</code> <strong>prints a summary and returns <code>None</code></strong>. Call it directly; <code>print(movies.info())</code> adds an unnecessary <code>None</code> after the summary.</p>
 <p>Compare each non-null count with 2,228, the total number of rows. In this file, <code>IMDB Rating</code> has 2,228 non-null values: pandas has not recognized missing ratings. If it had 2,220 non-null values, eight ratings would be missing.</p>
-<p>By default, pandas recognizes blank fields and several common missing-value markers. A source-specific marker such as <code>Missing</code> can be declared with <code>na_values=['Missing']</code>. Choose missing-value rules using the source’s documentation; a non-null entry can still be invalid, such as an impossible rating.</p>
 </section>
 <section id="numerical-summaries" class="level3" data-number="3.4.5">
 <h3 data-number="3.4.5" class="anchored" data-anchor-id="numerical-summaries"><span class="header-section-number">3.4.5</span> Numerical Summaries</h3>
