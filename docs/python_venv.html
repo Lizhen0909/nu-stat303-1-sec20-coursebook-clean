@@ -407,12 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#practice-activity-find-your-python-and-your-data" id="toc-practice-activity-find-your-python-and-your-data" class="nav-link" data-scroll-target="#practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</a>
   <ul class="collapse">
-  <li><a href="#a.-identify-your-tools-and-starting-folder" id="toc-a.-identify-your-tools-and-starting-folder" class="nav-link" data-scroll-target="#a.-identify-your-tools-and-starting-folder"><span class="header-section-number">2.10.1</span> A. Identify Your Tools and Starting Folder</a></li>
-  <li><a href="#b.-set-up-and-verify-the-environment" id="toc-b.-set-up-and-verify-the-environment" class="nav-link" data-scroll-target="#b.-set-up-and-verify-the-environment"><span class="header-section-number">2.10.2</span> B. Set Up and Verify the Environment</a></li>
-  <li><a href="#c.-compare-terminal-and-notebook-locations" id="toc-c.-compare-terminal-and-notebook-locations" class="nav-link" data-scroll-target="#c.-compare-terminal-and-notebook-locations"><span class="header-section-number">2.10.3</span> C. Compare Terminal and Notebook Locations</a></li>
-  <li><a href="#d.-check-your-data-paths" id="toc-d.-check-your-data-paths" class="nav-link" data-scroll-target="#d.-check-your-data-paths"><span class="header-section-number">2.10.4</span> D. Check Your Data Paths</a></li>
-  <li><a href="#e.-record-dependencies-and-finish" id="toc-e.-record-dependencies-and-finish" class="nav-link" data-scroll-target="#e.-record-dependencies-and-finish"><span class="header-section-number">2.10.5</span> E. Record Dependencies and Finish</a></li>
-  <li><a href="#make-the-html-for-submission" id="toc-make-the-html-for-submission" class="nav-link" data-scroll-target="#make-the-html-for-submission"><span class="header-section-number">2.10.6</span> Make the HTML for Submission</a></li>
+  <li><a href="#render-and-submit-your-html" id="toc-render-and-submit-your-html" class="nav-link" data-scroll-target="#render-and-submit-your-html"><span class="header-section-number">2.10.1</span> Render and Submit Your HTML</a></li>
   </ul></li>
   <li><a href="#next-assignment-b" id="toc-next-assignment-b" class="nav-link" data-scroll-target="#next-assignment-b"><span class="header-section-number">2.11</span> Next: Assignment B</a></li>
   </ul>
@@ -979,62 +974,46 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </section>
 <section id="practice-activity-find-your-python-and-your-data" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</h2>
-<p><strong>Goal:</strong> Demonstrate the terminal, environment, package, and file-path skills from this chapter. <strong>Submit:</strong> <code>activity02.html</code> through the final file-upload question in the Canvas quiz.</p>
-<p><strong>These are the complete Activity 2 instructions.</strong> Follow this section to prepare your work, then answer the multiple-choice questions in Canvas and upload your HTML there.</p>
-<p>Use <code>activity02.ipynb</code> from the <a href="downloads/setup-practice.zip">setup practice kit</a>. Continue working in the extracted <code>stat303-setup</code> folder from Chapter 1. Keep the supplied code cells and organize your Markdown responses under headings A–E below. Use these instructions as the complete task list; the brief prompts in the starter notebook are places to record your work. Label terminal commands and their copied output clearly; terminal commands belong in the terminal, not in Python code cells.</p>
-<section id="a.-identify-your-tools-and-starting-folder" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="a.-identify-your-tools-and-starting-folder"><span class="header-section-number">2.10.1</span> A. Identify Your Tools and Starting Folder</h3>
-<ul>
-<li>Replace <code>Your Name</code> in the opening Raw cell and the notebook’s Markdown name field with your name.</li>
-<li>Record your terminal shell: for example, zsh, Bash, PowerShell, or Command Prompt.</li>
-<li>In one or two sentences, explain one use of the terminal in your Python data science work and why the course project should have its own environment instead of sharing one environment with every project.</li>
-<li>Show your terminal’s current directory and list its contents. Copy the commands and enough output to show the project folder, the activity notebook, and <code>data</code>.</li>
-</ul>
-</section>
-<section id="b.-set-up-and-verify-the-environment" class="level3" data-number="2.10.2">
-<h3 data-number="2.10.2" class="anchored" data-anchor-id="b.-set-up-and-verify-the-environment"><span class="header-section-number">2.10.2</span> B. Set Up and Verify the Environment</h3>
-<ul>
-<li>Create or identify the project’s <code>.venv</code> using Chapter 2. Activate it, or use the verified direct-executable alternative described in the chapter.</li>
-<li><strong>Before installing packages</strong>, record answers to the three questions: Where am I typing? Which Python am I using? Which folder is current? Include the terminal command and output identifying Python.</li>
-<li>Use the VS Code terminal to install <code>ipykernel</code>, <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code> into the project environment. Then select <code>.venv</code> as the notebook kernel.</li>
-<li>Install Seaborn with <code>%pip install seaborn</code> in a temporary notebook code cell. Restart the kernel if needed. Remove that installation cell afterward and record the command in Markdown so that running all cells does not repeat the installation.</li>
-<li>Run the supplied Python-information and package-check cells. Add a NumPy import/version check alongside the other package checks.</li>
-<li>Record the terminal and notebook Python executable paths. Explain what in those paths shows that they identify the same project environment. Do not use a kernel label or the <code>(.venv)</code> prompt alone as proof.</li>
-</ul>
-</section>
-<section id="c.-compare-terminal-and-notebook-locations" class="level3" data-number="2.10.3">
-<h3 data-number="2.10.3" class="anchored" data-anchor-id="c.-compare-terminal-and-notebook-locations"><span class="header-section-number">2.10.3</span> C. Compare Terminal and Notebook Locations</h3>
-<ul>
-<li>Record the notebook’s current directory using <code>Path.cwd()</code> after importing <code>Path</code> from <code>pathlib</code>.</li>
-<li>In the terminal, enter <code>data</code>, show the current directory, and list its contents. Record the commands and output showing <code>station_readings.csv</code>.</li>
-<li><strong>While the terminal is still inside <code>data</code>, rerun the notebook’s directory check.</strong> Record its output and explain whether changing the terminal’s directory changed the notebook’s directory.</li>
-<li>Return the terminal to <code>stat303-setup</code> with <code>cd ..</code> and verify its location.</li>
-</ul>
-</section>
-<section id="d.-check-your-data-paths" class="level3" data-number="2.10.4">
-<h3 data-number="2.10.4" class="anchored" data-anchor-id="d.-check-your-data-paths"><span class="header-section-number">2.10.4</span> D. Check Your Data Paths</h3>
-<ul>
-<li>Before running the supplied file-check cells, predict the results of <code>data_path.is_file()</code> for the supplied CSV and <code>wrong_path.is_file()</code> for the deliberately incorrect filename.</li>
-<li>Run the cells. Keep the resolved data path, both file-check results, and the first three lines of the CSV visible in your report.</li>
-<li>Explain what the relative path <code>Path("data") / "station_readings.csv"</code> is relative to. State one thing you would check if the real file check returned <code>False</code>.</li>
-<li>Keep <code>wrong_path</code> separate from <code>data_path</code>, as in the supplied notebook. Do not rename or delete any supplied files; the incorrect-path test should return <code>False</code> without an exception.</li>
-</ul>
-</section>
-<section id="e.-record-dependencies-and-finish" class="level3" data-number="2.10.5">
-<h3 data-number="2.10.5" class="anchored" data-anchor-id="e.-record-dependencies-and-finish"><span class="header-section-number">2.10.5</span> E. Record Dependencies and Finish</h3>
-<ul>
-<li>From <code>stat303-setup</code>, use the verified project Python and the export command for your shell in Section 2.8 to write <code>requirements.txt</code>. Record the command and the file’s location.</li>
-<li>Open the file. Copy two actual package/version entries into Markdown and explain what they record. The number of entries may exceed the number of packages you explicitly installed because packages have dependencies.</li>
-<li>Restart the notebook kernel, run all code cells from top to bottom, resolve unexpected errors, and save. Add a brief note stating what you checked; save again.</li>
-</ul>
-</section>
-<section id="make-the-html-for-submission" class="level3" data-number="2.10.6">
-<h3 data-number="2.10.6" class="anchored" data-anchor-id="make-the-html-for-submission"><span class="header-section-number">2.10.6</span> Make the HTML for Submission</h3>
-<p>In the VS Code terminal, with <code>stat303-setup</code> as the current folder, run:</p>
+<p><strong>Goal:</strong> Demonstrate that you can use a project environment, verify installed packages, and locate data from a notebook.</p>
+<p><strong>File:</strong> <code>activity02.ipynb</code> from the <a href="downloads/setup-practice.zip">setup practice kit</a>.</p>
+<p><strong>Submit:</strong> <code>activity02.html</code> through the final file-upload question in the Chapter 2 Canvas quiz.</p>
+<p>Continue working in the extracted <code>stat303-setup</code> folder. Keep the supplied code cells and folder arrangement. Add your explanations and copied terminal commands/output in Markdown, using the notebook’s <strong>Terminal and Notebook Evidence</strong> and <strong>Dependencies and Troubleshooting</strong> sections. Use commands for your own shell; the starter’s terminal examples use macOS/Linux commands. Terminal commands belong in the terminal, not in Python code cells.</p>
+<p>Follow this section for the complete activity instructions, then answer the multiple-choice questions and upload your HTML in Canvas.</p>
+<ol type="1">
+<li>Open <code>activity02.ipynb</code>. Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field with your name, and add your name in Markdown. Record your terminal shell and explain one use of the terminal in data science and why the project should have its own environment.</li>
+<li>In the terminal, show the current directory and list its contents. Record the commands and output showing <code>stat303-setup</code>, the activity notebook, and <code>data</code>. Create the project’s <code>.venv</code> if needed, activate it in the terminal, and select it as the notebook kernel. Before installing packages, record where you are typing, which Python you are using, and which folder is current. Include the terminal command <code>python -c "import sys; print(sys.executable)"</code> and its output.</li>
+<li>Follow the chapter’s package-installation steps: install <code>ipykernel</code>, <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code> from the terminal, and install Seaborn with <code>%pip install seaborn</code> in a temporary notebook code cell. If you already completed these installations in the project environment, record the commands you used. Remove the temporary installation cell and keep its command in Markdown so that running all cells does not repeat the installation.</li>
+<li>Run the supplied Python-information and package-check cells. Add a NumPy import and version check alongside the other package checks. Compare the terminal and notebook Python executable paths, and explain what in the paths shows that both use the same project’s <code>.venv</code>.</li>
+<li>In the terminal, enter <code>data</code>, show the current directory, and list its contents. While the terminal is still inside <code>data</code>, rerun the notebook’s <code>Path.cwd()</code> check. Record the commands and outputs and explain whether moving in the terminal changed the notebook’s working directory. Return the terminal to <code>stat303-setup</code> with <code>cd ..</code> and verify its location.</li>
+<li>Before running the supplied data-path cells, predict the results of <code>data_path.is_file()</code> and <code>wrong_path.is_file()</code> in Markdown. Run the cells and keep the resolved path, both file-check results, and the first three lines of the CSV visible. Explain what <code>Path("data") / "station_readings.csv"</code> is relative to and one thing you would check if the real file check returned <code>False</code>. Keep <code>wrong_path</code> separate from <code>data_path</code>; do not rename or delete the supplied files.</li>
+<li>From <code>stat303-setup</code>, use the active project environment and the export command for your shell in <a href="#record-and-recreate-dependencies">Record and Recreate Dependencies</a> to write <code>requirements.txt</code>. Record the command and file location. Open the file, copy two actual package/version entries into Markdown, and explain what they record.</li>
+<li>Restart the kernel, run all code cells from top to bottom, resolve unexpected errors, and save. In Markdown, record whether the environment, package imports, and file checks worked as expected, then save again.</li>
+</ol>
+<p><strong>Completion checks:</strong> Your name and explanations render as text, the terminal and notebook use the same project environment, all four data science packages import successfully, the real CSV check returns <code>True</code>, and the deliberately incorrect path check returns <code>False</code>. Your report includes the terminal navigation comparison and two entries from <code>requirements.txt</code>.</p>
+<section id="render-and-submit-your-html" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">2.10.1</span> Render and Submit Your HTML</h3>
+<p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Chapter 1 Quarto refresher</a>. From <code>stat303-setup</code>, render your saved notebook with:</p>
 <pre class="text"><code>quarto render activity02.ipynb --to html</code></pre>
-<p>Use the <a href="./vscode_setup.html#render-and-submit-with-quarto">Chapter 1 Quarto refresher</a> to inspect the HTML and a copy opened outside the project folder. Confirm your name, explanations, code, and current outputs are present. Correct, save, and render again if needed.</p>
-<p><strong>Submission:</strong> Upload only <code>activity02.html</code> to Canvas. Keep the notebook, data, and <code>requirements.txt</code> locally; do not upload the <code>.venv</code> folder. You may replace your personal username in copied paths with <code>[username]</code>, retaining enough of the path to identify the project and environment. Python and package versions may differ across students.</p>
+<p>Inspect <code>activity02.html</code>, including a copy opened outside the project folder. Check that your name, Python and package information, terminal evidence, file-check results, explanations, dependency entries, and completion note appear. Upload this HTML to the final question in the <strong>Chapter 2 Canvas quiz</strong>. If you correct the notebook, save and render again before uploading.</p>
 <p><strong>HTML grading (16 points):</strong> tool/context explanations (2), environment and package evidence (4), navigation comparison (3), file-path work (3), dependency record (2), and readable completed HTML (2).</p>
+<p><strong>Keep:</strong> your saved <code>activity02.ipynb</code>, data, and <code>requirements.txt</code>. Submit only the HTML file to this quiz.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Self-check">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Self-check
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Changing the terminal’s directory does not change a running notebook’s working directory. The relative data path starts from the notebook’s current working directory. With the supplied folder arrangement, the real CSV check should return <code>True</code> and the deliberately incorrect filename should return <code>False</code>.</p>
+<p>Python and package versions may differ across students. Use your actual outputs and requirements entries. You may replace your personal username in copied paths with <code>[username]</code>, keeping enough of the path to identify the project and environment.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="next-assignment-b" class="level2" data-number="2.11">
