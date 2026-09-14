@@ -23,7 +23,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Advanced_Data_Visualization.html" rel="next">
-<link href="./vectorized_numpy.html" rel="prev">
+<link href="./numpy_speedup_pandas.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -127,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./Data visualization.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization Fundamentals</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -145,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Science I with python</a>
+      <a href="./">Data Science I with python</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -153,31 +153,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
-    <div class="sidebar-menu-container">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Review of STAT 201: Python Foundations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
-          </a>
+          </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
@@ -185,22 +185,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Setting Up for Data Science</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
-          </a>
+          </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span></a>
   </div>
@@ -208,52 +208,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Core Library Foundations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
-          </a>
+          </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
-  <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
-  <a href="./Numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_intermediate_claude.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
-  <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
-  <a href="./vectorized_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_speedup_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Speedup Pandas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data visualization.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Advanced_Data_Visualization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization Intermediate</span></span></a>
   </div>
@@ -261,40 +261,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">From messy to insight</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
-          </a>
+          </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data_cleaning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data_preparation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data_reshaping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
   </div>
@@ -302,58 +302,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
-          </a>
+          </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Assignment A</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Assignment B</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment C.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Assignment C</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment D.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Assignment D</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment E.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Assignment E</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment F</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Assignment G.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment G</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container">
+  <div class="sidebar-item-container"> 
   <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
   </div>
@@ -368,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
-
+   
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">8.1</span> Learning Objectives</a></li>
   <li><a href="#set-up-the-chapter-files" id="toc-set-up-the-chapter-files" class="nav-link" data-scroll-target="#set-up-the-chapter-files"><span class="header-section-number">8.2</span> Set Up the Chapter Files</a>
@@ -441,11 +441,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-
-
-
+    
+  
+    
   </div>
-
+  
 
 
 </header>
@@ -1399,7 +1399,7 @@ Name: NU_GPA, dtype: float64</code></pre>
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {
+        if (clz.startsWith('code-annotation-')) {                     
           return true;
         }
       }
@@ -1419,11 +1419,11 @@ Name: NU_GPA, dtype: float64</code></pre>
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button,
-          { trigger: "manual",
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();
+        tooltip.show();    
       }
       setTimeout(function() {
         if (tooltip) {
@@ -1500,7 +1500,7 @@ Name: NU_GPA, dtype: float64</code></pre>
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config);
+      window.tippy(el, config); 
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -1575,7 +1575,7 @@ Name: NU_GPA, dtype: float64</code></pre>
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined;
+        let hash = undefined; 
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -1603,7 +1603,7 @@ Name: NU_GPA, dtype: float64</code></pre>
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              }
+              } 
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -1627,7 +1627,7 @@ Name: NU_GPA, dtype: float64</code></pre>
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            }
+            } 
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -1667,7 +1667,7 @@ Name: NU_GPA, dtype: float64</code></pre>
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it
+              // cook up a div (if necessary) and position it 
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -1790,9 +1790,9 @@ Name: NU_GPA, dtype: float64</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./vectorized_numpy.html" class="pagination-link" aria-label="NumPy Intermediate">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span>
-      </a>
+      <a href="./numpy_speedup_pandas.html" class="pagination-link" aria-label="NumPy Speedup Pandas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Speedup Pandas</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Advanced_Data_Visualization.html" class="pagination-link" aria-label="Data Visualization Intermediate">

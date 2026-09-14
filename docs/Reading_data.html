@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Pandas.html" rel="next">
+<link href="./pandas_fundamentals_reorganized.html" rel="next">
 <link href="./python_venv.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -224,26 +224,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
+  <a href="./pandas_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  <a href="./pandas_intermediate_claude.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vectorized_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
+  <a href="./numpy_speedup_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Speedup Pandas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -722,7 +722,7 @@ dtype: object</code></pre>
 </div>
 <p>Look for numeric types in columns such as <code>IMDB Rating</code> and <code>Production Budget</code>. Text may appear as <code>str</code>, <code>string</code>, or <code>object</code>, depending on the pandas version and how the data were read. <code>object</code> can also hold mixed kinds of values, so it is not a guarantee that every value is a string.</p>
 <p>A date-looking value does <strong>not</strong> establish a datetime dtype. In this default CSV import, <code>Release Date</code> remains text. Later, you can request date parsing with <code>parse_dates=['Release Date']</code> and verify the result. Similarly, a numeric-looking ID such as <code>00123</code> may need <code>dtype={'ID': 'string'}</code> to preserve leading zeros. The correct type depends on the meaning of the variable.</p>
-<p>Type inference is convenient, but it cannot decide whether an identifier should be averaged or whether a recorded budget is accurate. Detailed conversions are covered in the next chapter, <a href="./Pandas.html">Pandas Fundamentals</a>.</p>
+<p>Type inference is convenient, but it cannot decide whether an identifier should be averaged or whether a recorded budget is accurate. Detailed conversions are covered in the next chapter, <a href="Pandas.ipynb">Pandas Fundamentals</a>.</p>
 </section>
 <section id="non-null-counts-and-missing-values" class="level3" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="non-null-counts-and-missing-values"><span class="header-section-number">3.4.4</span> Non-null Counts and Missing Values</h3>
@@ -1549,7 +1549,7 @@ Same column names and order: True</code></pre>
 <section id="before-you-move-on" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</h2>
 <p>You should now be able to explain why a file that loads without an error can still have been read incorrectly. Keep checking what one row means, how fields were separated, whether types and counts are plausible, and what information survives an export.</p>
-<p><a href="./Pandas.html">Pandas Fundamentals</a> continues with selecting and filtering records, sorting, and creating variables. NumPy Fundamentals follows that chapter to introduce arrays and shape rules before the intermediate pandas material.</p>
+<p><a href="Pandas.ipynb">Pandas Fundamentals</a> continues with selecting and filtering records, sorting, and creating variables. NumPy Fundamentals follows that chapter to introduce arrays and shape rules before the intermediate pandas material.</p>
 <p>For reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas CSV reader</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html">DataFrame inspection</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">descriptive summaries</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">CSV writer</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_json.html">JSON reader</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html">HTML reader</a>.</p>
 
 
@@ -1963,7 +1963,7 @@ Same column names and order: True</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Pandas.html" class="pagination-link" aria-label="Pandas Fundamentals">
+      <a href="./pandas_fundamentals_reorganized.html" class="pagination-link" aria-label="Pandas Fundamentals">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -221,26 +221,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Pandas.html" class="sidebar-item-text sidebar-link">
+  <a href="./pandas_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  <a href="./pandas_intermediate_claude.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_types_in_pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vectorized_numpy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Intermediate</span></span></a>
+  <a href="./numpy_speedup_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Speedup Pandas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -752,7 +752,8 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </section>
 <section id="install-packages-in-the-intended-environment" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="install-packages-in-the-intended-environment"><span class="header-section-number">2.7</span> Install Packages in the Intended Environment</h2>
-<p>Throughout the STAT303 sequence, you will use essential Python packages and libraries for your data science tasks. Now that you have created your project environment, the next step is to install the required packages inside it.</p>
+<p>Throughout the STAT303 sequence, you will use several essential Python packages for data science. <strong>Pandas</strong> provides labeled Series and DataFrames for organizing and analyzing data, while <strong>NumPy</strong> supports efficient array operations and numerical computation. Plotting libraries help you visualize results, and statistical and machine-learning libraries allow you to build models using prepared data. We will introduce these connections as the course develops.</p>
+<p>Now that you have created your project environment, the next step is to install the required packages inside it.</p>
 <p>A new virtual environment normally includes <strong>pip</strong>, Python’s package installer. Pip supports installing from <a href="https://pypi.org/">PyPI</a>. Installing a package puts it in an environment; importing it makes it available in a running Python session. We will install the course tools now and check that they can be imported. Their data-analysis features come in later chapters.</p>
 <p><strong>Practice both methods below.</strong> They demonstrate two ways to install packages into the same environment: the terminal installs the first four tools, and the notebook installs Seaborn.</p>
 <section id="method-1-install-from-the-terminal" class="level3" data-number="2.7.1">
