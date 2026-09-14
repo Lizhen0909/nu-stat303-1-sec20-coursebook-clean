@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./numpy_fundamentals_reorganized.html" rel="next">
+<link href="./numpy_fundamentals.html" rel="next">
 <link href="./pandas_fundamentals_reorganized.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+  <a href="./numpy_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#set-up-your-practice-files" id="toc-set-up-your-practice-files" class="nav-link active" data-scroll-target="#set-up-your-practice-files"><span class="header-section-number">5.1</span> Set Up Your Practice Files</a></li>
+  <li><a href="#set-up-your-practice-files" id="toc-set-up-your-practice-files" class="nav-link active" data-scroll-target="#set-up-your-practice-files"><span class="header-section-number">5.1</span> Set Up the Chapter Files</a></li>
   <li><a href="#arithmetic-within-a-dataframe" id="toc-arithmetic-within-a-dataframe" class="nav-link" data-scroll-target="#arithmetic-within-a-dataframe"><span class="header-section-number">5.2</span> Arithmetic within a DataFrame</a></li>
   <li><a href="#arithmetic-between-dataframes-and-automatic-alignment" id="toc-arithmetic-between-dataframes-and-automatic-alignment" class="nav-link" data-scroll-target="#arithmetic-between-dataframes-and-automatic-alignment"><span class="header-section-number">5.3</span> Arithmetic between DataFrames — and automatic alignment</a></li>
   <li><a href="#exploring-relationships-with-.corr" id="toc-exploring-relationships-with-.corr" class="nav-link" data-scroll-target="#exploring-relationships-with-.corr"><span class="header-section-number">5.4</span> Exploring relationships with <code>.corr()</code></a></li>
@@ -418,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Write short lambda expressions and readable named functions.</li>
 </ul>
 <section id="set-up-your-practice-files" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="set-up-your-practice-files"><span class="header-section-number">5.1</span> Set Up Your Practice Files</h2>
+<h2 data-number="5.1" class="anchored" data-anchor-id="set-up-your-practice-files"><span class="header-section-number">5.1</span> Set Up the Chapter Files</h2>
 <p>Download the <a href="downloads/pandas-intermediate-claude-practice.zip">Pandas Intermediate practice kit</a>, extract it, and place <code>stat303-pandas-intermediate-claude</code> inside your existing <code>stat303-setup</code> project. Select the project environment verified in the setup chapters. The examples need pandas, which you already installed.</p>
 <pre class="text"><code>stat303-setup/
 ├── .venv/
@@ -1667,7 +1667,7 @@ Name: Industry, dtype: str</code></pre>
 <p><strong>File:</strong> <code>activity_pandas_intermediate.ipynb</code>.</p>
 <p><strong>Submit:</strong> <code>activity_pandas_intermediate.html</code> through the final upload question in the Pandas Intermediate Canvas quiz when assigned.</p>
 <p><strong>These are the complete Pandas Intermediate activity instructions.</strong> Use this section for the task list; the notebook contains invented inputs and spaces to record your work.</p>
-<p>Open <code>activity_pandas_intermediate.ipynb</code> from the folder prepared in <a href="#set-up-your-practice-files">Set Up Your Practice Files</a>, using the same project environment.</p>
+<p>Open <code>activity_pandas_intermediate.ipynb</code> from the folder prepared in <a href="#set-up-your-practice-files">Set Up the Chapter Files</a>, using the same project environment.</p>
 <p>The worked examples are preparation, not additional submission requirements.</p>
 <section id="a.-calculate-with-explicit-inputs" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="a.-calculate-with-explicit-inputs">A. Calculate with Explicit Inputs</h3>
@@ -1717,7 +1717,7 @@ Name: Industry, dtype: str</code></pre>
 <h2 data-number="5.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">5.10</span> Before You Move On</h2>
 <p>You should be able to explain which labels a calculation matches, which columns contribute to a summary, and how unmatched values behave in a lookup. Choose a column expression when it describes the calculation clearly; use a named function when it makes a custom rule easier to understand.</p>
 <p>More extensive missing-data decisions belong in <a href="./Data_cleaning.html">Data Cleaning</a>, and group-specific summaries belong in <a href="./Data aggregation.html">Data Grouping and Aggregation</a>.</p>
-<p>Next, <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> introduces arrays, positions, shapes, and broadcasting. <a href="./numpy_speedup_pandas.html">NumPy Speedup Pandas</a> later brings the two libraries together.</p>
+<p>Next, <a href="./numpy_fundamentals.html">NumPy Fundamentals</a> introduces arrays, positions, shapes, and broadcasting. <a href="./numpy_speedup_pandas.html">NumPy Speedup Pandas</a> later brings the two libraries together.</p>
 <p>References: <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html">pandas mapping</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html">aligned addition</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">correlation</a>.</p>
 
 
@@ -2131,7 +2131,7 @@ Name: Industry, dtype: str</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./numpy_fundamentals_reorganized.html" class="pagination-link" aria-label="NumPy Fundamentals">
+      <a href="./numpy_fundamentals.html" class="pagination-link" aria-label="NumPy Fundamentals">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+  <a href="./numpy_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
@@ -2200,15 +2200,91 @@ Name: followers, dtype: str</code></pre>
 </section>
 <section id="extended-strings-and-dates" class="level3" data-number="4.7.5">
 <h3 data-number="4.7.5" class="anchored" data-anchor-id="extended-strings-and-dates"><span class="header-section-number">4.7.5</span> Extended String Cleaning</h3>
-<p>Preserve the original text so you can check what cleaning changes. This example trims surrounding whitespace, standardizes capitalization with <code>.str.casefold()</code>, replaces literal hyphens with spaces, counts characters, and checks a suffix:</p>
-<div id="46d91160" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>extension_text <span class="op">=</span> pd.Series([<span class="st">'  North Hall '</span>, <span class="st">'SOUTH-HALL'</span>, <span class="va">None</span>, <span class="st">'East Hall'</span>], dtype<span class="op">=</span><span class="st">'string'</span>)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>text_report <span class="op">=</span> pd.DataFrame({<span class="st">'original'</span>: extension_text})</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'clean'</span>] <span class="op">=</span> extension_text.<span class="bu">str</span>.strip().<span class="bu">str</span>.casefold().<span class="bu">str</span>.replace(<span class="st">'-'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'characters'</span>] <span class="op">=</span> text_report[<span class="st">'clean'</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'hall'</span>] <span class="op">=</span> text_report[<span class="st">'clean'</span>].<span class="bu">str</span>.endswith(<span class="st">'hall'</span>, na<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>text_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<p>Continue with the movie titles. Preserve the original text and create a normalized version for text matching: standardize capitalization with <code>.str.casefold()</code> and replace literal hyphens with spaces. Hyphens and capitalization are part of the original titles, so this is a matching choice rather than a correction to the movie names. Count characters and check which normalized titles end with <code>man</code>:</p>
+<div id="46d91160" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>movie_titles <span class="op">=</span> movies[<span class="st">'Title'</span>].astype(<span class="st">'string'</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>text_report <span class="op">=</span> pd.DataFrame({<span class="st">'original'</span>: movie_titles})</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'normalized'</span>] <span class="op">=</span> movie_titles.<span class="bu">str</span>.casefold().<span class="bu">str</span>.replace(<span class="st">'-'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'characters'</span>] <span class="op">=</span> text_report[<span class="st">'normalized'</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>text_report[<span class="st">'ends_with_man'</span>] <span class="op">=</span> text_report[<span class="st">'normalized'</span>].<span class="bu">str</span>.endswith(<span class="st">'man'</span>, na<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> movie_titles.<span class="bu">str</span>.contains(<span class="st">'-'</span>, regex<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>) <span class="op">|</span> text_report[<span class="st">'ends_with_man'</span>]</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>text_report.loc[examples].head(<span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">original</th>
+<th data-quarto-table-cell-role="th">normalized</th>
+<th data-quarto-table-cell-role="th">characters</th>
+<th data-quarto-table-cell-role="th">ends_with_man</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>Bubba Ho-Tep</td>
+<td>bubba ho tep</td>
+<td>12</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">19</th>
+<td>The Good German</td>
+<td>the good german</td>
+<td>15</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">108</th>
+<td>Arn - Tempelriddaren</td>
+<td>arn&nbsp;&nbsp; tempelriddaren</td>
+<td>20</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">122</th>
+<td>Rabbit-Proof Fence</td>
+<td>rabbit proof fence</td>
+<td>18</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">129</th>
+<td>The Postman</td>
+<td>the postman</td>
+<td>11</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">137</th>
+<td>A Single Man</td>
+<td>a single man</td>
+<td>12</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>.str.len()</code> counts characters, including spaces. <code>.str.endswith('man')</code> checks the final characters, not a whole word: it also matches <em>The Good German</em>.</p>
+<p>The movie titles in this file have no surrounding whitespace or missing values. To demonstrate <code>.str.strip()</code> and missing-text behavior, create a small practice Series from the first two movie titles, deliberately adding spaces to one title and a missing entry:</p>
+<div id="movie-title-cleaning-practice" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>practice_titles <span class="op">=</span> pd.Series(</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'  '</span> <span class="op">+</span> movie_titles.iloc[<span class="dv">0</span>] <span class="op">+</span> <span class="st">'  '</span>, movie_titles.iloc[<span class="dv">1</span>], pd.NA],</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    dtype<span class="op">=</span><span class="st">'string'</span>,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>practice_report <span class="op">=</span> pd.DataFrame({<span class="st">'original'</span>: practice_titles})</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>practice_report[<span class="st">'clean'</span>] <span class="op">=</span> practice_titles.<span class="bu">str</span>.strip().<span class="bu">str</span>.casefold()</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>practice_report[<span class="st">'characters'</span>] <span class="op">=</span> practice_report[<span class="st">'clean'</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>practice_report[<span class="st">'ends_with_man'</span>] <span class="op">=</span> practice_report[<span class="st">'clean'</span>].<span class="bu">str</span>.endswith(<span class="st">'man'</span>, na<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>practice_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -2219,23 +2295,23 @@ Name: followers, dtype: str</code></pre>
 <th data-quarto-table-cell-role="th">original</th>
 <th data-quarto-table-cell-role="th">clean</th>
 <th data-quarto-table-cell-role="th">characters</th>
-<th data-quarto-table-cell-role="th">hall</th>
+<th data-quarto-table-cell-role="th">ends_with_man</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
-<td>North Hall</td>
-<td>north hall</td>
-<td>10</td>
-<td>True</td>
+<td>Opal Dreams</td>
+<td>opal dreams</td>
+<td>11</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
-<td>SOUTH-HALL</td>
-<td>south hall</td>
-<td>10</td>
-<td>True</td>
+<td>Major Dundee</td>
+<td>major dundee</td>
+<td>12</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
@@ -2244,31 +2320,24 @@ Name: followers, dtype: str</code></pre>
 <td>&lt;NA&gt;</td>
 <td>False</td>
 </tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>East Hall</td>
-<td>east hall</td>
-<td>9</td>
-<td>True</td>
-</tr>
 </tbody>
 </table>
 
 </div>
 </div>
 </div>
-<p>Missing text remains missing during cleaning. The explicit <code>na=False</code> in <code>.str.endswith()</code> treats it as not matching the suffix. <code>.str.len()</code> counts characters, including the space between words.</p>
+<p>The extra spaces and missing entry were introduced only in <code>practice_titles</code>; the movie dataset is unchanged. Missing text remains missing during cleaning and character counting. The explicit <code>na=False</code> in <code>.str.endswith()</code> treats missing text as not matching the suffix.</p>
 <p>Use <code>.str.split()</code> when you need to separate text into fields. For deliberate pattern matching, <code>.str.extract()</code> can capture a regular-expression group; inspect unmatched rows before using the extracted values. Regular expressions are a topic for later work.</p>
 </section>
 <section id="parse-dates-then-use-.dt" class="level3" data-number="4.7.6">
 <h3 data-number="4.7.6" class="anchored" data-anchor-id="parse-dates-then-use-.dt"><span class="header-section-number">4.7.6</span> Parse Dates, Then Use <code>.dt</code></h3>
 <div id="pandas-049" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.799526Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.799480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.803755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.803425Z&quot;}}" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>raw_dates <span class="op">=</span> movies[<span class="st">'Release Date'</span>]</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>release_dates <span class="op">=</span> pd.to_datetime(raw_dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%b </span><span class="sc">%d</span><span class="st"> %Y'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>failed_dates <span class="op">=</span> raw_dates.notna() <span class="op">&amp;</span> release_dates.isna()</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing dates that failed conversion:'</span>, failed_dates.<span class="bu">sum</span>())</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Examples:'</span>, raw_dates.loc[failed_dates].head().tolist())</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>release_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>raw_dates <span class="op">=</span> movies[<span class="st">'Release Date'</span>]</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>release_dates <span class="op">=</span> pd.to_datetime(raw_dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%b </span><span class="sc">%d</span><span class="st"> %Y'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>failed_dates <span class="op">=</span> raw_dates.notna() <span class="op">&amp;</span> release_dates.isna()</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Non-missing dates that failed conversion:'</span>, failed_dates.<span class="bu">sum</span>())</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Examples:'</span>, raw_dates.loc[failed_dates].head().tolist())</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>release_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Non-missing dates that failed conversion: 0
 Examples: []</code></pre>
@@ -2282,11 +2351,11 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 </div>
 <p>The declared format matches text such as <code>Nov 22 2006</code>. A date that fails conversion becomes <code>NaT</code>, pandas’ missing datetime value. If a source uses more than one format, inspect it before choosing a parsing strategy.</p>
 <div id="pandas-051" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T19:17:56.804458Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T19:17:56.804404Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T19:17:56.807449Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T19:17:56.807132Z&quot;}}" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>movie_dates <span class="op">=</span> movies[[<span class="st">'Title'</span>]].copy()</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'release_year'</span>] <span class="op">=</span> release_dates.dt.year</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>reference_date <span class="op">=</span> pd.Timestamp(<span class="st">'2024-01-01'</span>)</span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'days_since_release'</span>] <span class="op">=</span> (reference_date <span class="op">-</span> release_dates).dt.days</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>movie_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>movie_dates <span class="op">=</span> movies[[<span class="st">'Title'</span>]].copy()</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'release_year'</span>] <span class="op">=</span> release_dates.dt.year</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>reference_date <span class="op">=</span> pd.Timestamp(<span class="st">'2024-01-01'</span>)</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>movie_dates[<span class="st">'days_since_release'</span>] <span class="op">=</span> (reference_date <span class="op">-</span> release_dates).dt.days</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>movie_dates.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
@@ -2329,20 +2398,19 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 </section>
 <section id="calendar-features-and-durations" class="level3" data-number="4.7.7">
 <h3 data-number="4.7.7" class="anchored" data-anchor-id="calendar-features-and-durations"><span class="header-section-number">4.7.7</span> Calendar Features and Durations</h3>
-<p>Calendar components describe a date; subtracting dates measures elapsed time. Use this small example to compare calendar years, months, quarters, weekdays, ISO weeks, and days until a fixed reference date. The original text stays alongside the parsed date so invalid and missing inputs can be checked:</p>
-<div id="3d9f8e90" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>extension_raw_dates <span class="op">=</span> pd.Series([<span class="st">'2024-01-01'</span>, <span class="st">'2024-03-31'</span>, <span class="st">'2024-12-30'</span>, <span class="st">'invalid'</span>, <span class="va">None</span>])</span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>extension_dates <span class="op">=</span> pd.to_datetime(extension_raw_dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>date_report <span class="op">=</span> pd.DataFrame({<span class="st">'original'</span>: extension_raw_dates, <span class="st">'date'</span>: extension_dates})</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'year'</span>] <span class="op">=</span> extension_dates.dt.year</span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'month'</span>] <span class="op">=</span> extension_dates.dt.month</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'quarter'</span>] <span class="op">=</span> extension_dates.dt.quarter</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'weekday'</span>] <span class="op">=</span> extension_dates.dt.day_name()</span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'iso_year'</span>] <span class="op">=</span> extension_dates.dt.isocalendar().year</span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'iso_week'</span>] <span class="op">=</span> extension_dates.dt.isocalendar().week</span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'days_until_2025'</span>] <span class="op">=</span> (pd.Timestamp(<span class="st">'2025-01-01'</span>) <span class="op">-</span> extension_dates).dt.days</span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>date_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<p>Calendar components describe a date; subtracting dates measures elapsed time. Continue with the movie release dates parsed above to compare calendar years, months, quarters, weekdays, ISO weeks, and days since release as of January 1, 2024. Keep each movie’s title and original date text alongside the parsed date so the results can be checked.</p>
+<div id="3d9f8e90" class="cell" data-execution_count="105">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>date_report <span class="op">=</span> movies[[<span class="st">'Title'</span>, <span class="st">'Release Date'</span>]].copy()</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'release_date'</span>] <span class="op">=</span> release_dates</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'year'</span>] <span class="op">=</span> release_dates.dt.year</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'month'</span>] <span class="op">=</span> release_dates.dt.month</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'quarter'</span>] <span class="op">=</span> release_dates.dt.quarter</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'weekday'</span>] <span class="op">=</span> release_dates.dt.day_name()</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'iso_year'</span>] <span class="op">=</span> release_dates.dt.isocalendar().year</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'iso_week'</span>] <span class="op">=</span> release_dates.dt.isocalendar().week</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>date_report[<span class="st">'days_since_release'</span>] <span class="op">=</span> (reference_date <span class="op">-</span> release_dates).dt.days</span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>date_report.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
 <div>
 
 
@@ -2350,77 +2418,57 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">original</th>
-<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Release Date</th>
+<th data-quarto-table-cell-role="th">release_date</th>
 <th data-quarto-table-cell-role="th">year</th>
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th">quarter</th>
 <th data-quarto-table-cell-role="th">weekday</th>
 <th data-quarto-table-cell-role="th">iso_year</th>
 <th data-quarto-table-cell-role="th">iso_week</th>
-<th data-quarto-table-cell-role="th">days_until_2025</th>
+<th data-quarto-table-cell-role="th">days_since_release</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
-<td>2024-01-01</td>
-<td>2024-01-01</td>
-<td>2024.0</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>Monday</td>
-<td>2024</td>
-<td>1</td>
-<td>366.0</td>
+<td>Opal Dreams</td>
+<td>Nov 22 2006</td>
+<td>2006-11-22</td>
+<td>2006</td>
+<td>11</td>
+<td>4</td>
+<td>Wednesday</td>
+<td>2006</td>
+<td>47</td>
+<td>6249</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
-<td>2024-03-31</td>
-<td>2024-03-31</td>
-<td>2024.0</td>
-<td>3.0</td>
-<td>1.0</td>
-<td>Sunday</td>
-<td>2024</td>
-<td>13</td>
-<td>276.0</td>
+<td>Major Dundee</td>
+<td>Apr 07 1965</td>
+<td>1965-04-07</td>
+<td>1965</td>
+<td>4</td>
+<td>2</td>
+<td>Wednesday</td>
+<td>1965</td>
+<td>14</td>
+<td>21453</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
-<td>2024-12-30</td>
-<td>2024-12-30</td>
-<td>2024.0</td>
-<td>12.0</td>
-<td>4.0</td>
-<td>Monday</td>
-<td>2025</td>
-<td>1</td>
-<td>2.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>invalid</td>
-<td>NaT</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>NaN</td>
-<td>NaT</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>&lt;NA&gt;</td>
-<td>&lt;NA&gt;</td>
-<td>NaN</td>
+<td>The Informers</td>
+<td>Apr 24 2009</td>
+<td>2009-04-24</td>
+<td>2009</td>
+<td>4</td>
+<td>2</td>
+<td>Friday</td>
+<td>2009</td>
+<td>17</td>
+<td>5365</td>
 </tr>
 </tbody>
 </table>
@@ -2428,16 +2476,58 @@ Name: Release Date, dtype: datetime64[us]</code></pre>
 </div>
 </div>
 </div>
-<p>Check which observed inputs failed parsing:</p>
-<div id="1a1068a1" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>extension_raw_dates.loc[extension_raw_dates.notna() <span class="op">&amp;</span> extension_dates.isna()]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<pre><code>3    invalid
-dtype: str</code></pre>
+<p>Calendar year and ISO year need not match. Find movie releases whose ISO year differs from their calendar year:</p>
+<div id="1a1068a1" class="cell" data-execution_count="107">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>different_iso_year <span class="op">=</span> date_report[<span class="st">'year'</span>].ne(date_report[<span class="st">'iso_year'</span>]).fillna(<span class="va">False</span>)</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>date_report.loc[different_iso_year, [<span class="st">'Title'</span>, <span class="st">'release_date'</span>, <span class="st">'year'</span>, <span class="st">'iso_year'</span>, <span class="st">'iso_week'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">release_date</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">iso_year</th>
+<th data-quarto-table-cell-role="th">iso_week</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">24</th>
+<td>Oscar and Lucinda</td>
+<td>1997-12-31</td>
+<td>1997</td>
+<td>1998</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">198</th>
+<td>Confessions of a Dangerous Mind</td>
+<td>2002-12-31</td>
+<td>2002</td>
+<td>2003</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">595</th>
+<td>Good</td>
+<td>2008-12-31</td>
+<td>2008</td>
+<td>2009</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<p>December 30, 2024 falls in ISO week 1 of ISO year 2025; calendar year and ISO year need not match. A negative duration would mean a date falls after the reference date. For timestamps with time zones, establish compatible zones before subtraction; elapsed hours and local calendar days can differ around clock changes.</p>
-<p><strong>Practice:</strong> Add <code>2025-01-03</code>, predict its duration, and compare <code>.dt.day</code> (day of month) with <code>.dt.dayofweek</code> (Monday is 0). Explain why <code>invalid</code> and the originally missing entry both yield missing date features but represent different data-quality situations.</p>
+</div>
+<p>For example, <em>Oscar and Lucinda</em> was released on December 31, 1997, which falls in ISO week 1 of ISO year 1998. <code>days_since_release</code> measures elapsed days from each release date to the fixed reference date. A negative value would indicate a release after January 1, 2024.</p>
+<p><strong>Practice:</strong> Add <code>day_of_month</code> using <code>.dt.day</code> and <code>day_of_week</code> using <code>.dt.dayofweek</code> (Monday is 0). Compare these columns with <code>weekday</code> for the first three movies. Choose one movie and explain its <code>days_since_release</code> value. Use <code>failed_dates</code> from the parsing step to check for non-missing release dates that failed conversion; explain how those differ from dates already missing in the source.</p>
 </section>
 </section>
 <section id="summaries-and-denominators" class="level2" data-number="4.8">
@@ -2773,7 +2863,7 @@ Same DataFrame: True
 <section id="before-you-move-on" class="level2" data-number="4.12">
 <h2 data-number="4.12" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">4.12</span> Before You Move On</h2>
 <p>You should now be able to explain which rows and columns an expression selects, whether a transformation changes the original object, and what a calculated value means. Keep checking units, missing values, tie rules, and denominators alongside your code.</p>
-<p><a href="./pandas_intermediate_claude.html">Pandas Intermediate</a> comes next, with more work on alignment and transformations. Then <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> introduces arrays, positions, and shape rules.</p>
+<p><a href="./pandas_intermediate_claude.html">Pandas Intermediate</a> comes next, with more work on alignment and transformations. Then <a href="./numpy_fundamentals.html">NumPy Fundamentals</a> introduces arrays, positions, and shape rules.</p>
 <p>References: <a href="https://pandas.pydata.org/docs/user_guide/indexing.html">pandas indexing</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html">sorting</a>, <a href="https://pandas.pydata.org/docs/user_guide/copy_on_write.html">Copy-on-Write</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html">numeric conversion</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html">datetime conversion</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html">category counts</a>.</p>
 
 

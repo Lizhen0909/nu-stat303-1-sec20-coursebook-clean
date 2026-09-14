@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./numpy_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+  <a href="./numpy_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
   </div>
 </li>
@@ -373,10 +373,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#set-up-the-chapter-files" id="toc-set-up-the-chapter-files" class="nav-link active" data-scroll-target="#set-up-the-chapter-files"><span class="header-section-number">3.1</span> Set Up the Chapter Files</a></li>
   <li><a href="#recognize-the-structure" id="toc-recognize-the-structure" class="nav-link" data-scroll-target="#recognize-the-structure"><span class="header-section-number">3.2</span> Recognize the Structure Before Reading</a></li>
   <li><a href="#read-a-csv-into-a-dataframe" id="toc-read-a-csv-into-a-dataframe" class="nav-link" data-scroll-target="#read-a-csv-into-a-dataframe"><span class="header-section-number">3.3</span> Read a CSV into a DataFrame</a></li>
-  <li><a href="#inspect-the-imported-table" id="toc-inspect-the-imported-table" class="nav-link" data-scroll-target="#inspect-the-imported-table"><span class="header-section-number">3.4</span> Inspect the Imported Table</a></li>
+  <li><a href="#inspect-the-imported-table" id="toc-inspect-the-imported-table" class="nav-link" data-scroll-target="#inspect-the-imported-table"><span class="header-section-number">3.4</span> Inspect the Imported DataFrame</a></li>
   <li><a href="#diagnose-a-delimiter-problem" id="toc-diagnose-a-delimiter-problem" class="nav-link" data-scroll-target="#diagnose-a-delimiter-problem"><span class="header-section-number">3.5</span> Diagnose a Delimiter Problem</a></li>
   <li><a href="#export-and-verify-a-csv" id="toc-export-and-verify-a-csv" class="nav-link" data-scroll-target="#export-and-verify-a-csv"><span class="header-section-number">3.6</span> Export and Verify a CSV</a></li>
-  <li><a href="#optional-other-formats" id="toc-optional-other-formats" class="nav-link" data-scroll-target="#optional-other-formats"><span class="header-section-number">3.7</span> Optional Extension: JSON and HTML Tables</a></li>
+  <li><a href="#optional-other-formats" id="toc-optional-other-formats" class="nav-link" data-scroll-target="#optional-other-formats"><span class="header-section-number">3.7</span> JSON and HTML Tables</a></li>
   <li><a href="#practice-activity-read-inspect-and-export-movie-data" id="toc-practice-activity-read-inspect-and-export-movie-data" class="nav-link" data-scroll-target="#practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.8</span> Practice Activity: Read, Inspect, and Export Movie Data</a></li>
   <li><a href="#extended-practice" id="toc-extended-practice" class="nav-link" data-scroll-target="#extended-practice"><span class="header-section-number">3.9</span> Extended Practice</a></li>
   <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</a></li>
@@ -432,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         ├── Top 10 Albums By Year.csv
         └── bestseller_books.txt</code></pre>
 <p>Use <strong><code>reading_examples.ipynb</code> to run the worked examples</strong> and <strong><code>activity03.ipynb</code> for your own activity report</strong>. Both notebooks belong beside <code>data/</code>. Keep the input files there; exports will be saved beside the notebooks under new filenames.</p>
-<p>Use <code>movie_ratings.csv</code> for the chapter’s worked examples and activity. The semicolon-delimited file contains the same records so you can practice diagnosing and correcting a delimiter problem. The JSON and HTML previews contain five selected records and three columns for the optional format comparison. The kit also includes the album and book files used in extended practice.</p>
+<p>Use <code>movie_ratings.csv</code> for the chapter’s worked examples and activity. The semicolon-delimited file contains the same records so you can practice diagnosing and correcting a delimiter problem. The JSON and HTML previews contain five selected records and three columns for the format comparison. The kit also includes the album and book files used in extended practice.</p>
 <p>Run this first in the examples notebook:</p>
 <div id="reading-002" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:05.605466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:05.605269Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.433187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.432833Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -488,7 +488,7 @@ Major Dundee,14873,14873,3800000,Apr 07 1965,PG/PG-13,Adapted screenplay,Western
 </section>
 <section id="read-a-csv-into-a-dataframe" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="read-a-csv-into-a-dataframe"><span class="header-section-number">3.3</span> Read a CSV into a DataFrame</h2>
-<p><strong>pandas</strong> is a Python library for working with labeled tables. The convention <code>import pandas as pd</code> lets us refer to its functions with the short name <code>pd</code>.</p>
+<p><strong>pandas</strong> is a Python library for organizing and analyzing tabular data with labeled rows and columns. The convention <code>import pandas as pd</code> lets us refer to its functions with the short name <code>pd</code>.</p>
 <p><code>pd.read_csv()</code> reads a file and returns a <strong>DataFrame</strong>, a two-dimensional table with row labels and column names. In this example, the default settings treat commas as delimiters and the first line as column names.</p>
 <div id="reading-006" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:13.437034Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:13.436984Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.448257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.447939Z&quot;}}" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.read_csv(csv_path)</span>
@@ -630,7 +630,7 @@ Name: IMDB Rating, dtype: float64</code></pre>
 </section>
 </section>
 <section id="inspect-the-imported-table" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="inspect-the-imported-table"><span class="header-section-number">3.4</span> Inspect the Imported Table</h2>
+<h2 data-number="3.4" class="anchored" data-anchor-id="inspect-the-imported-table"><span class="header-section-number">3.4</span> Inspect the Imported DataFrame</h2>
 <p>Do not stop at a plausible-looking preview. Check dimensions, column names, types, and summaries against what you expect from the source.</p>
 <section id="attributes-and-methods" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="attributes-and-methods"><span class="header-section-number">3.4.1</span> Attributes and Methods</h3>
@@ -650,7 +650,7 @@ Name: IMDB Rating, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>How large is the table?</td>
+<td>How many rows and columns does the DataFrame have?</td>
 <td><code>movies.shape</code></td>
 <td>Number of rows and data columns</td>
 </tr>
@@ -1040,7 +1040,7 @@ Opal Dreams;14443;14443;9000000;Nov 22 2006;PG/PG-13;Adapted screenplay;Drama;Fi
 </div>
 </div>
 <p><strong>Predict before running:</strong> What could happen if pandas uses its default comma delimiter?</p>
-<p>A wrong separator can produce either a malformed table or a parsing error. The supplied diagnostic catches the expected parsing error so the rest of the notebook can run. You do not need to write your own exception-handling code for this chapter.</p>
+<p>A wrong separator can produce either an incorrectly parsed DataFrame or a parsing error. The supplied diagnostic catches the expected parsing error so the rest of the notebook can run. You do not need to write your own exception-handling code for this chapter.</p>
 <div id="reading-023" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:13.480141Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:13.480081Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.482684Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.482371Z&quot;}}" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    default_import <span class="op">=</span> pd.read_csv(text_path)</span>
@@ -1052,7 +1052,7 @@ Opal Dreams;14443;14443;9000000;Nov 22 2006;PG/PG-13;Adapted screenplay;Drama;Fi
 <pre><code>The default comma delimiter could not parse this file consistently.</code></pre>
 </div>
 </div>
-<p>With these records, commas inside some titles can cause inconsistent field counts when commas are incorrectly treated as delimiters. In other files, the same mistake may produce one large column without an exception. <strong>Success means obtaining the intended table, not merely avoiding an error.</strong></p>
+<p>With these records, commas inside some titles can cause inconsistent field counts when commas are incorrectly treated as delimiters. In other files, the same mistake may produce one large column without an exception. <strong>Success means obtaining a DataFrame with the intended rows, columns, and values, not merely avoiding an error.</strong></p>
 <p>Specify the actual delimiter and inspect the result:</p>
 <div id="reading-025" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:13.483481Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:13.483434Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.488678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.488315Z&quot;}}" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>movies_text <span class="op">=</span> pd.read_csv(text_path, sep<span class="op">=</span><span class="st">';'</span>)</span>
@@ -1340,8 +1340,8 @@ Same column names and order: True</code></pre>
 </section>
 </section>
 <section id="optional-other-formats" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="optional-other-formats"><span class="header-section-number">3.7</span> Optional Extension: JSON and HTML Tables</h2>
-<p>The same inspection habit applies to other formats. This section is enrichment and is not required for the in-class quiz.</p>
+<h2 data-number="3.7" class="anchored" data-anchor-id="optional-other-formats"><span class="header-section-number">3.7</span> JSON and HTML Tables</h2>
+<p>The same inspection habit applies to other formats. Reading JSON files is part of the preparation for Assignment C.</p>
 <section id="a-small-local-json-file" class="level3" data-number="3.7.1">
 <h3 data-number="3.7.1" class="anchored" data-anchor-id="a-small-local-json-file"><span class="header-section-number">3.7.1</span> A Small Local JSON File</h3>
 <p>JSON represents values using objects, arrays, and named fields. The kit’s preview uses a list of records: each object has a <code>Title</code>, <code>IMDB Rating</code>, and <code>Production Budget</code>.</p>
@@ -1435,8 +1435,8 @@ Same column names and order: True</code></pre>
 </section>
 <section id="html-contains-tables-not-necessarily-one-dataset" class="level3" data-number="3.7.2">
 <h3 data-number="3.7.2" class="anchored" data-anchor-id="html-contains-tables-not-necessarily-one-dataset"><span class="header-section-number">3.7.2</span> HTML Contains Tables, Not Necessarily One Dataset</h3>
-<p>The kit includes <code>data/movies_preview.html</code>, a local HTML page with a captioned table. Open it in a browser first. To parse it, an optional HTML parser such as <code>lxml</code> must be installed in your project environment. If you want to try this extension, use <code>%pip install lxml</code> in a temporary notebook cell, restart the kernel if needed, and remove the installation cell afterward.</p>
-<p>Then run the following in a new cell; it is displayed here as an optional example:</p>
+<p>The kit includes <code>data/movies_preview.html</code>, a local HTML page with a captioned table. Open it in a browser first. To parse it, an HTML parser such as <code>lxml</code> must be installed in your project environment. To run the HTML example, use <code>%pip install lxml</code> in a temporary notebook cell, restart the kernel if needed, and remove the installation cell afterward.</p>
+<p>Then run the following in a new cell:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>preview_tables <span class="op">=</span> pd.read_html(</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    Path(<span class="st">'data'</span>) <span class="op">/</span> <span class="st">'movies_preview.html'</span>,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    match<span class="op">=</span><span class="st">'Title'</span>,</span>
@@ -1445,7 +1445,7 @@ Same column names and order: True</code></pre>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>preview_table <span class="op">=</span> preview_tables[<span class="dv">0</span>]</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(preview_table.shape)</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>preview_table.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>read_html()</code> returns a <strong>list of DataFrames</strong>. The list’s length is the number of matching tables; the selected table’s <code>shape</code> gives its dimensions. <code>match</code> selects tables containing matching text. Inspect names and contents before deciding which table you need.</p>
+<p><code>read_html()</code> returns a <strong>list of DataFrames</strong>. The list’s length is the number of matching tables; the selected DataFrame’s <code>shape</code> gives its dimensions. <code>match</code> selects tables containing matching text. Inspect names and contents before deciding which table you need.</p>
 </section>
 <section id="from-local-files-to-web-sources" class="level3" data-number="3.7.3">
 <h3 data-number="3.7.3" class="anchored" data-anchor-id="from-local-files-to-web-sources"><span class="header-section-number">3.7.3</span> From Local Files to Web Sources</h3>
@@ -1491,7 +1491,7 @@ Same column names and order: True</code></pre>
 <ul>
 <li>Run the supplied raw-text preview of <code>movie_ratings_semicolon.txt</code>. Identify the delimiter from the header and first record.</li>
 <li>Before running an import, predict what may go wrong if pandas assumes commas. Record your prediction in Markdown.</li>
-<li>Run the supplied default-import diagnostic. It catches a parsing error so you can retain the evidence without stopping a fresh run. If it returns a table, inspect the shape and column names. Explain why completing without an exception does not establish a correct import.</li>
+<li>Run the supplied default-import diagnostic. It catches a parsing error so you can retain the evidence without stopping a fresh run. If it returns a DataFrame, inspect the shape and column names. Explain why completing without an exception does not establish a correct import.</li>
 <li>Read the file again into <code>movies_text</code> using an explicit <code>sep</code> value. Display <code>head()</code>, <code>shape</code>, and <code>columns</code>; compare the dimensions and column names with <code>movies</code>.</li>
 </ul>
 </section>
@@ -1529,21 +1529,21 @@ Same column names and order: True</code></pre>
 <h3 data-number="3.9.2" class="anchored" data-anchor-id="books-diagnose-and-check"><span class="header-section-number">3.9.2</span> Books: Diagnose and Check</h3>
 <p>Read the first two raw lines of <code>data/bestseller_books.txt</code> in Python before choosing a separator.</p>
 <ol type="1">
-<li>Identify the delimiter and read the table with an explicit <code>sep</code>.</li>
+<li>Identify the delimiter and read the file into a DataFrame with an explicit <code>sep</code>.</li>
 <li>Display its dimensions, column names, and first few rows. Explain what one row represents; the same book may appear in more than one year.</li>
-<li>Inspect the initial columns named <code>Unnamed: ...</code>. Explain how repeated index exports could produce them. Preserve the source file and distinguish those columns from the book variables when reporting the table’s structure.</li>
+<li>Inspect the initial columns named <code>Unnamed: ...</code>. Explain how repeated index exports could produce them. Preserve the source file and distinguish those columns from the book variables when reporting the DataFrame’s structure.</li>
 <li>Export a copy without adding another generated row-number column. Read it back and compare dimensions and names. Explain why <code>index=False</code> does not remove unwanted columns that are already in the DataFrame.</li>
 </ol>
 </section>
-<section id="optional-format-comparison" class="level3" data-number="3.9.3">
-<h3 data-number="3.9.3" class="anchored" data-anchor-id="optional-format-comparison"><span class="header-section-number">3.9.3</span> Optional Format Comparison</h3>
-<p>Read the local JSON preview and, if you installed the optional parser, the HTML preview. Compare their row counts and column names. Explain why the HTML reader returns a list while the JSON example returns a DataFrame.</p>
+<section id="format-comparison" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="format-comparison"><span class="header-section-number">3.9.3</span> Format Comparison</h3>
+<p>Read the local JSON preview and the HTML preview. Compare their row counts and column names. Explain why the HTML reader returns a list while the JSON example returns a DataFrame.</p>
 </section>
 </section>
 <section id="before-you-move-on" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</h2>
 <p>You should now be able to explain why a file that loads without an error can still have been read incorrectly. Keep checking what one row means, how fields were separated, whether types and counts are plausible, and what information survives an export.</p>
-<p>Next, <a href="./pandas_fundamentals_reorganized.html">Pandas Fundamentals</a> develops selecting and filtering records, sorting, and creating variables. <a href="./pandas_intermediate_claude.html">Pandas Intermediate</a> then builds on those skills with transformations, label alignment, and custom logic. After the pandas chapters, <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> introduces arrays, positions, and shape rules.</p>
+<p>Next, <a href="./pandas_fundamentals_reorganized.html">Pandas Fundamentals</a> develops selecting and filtering records, sorting, and creating variables. <a href="./pandas_intermediate_claude.html">Pandas Intermediate</a> then builds on those skills with transformations, label alignment, and custom logic. After the pandas chapters, <a href="./numpy_fundamentals.html">NumPy Fundamentals</a> introduces arrays, positions, and shape rules.</p>
 <p>For reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas CSV reader</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html">DataFrame inspection</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">descriptive summaries</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">CSV writer</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_json.html">JSON reader</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html">HTML reader</a>.</p>
 
 
