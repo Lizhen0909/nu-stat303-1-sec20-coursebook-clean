@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In <a href="./pandas_fundamentals_reorganized.html">Pandas Fundamentals</a>, you learned to select, filter, sort, and summarize a table. Now we will turn those skills into transformations: <strong>How do we calculate a useful variable, combine labeled tables, and express a custom rule?</strong></p>
+<p>In <a href="./pandas_fundamentals_reorganized.html">Pandas Fundamentals</a>, you learned to select, filter, sort, and summarize data in a pandas DataFrame. Now we will turn those skills into transformations: <strong>How do we calculate a useful variable, combine DataFrames, and express a custom rule?</strong></p>
 <p>This chapter follows a practical sequence:</p>
 <p><strong>Calculate → align → explore relationships → recode → apply custom logic → explain.</strong></p>
 <p>By the end, you should be able to:</p>
@@ -417,7 +417,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Choose column expressions, <code>map()</code>, <code>replace()</code>, or <code>apply()</code> for a transformation.</li>
 <li>Write short lambda expressions and readable named functions.</li>
 </ul>
-<p>No NumPy knowledge is needed. <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> follows this lesson and introduces numerical arrays used by pandas and other scientific libraries.</p>
 <section id="set-up-your-practice-files" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="set-up-your-practice-files"><span class="header-section-number">5.1</span> Set Up Your Practice Files</h2>
 <p>Download the <a href="downloads/pandas-intermediate-claude-practice.zip">Pandas Intermediate practice kit</a>, extract it, and place <code>stat303-pandas-intermediate-claude</code> inside your existing <code>stat303-setup</code> project. Select the project environment verified in the setup chapters. The examples need pandas, which you already installed.</p>
@@ -427,8 +426,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     ├── pandas_intermediate_examples.ipynb
     ├── activity_pandas_intermediate.ipynb
     └── README.md</code></pre>
-<p>Use <code>pandas_intermediate_examples.ipynb</code> for worked examples and <code>activity_pandas_intermediate.ipynb</code> for your own report. All tables in this lesson are small, invented examples created directly in Python; no external data files are needed. Run both notebooks with the extracted folder as the working directory.</p>
-<div id="4ee73031" class="cell" data-execution_count="1">
+<p>Use <code>pandas_intermediate_examples.ipynb</code> for worked examples and <code>activity_pandas_intermediate.ipynb</code> for your practice activity report. Run both notebooks with the extracted folder as the working directory.</p>
+<div id="4ee73031" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -446,7 +445,7 @@ pandas version: 3.0.5</code></pre>
 <section id="column-to-column-arithmetic" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="column-to-column-arithmetic"><span class="header-section-number">5.2.1</span> Column-to-column arithmetic</h3>
 <p>The most common transformation is combining two existing columns into a new one. Because pandas operations are <strong>vectorized</strong>, you write the calculation once and it applies to every row automatically — no loop required.</p>
-<div id="a49b25ca" class="cell" data-execution_count="2">
+<div id="a49b25ca" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>business_df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Product'</span>:         [<span class="st">'Laptop'</span>, <span class="st">'Phone'</span>, <span class="st">'Tablet'</span>, <span class="st">'Watch'</span>, <span class="st">'Headphones'</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Units_Sold'</span>:      [<span class="dv">150</span>, <span class="dv">300</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">250</span>],</span>
@@ -500,21 +499,21 @@ pandas version: 3.0.5</code></pre>
 <tr class="even">
 <td>Floor division</td>
 <td><code>//</code></td>
-<td>counting whole groups, e.g.&nbsp;full batches</td>
+<td>quotient rounded down; counts full batches for nonnegative quantities and positive batch sizes</td>
 </tr>
 <tr class="odd">
 <td>Modulo</td>
 <td><code>%</code></td>
-<td>remainders, e.g.&nbsp;grouping IDs by their last digit</td>
+<td>remainders, e.g.&nbsp;<code>id % 10</code> gives the last digit of a nonnegative integer ID</td>
 </tr>
 </tbody>
 </table>
-<p>Every one of these lines up <strong>row by row automatically</strong>: row 0 of <code>Units_Sold</code> is multiplied by row 0 of <code>Price_per_Unit</code>, and so on — you never have to say which row goes with which.</p>
+<p>These Series operations align by <strong>row label (index)</strong>, not row position. Here both columns come from the same DataFrame, so their indexes already match: <code>Units_Sold</code> and <code>Price_per_Unit</code> are combined for each product.</p>
 </section>
 <section id="arithmetic-with-a-constant-scalar" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="arithmetic-with-a-constant-scalar"><span class="header-section-number">5.2.2</span> Arithmetic with a constant (scalar)</h3>
 <p>You can also combine a column with a single number. Pandas applies it to every row:</p>
-<div id="2b23650d" class="cell" data-execution_count="3">
+<div id="2b23650d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>business_df[<span class="st">'Discounted_Price'</span>] <span class="op">=</span> business_df[<span class="st">'Price_per_Unit'</span>] <span class="op">*</span> <span class="fl">0.9</span>   <span class="co"># 10% off everything</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>business_df[<span class="st">'Price_with_Shipping'</span>] <span class="op">=</span> business_df[<span class="st">'Price_per_Unit'</span>] <span class="op">+</span> <span class="dv">50</span>  <span class="co"># flat $50 shipping</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>business_df[<span class="st">'Tax_Amount'</span>] <span class="op">=</span> business_df[<span class="st">'Total_Revenue'</span>] <span class="op">*</span> <span class="fl">0.08</span>          <span class="co"># 8% tax</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -523,7 +522,7 @@ pandas version: 3.0.5</code></pre>
 <section id="row-wise-operations-working-across-columns" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="row-wise-operations-working-across-columns"><span class="header-section-number">5.2.3</span> Row-wise operations (working across columns)</h3>
 <p>Summary methods like <code>.sum()</code>, <code>.mean()</code>, <code>.max()</code>, and <code>.min()</code> default to working <strong>down each column</strong> — one result per column. Pass <code>axis=1</code> to work <strong>across each row</strong> instead — one result per row:</p>
-<div id="8d2ae256" class="cell" data-execution_count="4">
+<div id="8d2ae256" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Q1'</span>: [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">120</span>, <span class="dv">180</span>],</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Q2'</span>: [<span class="dv">110</span>, <span class="dv">140</span>, <span class="dv">220</span>, <span class="dv">130</span>, <span class="dv">190</span>],</span>
@@ -621,7 +620,7 @@ pandas version: 3.0.5</code></pre>
 <section id="the-clean-case" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="the-clean-case"><span class="header-section-number">5.3.1</span> The clean case</h3>
 <p>When two DataFrames share the same row labels (index) and column labels, arithmetic between them works exactly like arithmetic within one:</p>
-<div id="e3fb6105" class="cell" data-execution_count="5">
+<div id="e3fb6105" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>store_a <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Electronics'</span>: [<span class="dv">50000</span>, <span class="dv">55000</span>, <span class="dv">60000</span>],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Clothing'</span>:    [<span class="dv">30000</span>, <span class="dv">32000</span>, <span class="dv">35000</span>],</span>
@@ -640,7 +639,7 @@ pandas version: 3.0.5</code></pre>
 <section id="when-the-labels-dont-line-up" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="when-the-labels-dont-line-up"><span class="header-section-number">5.3.2</span> When the labels don’t line up</h3>
 <p>If one DataFrame has a row or column the other doesn’t, pandas still tries to align everything — and fills in <code>NaN</code> (missing value) wherever a match can’t be found:</p>
-<div id="0a2bd215" class="cell" data-execution_count="6">
+<div id="0a2bd215" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], <span class="st">'B'</span>: [<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>]}, index<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'B'</span>: [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>], <span class="st">'C'</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>]}, index<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -695,20 +694,14 @@ pandas version: 3.0.5</code></pre>
 </div>
 </div>
 </div>
-<pre><code>     A     B      C
-0  NaN   NaN    NaN
-1  NaN  55.0    NaN
-2  NaN  70.0    NaN
-3  NaN   NaN    NaN
-4  NaN   NaN    NaN</code></pre>
 <p>Every cell where a label exists in only one DataFrame becomes <code>NaN</code> — column <code>A</code> only exists in <code>df1</code>, so the entire column is missing in the result.</p>
 </section>
 <section id="taking-control-with-.add-.sub-.mul-.div" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="taking-control-with-.add-.sub-.mul-.div"><span class="header-section-number">5.3.3</span> Taking control with <code>.add()</code>, <code>.sub()</code>, <code>.mul()</code>, <code>.div()</code></h3>
 <p>If <code>NaN</code> isn’t what you want, use the <strong>explicit method</strong> version of each operator instead of the symbol. These accept a <code>fill_value</code> — the value to use for any label that’s missing from one side, <em>before</em> the operation runs:</p>
-<div id="5893cf39" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df1.add(df2, fill_value<span class="op">=</span><span class="dv">0</span>)   <span class="co"># missing entries treated as 0 before adding</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df1.sub(df2, fill_value<span class="op">=</span><span class="dv">0</span>)   <span class="co"># an explicit zero assumption for missing entries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5893cf39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df1.add(df2, fill_value<span class="op">=</span><span class="dv">0</span>)   <span class="co"># missing entries treated as 0 before adding</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1.sub(df2, fill_value<span class="op">=</span><span class="dv">0</span>)   <span class="co"># an explicit zero assumption for missing entries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -776,22 +769,22 @@ pandas version: 3.0.5</code></pre>
 <tr class="odd">
 <td><code>+</code></td>
 <td><code>.add(other, fill_value=...)</code></td>
-<td>fill missing values before combining</td>
+<td>fill a missing operand before addition; both missing stays missing</td>
 </tr>
 <tr class="even">
 <td><code>-</code></td>
 <td><code>.sub(other, fill_value=...)</code></td>
-<td>same</td>
+<td>fill a missing operand before subtraction; both missing stays missing</td>
 </tr>
 <tr class="odd">
 <td><code>*</code></td>
 <td><code>.mul(other, fill_value=...)</code></td>
-<td>same</td>
+<td>fill a missing operand before multiplication; both missing stays missing</td>
 </tr>
 <tr class="even">
 <td><code>/</code></td>
 <td><code>.div(other, fill_value=...)</code></td>
-<td>same</td>
+<td>fill a missing operand before division; zero denominators can produce infinity or <code>NaN</code></td>
 </tr>
 </tbody>
 </table>
@@ -804,16 +797,16 @@ pandas version: 3.0.5</code></pre>
 <p>Once you have several numeric columns, a natural next question is: do any of them move together? The correlation coefficient summarizes that relationship as a single number between -1 and 1.</p>
 <section id="the-full-correlation-matrix" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="the-full-correlation-matrix"><span class="header-section-number">5.4.1</span> The full correlation matrix</h3>
-<div id="d2d6356c" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Advertising_Spend'</span>:      [<span class="dv">900</span>, <span class="dv">1200</span>, <span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">800</span>, <span class="dv">1100</span>],</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Website_Traffic'</span>:        [<span class="dv">4800</span>, <span class="dv">5600</span>, <span class="dv">5000</span>, <span class="dv">6200</span>, <span class="dv">4300</span>, <span class="dv">5100</span>],</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Customer_Satisfaction'</span>:  [<span class="fl">3.8</span>, <span class="fl">4.2</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">3.5</span>, <span class="fl">4.1</span>],</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sales_Revenue'</span>:          [<span class="dv">21000</span>, <span class="dv">27000</span>, <span class="dv">23500</span>, <span class="dv">32000</span>, <span class="dv">18500</span>, <span class="dv">24500</span>],</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> sales_data.corr()   <span class="co"># Pearson correlation by default</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>correlation_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d2d6356c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Advertising_Spend'</span>:      [<span class="dv">900</span>, <span class="dv">1200</span>, <span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">800</span>, <span class="dv">1100</span>],</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Website_Traffic'</span>:        [<span class="dv">4800</span>, <span class="dv">5600</span>, <span class="dv">5000</span>, <span class="dv">6200</span>, <span class="dv">4300</span>, <span class="dv">5100</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Customer_Satisfaction'</span>:  [<span class="fl">3.8</span>, <span class="fl">4.2</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">3.5</span>, <span class="fl">4.1</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sales_Revenue'</span>:          [<span class="dv">21000</span>, <span class="dv">27000</span>, <span class="dv">23500</span>, <span class="dv">32000</span>, <span class="dv">18500</span>, <span class="dv">24500</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> sales_data.corr()   <span class="co"># Pearson correlation by default</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>correlation_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -863,7 +856,7 @@ pandas version: 3.0.5</code></pre>
 </div>
 </div>
 </div>
-<p><code>.corr()</code> computes the correlation between <strong>every pair of numeric columns</strong> at once and returns a square table. Select numeric columns explicitly in a mixed-type table, for example <code>df.select_dtypes(include="number").corr()</code>. Missing observations are excluded separately for each pair, so pairs can use different sample sizes. For columns with variation and enough paired observations, the diagonal is 1. A constant column or insufficient data produces an undefined correlation (<code>NaN</code>), and the table is symmetric — the correlation of A with B is the same as B with A.</p>
+<p><code>.corr()</code> computes the correlation between <strong>every pair of numeric columns</strong> at once and returns a correlation matrix as a DataFrame. Select numeric columns explicitly in a DataFrame containing mixed data types, for example <code>df.select_dtypes(include="number").corr()</code>. Missing observations are excluded separately for each pair, so pairs can use different sample sizes. For columns with variation and enough paired observations, the diagonal is 1. A constant column or insufficient data produces an undefined correlation (<code>NaN</code>), and the correlation matrix is symmetric — the correlation of A with B is the same as B with A.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -871,22 +864,26 @@ pandas version: 3.0.5</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th>Correlation value</th>
+<th>Pearson correlation value</th>
 <th>Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Close to +1</td>
-<td>strong positive relationship — both rise together</td>
+<td>strong positive linear association — larger values of one tend to accompany larger values of the other</td>
 </tr>
 <tr class="even">
 <td>Close to -1</td>
-<td>strong negative relationship — one rises as the other falls</td>
+<td>strong negative linear association — larger values of one tend to accompany smaller values of the other</td>
 </tr>
 <tr class="odd">
 <td>Close to 0</td>
-<td>little to no linear relationship</td>
+<td>little to no linear association; a nonlinear relationship may still exist</td>
+</tr>
+<tr class="even">
+<td><code>NaN</code></td>
+<td>undefined, for example when a column is constant or there are too few paired observations</td>
 </tr>
 </tbody>
 </table>
@@ -894,9 +891,9 @@ pandas version: 3.0.5</code></pre>
 <section id="a-single-pair" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="a-single-pair"><span class="header-section-number">5.4.2</span> A single pair</h3>
 <p>If you only care about two specific columns, call <code>.corr()</code> directly on one Series with another as the argument:</p>
-<div id="8b927222" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sales_data[<span class="st">'Advertising_Spend'</span>].corr(sales_data[<span class="st">'Sales_Revenue'</span>])</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A strong positive linear relationship in these six invented observations.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8b927222" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sales_data[<span class="st">'Advertising_Spend'</span>].corr(sales_data[<span class="st">'Sales_Revenue'</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A strong positive linear relationship in these six invented observations.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>np.float64(0.9953681655616977)</code></pre>
 </div>
@@ -904,17 +901,17 @@ pandas version: 3.0.5</code></pre>
 </section>
 <section id="finding-the-strongest-relationships-programmatically" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="finding-the-strongest-relationships-programmatically"><span class="header-section-number">5.4.3</span> Finding the strongest relationships programmatically</h3>
-<p>For a wider table, scanning a whole matrix by eye gets tedious. A short loop over the <em>matrix</em> (not the original data) can rank every pair by strength:</p>
-<div id="62ded66a" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> []</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> correlation_matrix.columns</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cols)):</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(cols)):        <span class="co"># skip the diagonal and duplicates</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        pairs.append((cols[i], cols[j], correlation_matrix.iloc[i, j]))</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>pairs_df <span class="op">=</span> pd.DataFrame(pairs, columns<span class="op">=</span>[<span class="st">'Variable_1'</span>, <span class="st">'Variable_2'</span>, <span class="st">'Correlation'</span>])</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>pairs_df[<span class="st">'Strength'</span>] <span class="op">=</span> pairs_df[<span class="st">'Correlation'</span>].<span class="bu">abs</span>()</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>pairs_df.sort_values(<span class="st">'Strength'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For a DataFrame with many numeric columns, scanning a whole matrix by eye gets tedious. A short loop over the <em>matrix</em> (not the original data) can rank every pair by strength:</p>
+<div id="62ded66a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> []</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> correlation_matrix.columns</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cols)):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(cols)):        <span class="co"># skip the diagonal and duplicates</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        pairs.append((cols[i], cols[j], correlation_matrix.iloc[i, j]))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>pairs_df <span class="op">=</span> pd.DataFrame(pairs, columns<span class="op">=</span>[<span class="st">'Variable_1'</span>, <span class="st">'Variable_2'</span>, <span class="st">'Correlation'</span>])</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>pairs_df[<span class="st">'Strength'</span>] <span class="op">=</span> pairs_df[<span class="st">'Correlation'</span>].<span class="bu">abs</span>()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>pairs_df.sort_values(<span class="st">'Strength'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
@@ -978,44 +975,101 @@ pandas version: 3.0.5</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Correlation is not causation</strong>, and it only captures <em>linear</em> relationships — two variables can be strongly related in a curved way and still show a correlation near zero. Treat <code>.corr()</code> as a starting point for investigation, not a final answer.</p>
+<p><strong>Correlation is not causation</strong>. The default Pearson coefficient used here summarizes <em>linear</em> relationships — two variables can be strongly related in a curved way and still show a correlation near zero. Treat <code>.corr()</code> as a starting point for investigation, not a final answer.</p>
 </section>
 </section>
 <section id="custom-transformations-map-apply-and-replace" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="custom-transformations-map-apply-and-replace"><span class="header-section-number">5.5</span> Custom transformations: <code>map()</code>, <code>apply()</code>, and <code>replace()</code></h2>
-<p>Arithmetic and <code>.corr()</code> cover a lot of ground, but sometimes you need logic that isn’t just “add these columns” — a lookup table, a conditional rule, or a calculation that mixes several columns in a custom way. That’s what these three tools are for.</p>
+<p>Arithmetic and <code>.corr()</code> cover a lot of ground, but sometimes you need logic that isn’t just “add these columns” — a lookup mapping, a conditional rule, or a calculation that mixes several columns in a custom way. That’s what these three tools are for.</p>
 <section id="map-element-by-element-one-series-at-a-time" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="map-element-by-element-one-series-at-a-time"><span class="header-section-number">5.5.1</span> <code>map()</code> — element-by-element, one Series at a time</h3>
 <p><code>Series.map()</code> transforms every value in a Series individually, based on a dictionary, a function, or another Series. It’s the right tool for <strong>recoding</strong> — turning categories into codes, or codes into labels.</p>
-<div id="ac13bf2d" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Industry'</span>: [<span class="st">'Tech'</span>, <span class="st">'Healthcare'</span>, <span class="st">'Finance'</span>, <span class="st">'Tech'</span>, <span class="st">'Retail'</span>],</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Revenue'</span>:  [<span class="dv">100000</span>, <span class="dv">150000</span>, <span class="dv">80000</span>, <span class="dv">120000</span>, <span class="dv">90000</span>],</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>industry_codes <span class="op">=</span> {<span class="st">'Tech'</span>: <span class="dv">1</span>, <span class="st">'Healthcare'</span>: <span class="dv">2</span>, <span class="st">'Finance'</span>: <span class="dv">3</span>, <span class="st">'Retail'</span>: <span class="dv">4</span>}</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry_Code'</span>] <span class="op">=</span> df[<span class="st">'Industry'</span>].<span class="bu">map</span>(industry_codes)   <span class="co"># dictionary lookup</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry_Label'</span>] <span class="op">=</span> df[<span class="st">'Industry'</span>].<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="ss">f"IND_</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)   <span class="co"># function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ac13bf2d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Industry'</span>: [<span class="st">'Tech'</span>, <span class="st">'Healthcare'</span>, <span class="st">'Finance'</span>, <span class="st">'Tech'</span>, <span class="st">'Retail'</span>],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Revenue'</span>:  [<span class="dv">100000</span>, <span class="dv">150000</span>, <span class="dv">80000</span>, <span class="dv">120000</span>, <span class="dv">90000</span>],</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>industry_codes <span class="op">=</span> {<span class="st">'Tech'</span>: <span class="dv">1</span>, <span class="st">'Healthcare'</span>: <span class="dv">2</span>, <span class="st">'Finance'</span>: <span class="dv">3</span>, <span class="st">'Retail'</span>: <span class="dv">4</span>}</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry_Code'</span>] <span class="op">=</span> df[<span class="st">'Industry'</span>].<span class="bu">map</span>(industry_codes)   <span class="co"># dictionary lookup</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry_Label'</span>] <span class="op">=</span> df[<span class="st">'Industry'</span>].<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="ss">f"IND_</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)   <span class="co"># function</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Industry</th>
+<th data-quarto-table-cell-role="th">Revenue</th>
+<th data-quarto-table-cell-role="th">Industry_Code</th>
+<th data-quarto-table-cell-role="th">Industry_Label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Tech</td>
+<td>100000</td>
+<td>1</td>
+<td>IND_Tech</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Healthcare</td>
+<td>150000</td>
+<td>2</td>
+<td>IND_Healthcare</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Finance</td>
+<td>80000</td>
+<td>3</td>
+<td>IND_Finance</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Tech</td>
+<td>120000</td>
+<td>1</td>
+<td>IND_Tech</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Retail</td>
+<td>90000</td>
+<td>4</td>
+<td>IND_Retail</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Any value not found in the dictionary becomes <code>NaN</code> — so <code>map()</code> is also a quick way to spot categories you forgot to account for.</p>
 </section>
 <section id="apply-the-flexible-all-purpose-tool" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="apply-the-flexible-all-purpose-tool"><span class="header-section-number">5.5.2</span> <code>apply()</code> — the flexible, all-purpose tool</h3>
 <p><code>DataFrame.apply()</code> runs a function on every <strong>row</strong> (<code>axis=1</code>) or every <strong>column</strong> (<code>axis=0</code>); <code>Series.apply()</code> runs it on every <strong>element</strong>. Use it when the calculation needs more than one column, or needs conditional logic that doesn’t fit a simple arithmetic expression.</p>
-<div id="c4f60b8c" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>financial_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Revenue'</span>: [<span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">800</span>],</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Expenses'</span>: [<span class="dv">980</span>, <span class="dv">1200</span>, <span class="dv">790</span>],</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cap_expenses(row):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Expenses can never exceed 95% of revenue."""</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    max_allowed <span class="op">=</span> row[<span class="st">'Revenue'</span>] <span class="op">*</span> <span class="fl">0.95</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(row[<span class="st">'Expenses'</span>], max_allowed)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>financial_df[<span class="st">'Capped_Expenses'</span>] <span class="op">=</span> financial_df.<span class="bu">apply</span>(cap_expenses, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>financial_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c4f60b8c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>financial_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Revenue'</span>: [<span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">800</span>],</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Expenses'</span>: [<span class="dv">980</span>, <span class="dv">1200</span>, <span class="dv">790</span>],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cap_expenses(row):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Expenses can never exceed 95% of revenue."""</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    max_allowed <span class="op">=</span> row[<span class="st">'Revenue'</span>] <span class="op">*</span> <span class="fl">0.95</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(row[<span class="st">'Expenses'</span>], max_allowed)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>financial_df[<span class="st">'Capped_Expenses'</span>] <span class="op">=</span> financial_df.<span class="bu">apply</span>(cap_expenses, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>financial_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
@@ -1054,10 +1108,10 @@ pandas version: 3.0.5</code></pre>
 </div>
 </div>
 </div>
-<div id="877ea6b7" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>scores_df <span class="op">=</span> pd.DataFrame({<span class="st">'score'</span>: [<span class="dv">72</span>, <span class="dv">95</span>, <span class="dv">80</span>, <span class="dv">88</span>]})</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>scores_df[<span class="st">'category'</span>] <span class="op">=</span> scores_df[<span class="st">'score'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'High'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">80</span> <span class="cf">else</span> <span class="st">'Low'</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>scores_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="877ea6b7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>scores_df <span class="op">=</span> pd.DataFrame({<span class="st">'score'</span>: [<span class="dv">72</span>, <span class="dv">95</span>, <span class="dv">80</span>, <span class="dv">88</span>]})</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>scores_df[<span class="st">'category'</span>] <span class="op">=</span> scores_df[<span class="st">'score'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'High'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">80</span> <span class="cf">else</span> <span class="st">'Low'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>scores_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
@@ -1101,23 +1155,43 @@ pandas version: 3.0.5</code></pre>
 <section id="replace-swapping-specific-values" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="replace-swapping-specific-values"><span class="header-section-number">5.5.3</span> <code>replace()</code> — swapping specific values</h3>
 <p><code>replace()</code> substitutes particular values (or a dictionary of many) with new ones. Values not included in a replacement dictionary are kept unchanged; an ordinary <code>map()</code> dictionary instead produces missing values for unmatched keys.</p>
-<div id="eaab0587" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="st">'Tech'</span>, <span class="st">'Retail'</span>, <span class="st">'Other'</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">map</span>({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>}))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>}))</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry'</span>].replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
+<p>Start with a small Series:</p>
+<div id="8b5b274b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="st">'Tech'</span>, <span class="st">'Retail'</span>, <span class="st">'Other'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="42eb645d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>0      Tech
+1    Retail
+2     Other
+dtype: str</code></pre>
+</div>
+</div>
+<p><strong>Using <code>map()</code>:</strong> Look up each value in the dictionary. Because <code>Other</code> is not a key, its result is missing (<code>NaN</code>).</p>
+<div id="c2aed2b1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s.<span class="bu">map</span>({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
 <pre><code>0         Technology
 1    Consumer Retail
 2                NaN
-dtype: str
-0         Technology
+dtype: str</code></pre>
+</div>
+</div>
+<p><strong>Using <code>replace()</code>:</strong> Replace the specified values. Because <code>Other</code> is not listed, it stays unchanged.</p>
+<div id="0bf819dd" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>s.replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>0         Technology
 1    Consumer Retail
 2              Other
 dtype: str</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+</div>
+<p><strong>Using <code>replace()</code> on the earlier DataFrame column:</strong> Replace <code>Tech</code> and <code>Retail</code>; keep <code>Healthcare</code> and <code>Finance</code> unchanged.</p>
+<div id="f7cba0b8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry'</span>].replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
 <pre><code>0         Technology
 1         Healthcare
 2            Finance
@@ -1126,6 +1200,7 @@ dtype: str</code></pre>
 Name: Industry, dtype: str</code></pre>
 </div>
 </div>
+<p>These calls return new Series. To save the last result in the DataFrame, assign it back to <code>df['Industry']</code>.</p>
 </section>
 <section id="choosing-between-them" class="level3" data-number="5.5.4">
 <h3 data-number="5.5.4" class="anchored" data-anchor-id="choosing-between-them"><span class="header-section-number">5.5.4</span> Choosing between them</h3>
@@ -1146,18 +1221,24 @@ Name: Industry, dtype: str</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>map()</code></td>
+<td><code>Series.map()</code></td>
 <td>a Series</td>
-<td>dictionary lookup or a value function</td>
-<td>ordinary dictionary: unmatched keys become missing</td>
+<td>dictionary/Series lookup or an element-wise function</td>
+<td>ordinary dictionary or Series lookup: unmatched values become missing</td>
 </tr>
 <tr class="even">
-<td><code>apply()</code></td>
-<td>a Series or DataFrame</td>
-<td>custom element, row, or column functions</td>
-<td><code>axis=1</code> passes each row to a DataFrame function</td>
+<td><code>Series.apply()</code></td>
+<td>a Series</td>
+<td>an element-wise function</td>
+<td>with the default behavior, a Python function receives each value</td>
 </tr>
 <tr class="odd">
+<td><code>DataFrame.apply()</code></td>
+<td>a DataFrame</td>
+<td>custom row or column functions</td>
+<td>by default, <code>axis=0</code> passes each column as a Series; <code>axis=1</code> passes each row as a Series</td>
+</tr>
+<tr class="even">
 <td><code>replace()</code></td>
 <td>a Series or DataFrame</td>
 <td>replacing selected known values</td>
@@ -1165,6 +1246,7 @@ Name: Industry, dtype: str</code></pre>
 </tr>
 </tbody>
 </table>
+<p>This chapter uses <code>Series.map()</code>. Pandas also provides <code>DataFrame.map()</code> for applying a function element-wise to a whole DataFrame; it does not accept a lookup dictionary.</p>
 <p><strong>Choose by meaning first.</strong> Numeric column expressions and built-in methods often avoid the overhead of calling a Python function for each value or row. Dictionary mapping is a lookup, not a Python callback per value. <code>replace()</code> is not guaranteed to be faster than <code>map()</code>; performance depends on the operation, dtype, and data size. Measure equivalent calculations when speed matters.</p>
 <p>For the expense cap above, a built-in alternative is <code>financial_df['Expenses'].clip(upper=financial_df['Revenue'] * 0.95)</code>. The row function is useful for learning <code>apply()</code>, while the built-in method expresses this particular rule directly.</p>
 </section>
@@ -1173,25 +1255,25 @@ Name: Industry, dtype: str</code></pre>
 <h2 data-number="5.6" class="anchored" data-anchor-id="lambda-functions-inline-one-off-logic"><span class="header-section-number">5.6</span> Lambda functions: inline, one-off logic</h2>
 <p>Every <code>apply()</code> example above could use a named function defined with <code>def</code>. When the logic is short — a single expression — it’s often more convenient to write it <strong>inline</strong> with a <strong>lambda function</strong>, an anonymous, one-line function.</p>
 <pre class="text"><code>lambda arguments: expression</code></pre>
-<div id="a8e6817e" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'price'</span>: [<span class="fl">100.0</span>, <span class="fl">250.0</span>, <span class="fl">80.0</span>, <span class="fl">1200.0</span>],</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'discount_pct'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">5</span>],</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'total_cost'</span>: [<span class="dv">150</span>, <span class="dv">500</span>, <span class="dv">700</span>, <span class="dv">1200</span>],</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: [<span class="st">'  ada '</span>, <span class="st">'BEN'</span>, <span class="st">' cHEN'</span>, <span class="st">'dana  '</span>],</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rating'</span>: [<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'discounted_price'</span>] <span class="op">=</span> orders.<span class="bu">apply</span>(</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> row: row[<span class="st">'price'</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> row[<span class="st">'discount_pct'</span>] <span class="op">/</span> <span class="dv">100</span>), axis<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'segment'</span>] <span class="op">=</span> orders[<span class="st">'total_cost'</span>].<span class="bu">apply</span>(</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'High Value'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">500</span> <span class="cf">else</span> <span class="st">'Medium Value'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">200</span> <span class="cf">else</span> <span class="st">'Low Value'</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'clean_name'</span>] <span class="op">=</span> orders[<span class="st">'name'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip().title())</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>orders</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a8e6817e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'price'</span>: [<span class="fl">100.0</span>, <span class="fl">250.0</span>, <span class="fl">80.0</span>, <span class="fl">1200.0</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'discount_pct'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">5</span>],</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'total_cost'</span>: [<span class="dv">150</span>, <span class="dv">500</span>, <span class="dv">700</span>, <span class="dv">1200</span>],</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: [<span class="st">'  ada '</span>, <span class="st">'BEN'</span>, <span class="st">' cHEN'</span>, <span class="st">'dana  '</span>],</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rating'</span>: [<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'discounted_price'</span>] <span class="op">=</span> orders.<span class="bu">apply</span>(</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> row: row[<span class="st">'price'</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> row[<span class="st">'discount_pct'</span>] <span class="op">/</span> <span class="dv">100</span>), axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'segment'</span>] <span class="op">=</span> orders[<span class="st">'total_cost'</span>].<span class="bu">apply</span>(</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'High Value'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">500</span> <span class="cf">else</span> <span class="st">'Medium Value'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">200</span> <span class="cf">else</span> <span class="st">'Low Value'</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'clean_name'</span>] <span class="op">=</span> orders[<span class="st">'name'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip().title())</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>orders</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
@@ -1262,17 +1344,17 @@ Name: Industry, dtype: str</code></pre>
 </div>
 </div>
 <p>A lambda is just a shorthand — it doesn’t do anything a <code>def</code> function couldn’t. Reach for one when the logic fits comfortably on one line; switch to a named <code>def</code> function once the logic needs more than one line, gets hard to read, or you’ll reuse it elsewhere.</p>
-<div id="f0ed0477" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting hard to read as a lambda — better as a named function:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_risk(row):</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'total_cost'</span>] <span class="op">&gt;</span> <span class="dv">1000</span> <span class="kw">and</span> row[<span class="st">'rating'</span>] <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'High Risk'</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'total_cost'</span>] <span class="op">&gt;</span> <span class="dv">500</span>:</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Medium Risk'</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'Low Risk'</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'risk'</span>] <span class="op">=</span> orders.<span class="bu">apply</span>(classify_risk, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>orders[[<span class="st">'total_cost'</span>, <span class="st">'rating'</span>, <span class="st">'risk'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f0ed0477" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting hard to read as a lambda — better as a named function:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_risk(row):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'total_cost'</span>] <span class="op">&gt;</span> <span class="dv">1000</span> <span class="kw">and</span> row[<span class="st">'rating'</span>] <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'High Risk'</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'total_cost'</span>] <span class="op">&gt;</span> <span class="dv">500</span>:</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Medium Risk'</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'Low Risk'</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">'risk'</span>] <span class="op">=</span> orders.<span class="bu">apply</span>(classify_risk, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>orders[[<span class="st">'total_cost'</span>, <span class="st">'rating'</span>, <span class="st">'risk'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
@@ -1318,39 +1400,160 @@ Name: Industry, dtype: str</code></pre>
 </div>
 </div>
 <p><strong>Quick check:</strong> would you write <code>orders['tax'] = orders['price'].apply(lambda x: x * 0.08)</code> or <code>orders['tax'] = orders['price'] * 0.08</code>? <em>(The second — it’s the same result with no <code>apply()</code> overhead. Reach for <code>apply</code>/lambda only once you need logic that a plain column expression can’t express, when a named function makes a multi-branch rule easier to read. Many conditional rules can also be expressed using Boolean masks and <code>.loc</code>.)</em></p>
+<section id="custom-sorting-keys" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="custom-sorting-keys"><span class="header-section-number">5.6.1</span> Custom sorting with a lambda</h3>
+<p>A lambda can also define the <code>key</code> in <code>.sort_values()</code>. The key creates temporary comparison values that determine the row order. It does not change the stored values.</p>
+<p>Start with four titles and their row labels:</p>
+<div id="a2f84450" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> pd.DataFrame({<span class="st">'Title'</span>: [<span class="st">'cedar'</span>, <span class="st">'Harbor'</span>, <span class="st">'ember'</span>, <span class="st">'Meadow'</span>]}, index<span class="op">=</span>[<span class="dv">104</span>, <span class="dv">101</span>, <span class="dv">109</span>, <span class="dv">103</span>])</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>titles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>cedar</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">101</th>
+<td>Harbor</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">109</th>
+<td>ember</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>Meadow</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Sort alphabetically, ignoring capitalization.</strong> <code>lambda col: col.str.lower()</code> converts the titles to lowercase for comparison:</p>
+<div id="c9662e87" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>titles.sort_values(<span class="st">'Title'</span>, key<span class="op">=</span><span class="kw">lambda</span> col: col.<span class="bu">str</span>.lower())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>cedar</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">109</th>
+<td>ember</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">101</th>
+<td>Harbor</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>Meadow</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Here, <code>col</code> receives the entire <code>Title</code> Series, not one title at a time. <code>col.str.lower()</code> produces <code>cedar</code>, <code>harbor</code>, <code>ember</code>, and <code>meadow</code>. Sorting these comparison values places <code>ember</code> before <code>Harbor</code>, while the displayed titles keep their original capitalization.</p>
+<p><strong>Sort by title length, shortest first.</strong> Change the lambda to return the number of characters in each title:</p>
+<div id="8555d08c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>titles.sort_values(<span class="st">'Title'</span>, key<span class="op">=</span><span class="kw">lambda</span> col: col.<span class="bu">str</span>.<span class="bu">len</span>(), kind<span class="op">=</span><span class="st">'stable'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>cedar</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">109</th>
+<td>ember</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">101</th>
+<td>Harbor</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>Meadow</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The comparison values are 5, 6, 5, and 6. <code>kind='stable'</code> keeps the original relative order of equal-length titles: <code>cedar</code> stays before <code>ember</code>, and <code>Harbor</code> stays before <code>Meadow</code>. The row labels move with their rows; sorting does not reset them.</p>
+<p>The key function must return a Series with the same shape as its input. These calls return sorted DataFrames; <code>titles</code> remains unchanged unless you assign a result back to it.</p>
+<p><strong>Quick check:</strong> How would you show the longest titles first? Add <code>ascending=False</code> to the length sort.</p>
+<p>Reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html">pandas <code>sort_values()</code></a>.</p>
+</section>
 </section>
 <section id="putting-it-together" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="putting-it-together"><span class="header-section-number">5.7</span> Putting it together</h2>
 <p>Here’s a small worked example combining several ideas from this lesson: two stores’ prices, a shopper’s grocery list, and a decision about where to shop.</p>
-<div id="c8af4755" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Item'</span>:   [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>],</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Target'</span>: [<span class="fl">1.50</span>, <span class="fl">2.00</span>, <span class="fl">5.00</span>, <span class="fl">16.00</span>],</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Kroger'</span>: [<span class="fl">1.00</span>, <span class="fl">2.50</span>, <span class="fl">4.50</span>, <span class="fl">17.00</span>],</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>}).set_index(<span class="st">'Item'</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>shopping_list <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Item'</span>: [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>],</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Qty'</span>:  [<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>}).set_index(<span class="st">'Item'</span>)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Column arithmetic + alignment: quantities times prices, matched by Item label</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>cost_at_target <span class="op">=</span> shopping_list[<span class="st">'Qty'</span>] <span class="op">*</span> prices[<span class="st">'Target'</span>]</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>cost_at_kroger  <span class="op">=</span> shopping_list[<span class="st">'Qty'</span>] <span class="op">*</span> prices[<span class="st">'Kroger'</span>]</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>totals <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Target_Total'</span>: [cost_at_target.<span class="bu">sum</span>()],</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Kroger_Total'</span>: [cost_at_kroger.<span class="bu">sum</span>()],</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co"># apply() for a small piece of custom, row-level logic</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>totals[<span class="st">'Cheaper_Store'</span>] <span class="op">=</span> totals.<span class="bu">apply</span>(</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> row: <span class="st">'TARGET'</span> <span class="cf">if</span> row[<span class="st">'Target_Total'</span>] <span class="op">&lt;</span> row[<span class="st">'Kroger_Total'</span>]</span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span> <span class="st">'KROGER'</span> <span class="cf">if</span> row[<span class="st">'Kroger_Total'</span>] <span class="op">&lt;</span> row[<span class="st">'Target_Total'</span>]</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span> <span class="st">'TIE'</span>,</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>totals</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c8af4755" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Item'</span>:   [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>],</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Target'</span>: [<span class="fl">1.50</span>, <span class="fl">2.00</span>, <span class="fl">5.00</span>, <span class="fl">16.00</span>],</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Kroger'</span>: [<span class="fl">1.00</span>, <span class="fl">2.50</span>, <span class="fl">4.50</span>, <span class="fl">17.00</span>],</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>}).set_index(<span class="st">'Item'</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>shopping_list <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Item'</span>: [<span class="st">'roll'</span>, <span class="st">'bun'</span>, <span class="st">'cake'</span>, <span class="st">'bread'</span>],</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Qty'</span>:  [<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>}).set_index(<span class="st">'Item'</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Column arithmetic + alignment: quantities times prices, matched by Item label</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>cost_at_target <span class="op">=</span> shopping_list[<span class="st">'Qty'</span>] <span class="op">*</span> prices[<span class="st">'Target'</span>]</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>cost_at_kroger  <span class="op">=</span> shopping_list[<span class="st">'Qty'</span>] <span class="op">*</span> prices[<span class="st">'Kroger'</span>]</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>totals <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Target_Total'</span>: [cost_at_target.<span class="bu">sum</span>()],</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Kroger_Total'</span>: [cost_at_kroger.<span class="bu">sum</span>()],</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co"># apply() for a small piece of custom, row-level logic</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>totals[<span class="st">'Cheaper_Store'</span>] <span class="op">=</span> totals.<span class="bu">apply</span>(</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> row: <span class="st">'TARGET'</span> <span class="cf">if</span> row[<span class="st">'Target_Total'</span>] <span class="op">&lt;</span> row[<span class="st">'Kroger_Total'</span>]</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span> <span class="st">'KROGER'</span> <span class="cf">if</span> row[<span class="st">'Kroger_Total'</span>] <span class="op">&lt;</span> row[<span class="st">'Target_Total'</span>]</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span> <span class="st">'TIE'</span>,</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>totals</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
@@ -1377,7 +1580,7 @@ Name: Industry, dtype: str</code></pre>
 </div>
 </div>
 </div>
-<p>Notice that the multiplication <code>shopping_list['Qty'] * prices['Target']</code> works because both Series share the same index (<code>Item</code>) — that’s the alignment from the alignment section doing the work of matching “roll” with “roll” automatically, even though the two tables were built separately. These invented inputs have complete prices and quantities. With real data, check for missing values before summing: the default sum skips them and could understate the bill.</p>
+<p>Notice that the multiplication <code>shopping_list['Qty'] * prices['Target']</code> works because both Series share the same index (<code>Item</code>) — that’s the alignment from the alignment section doing the work of matching “roll” with “roll” automatically, even though the two DataFrames were created separately. These invented inputs have complete prices and quantities. With real data, check for missing values before summing: the default sum skips them and could understate the bill.</p>
 </section>
 <section id="summary-cheat-sheet" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="summary-cheat-sheet"><span class="header-section-number">5.8</span> Summary cheat sheet</h2>
@@ -1398,7 +1601,7 @@ Name: Industry, dtype: str</code></pre>
 <tr class="odd">
 <td>Column-to-column arithmetic</td>
 <td><code>df['A'] + df['B']</code></td>
-<td>matches row by row automatically</td>
+<td>aligns by row label (index), not position</td>
 </tr>
 <tr class="even">
 <td>Arithmetic with a constant</td>
@@ -1408,7 +1611,7 @@ Name: Industry, dtype: str</code></pre>
 <tr class="odd">
 <td>Row-wise summary</td>
 <td><code>df[quarter_cols].sum(axis=1)</code></td>
-<td>explicitly choose input columns</td>
+<td>choose input columns; missing values are skipped by default</td>
 </tr>
 <tr class="even">
 <td>Between-DataFrame arithmetic</td>
@@ -1417,8 +1620,8 @@ Name: Industry, dtype: str</code></pre>
 </tr>
 <tr class="odd">
 <td>Misaligned labels</td>
-<td>any label missing on one side</td>
-<td>becomes <code>NaN</code></td>
+<td><code>df1 + df2</code></td>
+<td>keeps the union of labels; a missing operand gives a missing result</td>
 </tr>
 <tr class="even">
 <td>Controlled alignment</td>
@@ -1427,23 +1630,23 @@ Name: Industry, dtype: str</code></pre>
 </tr>
 <tr class="odd">
 <td>Full correlation matrix</td>
-<td><code>df.corr()</code></td>
-<td>correlation ≠ causation; linear relationships only</td>
+<td><code>df.select_dtypes(include="number").corr()</code></td>
+<td>Pearson by default; uses available pairs; association does not imply causation</td>
 </tr>
 <tr class="even">
 <td>Pairwise correlation</td>
 <td><code>df['A'].corr(df['B'])</code></td>
-<td>one number, -1 to 1</td>
+<td>Pearson by default: -1 to 1 when defined, otherwise <code>NaN</code></td>
 </tr>
 <tr class="odd">
 <td>Recode values</td>
 <td><code>series.map({...})</code></td>
-<td>unmatched values become <code>NaN</code></td>
+<td>an ordinary lookup dictionary makes unmatched values missing</td>
 </tr>
 <tr class="even">
 <td>Custom row/column logic</td>
 <td><code>df.apply(func, axis=1)</code></td>
-<td>loops under the hood — slower than column arithmetic</td>
+<td>row-wise Python calls often add overhead; prefer built-in operations when suitable</td>
 </tr>
 <tr class="odd">
 <td>Swap known values</td>
@@ -1460,28 +1663,33 @@ Name: Industry, dtype: str</code></pre>
 </section>
 <section id="practice-activity-calculate-align-and-explain" class="level2" data-number="5.9">
 <h2 data-number="5.9" class="anchored" data-anchor-id="practice-activity-calculate-align-and-explain"><span class="header-section-number">5.9</span> Practice Activity: Calculate, Align, and Explain</h2>
-<p><strong>Goal:</strong> Build and explain a small store report using labeled transformations. <strong>File:</strong> <code>activity_pandas_intermediate.ipynb</code> from the <a href="downloads/pandas-intermediate-claude-practice.zip">practice kit</a>. <strong>Submit:</strong> <code>activity_pandas_intermediate.html</code> through the final upload question in the Pandas Intermediate Canvas quiz when assigned.</p>
-<p><strong>This section contains the complete activity instructions.</strong> The starter supplies invented inputs and spaces for your work, without completed solutions. Work in the extracted <code>stat303-pandas-intermediate-claude</code> folder with the verified project environment. The worked examples are preparation, not additional submission requirements.</p>
-<section id="a.-calculate-with-explicit-inputs" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="a.-calculate-with-explicit-inputs"><span class="header-section-number">5.9.1</span> A. Calculate with Explicit Inputs</h3>
+<p><strong>Goal:</strong> Build and explain a small store report using labeled transformations.</p>
+<p><strong>File:</strong> <code>activity_pandas_intermediate.ipynb</code>.</p>
+<p><strong>Submit:</strong> <code>activity_pandas_intermediate.html</code> through the final upload question in the Pandas Intermediate Canvas quiz when assigned.</p>
+<p><strong>These are the complete Pandas Intermediate activity instructions.</strong> Use this section for the task list; the notebook contains invented inputs and spaces to record your work.</p>
+<p>Open <code>activity_pandas_intermediate.ipynb</code> from the folder prepared in <a href="#set-up-your-practice-files">Set Up Your Practice Files</a>, using the same project environment.</p>
+<p>The worked examples are preparation, not additional submission requirements.</p>
+<section id="a.-calculate-with-explicit-inputs" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.-calculate-with-explicit-inputs">A. Calculate with Explicit Inputs</h3>
 <ul>
-<li>Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field. Run the setup check; it must report <code>True</code>. Run the supplied input tables and explain what one row of <code>sales</code> represents.</li>
+<li>Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field. Run the setup check; it must report <code>True</code>.</li>
+<li>Run the code that creates the input DataFrames and explain what one row of <code>sales</code> represents.</li>
 <li>Preserve <code>sales</code> and create a working copy named <code>report</code>. Calculate <code>Revenue = Units * Price</code>, <code>Cost = Units * Unit_Cost</code>, and <code>Gross_Profit = Revenue - Cost</code>.</li>
-<li>From only <code>Q1</code> and <code>Q2</code> in <code>quarter_sales</code>, calculate each product’s total and average. Display the results. Explain why averaging a table after adding its total would give the wrong average.</li>
+<li>From only <code>Q1</code> and <code>Q2</code> in <code>quarter_sales</code>, calculate each product’s total and average. Display the results. Explain why calculating row averages after including the total column would give the wrong average.</li>
 <li>Interpret one gross-profit value in dollars. These inputs exclude other business expenses; explain why the calculated value is not net profit.</li>
 </ul>
 </section>
-<section id="b.-predict-and-check-alignment" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="b.-predict-and-check-alignment"><span class="header-section-number">5.9.2</span> B. Predict and Check Alignment</h3>
+<section id="b.-predict-and-check-alignment" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="b.-predict-and-check-alignment">B. Predict and Check Alignment</h3>
 <ul>
 <li>Before executing <code>quarter_sales + adjustments</code>, predict the row and column labels of the result and the value at row <code>P10</code>, column <code>Q2</code>.</li>
-<li>Run the addition and explain two missing result cells using the labels of both input tables.</li>
+<li>Run the addition and explain two missing result cells using the labels of both input DataFrames.</li>
 <li>For this exercise, assume an absent adjustment means zero and an absent base-sales record means zero recorded sales. Use <code>.add(..., fill_value=0)</code> and compare with the ordinary addition. Identify any cell still missing and explain why.</li>
 <li>Reverse the rows of <code>adjustments</code> and repeat the calculation. Explain why label-matched results stay the same.</li>
 </ul>
 </section>
-<section id="c.-recode-and-apply-a-rule" class="level3" data-number="5.9.3">
-<h3 data-number="5.9.3" class="anchored" data-anchor-id="c.-recode-and-apply-a-rule"><span class="header-section-number">5.9.3</span> C. Recode and Apply a Rule</h3>
+<section id="c.-recode-and-apply-a-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="c.-recode-and-apply-a-rule">C. Recode and Apply a Rule</h3>
 <ul>
 <li>Map <code>report['Department']</code> using the supplied <code>department_labels</code>. Display unmatched departments before deciding what to do with them.</li>
 <li>Use the same dictionary with <code>.replace()</code> and explain how its result differs from <code>.map()</code> for the unmatched department.</li>
@@ -1489,16 +1697,16 @@ Name: Industry, dtype: str</code></pre>
 <li>Use column arithmetic to calculate a price discounted by 10%. Explain why a lambda with <code>apply()</code> is unnecessary for this calculation.</li>
 </ul>
 </section>
-<section id="d.-interpret-a-relationship" class="level3" data-number="5.9.4">
-<h3 data-number="5.9.4" class="anchored" data-anchor-id="d.-interpret-a-relationship"><span class="header-section-number">5.9.4</span> D. Interpret a Relationship</h3>
+<section id="d.-interpret-a-relationship" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="d.-interpret-a-relationship">D. Interpret a Relationship</h3>
 <ul>
-<li>Use the supplied six-row <code>campaigns</code> table. Calculate the Pearson correlation between <code>Advertising</code> and <code>Revenue</code> and report the number of paired observations.</li>
+<li>Use the supplied six-row <code>campaigns</code> DataFrame. Calculate the Pearson correlation between <code>Advertising</code> and <code>Revenue</code> and report the number of paired observations.</li>
 <li>Interpret its sign and strength as a linear association for these invented observations. Explain why it does not establish that advertising caused revenue to change.</li>
 <li>Finish with a short paragraph describing a label check and a missing-value check that mattered in your report.</li>
 </ul>
 </section>
-<section id="render-and-submit" class="level3" data-number="5.9.5">
-<h3 data-number="5.9.5" class="anchored" data-anchor-id="render-and-submit"><span class="header-section-number">5.9.5</span> Render and Submit</h3>
+<section id="render-and-submit" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="render-and-submit"><span class="header-section-number">5.9.1</span> Render and Submit</h3>
 <p>Restart the kernel, run all cells in order, resolve errors, and save. Add a short Markdown completion note, then save again. From <code>stat303-pandas-intermediate-claude</code> in the terminal, run:</p>
 <pre class="text"><code>quarto render activity_pandas_intermediate.ipynb --to html</code></pre>
 <p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Quarto refresher</a>: inspect the HTML and a copy opened outside the project folder. Check your name, predictions, code, outputs, and explanations for A–D. When assigned, upload only <code>activity_pandas_intermediate.html</code> to the Pandas Intermediate Canvas quiz; keep your notebook locally.</p>
@@ -1508,6 +1716,7 @@ Name: Industry, dtype: str</code></pre>
 <section id="before-you-move-on" class="level2" data-number="5.10">
 <h2 data-number="5.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">5.10</span> Before You Move On</h2>
 <p>You should be able to explain which labels a calculation matches, which columns contribute to a summary, and how unmatched values behave in a lookup. Choose a column expression when it describes the calculation clearly; use a named function when it makes a custom rule easier to understand.</p>
+<p>More extensive missing-data decisions belong in <a href="./Data_cleaning.html">Data Cleaning</a>, and group-specific summaries belong in <a href="./Data aggregation.html">Data Grouping and Aggregation</a>.</p>
 <p>Next, <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> introduces arrays, positions, shapes, and broadcasting. <a href="./numpy_speedup_pandas.html">NumPy Speedup Pandas</a> later brings the two libraries together.</p>
 <p>References: <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html">pandas mapping</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html">aligned addition</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">correlation</a>.</p>
 
