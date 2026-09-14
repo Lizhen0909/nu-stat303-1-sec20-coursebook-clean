@@ -4,13 +4,13 @@ Open this folder inside your existing stat303-setup project and select its verif
 
 ## Practice Activity: Calculate, Align, and Explain {#practice-activity-calculate-align-and-explain}
 
-**Goal:** Build and explain a small store report using labeled transformations. **Time:** approximately 35–45 minutes. **File:** `activity_pandas_intermediate.ipynb` from the practice kit. **Submit:** `activity_pandas_intermediate.html` through the final upload question in the Pandas Intermediate Canvas quiz when assigned.
+**Goal:** Build and explain a small store report using labeled transformations. **File:** `activity_pandas_intermediate.ipynb` from the practice kit. **Submit:** `activity_pandas_intermediate.html` through the final upload question in the Pandas Intermediate Canvas quiz when assigned.
 
 **This section contains the complete activity instructions.** The starter supplies invented inputs and spaces for your work, without completed solutions. Work in the extracted `stat303-pandas-intermediate-claude` folder with the verified project environment. The worked examples are preparation, not additional submission requirements.
 
 ### A. Calculate with Explicit Inputs
 
-- Replace `Your Name` in the opening Raw cell and Markdown name field. Run the setup check; it must report `True`. Run the supplied input tables and explain what one row of `sales` represents.
+- Replace `Your Name` in the opening Raw cell's `author` field. Run the setup check; it must report `True`. Run the supplied input tables and explain what one row of `sales` represents.
 - Preserve `sales` and create a working copy named `report`. Calculate `Revenue = Units * Price`, `Cost = Units * Unit_Cost`, and `Gross_Profit = Revenue - Cost`.
 - From only `Q1` and `Q2` in `quarter_sales`, calculate each product's total and average. Display the results. Explain why averaging a table after adding its total would give the wrong average.
 - Interpret one gross-profit value in dollars. These inputs exclude other business expenses; explain why the calculated value is not net profit.

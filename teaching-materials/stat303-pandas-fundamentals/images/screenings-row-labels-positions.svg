@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="590" viewBox="0 0 1100 590" role="img" aria-labelledby="title desc">
+<title id="title">Row position and index label are different</title>
+<desc id="desc">The screenings DataFrame has five rows. Positions 0, 1, 2, 3, and 4 correspond to index labels 104, 101, 107, 103, and 109. The first row is Cedar, with rating 7.2 and 120 tickets. Position numbers appear outside the DataFrame as annotations, not as a stored column.</desc>
+<rect width="1100" height="590" rx="20" fill="#f7f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#202639">
+<text x="36" y="50" font-size="31" fill="#202639" font-weight="700">Row position ≠ index label</text>
+<text x="36" y="85" font-size="22" fill="#525c6d" font-weight="normal">The first row is at position 0, even though its index label is 104.</text>
+<text x="46" y="144" font-size="21" fill="#8c4b1c" font-weight="700">Position</text>
+<text x="46" y="170" font-size="16" fill="#525c6d" font-weight="normal">annotation only</text>
+<text x="238" y="144" font-size="21" fill="#4e2a84" font-weight="700">Index label</text>
+<text x="444" y="144" font-size="21" fill="#15665e" font-weight="700">Data columns</text>
+<rect x="220" y="182" width="842" height="314" rx="10" fill="white" stroke="#d8dce5"/>
+<rect x="220" y="238" width="842" height="50" fill="#ede9f5"/>
+<path d="M410 182 V496" stroke="#d8dce5"/>
+<path d="M712 182 V496" stroke="#d8dce5"/>
+<path d="M867 182 V496" stroke="#d8dce5"/>
+<path d="M220 238 H1062" stroke="#d8dce5"/>
+<path d="M220 288 H1062" stroke="#d8dce5"/>
+<path d="M220 340 H1062" stroke="#d8dce5"/>
+<path d="M220 392 H1062" stroke="#d8dce5"/>
+<path d="M220 444 H1062" stroke="#d8dce5"/>
+<text x="442" y="219" font-size="22" fill="#15665e" font-weight="700">Title</text>
+<text x="742" y="219" font-size="22" fill="#15665e" font-weight="700">Rating</text>
+<text x="906" y="219" font-size="22" fill="#15665e" font-weight="700">Tickets</text>
+<text x="84" y="270" font-size="23" fill="#8c4b1c" font-weight="700">0</text>
+<path d="M132 263 H209" stroke="#b9a18a" stroke-dasharray="4 4"/>
+<text x="280" y="270" font-size="23" fill="#4e2a84" font-weight="700">104</text>
+<text x="442" y="270" font-size="23" fill="#202639" font-weight="normal">Cedar</text>
+<text x="765" y="270" font-size="23" fill="#202639" font-weight="normal">7.2</text>
+<text x="933" y="270" font-size="23" fill="#202639" font-weight="normal">120</text>
+<text x="84" y="322" font-size="23" fill="#8c4b1c" font-weight="700">1</text>
+<path d="M132 315 H209" stroke="#b9a18a" stroke-dasharray="4 4"/>
+<text x="280" y="322" font-size="23" fill="#4e2a84" font-weight="700">101</text>
+<text x="442" y="322" font-size="23" fill="#202639" font-weight="normal">Harbor</text>
+<text x="765" y="322" font-size="23" fill="#202639" font-weight="normal">8.1</text>
+<text x="933" y="322" font-size="23" fill="#202639" font-weight="normal">80</text>
+<text x="84" y="374" font-size="23" fill="#8c4b1c" font-weight="700">2</text>
+<path d="M132 367 H209" stroke="#b9a18a" stroke-dasharray="4 4"/>
+<text x="280" y="374" font-size="23" fill="#4e2a84" font-weight="700">107</text>
+<text x="442" y="374" font-size="23" fill="#202639" font-weight="normal">Orbit</text>
+<text x="765" y="374" font-size="23" fill="#202639" font-weight="normal">6.5</text>
+<text x="933" y="374" font-size="23" fill="#202639" font-weight="normal">150</text>
+<text x="84" y="426" font-size="23" fill="#8c4b1c" font-weight="700">3</text>
+<path d="M132 419 H209" stroke="#b9a18a" stroke-dasharray="4 4"/>
+<text x="280" y="426" font-size="23" fill="#4e2a84" font-weight="700">103</text>
+<text x="442" y="426" font-size="23" fill="#202639" font-weight="normal">Meadow</text>
+<text x="765" y="426" font-size="23" fill="#202639" font-weight="normal">8.1</text>
+<text x="933" y="426" font-size="23" fill="#202639" font-weight="normal">90</text>
+<text x="84" y="478" font-size="23" fill="#8c4b1c" font-weight="700">4</text>
+<path d="M132 471 H209" stroke="#b9a18a" stroke-dasharray="4 4"/>
+<text x="280" y="478" font-size="23" fill="#4e2a84" font-weight="700">109</text>
+<text x="442" y="478" font-size="23" fill="#202639" font-weight="normal">Ember</text>
+<text x="765" y="478" font-size="23" fill="#202639" font-weight="normal">7.8</text>
+<text x="933" y="478" font-size="23" fill="#202639" font-weight="normal">110</text>
+<text x="36" y="541" font-size="24" fill="#4e2a84" font-weight="700">Position 0 → label 104 → Cedar</text>
+<text x="36" y="573" font-size="19" fill="#525c6d" font-weight="normal">Positions describe row order. The index stores labels. Title, Rating, and Tickets are data columns.</text>
+</g></svg>

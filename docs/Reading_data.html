@@ -377,8 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#diagnose-a-delimiter-problem" id="toc-diagnose-a-delimiter-problem" class="nav-link" data-scroll-target="#diagnose-a-delimiter-problem"><span class="header-section-number">3.5</span> Diagnose a Delimiter Problem</a></li>
   <li><a href="#export-and-verify-a-csv" id="toc-export-and-verify-a-csv" class="nav-link" data-scroll-target="#export-and-verify-a-csv"><span class="header-section-number">3.6</span> Export and Verify a CSV</a></li>
   <li><a href="#optional-other-formats" id="toc-optional-other-formats" class="nav-link" data-scroll-target="#optional-other-formats"><span class="header-section-number">3.7</span> Optional Extension: JSON and HTML Tables</a></li>
-  <li><a href="#independent-practice" id="toc-independent-practice" class="nav-link" data-scroll-target="#independent-practice"><span class="header-section-number">3.8</span> Independent Practice</a></li>
-  <li><a href="#practice-activity-read-inspect-and-export-movie-data" id="toc-practice-activity-read-inspect-and-export-movie-data" class="nav-link" data-scroll-target="#practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.9</span> Practice Activity: Read, Inspect, and Export Movie Data</a></li>
+  <li><a href="#practice-activity-read-inspect-and-export-movie-data" id="toc-practice-activity-read-inspect-and-export-movie-data" class="nav-link" data-scroll-target="#practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.8</span> Practice Activity: Read, Inspect, and Export Movie Data</a></li>
+  <li><a href="#extended-practice" id="toc-extended-practice" class="nav-link" data-scroll-target="#extended-practice"><span class="header-section-number">3.9</span> Extended Practice</a></li>
   <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</a></li>
   </ul>
 </nav>
@@ -432,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         ├── Top 10 Albums By Year.csv
         └── bestseller_books.txt</code></pre>
 <p>Use <strong><code>reading_examples.ipynb</code> to run the worked examples</strong> and <strong><code>activity03.ipynb</code> for your own activity report</strong>. Both notebooks belong beside <code>data/</code>. Keep the input files there; exports will be saved beside the notebooks under new filenames.</p>
-<p>The movie CSV contains historical course data. Its semicolon-delimited companion contains the same records; the JSON and HTML previews contain five selected records and three columns. The kit also includes the two independent-practice datasets. See its README for provenance.</p>
+<p>Use <code>movie_ratings.csv</code> for the chapter’s worked examples and activity. The semicolon-delimited file contains the same records so you can practice diagnosing and correcting a delimiter problem. The JSON and HTML previews contain five selected records and three columns for the optional format comparison. The kit also includes the album and book files used in extended practice.</p>
 <p>Run this first in the examples notebook:</p>
 <div id="reading-002" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-11T18:37:05.605466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-09-11T18:37:05.605269Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-09-11T18:37:13.433187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-11T18:37:13.432833Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -480,6 +480,7 @@ Opal Dreams,14443,14443,9000000,Nov 22 2006,PG/PG-13,Adapted screenplay,Drama,Fi
 Major Dundee,14873,14873,3800000,Apr 07 1965,PG/PG-13,Adapted screenplay,Western/Musical,Fiction,6.7,2588</code></pre>
 </div>
 </div>
+<p><code>encoding="utf-8"</code> tells Python how to read the text characters in this file. It may work without this argument if your environment already uses UTF-8. We specify it so the example reads the file consistently across computers.</p>
 <p>Here, the header begins <code>Title,US Gross,Worldwide Gross,...</code>. The comma is the <strong>delimiter</strong> separating fields. The first movie record begins with <code>Opal Dreams</code>.</p>
 <p>A field can contain a comma if it is quoted, as in <code>"Movie, The",7.2</code>. Quoting rules are one reason to use a CSV parser rather than splitting every line yourself. A <code>.csv</code> extension is a clue, not proof of the delimiter; some files use semicolons or tabs. Opening a file in a spreadsheet shows the parsed cells rather than the raw delimiters.</p>
 <p><strong>Pause and predict:</strong> Which values in the preview should become numbers? Which should remain text? Does the header represent a movie observation?</p>
@@ -873,7 +874,7 @@ memory usage: 191.6 KB</code></pre>
 </tr>
 </tbody>
 </table>
-<p>For <code>IMDB Rating</code>, the mean is about <strong>6.24</strong> and the median is <strong>6.4</strong>, shown in the <code>50%</code> row. These describe the records in this course file; they do not establish a population-wide claim about movies.</p>
+<p>For <code>IMDB Rating</code>, the mean is about <strong>6.24</strong> and the median is <strong>6.4</strong>, shown in the <code>50%</code> row. These summaries describe the movie records in <code>movie_ratings.csv</code>; they do not establish a population-wide claim about movies.</p>
 <p><strong>Pause and explain:</strong> Why might <code>describe()</code> report a different <code>count</code> for two columns even though the DataFrame has a single row count?</p>
 </section>
 <section id="look-beyond-the-first-few-rows" class="level3" data-number="3.4.6">
@@ -1459,58 +1460,24 @@ Same column names and order: True</code></pre>
 <p>For HTML, <code>read_html(..., attrs={'id': 'table-id'})</code> selects a table by its HTML attributes; <strong><code>attrs</code> does not send HTTP request headers</strong>. HTTP headers belong in the fetch operation or supported URL storage options. A <code>403</code> response means access was refused; changing a User-Agent is not a guaranteed remedy. Network debugging is separate from checking the structure of a parsed table.</p>
 </section>
 </section>
-<section id="independent-practice" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="independent-practice"><span class="header-section-number">3.8</span> Independent Practice</h2>
-<p>These exercises use the kit’s local files and are additional practice, not part of the in-class quiz. Work in a separate notebook beside <code>data/</code> and include code, outputs, and short explanations.</p>
-<section id="albums-read-and-interpret" class="level3" data-number="3.8.1">
-<h3 data-number="3.8.1" class="anchored" data-anchor-id="albums-read-and-interpret"><span class="header-section-number">3.8.1</span> Albums: Read and Interpret</h3>
-<p>Read <code>data/Top 10 Albums By Year.csv</code>. Treat each row as an <strong>album entry for a year</strong>; do not assume titles are globally unique.</p>
-<ol type="1">
-<li>Display the first five rows, dimensions, column names, and numeric summaries.</li>
-<li>Interpret the <code>25%</code>, <code>50%</code>, and <code>75%</code> values for <code>Tracks</code>. Using those quartiles, give a defensible approximate range for the proportion of album entries with <strong>15 or fewer tracks</strong>; explain how ties at 15 limit precision.</li>
-<li>Use the <code>Minutes</code> and <code>Tracks</code> columns to calculate the <strong>track-weighted mean duration in minutes</strong>: total album minutes divided by total tracks, across the listed album entries. For a Series, <code>.sum()</code> totals the values. Explain why this differs from giving every album equal weight regardless of its track count. The file’s <code>Minutes</code> values are rounded, so your result is approximate.</li>
-</ol>
-</section>
-<section id="books-diagnose-and-check" class="level3" data-number="3.8.2">
-<h3 data-number="3.8.2" class="anchored" data-anchor-id="books-diagnose-and-check"><span class="header-section-number">3.8.2</span> Books: Diagnose and Check</h3>
-<p>Read the first two raw lines of <code>data/bestseller_books.txt</code> in Python before choosing a separator.</p>
-<ol type="1">
-<li>Identify the delimiter and read the table with an explicit <code>sep</code>.</li>
-<li>Display its dimensions, column names, and first few rows. Explain what one row represents; the same book may appear in more than one year.</li>
-<li>Inspect the initial columns named <code>Unnamed: ...</code>. Explain how repeated index exports could produce them. Preserve the source file and distinguish those columns from the book variables when reporting the table’s structure.</li>
-<li>Export a copy without adding another generated row-number column. Read it back and compare dimensions and names. Explain why <code>index=False</code> does not remove unwanted columns that are already in the DataFrame.</li>
-</ol>
-</section>
-<section id="optional-format-comparison" class="level3" data-number="3.8.3">
-<h3 data-number="3.8.3" class="anchored" data-anchor-id="optional-format-comparison"><span class="header-section-number">3.8.3</span> Optional Format Comparison</h3>
-<p>Read the local JSON preview and, if you installed the optional parser, the HTML preview. Compare their row counts and column names. Explain why the HTML reader returns a list while the JSON example returns a DataFrame.</p>
-</section>
-</section>
-<section id="practice-activity-read-inspect-and-export-movie-data" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.9</span> Practice Activity: Read, Inspect, and Export Movie Data</h2>
-<p><strong>Goal:</strong> Read a local dataset, check whether it was imported correctly, and verify an exported CSV. <strong>Time:</strong> approximately 30–40 minutes. <strong>File:</strong> <code>activity03.ipynb</code>. <strong>Submit:</strong> <code>activity03.html</code> through the final upload question in the Chapter 3 Canvas quiz.</p>
-<p><strong>These are the complete Activity 3 instructions.</strong> Use this section for the task list; the notebook contains spaces to record your work. The earlier independent-study exercises are additional practice and are not required for this quiz.</p>
-<p>Download and extract the <a href="downloads/reading-data-practice.zip">Reading Data practice kit</a>. Move its <code>stat303-reading-data</code> folder into your existing <code>stat303-setup</code> project folder. Open <code>activity03.ipynb</code> and select the project environment you verified in Chapter 2; pandas should already be installed. Work with <code>stat303-reading-data</code> as the notebook and rendering terminal’s current folder. Confirm with <code>Path.cwd()</code>; if needed, use <code>os.chdir()</code> once with the actual folder path before continuing.</p>
-<pre class="text"><code>stat303-setup/
-├── .venv/
-└── stat303-reading-data/
-    ├── activity03.ipynb
-    ├── README.md
-    └── data/
-        ├── movie_ratings.csv
-        └── movie_ratings_semicolon.txt</code></pre>
-<p>Both data files contain the same course movie records, serialized with different delimiters. They are historical teaching data, not current ratings. Use the exact lowercase <code>data</code> folder in this kit. The other kit files support the worked examples and independent practice; only the two movie files are required for this activity. No live website or API access is needed after downloading it.</p>
-<section id="a.-read-and-orient-yourself" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="a.-read-and-orient-yourself"><span class="header-section-number">3.9.1</span> A. Read and Orient Yourself</h3>
+<section id="practice-activity-read-inspect-and-export-movie-data" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="practice-activity-read-inspect-and-export-movie-data"><span class="header-section-number">3.8</span> Practice Activity: Read, Inspect, and Export Movie Data</h2>
+<p><strong>Goal:</strong> Read a local dataset, check whether it was imported correctly, and verify an exported CSV.</p>
+<p><strong>File:</strong> <code>activity03.ipynb</code>.</p>
+<p><strong>Submit:</strong> <code>activity03.html</code> through the final upload question in the Chapter 3 Canvas quiz.</p>
+<p><strong>These are the complete Activity 3 instructions.</strong> Use this section for the task list; the notebook contains spaces to record your work.</p>
+<p>Open <code>activity03.ipynb</code> from the folder prepared in <a href="#set-up-the-chapter-files">Set Up the Chapter Files</a>, using the same project environment.</p>
+<section id="a.-read-and-orient-yourself" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.-read-and-orient-yourself">A. Read and Orient Yourself</h3>
 <ul>
-<li>Replace <code>Your Name</code> in the Raw cell and Markdown name field. Keep the report settings.</li>
+<li>Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field. Keep the report settings.</li>
 <li>Run the supplied imports and current-folder/file checks. Both file checks should be <code>True</code> before you continue.</li>
 <li>Read <code>data/movie_ratings.csv</code> into <code>movies</code> with <code>pd.read_csv()</code> using the default index. Display <code>head()</code>, <code>shape</code>, and <code>columns</code>.</li>
 <li>Explain what one row represents and name two variables. Interpret both numbers in <code>shape</code>; explain whether the displayed row index is counted as a data column.</li>
 </ul>
 </section>
-<section id="b.-inspect-and-explain" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2" class="anchored" data-anchor-id="b.-inspect-and-explain"><span class="header-section-number">3.9.2</span> B. Inspect and Explain</h3>
+<section id="b.-inspect-and-explain" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="b.-inspect-and-explain">B. Inspect and Explain</h3>
 <ul>
 <li>Display <code>movies.dtypes</code>, run <code>movies.info()</code>, and display <code>movies.describe()</code>.</li>
 <li>Explain whether <code>IMDB Rating</code> has missing values according to its non-null count and the total row count. Use the output as evidence; a non-null value is not necessarily a valid value.</li>
@@ -1519,8 +1486,8 @@ Same column names and order: True</code></pre>
 <li>Identify one attribute and one method you used and explain the difference in their parentheses.</li>
 </ul>
 </section>
-<section id="c.-diagnose-a-delimiter" class="level3" data-number="3.9.3">
-<h3 data-number="3.9.3" class="anchored" data-anchor-id="c.-diagnose-a-delimiter"><span class="header-section-number">3.9.3</span> C. Diagnose a Delimiter</h3>
+<section id="c.-diagnose-a-delimiter" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="c.-diagnose-a-delimiter">C. Diagnose a Delimiter</h3>
 <ul>
 <li>Run the supplied raw-text preview of <code>movie_ratings_semicolon.txt</code>. Identify the delimiter from the header and first record.</li>
 <li>Before running an import, predict what may go wrong if pandas assumes commas. Record your prediction in Markdown.</li>
@@ -1528,8 +1495,8 @@ Same column names and order: True</code></pre>
 <li>Read the file again into <code>movies_text</code> using an explicit <code>sep</code> value. Display <code>head()</code>, <code>shape</code>, and <code>columns</code>; compare the dimensions and column names with <code>movies</code>.</li>
 </ul>
 </section>
-<section id="d.-export-and-check" class="level3" data-number="3.9.4">
-<h3 data-number="3.9.4" class="anchored" data-anchor-id="d.-export-and-check"><span class="header-section-number">3.9.4</span> D. Export and Check</h3>
+<section id="d.-export-and-check" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="d.-export-and-check">D. Export and Check</h3>
 <ul>
 <li>Export <code>movies</code> to <code>movies_export.csv</code> beside the notebook with <code>index=False</code>. Keep the supplied input files unchanged.</li>
 <li>Read the export into <code>reloaded</code>; display its <code>shape</code>, <code>columns</code>, and <code>head()</code> and compare the dimensions and column names with the original. These checks verify structure, not every value or data type.</li>
@@ -1537,8 +1504,8 @@ Same column names and order: True</code></pre>
 <li>In a different dataset where the index contains meaningful IDs, explain why dropping it without first preserving those IDs could lose information.</li>
 </ul>
 </section>
-<section id="render-and-submit-your-html" class="level3" data-number="3.9.5">
-<h3 data-number="3.9.5" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">3.9.5</span> Render and Submit Your HTML</h3>
+<section id="render-and-submit-your-html" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">3.8.1</span> Render and Submit Your HTML</h3>
 <p>Restart the kernel, run all cells in order, resolve unexpected errors, and save. Add a brief Markdown completion note, then save again. The deliberately caught diagnostic in C may report a parser error; the corrected import must work.</p>
 <p>In the terminal, from <code>stat303-reading-data</code>, run:</p>
 <pre class="text"><code>quarto render activity03.ipynb --to html</code></pre>
@@ -1546,10 +1513,37 @@ Same column names and order: True</code></pre>
 <p><strong>HTML grading (16 points):</strong> import and dataset interpretation (3), inspection and Series explanation (5), delimiter diagnosis and correction (4), export and verification (3), and readable HTML with name and completion note (1).</p>
 </section>
 </section>
+<section id="extended-practice" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="extended-practice"><span class="header-section-number">3.9</span> Extended Practice</h2>
+<p>These exercises use the kit’s local files and are additional practice, not part of the in-class quiz. Work in a separate notebook beside <code>data/</code> and include code, outputs, and short explanations.</p>
+<section id="albums-read-and-interpret" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="albums-read-and-interpret"><span class="header-section-number">3.9.1</span> Albums: Read and Interpret</h3>
+<p>Read <code>data/Top 10 Albums By Year.csv</code>. Treat each row as an <strong>album entry for a year</strong>; do not assume titles are globally unique.</p>
+<ol type="1">
+<li>Display the first five rows, dimensions, column names, and numeric summaries.</li>
+<li>Interpret the <code>25%</code>, <code>50%</code>, and <code>75%</code> values for <code>Tracks</code>. Using those quartiles, give a defensible approximate range for the proportion of album entries with <strong>15 or fewer tracks</strong>; explain how ties at 15 limit precision.</li>
+<li>Use the <code>Minutes</code> and <code>Tracks</code> columns to calculate the <strong>track-weighted mean duration in minutes</strong>: total album minutes divided by total tracks, across the listed album entries. For a Series, <code>.sum()</code> totals the values. Explain why this differs from giving every album equal weight regardless of its track count. The file’s <code>Minutes</code> values are rounded, so your result is approximate.</li>
+</ol>
+</section>
+<section id="books-diagnose-and-check" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="books-diagnose-and-check"><span class="header-section-number">3.9.2</span> Books: Diagnose and Check</h3>
+<p>Read the first two raw lines of <code>data/bestseller_books.txt</code> in Python before choosing a separator.</p>
+<ol type="1">
+<li>Identify the delimiter and read the table with an explicit <code>sep</code>.</li>
+<li>Display its dimensions, column names, and first few rows. Explain what one row represents; the same book may appear in more than one year.</li>
+<li>Inspect the initial columns named <code>Unnamed: ...</code>. Explain how repeated index exports could produce them. Preserve the source file and distinguish those columns from the book variables when reporting the table’s structure.</li>
+<li>Export a copy without adding another generated row-number column. Read it back and compare dimensions and names. Explain why <code>index=False</code> does not remove unwanted columns that are already in the DataFrame.</li>
+</ol>
+</section>
+<section id="optional-format-comparison" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="optional-format-comparison"><span class="header-section-number">3.9.3</span> Optional Format Comparison</h3>
+<p>Read the local JSON preview and, if you installed the optional parser, the HTML preview. Compare their row counts and column names. Explain why the HTML reader returns a list while the JSON example returns a DataFrame.</p>
+</section>
+</section>
 <section id="before-you-move-on" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">3.10</span> Before You Move On</h2>
 <p>You should now be able to explain why a file that loads without an error can still have been read incorrectly. Keep checking what one row means, how fields were separated, whether types and counts are plausible, and what information survives an export.</p>
-<p><a href="Pandas.ipynb">Pandas Fundamentals</a> continues with selecting and filtering records, sorting, and creating variables. NumPy Fundamentals follows that chapter to introduce arrays and shape rules before the intermediate pandas material.</p>
+<p>Next, <a href="./pandas_fundamentals_reorganized.html">Pandas Fundamentals</a> develops selecting and filtering records, sorting, and creating variables. <a href="./pandas_intermediate_claude.html">Pandas Intermediate</a> then builds on those skills with transformations, label alignment, and custom logic. After the pandas chapters, <a href="./numpy_fundamentals_reorganized.html">NumPy Fundamentals</a> introduces arrays, positions, and shape rules.</p>
 <p>For reference: <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas CSV reader</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html">DataFrame inspection</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">descriptive summaries</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">CSV writer</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_json.html">JSON reader</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_html.html">HTML reader</a>.</p>
 
 

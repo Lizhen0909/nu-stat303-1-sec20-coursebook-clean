@@ -16,11 +16,12 @@ The examples write `movies_export.csv` and `movies_with_index.csv` beside the no
 
 The HTML-reading extension is optional and needs an HTML parser such as lxml. Its code is shown in Markdown, so running all ordinary example cells does not require that parser or network access. The local JSON example uses pandas alone.
 
-## Included data and provenance
+## Files Used in This Chapter
 
-- `movie_ratings.csv`: unchanged copy of the course repository's `Datasets/movie_ratings.csv`, containing 2,228 historical movie records and 11 columns.
-- `movie_ratings_semicolon.txt`: the same header and records, serialized with semicolons using Python's csv module.
-- `movies_preview.json` and `movies_preview.html`: the first five movie records, restricted to Title, IMDB Rating, and Production Budget. Rating and budget were converted to numerical values when constructing the previews. These files demonstrate equivalent small tables in two formats.
-- `Top 10 Albums By Year.csv` and `bestseller_books.txt`: unchanged copies of the corresponding course datasets, provided for independent practice. The books file retains its original extra index columns for diagnosis.
+- `movie_ratings.csv`: 2,228 movie records and 11 columns used to practice importing, inspecting, summarizing, and exporting a table.
+- `movie_ratings_semicolon.txt`: the same movie records with semicolon delimiters, used to diagnose and correct an import problem.
+- `movies_preview.json` and `movies_preview.html`: five movie records with Title, IMDB Rating, and Production Budget, used to compare how JSON and HTML readers return tables in the optional extension.
+- `Top 10 Albums By Year.csv`: used in extended practice to inspect album records, interpret quartiles, and calculate a track-weighted mean duration.
+- `bestseller_books.txt`: used in extended practice to identify a delimiter, inspect extra index columns, and verify an export.
 
-These are historical teaching datasets, not current movie ratings, rankings, or sales figures. Only the two full movie files are required for the in-class activity. The example notebook includes the chapter text; the activity notebook intentionally contains unfinished student work rather than worked solutions.
+Only the two full movie files are required for the in-class activity. The example notebook includes the chapter text; the activity notebook intentionally contains unfinished student work rather than worked solutions.

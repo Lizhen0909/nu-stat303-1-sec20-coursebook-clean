@@ -11,6 +11,6 @@ The worked notebook has saved outputs; the activity starter intentionally leaves
 
 ## Data provenance
 
-The three files under `data/` are unchanged copies from the course repository's `Datasets/` directory: `movie_ratings.csv`, `Top 10 Albums By Year.csv`, and `STAT303-1 survey for data analysis.csv`. They are historical course datasets. Movie data contain 2,228 records and 11 columns. Only the movie file is required for the in-class activity; albums and survey responses support extended independent practice.
+The three files under `data/` are unchanged copies from the course repository's `Datasets/` directory: `movie_ratings.csv`, `Top 10 Albums By Year.csv`, and `STAT303-1 survey for data analysis.csv`. They are historical course datasets. Movie data contain 2,228 records and 11 columns. Only the movie file is required for the in-class activity; albums and survey responses support Extended Practice.
 
 The small screenings, ticket-prices, numeric-text, and quarterly-sales examples are invented teaching data defined directly in the notebook. Financial differences and ratios in the movie examples are based only on recorded gross and production budget; they are not estimates of actual profit.
