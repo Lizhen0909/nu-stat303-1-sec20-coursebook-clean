@@ -260,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">From messy to insight</span></a>
+ <span class="menu-text">From Messy to Insight</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -396,20 +396,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#method-2-install-from-the-notebook" id="toc-method-2-install-from-the-notebook" class="nav-link" data-scroll-target="#method-2-install-from-the-notebook"><span class="header-section-number">2.7.2</span> Method 2: Install from the Notebook</a></li>
   <li><a href="#install-once-import-in-every-notebook" id="toc-install-once-import-in-every-notebook" class="nav-link" data-scroll-target="#install-once-import-in-every-notebook"><span class="header-section-number">2.7.3</span> Install Once, Import in Every Notebook</a></li>
   </ul></li>
-  <li><a href="#record-and-recreate-dependencies" id="toc-record-and-recreate-dependencies" class="nav-link" data-scroll-target="#record-and-recreate-dependencies"><span class="header-section-number">2.8</span> Record and Recreate Dependencies</a>
+  <li><a href="#notebook-magic-commands" id="toc-notebook-magic-commands" class="nav-link" data-scroll-target="#notebook-magic-commands"><span class="header-section-number">2.8</span> Notebook Magic Commands</a>
   <ul class="collapse">
-  <li><a href="#save-the-package-record" id="toc-save-the-package-record" class="nav-link" data-scroll-target="#save-the-package-record"><span class="header-section-number">2.8.1</span> Save the Package Record</a></li>
-  <li><a href="#use-the-record-in-a-new-environment" id="toc-use-the-record-in-a-new-environment" class="nav-link" data-scroll-target="#use-the-record-in-a-new-environment"><span class="header-section-number">2.8.2</span> Use the Record in a New Environment</a></li>
+  <li><a href="#a-single-marks-a-line-and-marks-a-cell" id="toc-a-single-marks-a-line-and-marks-a-cell" class="nav-link" data-scroll-target="#a-single-marks-a-line-and-marks-a-cell"><span class="header-section-number">2.8.1</span> A Single <code>%</code> Marks a Line, and <code>%%</code> Marks a Cell</a></li>
+  <li><a href="#timeit-measures-how-long-code-takes-to-run" id="toc-timeit-measures-how-long-code-takes-to-run" class="nav-link" data-scroll-target="#timeit-measures-how-long-code-takes-to-run"><span class="header-section-number">2.8.2</span> <code>%timeit</code> Measures How Long Code Takes to Run</a></li>
+  <li><a href="#matplotlib-inline-displays-plots-inside-the-notebook" id="toc-matplotlib-inline-displays-plots-inside-the-notebook" class="nav-link" data-scroll-target="#matplotlib-inline-displays-plots-inside-the-notebook"><span class="header-section-number">2.8.3</span> <code>%matplotlib inline</code> Displays Plots Inside the Notebook</a></li>
+  <li><a href="#a-short-reference" id="toc-a-short-reference" class="nav-link" data-scroll-target="#a-short-reference"><span class="header-section-number">2.8.4</span> A Short Reference</a></li>
+  <li><a href="#magic-commands-work-in-notebooks-not-in-scripts-or-the-terminal" id="toc-magic-commands-work-in-notebooks-not-in-scripts-or-the-terminal" class="nav-link" data-scroll-target="#magic-commands-work-in-notebooks-not-in-scripts-or-the-terminal"><span class="header-section-number">2.8.5</span> Magic Commands Work in Notebooks, Not in Scripts or the Terminal</a></li>
   </ul></li>
-  <li><a href="#find-local-data-with-paths" id="toc-find-local-data-with-paths" class="nav-link" data-scroll-target="#find-local-data-with-paths"><span class="header-section-number">2.9</span> Find Local Data with Paths</a>
+  <li><a href="#record-and-recreate-dependencies" id="toc-record-and-recreate-dependencies" class="nav-link" data-scroll-target="#record-and-recreate-dependencies"><span class="header-section-number">2.9</span> Record and Recreate Dependencies</a>
   <ul class="collapse">
-  <li><a href="#what-changes-when-the-working-directory-changes" id="toc-what-changes-when-the-working-directory-changes" class="nav-link" data-scroll-target="#what-changes-when-the-working-directory-changes"><span class="header-section-number">2.9.1</span> What Changes When the Working Directory Changes?</a></li>
+  <li><a href="#save-the-package-record" id="toc-save-the-package-record" class="nav-link" data-scroll-target="#save-the-package-record"><span class="header-section-number">2.9.1</span> Save the Package Record</a></li>
+  <li><a href="#use-the-record-in-a-new-environment" id="toc-use-the-record-in-a-new-environment" class="nav-link" data-scroll-target="#use-the-record-in-a-new-environment"><span class="header-section-number">2.9.2</span> Use the Record in a New Environment</a></li>
   </ul></li>
-  <li><a href="#practice-activity-find-your-python-and-your-data" id="toc-practice-activity-find-your-python-and-your-data" class="nav-link" data-scroll-target="#practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</a>
+  <li><a href="#find-local-data-with-paths" id="toc-find-local-data-with-paths" class="nav-link" data-scroll-target="#find-local-data-with-paths"><span class="header-section-number">2.10</span> Find Local Data with Paths</a>
   <ul class="collapse">
-  <li><a href="#render-and-submit-your-html" id="toc-render-and-submit-your-html" class="nav-link" data-scroll-target="#render-and-submit-your-html"><span class="header-section-number">2.10.1</span> Render and Submit Your HTML</a></li>
+  <li><a href="#what-changes-when-the-working-directory-changes" id="toc-what-changes-when-the-working-directory-changes" class="nav-link" data-scroll-target="#what-changes-when-the-working-directory-changes"><span class="header-section-number">2.10.1</span> What Changes When the Working Directory Changes?</a></li>
+  <li><a href="#move-to-the-folder-you-need" id="toc-move-to-the-folder-you-need" class="nav-link" data-scroll-target="#move-to-the-folder-you-need"><span class="header-section-number">2.10.2</span> Move to the Folder You Need</a></li>
   </ul></li>
-  <li><a href="#next-assignment-b" id="toc-next-assignment-b" class="nav-link" data-scroll-target="#next-assignment-b"><span class="header-section-number">2.11</span> Next: Assignment B</a></li>
+  <li><a href="#practice-activity-find-your-python-and-your-data" id="toc-practice-activity-find-your-python-and-your-data" class="nav-link" data-scroll-target="#practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.11</span> Practice Activity: Find Your Python and Your Data</a>
+  <ul class="collapse">
+  <li><a href="#render-and-submit-your-html" id="toc-render-and-submit-your-html" class="nav-link" data-scroll-target="#render-and-submit-your-html"><span class="header-section-number">2.11.1</span> Render and Submit Your HTML</a></li>
+  </ul></li>
+  <li><a href="#next-assignment-b" id="toc-next-assignment-b" class="nav-link" data-scroll-target="#next-assignment-b"><span class="header-section-number">2.12</span> Next: Assignment B</a></li>
   </ul>
 </nav>
     </div>
@@ -442,6 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check your current folder, list its contents, and move between folders.</li>
 <li>Ask three questions before running a command: where am I typing, which Python am I using, and which folder is current?</li>
 <li>Create and verify a project environment, install packages, and record its dependencies.</li>
+<li>Recognize a notebook magic command and use <code>%timeit</code> and <code>%matplotlib inline</code>.</li>
 <li>Build a relative data path and diagnose a missing-file result.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Before you begin">
@@ -833,11 +843,116 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </div>
 </section>
 </section>
-<section id="record-and-recreate-dependencies" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="record-and-recreate-dependencies"><span class="header-section-number">2.8</span> Record and Recreate Dependencies</h2>
+<section id="notebook-magic-commands" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="notebook-magic-commands"><span class="header-section-number">2.8</span> Notebook Magic Commands</h2>
+<p>A <strong>magic command</strong> is an instruction to the notebook itself rather than a line of Python. These commands come from IPython, the kernel that runs your notebook code cells, and they exist to do things the Python language has no syntax for: install a package into the running environment, measure how long code takes, or configure how plots are displayed.</p>
+<p>You have already run one. In <code>%pip install seaborn</code>, the leading <code>%</code> marks that line as a magic command rather than as Python.</p>
+<p>This section introduces only the handful of magic commands that appear in later chapters. You do not need to memorize them now. The goal is that a line beginning with <code>%</code> looks familiar, rather than puzzling, when you meet one later.</p>
+<section id="a-single-marks-a-line-and-marks-a-cell" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="a-single-marks-a-line-and-marks-a-cell"><span class="header-section-number">2.8.1</span> A Single <code>%</code> Marks a Line, and <code>%%</code> Marks a Cell</h3>
+<p>One percent sign marks a <strong>line magic</strong>, which applies to the rest of that one line only; the other lines in the cell stay ordinary Python. Two percent signs mark a <strong>cell magic</strong>, which applies to the entire cell and must be written as the cell’s first line.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> total <span class="op">+</span> n</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As noted for <code>%pip</code> above, automagic lets you drop the <code>%</code> from many line magics. Type it anyway. The symbol tells a reader, including you in a few weeks, that the line is an instruction to the notebook and not Python code.</p>
+</section>
+<section id="timeit-measures-how-long-code-takes-to-run" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="timeit-measures-how-long-code-takes-to-run"><span class="header-section-number">2.8.2</span> <code>%timeit</code> Measures How Long Code Takes to Run</h3>
+<p><code>%timeit</code> reports how long a piece of code takes. Later chapters use it whenever two ways of writing the same calculation need to be compared. It runs the code repeatedly and reports an average, because a single run of fast code measures mostly noise.</p>
+<p>Use <code>%timeit</code> for one line and <code>%%timeit</code> for a whole cell:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit <span class="bu">sum</span>(<span class="bu">range</span>(<span class="dv">100000</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The result looks like the following. Your numbers will differ from a classmate’s, because timing depends on the machine.</p>
+<pre class="text"><code>1.12 ms ± 18.3 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<p>Read that as: the code was run 1,000 times in a row to form one loop’s measurement, this was repeated 7 times, and one execution averaged 1.12 milliseconds. A millisecond (<code>ms</code>) is a thousandth of a second and a microsecond (<code>µs</code>) is a millionth.</p>
+<p><code>%time</code> runs the code once and reports that single run. Use it when one run already takes long enough to be informative, such as reading a large file, and <code>%timeit</code> when the code is fast.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="A `%%timeit` cell discards its variables">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A <code>%%timeit</code> cell discards its variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because <code>%%timeit</code> runs the cell many times, any variable assigned inside it is discarded once timing finishes. Build your data in one cell, then time the calculation in another cell that only reads it.</p>
+</div>
+</div>
+<p>In <a href="./pandas_numpy_workflow.html">Pandas and NumPy in a Data Science Workflow</a>, you will use <code>%timeit</code> to compare a row-by-row <code>.apply()</code> against the equivalent NumPy array calculation and see how much time the array version saves.</p>
+</section>
+<section id="matplotlib-inline-displays-plots-inside-the-notebook" class="level3" data-number="2.8.3">
+<h3 data-number="2.8.3" class="anchored" data-anchor-id="matplotlib-inline-displays-plots-inside-the-notebook"><span class="header-section-number">2.8.3</span> <code>%matplotlib inline</code> Displays Plots Inside the Notebook</h3>
+<p><code>%matplotlib inline</code> tells Matplotlib to draw each figure as a static image in the notebook’s output area, directly beneath the cell that created it, instead of opening it in a separate window.</p>
+<p>You will find this line at the top of many notebooks, including several later chapters of this book. VS Code’s notebook editor already displays figures inline, so your plots appear whether or not you run it. Leave the line in place when you find it: it is harmless, and it makes the notebook behave the same way for someone who opens it in a different tool.</p>
+</section>
+<section id="a-short-reference" class="level3" data-number="2.8.4">
+<h3 data-number="2.8.4" class="anchored" data-anchor-id="a-short-reference"><span class="header-section-number">2.8.4</span> A Short Reference</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Magic command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%pip install &lt;package&gt;</code></td>
+<td>Installs a package into the environment running this notebook</td>
+</tr>
+<tr class="even">
+<td><code>%timeit &lt;code&gt;</code></td>
+<td>Times one line, repeated, and reports the average</td>
+</tr>
+<tr class="odd">
+<td><code>%%timeit</code></td>
+<td>Times the whole cell, repeated; must be the cell’s first line</td>
+</tr>
+<tr class="even">
+<td><code>%time &lt;code&gt;</code></td>
+<td>Times one line, run once</td>
+</tr>
+<tr class="odd">
+<td><code>%matplotlib inline</code></td>
+<td>Draws Matplotlib figures in the notebook output</td>
+</tr>
+<tr class="even">
+<td><code>%pwd</code></td>
+<td>Prints the notebook’s current working directory</td>
+</tr>
+<tr class="odd">
+<td><code>%cd &lt;folder&gt;</code></td>
+<td>Changes the working directory for the rest of the kernel session</td>
+</tr>
+<tr class="even">
+<td><code>%whos</code></td>
+<td>Lists the variables currently defined in the kernel</td>
+</tr>
+<tr class="odd">
+<td><code>%lsmagic</code></td>
+<td>Lists every available magic command</td>
+</tr>
+</tbody>
+</table>
+<p>A related symbol is <code>!</code>, which sends the rest of the line to your shell, as in <code>!ls</code>. This book prefers <code>%pip install</code> over <code>!pip install</code> because <code>%pip</code> is guaranteed to install into the environment your notebook kernel is using, while <code>!pip</code> runs whichever <code>pip</code> the shell happens to find.</p>
+<p>To explore further, run <code>%lsmagic</code> for the full list, or add a trailing question mark, as in <code>%timeit?</code>, to read the built-in help for any magic command. The complete reference is IPython’s <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">built-in magic commands</a>.</p>
+</section>
+<section id="magic-commands-work-in-notebooks-not-in-scripts-or-the-terminal" class="level3" data-number="2.8.5">
+<h3 data-number="2.8.5" class="anchored" data-anchor-id="magic-commands-work-in-notebooks-not-in-scripts-or-the-terminal"><span class="header-section-number">2.8.5</span> Magic Commands Work in Notebooks, Not in Scripts or the Terminal</h3>
+<p>Magic commands are IPython syntax, not Python language syntax. Copy <code>%timeit sum(range(100000))</code> into a <code>.py</code> file and run it with <code>python script.py</code>, and Python stops with a <code>SyntaxError</code>. They are also distinct from terminal commands: <code>pip install seaborn</code> is what you type at a shell prompt, while <code>%pip install seaborn</code> is what you type in a notebook code cell.</p>
+<p>This is the first of the three questions from Section 2.4 in a new form. Before running a line that starts with <code>%</code>, confirm that you are typing it in a notebook code cell.</p>
+</section>
+</section>
+<section id="record-and-recreate-dependencies" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="record-and-recreate-dependencies"><span class="header-section-number">2.9</span> Record and Recreate Dependencies</h2>
 <p>Your <code>.venv</code> contains installed packages. A <strong>requirements file</strong> records package names and versions as text so you can install them again in another environment. Create this record after completing the installations and import checks above, including Seaborn.</p>
-<section id="save-the-package-record" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="save-the-package-record"><span class="header-section-number">2.8.1</span> Save the Package Record</h3>
+<section id="save-the-package-record" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="save-the-package-record"><span class="header-section-number">2.9.1</span> Save the Package Record</h3>
 <p>In the terminal, confirm that the current folder is <code>stat303-setup</code> and that your <code>(.venv)</code> environment is active. Then save the environment’s package list to <code>requirements.txt</code> using the command for your shell:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">macOS: zsh or Bash</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Windows PowerShell</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Windows Command Prompt</a></li></ul>
@@ -846,7 +961,7 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 <pre class="text"><code>python -m pip freeze &gt; requirements.txt</code></pre>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m pip freeze <span class="op">|</span> <span class="fu">Out-File</span> <span class="op">-</span>Encoding utf8 requirements<span class="op">.</span><span class="fu">txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m pip freeze <span class="op">|</span> <span class="fu">Out-File</span> <span class="op">-</span>Encoding utf8 requirements<span class="op">.</span><span class="fu">txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <pre class="text"><code>python -m pip freeze &gt; requirements.txt</code></pre>
@@ -858,8 +973,8 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 <p>A line such as <code>numpy==2.2.0</code> means “install NumPy version 2.2.0.” This is an illustration, not a required course version. Keep the actual entries generated from your environment. Expect more names than you explicitly installed because the packages also need dependencies.</p>
 <p>When sharing <code>requirements.txt</code>, also tell your collaborator which Python version you used.</p>
 </section>
-<section id="use-the-record-in-a-new-environment" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="use-the-record-in-a-new-environment"><span class="header-section-number">2.8.2</span> Use the Record in a New Environment</h3>
+<section id="use-the-record-in-a-new-environment" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="use-the-record-in-a-new-environment"><span class="header-section-number">2.9.2</span> Use the Record in a New Environment</h3>
 <p>To recreate your project environment on another computer or share it with a collaborator, follow these steps:</p>
 <ol type="1">
 <li><p>Use an installed, compatible Python version to create a new project <code>.venv</code>, following Section 2.6.</p></li>
@@ -870,7 +985,7 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </ol>
 <p><code>-r requirements.txt</code> tells pip to read the installation requirements from that file. Recreate the environment on the destination computer instead of copying the <code>.venv</code> folder. Matching package versions helps repeat the setup, though Python version and operating-system differences can still matter.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Check your understanding">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -879,7 +994,7 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Does <code>pip freeze</code> install packages?</strong> No.&nbsp;It reports what is installed; <code>pip install -r requirements.txt</code> performs installation.</p>
 <p><strong>What if you export while the terminal uses a different project’s Python?</strong> You record that other environment’s packages. Check <code>sys.executable</code>, switch to the intended environment, and export again.</p>
@@ -890,8 +1005,8 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 <p>For details, see <a href="https://pip.pypa.io/en/stable/user_guide/#requirements-files">pip’s requirements-file guide</a>.</p>
 </section>
 </section>
-<section id="find-local-data-with-paths" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="find-local-data-with-paths"><span class="header-section-number">2.9</span> Find Local Data with Paths</h2>
+<section id="find-local-data-with-paths" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="find-local-data-with-paths"><span class="header-section-number">2.10</span> Find Local Data with Paths</h2>
 <p>A <strong>path</strong> describes where a file or folder is located. There are two ways to write one:</p>
 <table class="caption-top table">
 <colgroup>
@@ -922,18 +1037,18 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 <p>The absolute examples include a particular user’s folders, so they will usually differ on your computer. The relative example works when the notebook’s current working directory is <code>stat303-setup</code> and the supplied folder layout is preserved.</p>
 <p>The notebook and terminal can have different working directories. The folder visible in VS Code’s Explorer does not prove either one’s current directory. As a result, the terminal may find or create a file in one folder while the notebook looks for it in another. Check the current directory in each place when working with files.</p>
 <p>Use Python’s built-in <code>pathlib</code> module to build paths. With <code>Path</code>, <code>/</code> joins folder and file names and handles the separators for your operating system. In a <strong>notebook code cell</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Path.cwd())</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"data"</span>) <span class="op">/</span> <span class="st">"station_readings.csv"</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Resolved path:"</span>, data_path.resolve())</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File found:"</span>, data_path.is_file())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For the practice notebooks stored directly inside <code>stat303-setup</code>, the expected working directory is the extracted <code>stat303-setup</code> folder. If <code>is_file()</code> returns <code>False</code>, inspect the displayed directory, filename, capitalization, and extracted folder layout. VS Code settings or a different notebook location can change the working directory; always check rather than assume.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Path.cwd())</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"data"</span>) <span class="op">/</span> <span class="st">"station_readings.csv"</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Resolved path:"</span>, data_path.resolve())</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File found:"</span>, data_path.is_file())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For the practice notebooks stored directly inside <code>stat303-setup</code>, the expected working directory is the extracted <code>stat303-setup</code> folder. If <code>is_file()</code> returns <code>False</code>, inspect the displayed directory, filename, capitalization, and extracted folder layout. VS Code settings or a different notebook location can change the working directory; always check rather than assume. If the directory is not the one you need, see <em>Move to the Folder You Need</em> below.</p>
 <p>Once the file check returns <code>True</code>, inspect a few lines without needing data-analysis syntax:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>).splitlines()[:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>).splitlines()[:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For this supplied file, <code>read_text()</code> reads the text, <code>splitlines()</code> separates it into lines, and <code>[:3]</code> selects the first three. The result is a list of text lines, not yet a Pandas table.</p>
 <p>A path expression describes a location; it does not establish that a file exists. In particular, <code>resolve()</code> displays an absolute path; it does not find a misplaced file or prove that the file exists.</p>
-<section id="what-changes-when-the-working-directory-changes" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="what-changes-when-the-working-directory-changes"><span class="header-section-number">2.9.1</span> What Changes When the Working Directory Changes?</h3>
+<section id="what-changes-when-the-working-directory-changes" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="what-changes-when-the-working-directory-changes"><span class="header-section-number">2.10.1</span> What Changes When the Working Directory Changes?</h3>
 <p>Suppose a different project has this layout. This is a hypothetical example; you do not need to create a <code>notebooks</code> folder in the practice kit.</p>
 <pre class="text"><code>example-project/
 ├── notebooks/
@@ -941,22 +1056,37 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 └── data/
     └── station_readings.csv</code></pre>
 <p>If the notebook’s current working directory is <code>example-project/notebooks</code>, <code>Path("data")</code> refers to a folder inside <code>notebooks</code>. To reach the CSV shown above, start with <code>..</code> to go up to <code>example-project</code>, then enter <code>data</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">".."</span>) <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"station_readings.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">".."</span>) <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"station_readings.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This works only when the actual working directory has that relationship. Do not repeatedly add <code>..</code> until a path happens to work.</p>
 <p>For the main workflow, keep a consistent folder layout and check <code>Path.cwd()</code> before building your data path.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Optional troubleshooting: Directory changes and other path checks">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+</section>
+<section id="move-to-the-folder-you-need" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="move-to-the-folder-you-need"><span class="header-section-number">2.10.2</span> Move to the Folder You Need</h3>
+<p>When <code>Path.cwd()</code> is not the folder you expected, you have two ways to correct it: move yourself to where the notebook is, or move the running notebook’s working directory to where you need it. Prefer the first.</p>
+<p><strong>Preferred: open the right project folder.</strong> A notebook’s working directory normally starts as the folder that contains the notebook file. So an unexpected <code>Path.cwd()</code> usually means the notebook is not where you assumed. Extracting the practice kit can leave a nested <code>stat303-setup/stat303-setup/</code> folder, for example. In VS Code, choose <strong>File → Open Folder</strong> and open the <code>stat303-setup</code> folder that directly contains <code>activity02.ipynb</code> and the <code>data</code> folder, then reopen the notebook. This fix is permanent, requires no extra code, and gives the same working directory every time you open the project.</p>
+<p><strong>When the files must stay where they are: <code>%cd</code>.</strong> <code>%cd</code> is a line magic (Section 2.8) that changes the working directory of the running kernel, so every cell you run afterwards resolves relative paths from the new location.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Give <code>%cd</code> a child folder’s name to move down, <code>..</code> to move up one level, or an absolute path to jump directly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd ..</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">/</span>Users<span class="op">/</span>student<span class="op">/</span>stat303<span class="op">-</span>setup</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd C:<span class="op">/</span>Users<span class="op">/</span>student<span class="op">/</span>stat303<span class="op">-</span>setup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then confirm the result instead of assuming the move worked:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Two cautions apply. The change lasts only for the current kernel session, so restarting the kernel returns you to the starting directory. And <code>%cd</code> moves relative to where you already are, so running a <code>%cd ..</code> cell a second time takes you up two levels. If you use <code>%cd</code>, place it in one cell near the top of the notebook so that running the notebook from the top always produces the same working directory.</p>
+<p>Finally, a terminal’s <code>cd</code> and a notebook’s <code>%cd</code> are separate. Typing <code>cd</code> in a terminal changes that terminal’s directory and has no effect on a notebook that is already running, and <code>%cd</code> changes the kernel’s directory and has no effect on your terminal.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional troubleshooting: other path checks">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Optional troubleshooting: Directory changes and other path checks
+<span class="screen-reader-only">Note</span>Optional troubleshooting: other path checks
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The terminal’s <code>cd</code> changes that terminal’s directory, not an already running notebook’s directory. In a notebook, <code>%cd</code> changes the working directory for subsequent cells in the current kernel session. <code>!cd</code> runs in a temporary shell and generally does not persist. Avoid scattering directory changes through your notebook; they can make results depend on the order in which cells run.</p>
+<p><code>!cd</code> runs in a temporary shell and does not change the notebook’s working directory; use <code>%cd</code> as described above. Avoid scattering directory changes through your notebook, because they make results depend on the order in which cells run.</p>
 <p><code>data_path.exists()</code> checks whether the path exists, whether it is a file or a folder. For this activity, use <code>data_path.is_file()</code> because you are looking specifically for a file.</p>
 </div>
 </div>
@@ -973,8 +1103,8 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </ol>
 <p>If you restart only the kernel, rerun the code cells to restore imports and variables. The files and installed packages remain on disk.</p>
 </section>
-<section id="practice-activity-find-your-python-and-your-data" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.10</span> Practice Activity: Find Your Python and Your Data</h2>
+<section id="practice-activity-find-your-python-and-your-data" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="practice-activity-find-your-python-and-your-data"><span class="header-section-number">2.11</span> Practice Activity: Find Your Python and Your Data</h2>
 <p><strong>Goal:</strong> Demonstrate that you can use a project environment, verify installed packages, and locate data from a notebook.</p>
 <p><strong>File:</strong> <code>activity02.ipynb</code> from the <a href="downloads/setup-practice.zip">setup practice kit</a>.</p>
 <p><strong>Submit:</strong> <code>activity02.html</code> through the final file-upload question in the Chapter 2 Canvas quiz.</p>
@@ -991,15 +1121,15 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 <li>Restart the kernel, run all code cells from top to bottom, resolve unexpected errors, and save. In Markdown, record whether the environment, package imports, and file checks worked as expected, then save again.</li>
 </ol>
 <p><strong>Completion checks:</strong> Your name and explanations render as text, the terminal and notebook use the same project environment, all four data science packages import successfully, the real CSV check returns <code>True</code>, and the deliberately incorrect path check returns <code>False</code>. Your report includes the terminal navigation comparison and two entries from <code>requirements.txt</code>.</p>
-<section id="render-and-submit-your-html" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">2.10.1</span> Render and Submit Your HTML</h3>
+<section id="render-and-submit-your-html" class="level3" data-number="2.11.1">
+<h3 data-number="2.11.1" class="anchored" data-anchor-id="render-and-submit-your-html"><span class="header-section-number">2.11.1</span> Render and Submit Your HTML</h3>
 <p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Chapter 1 Quarto refresher</a>. From <code>stat303-setup</code>, render your saved notebook with:</p>
 <pre class="text"><code>quarto render activity02.ipynb --to html</code></pre>
 <p>Inspect <code>activity02.html</code>, including a copy opened outside the project folder. Check that your name, Python and package information, terminal evidence, file-check results, explanations, dependency entries, and completion note appear. Upload this HTML to the final question in the <strong>Chapter 2 Canvas quiz</strong>. If you correct the notebook, save and render again before uploading.</p>
 <p><strong>HTML grading (16 points):</strong> tool/context explanations (2), environment and package evidence (4), navigation comparison (3), file-path work (3), dependency record (2), and readable completed HTML (2).</p>
 <p><strong>Keep:</strong> your saved <code>activity02.ipynb</code>, data, and <code>requirements.txt</code>. Submit only the HTML file to this quiz.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Self-check">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1008,7 +1138,7 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Changing the terminal’s directory does not change a running notebook’s working directory. The relative data path starts from the notebook’s current working directory. With the supplied folder arrangement, the real CSV check should return <code>True</code> and the deliberately incorrect filename should return <code>False</code>.</p>
 <p>Python and package versions may differ across students. Use your actual outputs and requirements entries. You may replace your personal username in copied paths with <code>[username]</code>, keeping enough of the path to identify the project and environment.</p>
@@ -1017,8 +1147,8 @@ Figure&nbsp;2.5: A new VS Code terminal with the project environment activated.
 </div>
 </section>
 </section>
-<section id="next-assignment-b" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="next-assignment-b"><span class="header-section-number">2.11</span> Next: Assignment B</h2>
+<section id="next-assignment-b" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="next-assignment-b"><span class="header-section-number">2.12</span> Next: Assignment B</h2>
 <p>After the two chapter practice activities, complete <a href="./Assignment B.html">Assignment B: Setting Up a Reproducible Python Project</a>. It has its own project kit and a 100-point assessment. Follow the assignment page for the complete instructions and submit its HTML through the Canvas assignment, separately from the chapter quiz.</p>
 <p>References: <a href="https://docs.python.org/3/library/venv.html">Python venv</a>, <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-pip">IPython %pip</a>, <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>, <a href="https://pip.pypa.io/en/stable/topics/dependency-resolution/">pip dependency resolution</a>.</p>
 

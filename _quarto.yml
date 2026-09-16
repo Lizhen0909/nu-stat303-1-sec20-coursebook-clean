@@ -42,7 +42,7 @@ book:
         - pandas_numpy_workflow.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
-    - part: 'From messy to insight'
+    - part: 'From Messy to Insight'
       chapters:
         - Data_cleaning.ipynb
         - Data_preparation.ipynb
