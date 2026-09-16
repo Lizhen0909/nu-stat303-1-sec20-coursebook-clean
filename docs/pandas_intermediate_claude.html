@@ -242,8 +242,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./numpy_speedup_pandas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy Speedup Pandas</span></span></a>
+  <a href="./pandas_numpy_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pandas and NumPy in a Data Science Workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1156,10 +1156,10 @@ pandas version: 3.0.5</code></pre>
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="replace-swapping-specific-values"><span class="header-section-number">5.5.3</span> <code>replace()</code> — swapping specific values</h3>
 <p><code>replace()</code> substitutes particular values (or a dictionary of many) with new ones. Values not included in a replacement dictionary are kept unchanged; an ordinary <code>map()</code> dictionary instead produces missing values for unmatched keys.</p>
 <p>Start with a small Series:</p>
-<div id="8b5b274b" class="cell">
+<div id="8b5b274b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="st">'Tech'</span>, <span class="st">'Retail'</span>, <span class="st">'Other'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="42eb645d" class="cell">
+<div id="42eb645d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <pre><code>0      Tech
@@ -1169,7 +1169,7 @@ dtype: str</code></pre>
 </div>
 </div>
 <p><strong>Using <code>map()</code>:</strong> Look up each value in the dictionary. Because <code>Other</code> is not a key, its result is missing (<code>NaN</code>).</p>
-<div id="c2aed2b1" class="cell">
+<div id="c2aed2b1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s.<span class="bu">map</span>({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <pre><code>0         Technology
@@ -1179,7 +1179,7 @@ dtype: str</code></pre>
 </div>
 </div>
 <p><strong>Using <code>replace()</code>:</strong> Replace the specified values. Because <code>Other</code> is not listed, it stays unchanged.</p>
-<div id="0bf819dd" class="cell">
+<div id="0bf819dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>s.replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <pre><code>0         Technology
@@ -1189,7 +1189,7 @@ dtype: str</code></pre>
 </div>
 </div>
 <p><strong>Using <code>replace()</code> on the earlier DataFrame column:</strong> Replace <code>Tech</code> and <code>Retail</code>; keep <code>Healthcare</code> and <code>Finance</code> unchanged.</p>
-<div id="f7cba0b8" class="cell">
+<div id="f7cba0b8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Industry'</span>].replace({<span class="st">'Tech'</span>: <span class="st">'Technology'</span>, <span class="st">'Retail'</span>: <span class="st">'Consumer Retail'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <pre><code>0         Technology
@@ -1404,7 +1404,7 @@ Name: Industry, dtype: str</code></pre>
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="custom-sorting-keys"><span class="header-section-number">5.6.1</span> Custom sorting with a lambda</h3>
 <p>A lambda can also define the <code>key</code> in <code>.sort_values()</code>. The key creates temporary comparison values that determine the row order. It does not change the stored values.</p>
 <p>Start with four titles and their row labels:</p>
-<div id="a2f84450" class="cell">
+<div id="a2f84450" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> pd.DataFrame({<span class="st">'Title'</span>: [<span class="st">'cedar'</span>, <span class="st">'Harbor'</span>, <span class="st">'ember'</span>, <span class="st">'Meadow'</span>]}, index<span class="op">=</span>[<span class="dv">104</span>, <span class="dv">101</span>, <span class="dv">109</span>, <span class="dv">103</span>])</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>titles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1442,7 +1442,7 @@ Name: Industry, dtype: str</code></pre>
 </div>
 </div>
 <p><strong>Sort alphabetically, ignoring capitalization.</strong> <code>lambda col: col.str.lower()</code> converts the titles to lowercase for comparison:</p>
-<div id="c9662e87" class="cell">
+<div id="c9662e87" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>titles.sort_values(<span class="st">'Title'</span>, key<span class="op">=</span><span class="kw">lambda</span> col: col.<span class="bu">str</span>.lower())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1480,7 +1480,7 @@ Name: Industry, dtype: str</code></pre>
 </div>
 <p>Here, <code>col</code> receives the entire <code>Title</code> Series, not one title at a time. <code>col.str.lower()</code> produces <code>cedar</code>, <code>harbor</code>, <code>ember</code>, and <code>meadow</code>. Sorting these comparison values places <code>ember</code> before <code>Harbor</code>, while the displayed titles keep their original capitalization.</p>
 <p><strong>Sort by title length, shortest first.</strong> Change the lambda to return the number of characters in each title:</p>
-<div id="8555d08c" class="cell">
+<div id="8555d08c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>titles.sort_values(<span class="st">'Title'</span>, key<span class="op">=</span><span class="kw">lambda</span> col: col.<span class="bu">str</span>.<span class="bu">len</span>(), kind<span class="op">=</span><span class="st">'stable'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1666,7 +1666,7 @@ Name: Industry, dtype: str</code></pre>
 <p><strong>Goal:</strong> Build and explain a small store report using labeled transformations.</p>
 <p><strong>File:</strong> <code>activity_pandas_intermediate.ipynb</code>.</p>
 <p><strong>Submit:</strong> <code>activity_pandas_intermediate.html</code> through the final upload question in the Pandas Intermediate Canvas quiz when assigned.</p>
-<p><strong>These are the complete Pandas Intermediate activity instructions.</strong> Use this section for the task list; the notebook contains invented inputs and spaces to record your work.</p>
+<p><strong>This section contains the complete activity instructions.</strong> Use this section for the task list; the notebook contains invented inputs and spaces to record your work.</p>
 <p>Open <code>activity_pandas_intermediate.ipynb</code> from the folder prepared in <a href="#set-up-your-practice-files">Set Up the Chapter Files</a>, using the same project environment.</p>
 <p>The worked examples are preparation, not additional submission requirements.</p>
 <section id="a.-calculate-with-explicit-inputs" class="level3 unnumbered">
@@ -1717,7 +1717,7 @@ Name: Industry, dtype: str</code></pre>
 <h2 data-number="5.10" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">5.10</span> Before You Move On</h2>
 <p>You should be able to explain which labels a calculation matches, which columns contribute to a summary, and how unmatched values behave in a lookup. Choose a column expression when it describes the calculation clearly; use a named function when it makes a custom rule easier to understand.</p>
 <p>More extensive missing-data decisions belong in <a href="./Data_cleaning.html">Data Cleaning</a>, and group-specific summaries belong in <a href="./Data aggregation.html">Data Grouping and Aggregation</a>.</p>
-<p>Next, <a href="./numpy_fundamentals.html">NumPy Fundamentals</a> introduces arrays, positions, shapes, and broadcasting. <a href="./numpy_speedup_pandas.html">NumPy Speedup Pandas</a> later brings the two libraries together.</p>
+<p>Next, <a href="./numpy_fundamentals.html">NumPy Fundamentals</a> introduces arrays, positions, shapes, and broadcasting. <a href="./pandas_numpy_workflow.html">Pandas and NumPy in a Data Science Workflow</a> later brings the two libraries together.</p>
 <p>References: <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html">pandas mapping</a>, <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.add.html">aligned addition</a>, and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">correlation</a>.</p>
 
 

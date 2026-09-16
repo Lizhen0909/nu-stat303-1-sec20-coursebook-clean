@@ -10,6 +10,7 @@ project:
     - downloads/reading-data-practice.zip
     - downloads/setup-practice.zip
     - downloads/assignment-b-setup.zip
+    - downloads/pandas-numpy-workflow-practice.zip
 
 
 book:  
@@ -38,7 +39,7 @@ book:
         - pandas_fundamentals_reorganized.ipynb
         - pandas_intermediate_claude.ipynb
         - numpy_fundamentals.ipynb
-        - numpy_speedup_pandas.ipynb
+        - pandas_numpy_workflow.ipynb
         - Data visualization.ipynb
         - Advanced_Data_Visualization.ipynb
     - part: 'From messy to insight'
