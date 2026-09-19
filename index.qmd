@@ -2,7 +2,7 @@
 
 Welcome to **STAT 303-1 (Data Science with Python I), Section 20** at Northwestern University.
 
-This book is designed to support your journey into data science, blending foundational concepts with hands-on practice. It builds on the original work of **Professor Arvind Krishna**, whose materials inspired the structure and spirit of this resource. The content has been thoughtfully updated to meet the evolving needs of students and the goals of the course.
+This book combines foundational concepts with hands-on practice. Its overall organization was adapted from earlier course materials developed by Professor Arvind Krishna. The chapters, examples, assignments, and technical guidance have since been revised and expanded for the current course.
 
 In this first course, you will:
 

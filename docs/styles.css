@@ -1,0 +1,4 @@
+/* Assignment labels already include their letter, so suppress Quarto's duplicate appendix marker in navigation. */
+a[href^="./Assignment "] .chapter-number {
+  display: none;
+}

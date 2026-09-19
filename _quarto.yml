@@ -55,13 +55,20 @@ book:
         - Data wrangling.ipynb
         # - student_solutions.ipynb
   appendices: 
-    - Assignment A.ipynb
-    - Assignment B.ipynb
-    - Assignment C.ipynb
-    - Assignment D.ipynb
-    - Assignment E.ipynb
-    - Assignment F.ipynb
-    - Assignment G.ipynb
+    - href: Assignment A.ipynb
+      text: "Assignment A: Python Iterables and Data Structures"
+    - href: Assignment B.ipynb
+      text: "Assignment B: Reproducible Project Setup"
+    - href: Assignment C.ipynb
+      text: "Assignment C: Pandas"
+    - href: Assignment D.ipynb
+      text: "Assignment D: NumPy"
+    - href: Assignment E.ipynb
+      text: "Assignment E: Data Visualization"
+    - href: Assignment F.ipynb
+      text: "Assignment F: Data Cleaning and Preparation"
+    - href: Assignment G.ipynb
+      text: "Assignment G: Data Wrangling"
     - geospatial_mapping.ipynb
     - Datasets.ipynb
     # - references.qmd
@@ -71,6 +78,7 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    css: styles.css
 
 
 
