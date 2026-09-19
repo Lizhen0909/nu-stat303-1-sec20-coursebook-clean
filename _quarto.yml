@@ -42,8 +42,10 @@ book:
         - pandas_intermediate_claude.ipynb
         - numpy_fundamentals.ipynb
         - numpy_pandas_workflow.ipynb
-        - data_viz_1.ipynb
-        - data_viz_2.ipynb
+        - href: data_viz_1.ipynb
+          text: "Data Visualization I: Single Plots"
+        - href: data_viz_2.ipynb
+          text: "Data Visualization II: Multi-Panel Figures"
     - part: 'From Messy to Insight'
       chapters:
         - Data_cleaning.ipynb

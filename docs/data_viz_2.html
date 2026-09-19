@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Multi-Panel Figures</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_viz_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Single Plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_viz_2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Multi-Panel Figures</span></span></a>
   </div>
 </li>
       </ul>
@@ -435,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Multi-Panel Figures</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></h1>
 </div>
@@ -1426,8 +1426,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="use-an-inset-to-show-detail" class="level2" data-number="9.9">
 <h2 data-number="9.9" class="anchored" data-anchor-id="use-an-inset-to-show-detail"><span class="header-section-number">9.9</span> Use an Inset to Show Detail</h2>
 <p>Two y-axes squeeze a second <em>scale</em> into one panel. An inset does something gentler: it puts a second <em>view of the same data</em> inside the panel. It is the tool for a plot that is right overall but crowded in one region — the main panel keeps the full range while a small panel inside it magnifies the part where the points pile up.</p>
-<p><code>ax.inset_axes([left, bottom, width, height])</code> creates that small Axes as a child of the panel, positioned in fractions of the parent. <code>[0.58, 0.06, 0.40, 0.34]</code> starts 58% of the way across and 6% up, and takes 40% of the width and 34% of the height. Because the numbers are relative to the parent, the inset stays put when the surrounding layout changes. (<code>fig.add_axes(...)</code> takes figure coordinates instead, which is what you want when a small Axes should sit somewhere in the figure independently of any panel.)</p>
+<p><code>ax.inset_axes([left, bottom, width, height])</code> creates that small Axes as a child of the panel, positioned in fractions of the parent. <code>[0.58, 0.06, 0.40, 0.29]</code> starts 58% of the way across and 6% up, and takes 40% of the width and 29% of the height. Because the numbers are relative to the parent, the inset stays put when the surrounding layout changes. (<code>fig.add_axes(...)</code> takes figure coordinates instead, which is what you want when a small Axes should sit somewhere in the figure independently of any panel.)</p>
 <p><code>ax.indicate_inset_zoom()</code> then draws the rectangle marking the magnified region and the lines connecting it to the inset. Without it, the reader has to work out the relationship from the axis numbers alone.</p>
+<p>An inset also needs somewhere to sit where it covers nothing. This scatter has no penguins with long flippers and low body mass, so its bottom-right corner is free, and widening the limits a little past the data with <code>ax.set(xlim=..., ylim=...)</code> makes that corner roomier without moving a single point.</p>
 <div id="dataviz2-inset-code" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="dv">5</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1437,15 +1438,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Body mass (g)"</span>)</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Where the points pile up, an inset can show the detail"</span>)</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># A child Axes, placed in fractions of the parent panel.</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>zoom <span class="op">=</span> ax.inset_axes([<span class="fl">0.58</span>, <span class="fl">0.06</span>, <span class="fl">0.40</span>, <span class="fl">0.34</span>])</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                alpha<span class="op">=</span><span class="fl">0.7</span>, legend<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>zoom)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>zoom.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">185</span>, <span class="dv">200</span>), ylim<span class="op">=</span>(<span class="dv">3000</span>, <span class="dv">4200</span>), xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>)</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>zoom.tick_params(labelsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>ax.indicate_inset_zoom(zoom, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Widen the limits past the data, clearing a corner for the inset.</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">168</span>, <span class="dv">246</span>), ylim<span class="op">=</span>(<span class="dv">2300</span>, <span class="dv">6500</span>))</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># A child Axes, placed in fractions of the parent panel.</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>zoom <span class="op">=</span> ax.inset_axes([<span class="fl">0.58</span>, <span class="fl">0.06</span>, <span class="fl">0.40</span>, <span class="fl">0.29</span>])</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>                alpha<span class="op">=</span><span class="fl">0.7</span>, legend<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>zoom)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>zoom.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">185</span>, <span class="dv">200</span>), ylim<span class="op">=</span>(<span class="dv">3000</span>, <span class="dv">4200</span>), xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>zoom.tick_params(labelsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>ax.indicate_inset_zoom(zoom, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1454,10 +1458,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Two details of craft. <strong>Put the inset where the data is not</strong>: the bottom-right corner of this panel is nearly empty, so the magnified view hides nothing. If every corner is occupied, the region deserves its own panel instead.</p>
+<p>Two details of craft. <strong>Put the inset where the data is not</strong>: the magnified view sits in the empty corner, so it hides nothing — and that includes the inset’s own tick labels, which are drawn outside its frame and will cover points if you place it too tightly. Widening the limits is the cheap way to clear that space. If no corner can be freed, the region deserves its own panel instead.</p>
 <p><strong>Keep the inset’s ticks.</strong> The temptation is to strip them for tidiness, but an inset has a different scale from its parent and those numbers are the only thing saying so. Here <code>legend=False</code> drops the duplicate legend and the axis <em>labels</em> are dropped because the parent already names both variables — the tick numbers stay.</p>
 <p>An inset does not have to be a magnified copy. It is an ordinary Axes, so it can hold any plot at all, and a common use is a small summary tucked into a corner of the main panel: the distribution of one variable, or a compact comparison across groups.</p>
-<p>The figure below places two of them with <code>fig.add_axes([left, bottom, width, height])</code>, which takes the same four numbers as <strong>figure</strong> coordinates rather than fractions of a panel. That is the right tool when a small Axes belongs to the figure as a whole rather than to one panel, and the cost is exactly that: you are positioning against the whole canvas, so a change in the surrounding layout can leave the inset stranded. <code>facecolor</code> sets each one apart from the scatter behind it, and <code>sns.move_legend(ax, "upper left", bbox_to_anchor=(1.02, 1))</code> pushes the legend outside the panel, because the insets wanted the corner it was sitting in.</p>
+<p>The figure below places two of them with <code>fig.add_axes([left, bottom, width, height])</code>, which takes the same four numbers as <strong>figure</strong> coordinates rather than fractions of a panel. That is the right tool when a small Axes belongs to the figure as a whole rather than to one panel, and the cost is exactly that: you are positioning against the whole canvas, so a change in the surrounding layout can leave the inset stranded. <code>facecolor</code> sets each one apart from the scatter behind it, and <code>sns.move_legend(ax, "upper left", bbox_to_anchor=(1.02, 1))</code> pushes the legend outside the panel, because the insets wanted the corner it was sitting in. The limits are widened here too, for the same reason as before — the lower-right inset needs a clear corner, and its species labels sit outside its frame.</p>
 <div id="dataviz2-inset2-code" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1467,20 +1471,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Body mass (g)"</span>)</span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"One main panel, two summary insets"</span>)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure coordinates: positioned against the whole canvas, not the panel.</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>hist_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.13</span>, <span class="fl">0.63</span>, <span class="fl">0.17</span>, <span class="fl">0.20</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>hist_ax)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>hist_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Body mass"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[], yticks<span class="op">=</span>[])</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>hist_ax.title.set_size(<span class="dv">9</span>)</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>box_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.50</span>, <span class="fl">0.18</span>, <span class="fl">0.21</span>, <span class="fl">0.17</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, y<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>box_ax)</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>box_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"By species"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[])</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>box_ax.title.set_size(<span class="dv">9</span>)</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>box_ax.tick_params(labelsize<span class="op">=</span><span class="dv">7</span>)</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">168</span>, <span class="dv">246</span>), ylim<span class="op">=</span>(<span class="dv">2300</span>, <span class="dv">6600</span>))</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure coordinates: positioned against the whole canvas, not the panel.</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>hist_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.13</span>, <span class="fl">0.62</span>, <span class="fl">0.17</span>, <span class="fl">0.19</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>hist_ax)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>hist_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Body mass"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[], yticks<span class="op">=</span>[])</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>hist_ax.title.set_size(<span class="dv">9</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>box_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.56</span>, <span class="fl">0.15</span>, <span class="fl">0.21</span>, <span class="fl">0.17</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, y<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>box_ax)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>box_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"By species"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[])</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>box_ax.title.set_size(<span class="dv">9</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>box_ax.tick_params(labelsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2204,8 +2209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data_viz_1.html" class="pagination-link" aria-label="Data Visualization I: Choosing and Drawing a Single Plot">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></span>
+      <a href="./data_viz_1.html" class="pagination-link" aria-label="Data Visualization I: Single Plots">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Single Plots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
