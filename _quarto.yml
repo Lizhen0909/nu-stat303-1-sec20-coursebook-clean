@@ -11,6 +11,8 @@ project:
     - downloads/setup-practice.zip
     - downloads/assignment-b-setup.zip
     - downloads/pandas-numpy-workflow-practice.zip
+    - downloads/data-visualization-1-practice.zip
+    - downloads/data-visualization-2-practice.zip
 
 
 book:  
@@ -39,9 +41,9 @@ book:
         - pandas_fundamentals_reorganized.ipynb
         - pandas_intermediate_claude.ipynb
         - numpy_fundamentals.ipynb
-        - pandas_numpy_workflow.ipynb
-        - Data visualization.ipynb
-        - Advanced_Data_Visualization.ipynb
+        - numpy_pandas_workflow.ipynb
+        - data_viz_1.ipynb
+        - data_viz_2.ipynb
     - part: 'From Messy to Insight'
       chapters:
         - Data_cleaning.ipynb
@@ -58,6 +60,7 @@ book:
     - Assignment E.ipynb
     - Assignment F.ipynb
     - Assignment G.ipynb
+    - geospatial_mapping.ipynb
     - Datasets.ipynb
     # - references.qmd
 

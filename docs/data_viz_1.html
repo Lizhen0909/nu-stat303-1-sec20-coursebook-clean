@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Data Visualization I: Choosing and Drawing a Single Plot – Data Science I with python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./data_viz_2.html" rel="next">
+<link href="./numpy_pandas_workflow.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d3f7f8e73c8d287b30bcf59c2b563615.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_1.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science I with python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Review of STAT 201: Python Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Structures</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Setting Up for Data Science</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Core Library Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_intermediate_claude.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_pandas_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy and pandas in a Real Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">From Messy to Insight</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Python Iterables and Data Structures Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Reproducible Project Setup Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Pandas Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment D.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">NumPy Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment E.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Data Visualization Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment G.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Data Wrangling Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./geospatial_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Geospatial Plotting for Final Projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#set-up-your-chapter-files" id="toc-set-up-your-chapter-files" class="nav-link active" data-scroll-target="#set-up-your-chapter-files"><span class="header-section-number">8.1</span> Set Up Your Chapter Files</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span class="header-section-number">8.2</span> The data</a></li>
+  <li><a href="#choosing-a-plot" id="toc-choosing-a-plot" class="nav-link" data-scroll-target="#choosing-a-plot"><span class="header-section-number">8.3</span> Choosing a plot</a></li>
+  <li><a href="#the-three-libraries" id="toc-the-three-libraries" class="nav-link" data-scroll-target="#the-three-libraries"><span class="header-section-number">8.4</span> The three libraries</a></li>
+  <li><a href="#one-numeric-variable-the-histogram" id="toc-one-numeric-variable-the-histogram" class="nav-link" data-scroll-target="#one-numeric-variable-the-histogram"><span class="header-section-number">8.5</span> One numeric variable: the histogram</a>
+  <ul class="collapse">
+  <li><a href="#with-pandas" id="toc-with-pandas" class="nav-link" data-scroll-target="#with-pandas"><span class="header-section-number">8.5.1</span> With pandas</a></li>
+  <li><a href="#with-matplotlib" id="toc-with-matplotlib" class="nav-link" data-scroll-target="#with-matplotlib"><span class="header-section-number">8.5.2</span> With matplotlib</a></li>
+  <li><a href="#with-seaborn" id="toc-with-seaborn" class="nav-link" data-scroll-target="#with-seaborn"><span class="header-section-number">8.5.3</span> With seaborn</a></li>
+  <li><a href="#bins-the-one-choice-that-matters" id="toc-bins-the-one-choice-that-matters" class="nav-link" data-scroll-target="#bins-the-one-choice-that-matters"><span class="header-section-number">8.5.4</span> Bins: the one choice that matters</a></li>
+  <li><a href="#two-relatives-of-the-histogram" id="toc-two-relatives-of-the-histogram" class="nav-link" data-scroll-target="#two-relatives-of-the-histogram"><span class="header-section-number">8.5.5</span> Two relatives of the histogram</a></li>
+  </ul></li>
+  <li><a href="#one-categorical-variable-the-bar-chart" id="toc-one-categorical-variable-the-bar-chart" class="nav-link" data-scroll-target="#one-categorical-variable-the-bar-chart"><span class="header-section-number">8.6</span> One categorical variable: the bar chart</a>
+  <ul class="collapse">
+  <li><a href="#with-pandas-1" id="toc-with-pandas-1" class="nav-link" data-scroll-target="#with-pandas-1"><span class="header-section-number">8.6.1</span> With pandas</a></li>
+  <li><a href="#with-matplotlib-1" id="toc-with-matplotlib-1" class="nav-link" data-scroll-target="#with-matplotlib-1"><span class="header-section-number">8.6.2</span> With matplotlib</a></li>
+  <li><a href="#with-seaborn-1" id="toc-with-seaborn-1" class="nav-link" data-scroll-target="#with-seaborn-1"><span class="header-section-number">8.6.3</span> With seaborn</a></li>
+  </ul></li>
+  <li><a href="#two-numeric-variables-the-scatter-plot" id="toc-two-numeric-variables-the-scatter-plot" class="nav-link" data-scroll-target="#two-numeric-variables-the-scatter-plot"><span class="header-section-number">8.7</span> Two numeric variables: the scatter plot</a>
+  <ul class="collapse">
+  <li><a href="#with-pandas-2" id="toc-with-pandas-2" class="nav-link" data-scroll-target="#with-pandas-2"><span class="header-section-number">8.7.1</span> With pandas</a></li>
+  <li><a href="#with-matplotlib-2" id="toc-with-matplotlib-2" class="nav-link" data-scroll-target="#with-matplotlib-2"><span class="header-section-number">8.7.2</span> With matplotlib</a></li>
+  <li><a href="#with-seaborn-2" id="toc-with-seaborn-2" class="nav-link" data-scroll-target="#with-seaborn-2"><span class="header-section-number">8.7.3</span> With seaborn</a></li>
+  <li><a href="#adding-a-third-variable-with-color" id="toc-adding-a-third-variable-with-color" class="nav-link" data-scroll-target="#adding-a-third-variable-with-color"><span class="header-section-number">8.7.4</span> Adding a third variable with color</a></li>
+  </ul></li>
+  <li><a href="#many-numeric-variables-the-correlation-heatmap" id="toc-many-numeric-variables-the-correlation-heatmap" class="nav-link" data-scroll-target="#many-numeric-variables-the-correlation-heatmap"><span class="header-section-number">8.8</span> Many numeric variables: the correlation heatmap</a>
+  <ul class="collapse">
+  <li><a href="#what-correlation-measures" id="toc-what-correlation-measures" class="nav-link" data-scroll-target="#what-correlation-measures"><span class="header-section-number">8.8.1</span> What correlation measures</a></li>
+  <li><a href="#drawing-it" id="toc-drawing-it" class="nav-link" data-scroll-target="#drawing-it"><span class="header-section-number">8.8.2</span> Drawing it</a></li>
+  <li><a href="#adding-a-regression-line" id="toc-adding-a-regression-line" class="nav-link" data-scroll-target="#adding-a-regression-line"><span class="header-section-number">8.8.3</span> Adding a regression line</a></li>
+  <li><a href="#three-warnings" id="toc-three-warnings" class="nav-link" data-scroll-target="#three-warnings"><span class="header-section-number">8.8.4</span> Three warnings</a></li>
+  </ul></li>
+  <li><a href="#numeric-by-categorical-comparing-groups" id="toc-numeric-by-categorical-comparing-groups" class="nav-link" data-scroll-target="#numeric-by-categorical-comparing-groups"><span class="header-section-number">8.9</span> Numeric by categorical: comparing groups</a>
+  <ul class="collapse">
+  <li><a href="#boxplots-by-group" id="toc-boxplots-by-group" class="nav-link" data-scroll-target="#boxplots-by-group"><span class="header-section-number">8.9.1</span> Boxplots by group</a></li>
+  <li><a href="#violin-plots" id="toc-violin-plots" class="nav-link" data-scroll-target="#violin-plots"><span class="header-section-number">8.9.2</span> Violin plots</a></li>
+  <li><a href="#bar-chart-of-means" id="toc-bar-chart-of-means" class="nav-link" data-scroll-target="#bar-chart-of-means"><span class="header-section-number">8.9.3</span> Bar chart of means</a></li>
+  </ul></li>
+  <li><a href="#two-categorical-variables" id="toc-two-categorical-variables" class="nav-link" data-scroll-target="#two-categorical-variables"><span class="header-section-number">8.10</span> Two categorical variables</a></li>
+  <li><a href="#two-numeric-variables-in-order-the-line-plot" id="toc-two-numeric-variables-in-order-the-line-plot" class="nav-link" data-scroll-target="#two-numeric-variables-in-order-the-line-plot"><span class="header-section-number">8.11</span> Two numeric variables in order: the line plot</a></li>
+  <li><a href="#finishing-a-plot" id="toc-finishing-a-plot" class="nav-link" data-scroll-target="#finishing-a-plot"><span class="header-section-number">8.12</span> Finishing a plot</a></li>
+  <li><a href="#making-plots-honest" id="toc-making-plots-honest" class="nav-link" data-scroll-target="#making-plots-honest"><span class="header-section-number">8.13</span> Making plots honest</a></li>
+  <li><a href="#summary-cheat-sheet" id="toc-summary-cheat-sheet" class="nav-link" data-scroll-target="#summary-cheat-sheet"><span class="header-section-number">8.14</span> Summary Cheat Sheet</a></li>
+  <li><a href="#practice-activity-choose-draw-and-defend-a-plot" id="toc-practice-activity-choose-draw-and-defend-a-plot" class="nav-link" data-scroll-target="#practice-activity-choose-draw-and-defend-a-plot"><span class="header-section-number">8.15</span> Practice Activity: Choose, Draw, and Defend a Plot</a>
+  <ul class="collapse">
+  <li><a href="#a.-one-numeric-variable-and-what-the-bins-decide" id="toc-a.-one-numeric-variable-and-what-the-bins-decide" class="nav-link" data-scroll-target="#a.-one-numeric-variable-and-what-the-bins-decide">A. One Numeric Variable, and What the Bins Decide</a></li>
+  <li><a href="#b.-one-categorical-variable-in-two-libraries" id="toc-b.-one-categorical-variable-in-two-libraries" class="nav-link" data-scroll-target="#b.-one-categorical-variable-in-two-libraries">B. One Categorical Variable, in Two Libraries</a></li>
+  <li><a href="#c.-two-numeric-variables-and-a-line-only-where-it-belongs" id="toc-c.-two-numeric-variables-and-a-line-only-where-it-belongs" class="nav-link" data-scroll-target="#c.-two-numeric-variables-and-a-line-only-where-it-belongs">C. Two Numeric Variables, and a Line Only Where It Belongs</a></li>
+  <li><a href="#d.-groups-hidden-aggregation-and-a-finished-plot" id="toc-d.-groups-hidden-aggregation-and-a-finished-plot" class="nav-link" data-scroll-target="#d.-groups-hidden-aggregation-and-a-finished-plot">D. Groups, Hidden Aggregation, and a Finished Plot</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">Render and Submit</a></li>
+  </ul></li>
+  <li><a href="#extended-practice" id="toc-extended-practice" class="nav-link" data-scroll-target="#extended-practice"><span class="header-section-number">8.16</span> Extended Practice</a>
+  <ul class="collapse">
+  <li><a href="#violin-against-box" id="toc-violin-against-box" class="nav-link" data-scroll-target="#violin-against-box"><span class="header-section-number">8.16.1</span> Violin against Box</a></li>
+  <li><a href="#a-heatmap-that-hides-its-scale" id="toc-a-heatmap-that-hides-its-scale" class="nav-link" data-scroll-target="#a-heatmap-that-hides-its-scale"><span class="header-section-number">8.16.2</span> A Heatmap That Hides Its Scale</a></li>
+  <li><a href="#the-weakest-pair-and-the-shaded-band" id="toc-the-weakest-pair-and-the-shaded-band" class="nav-link" data-scroll-target="#the-weakest-pair-and-the-shaded-band"><span class="header-section-number">8.16.3</span> The Weakest Pair, and the Shaded Band</a></li>
+  <li><a href="#a-line-where-a-line-does-not-belong" id="toc-a-line-where-a-line-does-not-belong" class="nav-link" data-scroll-target="#a-line-where-a-line-does-not-belong"><span class="header-section-number">8.16.4</span> A Line Where a Line Does Not Belong</a></li>
+  </ul></li>
+  <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">8.17</span> Before You Move On</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_1.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In <a href="./numpy_pandas_workflow.html">NumPy and pandas in a Real Workflow</a>, you carried one table through cleaning, calculation, and checking, and every answer came back as numbers. A table of numbers tells you what the values <em>are</em>. A plot tells you what they <em>do</em> — whether they cluster, spread out, drift upward, or split into groups. Almost every question you will ask of a dataset in this course is easier to answer with a picture first.</p>
+<p>This chapter has two goals:</p>
+<ol type="1">
+<li><strong>Choosing</strong> the right kind of plot for the question you are asking.</li>
+<li><strong>Drawing</strong> that plot three different ways — with <code>pandas</code>, with <code>matplotlib</code>, and with <code>seaborn</code> — so you understand how the three libraries relate to each other.</li>
+</ol>
+<p>Every plot in this chapter is a <em>single</em> plot: one set of axes, one picture. Putting several plots side by side in one figure is the subject of the next chapter.</p>
+<p>By the end of this chapter you should be able to:</p>
+<ul>
+<li>Choose a plot from the question you are asking and the types of the variables involved, rather than from habit.</li>
+<li>Draw the same plot with <code>pandas</code>, <code>matplotlib</code>, and <code>seaborn</code>, and say what each library contributes.</li>
+<li>Read a histogram as a choice about bins, and describe how the bin count changes the story it tells.</li>
+<li>Compare a histogram with its two relatives, the density curve and the box plot, and say what each one hides.</li>
+<li>Add a third or fourth variable with <code>hue</code>, <code>style</code>, and <code>size</code>, and recognize when one set of axes is carrying too much.</li>
+<li>Interpret a correlation table and its heatmap, and fit a regression line only where a line belongs.</li>
+<li>Name the aggregation a plotting function performed for you when you never asked for one.</li>
+<li>Report how many observations a plot left out, since all three libraries drop missing values silently.</li>
+<li>Label, size, and theme a finished plot, and judge whether it makes an honest argument.</li>
+</ul>
+<p>Complete the <a href="#practice-activity-choose-draw-and-defend-a-plot">practice activity</a> after the worked examples.</p>
+<section id="set-up-your-chapter-files" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="set-up-your-chapter-files"><span class="header-section-number">8.1</span> Set Up Your Chapter Files</h2>
+<p>Download the <a href="downloads/data-visualization-1-practice.zip">Data Visualization I practice kit</a>. Extract <code>stat303-data-visualization-1</code> inside the <code>stat303-setup</code> project from the setup chapters and select that project’s verified Python environment.</p>
+<pre class="text"><code>stat303-setup/
+├── .venv/
+└── stat303-data-visualization-1/
+    ├── data_viz_1_examples.ipynb
+    ├── activity08.ipynb
+    └── README.md</code></pre>
+<p>Run <code>data_viz_1_examples.ipynb</code> for the lesson and complete <code>activity08.ipynb</code> for your own activity report, with <code>stat303-data-visualization-1</code> as the notebook working folder.</p>
+<p><strong>This kit has no <code>data/</code> folder, and nothing belongs in one.</strong> Every plot in the chapter and in the practice work uses the Palmer penguins dataset that comes with seaborn, which <code>sns.load_dataset("penguins")</code> hands you in one line. The first call downloads the file and caches it on your computer, so you need a network connection once; after that it loads from the cache. If you would rather read it from a file of your own, the note under <a href="#the-data">The data</a> shows the one-line change.</p>
+<p>We need three libraries. The import aliases below (<code>pd</code>, <code>plt</code>, <code>sns</code>) are near-universal conventions — you will see them in every textbook, tutorial, and Stack Overflow answer, so use them.</p>
+<div id="cc67dc8b" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Environment check:</strong> This chapter uses pandas, matplotlib, and seaborn. If an import fails, check the selected notebook kernel first. If a package is missing, activate your project environment and run this command in its terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install pandas matplotlib seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>pandas and matplotlib went into that environment in <a href="./python_venv.html#install-packages-in-the-intended-environment">Project Environments, Packages, and File Paths</a>, and seaborn is the package that chapter installs as its worked example.</p>
+</section>
+<section id="the-data" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">8.2</span> The data</h2>
+<p>We will use the <strong>Palmer penguins</strong> dataset throughout. It records body measurements for 344 penguins observed near Palmer Station, Antarctica. <code>seaborn</code> ships with it, so we can load it in one line.</p>
+<div id="cb0e9ac5" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">island</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<th data-quarto-table-cell-role="th">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>181.0</td>
+<td>3750.0</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>186.0</td>
+<td>3800.0</td>
+<td>Female</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>195.0</td>
+<td>3250.0</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>193.0</td>
+<td>3450.0</td>
+<td>Female</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Loading the data from a file instead
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>sns.load_dataset</code> downloads the data over the internet. If you have the file saved locally as <code>penguins.csv</code>, use what you already know instead: <code>df = pd.read_csv("penguins.csv")</code>. Everything after this point is identical.</p>
+</div>
+</div>
+<p>Before plotting anything, look at the shape of the data and the type of each column.</p>
+<div id="8a08bcea" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(344, 7)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>species                  str
+island                   str
+bill_length_mm       float64
+bill_depth_mm        float64
+flipper_length_mm    float64
+body_mass_g          float64
+sex                      str
+dtype: object</code></pre>
+</div>
+</div>
+<p>So we have 344 rows and 7 columns. The column types fall into two groups, and this distinction is the single most important thing for choosing a plot:</p>
+<ul>
+<li><strong>Numeric</strong> (<code>float64</code>): <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, <code>body_mass_g</code>. These are measured quantities. Arithmetic on them is meaningful — an average body mass is a sensible thing to compute.</li>
+<li><strong>Categorical</strong> (text, reported as <code>object</code> or <code>str</code> depending on your pandas version): <code>species</code>, <code>island</code>, <code>sex</code>. These are labels that sort penguins into groups. There are only a handful of distinct values, and arithmetic on them is meaningless.</li>
+</ul>
+<p>Here are the categories:</p>
+<div id="9041c91c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"species"</span>].value_counts())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"island"</span>].value_counts())</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"sex"</span>].value_counts())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>species
+Adelie       152
+Gentoo       124
+Chinstrap     68
+Name: count, dtype: int64
+island
+Biscoe       168
+Dream        124
+Torgersen     52
+Name: count, dtype: int64
+sex
+Male      168
+Female    165
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>Notice the counts for <code>sex</code> add up to 333, not 344. Some values are missing. We can see exactly how many are missing in each column:</p>
+<div id="28a67ee4" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>species               0
+island                0
+bill_length_mm        2
+bill_depth_mm         2
+flipper_length_mm     2
+body_mass_g           2
+sex                  11
+dtype: int64</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Missing values and plots
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eleven penguins have no recorded sex, and two have no body measurements at all. All three plotting libraries <strong>silently drop missing values</strong> when they draw. That is usually what you want, but it means the number of observations in a plot can be smaller than the number of rows in your data — and nothing on the plot tells you so. Whenever you plot a column with missing values, it is your job to know how many were dropped.</p>
+</div>
+</div>
+</section>
+<section id="choosing-a-plot" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="choosing-a-plot"><span class="header-section-number">8.3</span> Choosing a plot</h2>
+<p>Do not start by asking “what plot should I make?” Start by asking <strong>what question you want answered</strong>, then let the <em>types</em> of the variables involved pick the plot for you.</p>
+<p>That gives you a small decision table. Nearly everything in an introductory course fits in it:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variables involved</th>
+<th>Question you are asking</th>
+<th>Plot to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One numeric</td>
+<td>How are these values distributed?</td>
+<td><strong>Histogram</strong>, density plot, or boxplot</td>
+</tr>
+<tr class="even">
+<td>One categorical</td>
+<td>How many observations in each group?</td>
+<td><strong>Bar chart</strong> of counts</td>
+</tr>
+<tr class="odd">
+<td>Two numeric</td>
+<td>Do these two move together?</td>
+<td><strong>Scatter plot</strong></td>
+</tr>
+<tr class="even">
+<td>Two numeric, roughly linear</td>
+<td>How strong is the trend, and how steep?</td>
+<td><strong>Scatter plot with a regression line</strong></td>
+</tr>
+<tr class="odd">
+<td>Two numeric, one ordered (e.g.&nbsp;time)</td>
+<td>How does this change along the other?</td>
+<td><strong>Line plot</strong></td>
+</tr>
+<tr class="even">
+<td>Several numeric</td>
+<td>Which pairs move together?</td>
+<td><strong>Correlation heatmap</strong></td>
+</tr>
+<tr class="odd">
+<td>One numeric, one categorical</td>
+<td>Does this quantity differ across groups?</td>
+<td><strong>Grouped boxplot</strong>, violin, or bar of means</td>
+</tr>
+<tr class="even">
+<td>Two categorical</td>
+<td>Are these two groupings related?</td>
+<td><strong>Grouped bar chart</strong> or heatmap of counts</td>
+</tr>
+</tbody>
+</table>
+<p>Two rules of thumb that will save you from most bad plots:</p>
+<ul>
+<li><strong>Count the variables.</strong> One variable is a distribution. Two variables is a relationship. Three or more means you need a color, shape, or extra panel to carry the extra variable — and past three, it is usually clearer to draw more than one plot.</li>
+<li><strong>A line implies a connection.</strong> Use a line plot only when the x-values have a meaningful order, so that “between” two points means something. Species names have no order, so connecting them with a line would be inventing structure that isn’t there.</li>
+</ul>
+<p>The rest of this chapter works down that table, row by row.</p>
+</section>
+<section id="the-three-libraries" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="the-three-libraries"><span class="header-section-number">8.4</span> The three libraries</h2>
+<p>All three libraries draw the same kinds of plots. They differ in how much you have to say to get them.</p>
+<p><strong><code>matplotlib</code></strong> is the foundation. It draws the pixels. Everything is under your control, which also means everything is your responsibility — axis labels, titles, and colors are all separate commands. Both of the other libraries are built on top of it.</p>
+<p><strong><code>pandas</code></strong> adds a <code>.plot()</code> method directly to DataFrames and Series. It calls <code>matplotlib</code> for you and reads the labels off your column names. It is the fastest way to get a quick look at data you already have in a DataFrame, and it is meant for exactly that: a quick look.</p>
+<p><strong><code>seaborn</code></strong> is also built on <code>matplotlib</code>, but it is designed around <em>statistical</em> plots of tidy DataFrames. You name the DataFrame and the columns; it handles grouping, aggregation, binning, and legends. It is the best choice when a plot involves groups or requires computing something (a mean, a distribution, a regression line).</p>
+<p>A rough guide to which to reach for:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quick look at a column, mid-analysis</td>
+<td><code>pandas</code></td>
+</tr>
+<tr class="even">
+<td>Plot involving groups, distributions, or statistics</td>
+<td><code>seaborn</code></td>
+</tr>
+<tr class="odd">
+<td>Full control over an unusual or heavily customized plot</td>
+<td><code>matplotlib</code></td>
+</tr>
+<tr class="even">
+<td>Data not in a DataFrame (plain lists or arrays)</td>
+<td><code>matplotlib</code></td>
+</tr>
+</tbody>
+</table>
+<p>You will end up mixing them, and that is fine — because <code>pandas</code> and <code>seaborn</code> both draw <em>through</em> <code>matplotlib</code>, <code>matplotlib</code> commands like <code>plt.title()</code> work on plots the other two libraries made. We rely on that repeatedly below.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why some cells end in <code>plt.show()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a notebook, a plot appears as soon as a cell finishes. But <code>pandas</code> and <code>seaborn</code> plotting calls also <em>return</em> an object, and the notebook prints it — you get a stray line like <code>&lt;Axes: xlabel='body_mass_g'&gt;</code> above your figure. Ending the cell with <code>plt.show()</code> displays the plot and suppresses that line. (A semicolon after the last command, e.g.&nbsp;<code>sns.histplot(...);</code>, does the same thing.) In a <code>.py</code> script, <code>plt.show()</code> is not optional: without it, no window ever opens.</p>
+</div>
+</div>
+</section>
+<section id="one-numeric-variable-the-histogram" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="one-numeric-variable-the-histogram"><span class="header-section-number">8.5</span> One numeric variable: the histogram</h2>
+<p><strong>Question:</strong> how heavy are these penguins? Are most of them around the same mass, or is there a wide spread?</p>
+<p>One numeric variable means we want its <strong>distribution</strong>. A histogram answers this by cutting the range of values into bins and counting how many observations fall in each.</p>
+<section id="with-pandas" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="with-pandas"><span class="header-section-number">8.5.1</span> With pandas</h3>
+<div id="04229d04" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"body_mass_g"</span>].plot(kind<span class="op">=</span><span class="st">"hist"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>df["body_mass_g"]</code> selects a single column (a Series), and <code>.plot(kind="hist")</code> draws it. That is the whole command. Note that the y-axis is already labeled <code>Frequency</code> — pandas filled that in.</p>
+</section>
+<section id="with-matplotlib" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="with-matplotlib"><span class="header-section-number">8.5.2</span> With matplotlib</h3>
+<div id="1f894d9e" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"body_mass_g"</span>])</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of penguin body mass"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>matplotlib</code> draws exactly what you ask for and nothing more, so the labels are three extra commands. This is the trade-off: more typing, total control.</p>
+</section>
+<section id="with-seaborn" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="with-seaborn"><span class="header-section-number">8.5.3</span> With seaborn</h3>
+<div id="3c831a5c" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice the pattern in that call, because <strong>every seaborn function in this chapter uses it</strong>:</p>
+<pre><code>sns.plotting_function(data=&lt;DataFrame&gt;, x=&lt;column name&gt;, y=&lt;column name&gt;)</code></pre>
+<p>You pass the whole DataFrame to <code>data</code> and then name columns as <em>strings</em>. Seaborn looks them up and labels the axes from the column names automatically.</p>
+</section>
+<section id="bins-the-one-choice-that-matters" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="bins-the-one-choice-that-matters"><span class="header-section-number">8.5.4</span> Bins: the one choice that matters</h3>
+<p>A histogram’s shape depends on how many bins you use, and the default is only a guess. Too few bins hides structure; too many turns the plot into noise. This is not a cosmetic setting — <strong>the number of bins can change the conclusion you draw.</strong></p>
+<p>To see that happen, switch to a different column, <code>bill_length_mm</code>, and draw it three times.</p>
+<div id="2f7c502b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"5 bins: too few"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Five bins says bill length has one broad plateau between 40 mm and 50 mm. Now look more finely:</p>
+<div id="245c4aab" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"15 bins: about right"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That is a different story entirely. There are <strong>two peaks</strong> — one near 39 mm and one near 48 mm — with a dip between them around 43 mm. A distribution with two peaks is called <em>bimodal</em>, and it almost always means the data contains two distinct groups that have been mixed together. The five-bin version hid this completely.</p>
+<p>Push further and the structure dissolves:</p>
+<div id="9fe6723b" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"50 bins: too many"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With 50 bins there are only a handful of penguins per bin, so random variation dominates and the bars jump up and down. The two peaks are still in there, but you would be guessing.</p>
+<p>The lesson: <strong>always redraw a histogram with a couple of different bin counts</strong> before you trust its shape. If a feature survives at several settings it is probably real; if it appears at only one setting it probably isn’t. A good starting range for a few hundred observations is 10–30 bins.</p>
+<p><code>bins</code> works the same way in all three libraries: <code>.plot(kind="hist", bins=15)</code>, <code>plt.hist(..., bins=15)</code>, <code>sns.histplot(..., bins=15)</code>.</p>
+<p>We now have an open question — what are the two groups hiding inside bill length? — and we will answer it shortly, once we can put two variables on one plot.</p>
+</section>
+<section id="two-relatives-of-the-histogram" class="level3" data-number="8.5.5">
+<h3 data-number="8.5.5" class="anchored" data-anchor-id="two-relatives-of-the-histogram"><span class="header-section-number">8.5.5</span> Two relatives of the histogram</h3>
+<p>A <strong>density plot</strong> (KDE) draws a smooth curve instead of bars, so you see the overall shape without having to pick a bin count:</p>
+<div id="031780d5" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The two peaks we found are unmistakable here. The trade-off is that the curve is a <em>smoothed estimate</em>: it hides where the actual observations are, it extends slightly past the smallest and largest values in the data, and it has a smoothing setting of its own (<code>bw_adjust</code>) that can over- or under-smooth just as bin count can. A histogram shows you the data; a density plot shows you an interpretation of it.</p>
+<p>A <strong>boxplot</strong> summarizes the same distribution as five numbers — the median, the middle 50% of the data (the box), the reach of the rest (the whiskers), and any outliers as individual points:</p>
+<div id="e0c21235" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A boxplot of a single variable is not very useful; a histogram shows strictly more. A boxplot earns its place when you draw <em>several</em> of them side by side to compare groups, which we do below.</p>
+<p>Notice what this particular boxplot does <strong>not</strong> tell you: that bill length is bimodal. The five numbers a boxplot reports would be nearly identical for a single broad hump and for two separate peaks, so the most interesting feature of this variable is invisible here. Never rely on a boxplot alone to judge the shape of a distribution — draw the histogram first.</p>
+</section>
+</section>
+<section id="one-categorical-variable-the-bar-chart" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="one-categorical-variable-the-bar-chart"><span class="header-section-number">8.6</span> One categorical variable: the bar chart</h2>
+<p><strong>Question:</strong> how many penguins of each species were observed?</p>
+<p>One categorical variable means counting observations per category, and the plot for that is a bar chart. The bars have gaps between them, unlike a histogram’s touching bars, because the categories are separate things rather than adjacent slices of a number line.</p>
+<section id="with-pandas-1" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="with-pandas-1"><span class="header-section-number">8.6.1</span> With pandas</h3>
+<div id="691330fb" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"species"</span>].value_counts().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Read that chain left to right: take the <code>species</code> column, count how many times each value appears, then draw the result as bars. Note that pandas needs you to do the counting yourself; the plotting method just draws whatever numbers you hand it.</p>
+</section>
+<section id="with-matplotlib-1" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="with-matplotlib-1"><span class="header-section-number">8.6.2</span> With matplotlib</h3>
+<div id="c7a81ce5" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> df[<span class="st">"species"</span>].value_counts()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.bar(counts.index, counts.values)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Species"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>plt.bar</code> needs two things: the category labels and the bar heights. <code>counts.index</code> gives the labels (<code>Adelie</code>, <code>Gentoo</code>, <code>Chinstrap</code>) and <code>counts.values</code> gives the heights. Again, you count first and plot second.</p>
+</section>
+<section id="with-seaborn-1" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="with-seaborn-1"><span class="header-section-number">8.6.3</span> With seaborn</h3>
+<div id="5f3e9254" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>countplot</code> does the counting <em>and</em> the drawing. This is the first place where seaborn’s design pays off: you never build an intermediate table.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ordering the bars
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bar categories have no natural order, so the library has to pick one. <code>value_counts()</code> sorts by frequency (largest first), while <code>countplot</code> uses the order the values appear in the data. Neither is wrong, but if the order carries meaning — largest to smallest, or a fixed sequence like <code>Small, Medium, Large</code> — set it yourself with the <code>order</code> argument:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, order<span class="op">=</span>[<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+</section>
+<section id="two-numeric-variables-the-scatter-plot" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="two-numeric-variables-the-scatter-plot"><span class="header-section-number">8.7</span> Two numeric variables: the scatter plot</h2>
+<p><strong>Question:</strong> do penguins with longer flippers also weigh more?</p>
+<p>Two numeric variables means we are asking about a <strong>relationship</strong>, and the scatter plot is the answer: one dot per penguin, positioned by both measurements at once.</p>
+<section id="with-pandas-2" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="with-pandas-2"><span class="header-section-number">8.7.1</span> With pandas</h3>
+<div id="ac9cf9b5" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This one is called on the whole DataFrame (<code>df.plot</code>), not a single column, because a scatter plot needs two columns. You name them with <code>x</code> and <code>y</code>.</p>
+</section>
+<section id="with-matplotlib-2" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="with-matplotlib-2"><span class="header-section-number">8.7.2</span> With matplotlib</h3>
+<div id="5a2794b7" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">"flipper_length_mm"</span>], df[<span class="st">"body_mass_g"</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>plt.scatter</code> takes the actual data — two Series, x first then y — rather than column names.</p>
+</section>
+<section id="with-seaborn-2" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="with-seaborn-2"><span class="header-section-number">8.7.3</span> With seaborn</h3>
+<div id="b82b1f65" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All three plots show the same clear pattern: flipper length and body mass rise together. Longer-flippered penguins are heavier.</p>
+</section>
+<section id="adding-a-third-variable-with-color" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="adding-a-third-variable-with-color"><span class="header-section-number">8.7.4</span> Adding a third variable with color</h3>
+<p>Look closely at that scatter plot and you can see the points are not one single cloud — there seem to be two or three clumps. And we still owe an answer to the question the bill-length histogram raised: what are the two groups hidden inside it?</p>
+<p>Both questions have the same suspected cause — species — and we can test it by bringing in a third variable: color the points by it. This is where seaborn pulls decisively ahead. One argument, <code>hue</code>:</p>
+<div id="667f94cb" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is the answer. <code>Gentoo</code> penguins are the heavy, long-flippered group; <code>Adelie</code> and <code>Chinstrap</code> overlap almost entirely in mass and flipper length but separate clearly from Gentoo.</p>
+<p><code>hue</code> works on the distribution plots too, which settles the bimodality question directly:</p>
+<div id="93ba185e" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, hue<span class="op">=</span><span class="st">"species"</span>, multiple<span class="op">=</span><span class="st">"stack"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The left peak is almost entirely Adelie; the right peak is Chinstrap and Gentoo together, with only a narrow band of overlap between them. Bill length was never really bimodal — it was two different kinds of penguin measured into one column. <strong>A bimodal distribution is usually a hint that you have forgotten to split the data by some group</strong>, and <code>hue</code> is how you check.</p>
+<p>The <code>multiple="stack"</code> argument stacks each species’ bars on top of one another. Without it, seaborn’s default is <code>multiple="layer"</code>, which draws the three histograms on top of each other semi-transparently — fine for two groups, but muddy where three overlap. The other useful option is <code>multiple="dodge"</code>, which puts the groups’ bars side by side.</p>
+<p><code>hue</code> works on essentially every seaborn function, and it accepts a numeric column too (in which case you get a continuous color scale rather than a discrete legend). Two related arguments split the data the same way but with a different visual channel: <code>style</code> varies the marker shape and <code>size</code> varies the marker size.</p>
+<div id="6ba88bd2" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"species"</span>, style<span class="op">=</span><span class="st">"sex"</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That plot is close to the limit of what one set of axes can carry — four variables and a two-part legend. When a plot needs more, the answer is usually several plots rather than more channels, which is exactly what the next chapter is about.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The same thing in pandas and matplotlib
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Coloring by category is possible in the other two libraries, but you have to build the color mapping yourself: pick a color per species, then either plot each species separately or construct a list of colors, one per row. The comparison is the point — whenever a plot involves <em>groups</em>, seaborn is the tool that was designed for it.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="many-numeric-variables-the-correlation-heatmap" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="many-numeric-variables-the-correlation-heatmap"><span class="header-section-number">8.8</span> Many numeric variables: the correlation heatmap</h2>
+<p><strong>Question:</strong> the dataset has four numeric columns. Which pairs move together, and which don’t?</p>
+<p>A scatter plot handles one pair at a time. Four columns make six pairs, and drawing six scatter plots to find the interesting ones is tedious. The usual shortcut is to reduce each pair to a single number — its <strong>correlation</strong> — and then show all of those numbers at once as a heatmap.</p>
+<section id="what-correlation-measures" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="what-correlation-measures"><span class="header-section-number">8.8.1</span> What correlation measures</h3>
+<p>The correlation coefficient summarizes how well two numeric variables track each other along a straight line. It always falls between −1 and +1:</p>
+<ul>
+<li><strong>+1</strong> — perfect positive: when one goes up, the other goes up, exactly in line.</li>
+<li><strong>0</strong> — no <em>linear</em> relationship.</li>
+<li><strong>−1</strong> — perfect negative: when one goes up, the other goes down.</li>
+</ul>
+<p>Values in between measure how tightly the points hug that line. Roughly, magnitudes above 0.7 are strong, 0.3–0.7 moderate, and below 0.3 weak.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><code>.corr()</code> is a method you haven’t met yet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>df.corr()</code> takes a DataFrame and returns a new DataFrame — a <em>correlation matrix</em> — with one row and one column for every numeric variable. The value in row <code>A</code>, column <code>B</code> is the correlation between those two columns.</p>
+<p><code>numeric_only=True</code> tells it to skip <code>species</code>, <code>island</code>, and <code>sex</code>, since correlation is only defined for numeric variables. Without it, you get an error.</p>
+<div id="2fce405f" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df.corr(numeric_only<span class="op">=</span><span class="va">True</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<td>1.00</td>
+<td>-0.24</td>
+<td>0.66</td>
+<td>0.60</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<td>-0.24</td>
+<td>1.00</td>
+<td>-0.58</td>
+<td>-0.47</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<td>0.66</td>
+<td>-0.58</td>
+<td>1.00</td>
+<td>0.87</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<td>0.60</td>
+<td>-0.47</td>
+<td>0.87</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Two things to notice about the shape of this table. The diagonal is all <code>1.00</code>, because every variable is perfectly correlated with itself. And the matrix is <strong>symmetric</strong> — the value above the diagonal mirrors the value below it, because the correlation of A with B is the same as B with A. So a correlation matrix always shows each real number twice.</p>
+<p>We are using <code>.corr()</code> here only to get numbers worth plotting. You will meet it properly alongside the rest of pandas’ summary methods.</p>
+</div>
+</div>
+</section>
+<section id="drawing-it" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="drawing-it"><span class="header-section-number">8.8.2</span> Drawing it</h3>
+<p>That table is already readable with four variables, but at ten or twenty it becomes a wall of digits. A heatmap replaces each number with a color, so the pattern arrives before you read anything:</p>
+<div id="d18dadc2" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> df.corr(numeric_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"coolwarm"</span>, vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlations among penguin measurements"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Four arguments are doing real work here, and the last three matter more than they look:</p>
+<ul>
+<li><code>annot=True</code> prints the number inside each cell, and <code>fmt=".2f"</code> rounds it to two decimals. With a small matrix, always do this — the reader gets the color <em>and</em> the value.</li>
+<li><code>cmap="coolwarm"</code> picks a <strong>diverging</strong> color scale: strong color at both ends, pale in the middle. This is the right choice because correlation has a meaningful midpoint at zero, and a diverging scale puts “no relationship” at the washed-out center where it belongs. Compare with the counts heatmap later in this chapter, which uses sequential <code>"Blues"</code> — counts start at zero and only go up, so they need a scale that runs from light to dark in one direction.</li>
+<li><code>vmin=-1, vmax=1</code> pins the ends of the color scale to the full possible range. Without them, seaborn stretches the colors to fit whatever values happen to be present, so a matrix whose strongest correlation is 0.3 would be colored as intensely as one full of 0.95s. <strong>Setting <code>vmin</code>/<code>vmax</code> is what makes two heatmaps comparable.</strong> For a diverging scale you can equivalently pass <code>center=0</code>.</li>
+</ul>
+<p>Reading the plot: <code>flipper_length_mm</code> and <code>body_mass_g</code> are the most strongly related pair at <strong>0.87</strong> — the relationship we already saw in the scatter plot. <code>bill_length_mm</code> is moderately positive with both (0.66 and 0.60). And <code>bill_depth_mm</code> is the odd one out, negatively correlated with everything: −0.58 with flipper length, −0.47 with body mass.</p>
+</section>
+<section id="adding-a-regression-line" class="level3" data-number="8.8.3">
+<h3 data-number="8.8.3" class="anchored" data-anchor-id="adding-a-regression-line"><span class="header-section-number">8.8.3</span> Adding a regression line</h3>
+<p>The heatmap told us that <code>flipper_length_mm</code> and <code>body_mass_g</code> are the most strongly related pair, at 0.87. A correlation that high, on variables whose scatter plot really does look like a band around a straight line, is the situation where it is worth drawing the line itself. Seaborn has a dedicated function for it, <code>regplot</code> — “regression plot”:</p>
+<div id="c8bbb449" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Body mass rises with flipper length (r = 0.87)"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>regplot</code> draws three things from that one call: the scatter points, the best-fitting straight line through them, and a shaded band around the line. The band is a 95% confidence interval for <em>where the line sits</em> — it is narrow in the middle of the data, where there are many penguins, and flares at the edges, where there are few. It is not a prediction interval, so do not read it as “95% of penguins fall in here.”</p>
+<p>The line makes the relationship quantitative rather than impressionistic: it slopes up by roughly 50 g of body mass per millimetre of flipper, and the points sit close to it along its whole length, which is what a correlation of 0.87 looks like in practice.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Only draw a line where a line belongs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A regression line is a claim: <em>this relationship is linear</em>. <code>regplot</code> will happily fit a straight line to any two numeric columns, including ones where a straight line is nonsense, and the line will look just as authoritative. So check the scatter plot first and add the line only when the cloud of points genuinely runs in a straight band.</p>
+<p>The order matters. <strong>Scatter plot first, line second</strong> — never add a line because a correlation coefficient was large. The coefficient itself only measures straightness, so using it to justify a straight line is circular reasoning.</p>
+<p>Two escape hatches when the relationship is curved rather than straight:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"..."</span>, y<span class="op">=</span><span class="st">"..."</span>, order<span class="op">=</span><span class="dv">2</span>)      <span class="co"># fit a parabola instead</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"..."</span>, y<span class="op">=</span><span class="st">"..."</span>, lowess<span class="op">=</span><span class="va">True</span>)  <span class="co"># follow the data, no formula</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Useful arguments:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ci=None</code></td>
+<td>Drop the shaded band — good when overlaying several lines</td>
+</tr>
+<tr class="even">
+<td><code>scatter=False</code></td>
+<td>Draw only the line, onto a scatter plot you already made</td>
+</tr>
+<tr class="odd">
+<td><code>order=2</code></td>
+<td>Fit a quadratic instead of a straight line</td>
+</tr>
+<tr class="even">
+<td><code>lowess=True</code></td>
+<td>Fit a flexible smooth curve instead of any fixed formula</td>
+</tr>
+<tr class="odd">
+<td><code>line_kws={"color": "black"}</code></td>
+<td>Style the line</td>
+</tr>
+<tr class="even">
+<td><code>scatter_kws={"alpha": 0.4}</code></td>
+<td>Style the points — useful when they overlap</td>
+</tr>
+</tbody>
+</table>
+<div id="9dc96894" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>            ci<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            scatter_kws<span class="op">=</span>{<span class="st">"alpha"</span>: <span class="fl">0.4</span>, <span class="st">"s"</span>: <span class="dv">20</span>},</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>            line_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"black"</span>})</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note one thing <code>regplot</code> cannot do: it has <strong>no <code>hue</code> argument</strong>. To fit a separate line per group, you either overlay several <code>regplot</code> calls — which we do in a moment — or use seaborn’s <code>lmplot</code>, a figure-level function that we save for the next chapter, because it creates and owns its own figure.</p>
+</section>
+<section id="three-warnings" class="level3" data-number="8.8.4">
+<h3 data-number="8.8.4" class="anchored" data-anchor-id="three-warnings"><span class="header-section-number">8.8.4</span> Three warnings</h3>
+<p>Correlation is the most over-trusted number in introductory statistics. Three things it does not tell you:</p>
+<p><strong>It only sees straight lines.</strong> A correlation near zero means no <em>linear</em> trend, not no relationship. Two variables can follow a perfect U-shape and still have a correlation of about 0. This is why you plot the data rather than only computing the number.</p>
+<p><strong>It does not mean causation.</strong> Flipper length and body mass correlate at 0.87, but neither causes the other; both reflect how big the penguin is, and much of the spread comes from species.</p>
+<p><strong>A correlation over a mixed population can point the wrong way.</strong> That negative <code>bill_length</code> / <code>bill_depth</code> correlation of −0.24 is the clearest warning in this dataset. Compute it within a single species and it turns <strong>positive</strong> — about +0.39 for Adelie. The overall negative number is an artifact of mixing three species with differently shaped bills, not a fact about any penguin. A reversal like this is called <strong>Simpson’s paradox</strong>, and you can see it happen by drawing the scatter plot with <code>hue="species"</code>:</p>
+<div id="18b1ad2a" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, hue<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Bill length (mm)"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Bill depth (mm)"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Negative overall, positive within every species"</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The cloud as a whole slopes downward, while each colored group slopes upward. Regression lines make this impossible to miss. First, the line a correlation of −0.24 would have you draw — one line over all 344 penguins at once:</p>
+<div id="03517c85" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>            scatter_kws<span class="op">=</span>{<span class="st">"alpha"</span>: <span class="fl">0.4</span>}, line_kws<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"black"</span>})</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Bill length (mm)"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Bill depth (mm)"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"One line over all species: slopes down"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now one line per species, drawn onto the same axes. Since <code>regplot</code> has no <code>hue</code>, we call it once per species, each time on just that species’ rows:</p>
+<div id="800799a4" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> df[<span class="st">"species"</span>].unique():</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> df[df[<span class="st">"species"</span>] <span class="op">==</span> name]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    sns.regplot(data<span class="op">=</span>subset, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span>name, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Bill length (mm)"</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Bill depth (mm)"</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"One line per species: all three slope up"</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Three upward lines, from data whose overall correlation is negative. The trick is that <code>df["species"].unique()</code> lists the three species names, and <code>df[df["species"] == name]</code> keeps only the rows matching one of them — so each <code>regplot</code> call sees a single species and fits a line to it alone. Drawing three plotting calls onto one set of axes works the same way the layered box-and-points plot later in this chapter does: each call adds to whatever is already there.</p>
+<p>The reason for the reversal is visible in the plot. Gentoos sit low and to the right — long, shallow bills — while Adelies sit high and to the left. That between-species offset is steeply downward and it swamps the gentle upward trend inside each group. The single black line is not describing any penguin; it is describing the arrangement of the three species.</p>
+<p>No correlation coefficient can warn you about this, and neither can a single regression line. Treat a correlation heatmap as a way of deciding <strong>which scatter plots to draw next</strong>, never as a substitute for drawing them — and before you fit any line, ask whether your data is one population or several stacked together.</p>
+</section>
+</section>
+<section id="numeric-by-categorical-comparing-groups" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="numeric-by-categorical-comparing-groups"><span class="header-section-number">8.9</span> Numeric by categorical: comparing groups</h2>
+<p><strong>Question:</strong> which species is heaviest?</p>
+<p>This pairs one numeric variable with one categorical variable, so we want the numeric variable’s distribution <em>within each group</em>, drawn side by side for comparison.</p>
+<section id="boxplots-by-group" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="boxplots-by-group"><span class="header-section-number">8.9.1</span> Boxplots by group</h3>
+<div id="b8e9eef4" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Categorical variable on <code>x</code>, numeric variable on <code>y</code>, and seaborn draws one box per species. This is where boxplots are genuinely useful: three distributions, directly comparable, in one line of code. Gentoos are clearly heavier, and the Adelie and Chinstrap distributions sit almost on top of each other.</p>
+<p>The equivalent in <code>pandas</code> is:</p>
+<div id="96f4ae83" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">"box"</span>, column<span class="op">=</span><span class="st">"body_mass_g"</span>, by<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">""</span>)               <span class="co"># pandas adds a figure-level title</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">""</span>)                  <span class="co"># ...and an axes-level one; clear both</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Species"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note the two empty-string calls. When you use <code>by=</code>, pandas writes <em>two</em> titles onto the figure — the grouping variable as a suptitle and the column name as an axes title — so getting a clean plot means clearing both. In bare <code>matplotlib</code> it is worse: you would have to split the data into three separate arrays yourself and pass them as a list to <code>plt.boxplot</code>. Use seaborn for this.</p>
+</section>
+<section id="violin-plots" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="violin-plots"><span class="header-section-number">8.9.2</span> Violin plots</h3>
+<p>A violin plot replaces each box with a mirrored density curve, so you see the <em>shape</em> of each group’s distribution rather than just its five summary numbers:</p>
+<div id="2a736913" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here the violins tell us something the boxplot could not: the Adelie distribution has a single broad peak, while Gentoo mass is spread more evenly across a wider range. Use a violin plot when the shape matters and you have enough observations per group (a few dozen at least) for the curve to be trustworthy.</p>
+</section>
+<section id="bar-chart-of-means" class="level3" data-number="8.9.3">
+<h3 data-number="8.9.3" class="anchored" data-anchor-id="bar-chart-of-means"><span class="header-section-number">8.9.3</span> Bar chart of means</h3>
+<p>A bar chart can also compare a numeric variable across groups — but a bar has only one height, so the many values in each group have to be reduced to a single number first.</p>
+<div id="91144f27" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Aggregation is happening, even though you didn’t ask for it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>That command had no averaging step in it, yet each bar is a single height. Seaborn <strong>aggregated the data for you</strong>: the bar height is the <em>mean</em> body mass of all penguins of that species, and the thin vertical line on each bar is a 95% confidence interval for that mean.</p>
+<p>This is worth stopping on, because it is invisible in the code. A bar chart of a numeric variable by category <em>must</em> reduce many values to one, so some aggregation is unavoidable — seaborn just picks a sensible default (the mean) instead of making you say so. You will learn to do this aggregation explicitly with <code>.groupby()</code> in a later chapter, and at that point you will be able to compute these exact bar heights yourself. For now, the thing to remember is that <strong>a bar height is an average over a whole group, not a single observation.</strong></p>
+<p>The same hidden work is going on elsewhere in this chapter. <code>sns.histplot</code> bins the data and counts the rows in each bin. <code>sns.boxplot</code> computes a median and quartiles per group. <code>sns.countplot</code> counts rows per category. In every case the library is summarizing your data before it draws.</p>
+</div>
+</div>
+<p>When you have one numeric and one categorical variable, prefer a boxplot or violin plot over a bar of means. The bar throws away almost everything — you cannot see the spread, the shape, or the outliers, and two groups with identical means can have completely different distributions. Reach for the bar chart when the average genuinely <em>is</em> the quantity of interest.</p>
+</section>
+</section>
+<section id="two-categorical-variables" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="two-categorical-variables"><span class="header-section-number">8.10</span> Two categorical variables</h2>
+<p><strong>Question:</strong> are the three species spread evenly across the three islands, or does each island have its own?</p>
+<p>Two categorical variables means counting the combinations. The clearest plot is a grouped bar chart, which in seaborn is <code>countplot</code> plus a <code>hue</code>:</p>
+<div id="b5525ff6" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"island"</span>, hue<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The structure is striking. Adelie penguins live on all three islands, but Gentoos appear only on Biscoe and Chinstraps only on Dream; Torgersen has nothing but Adelies. Species and island are strongly related, which is worth knowing before comparing anything across islands — a difference in body mass between Biscoe and Torgersen would really be the Gentoo/Adelie difference wearing a disguise.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The pandas version needs a method you haven’t met yet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To make this plot in pandas, you first need a table of counts for every island–species combination. That is what <code>pd.crosstab</code> builds: you give it two columns and it returns a small DataFrame whose rows are the values of the first and whose columns are the values of the second, with counts in the cells.</p>
+<div id="241e90f9" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(df[<span class="st">"island"</span>], df[<span class="st">"species"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">Adelie</th>
+<th data-quarto-table-cell-role="th">Chinstrap</th>
+<th data-quarto-table-cell-role="th">Gentoo</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">island</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Biscoe</th>
+<td>44</td>
+<td>0</td>
+<td>124</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Dream</th>
+<td>56</td>
+<td>68</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Torgersen</th>
+<td>52</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Read the cell in row <code>Biscoe</code>, column <code>Gentoo</code>: 124 penguins were both. The zeros show the combinations that never occurred. Once the table exists, plotting it is the usual <code>.plot()</code> call — and because the table has three columns, pandas draws one bar per column within each row:</p>
+<div id="5eb7d34f" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(df[<span class="st">"island"</span>], df[<span class="st">"species"</span>]).plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You are not expected to reach for <code>crosstab</code> on your own yet; it is here so you can see that the seaborn version is doing the same counting internally.</p>
+</div>
+</div>
+<p>When both variables have many categories, a grouped bar chart becomes a forest of thin bars. A <strong>heatmap</strong> scales better — it shows the same counts as color intensity, exactly as the correlation heatmap did for correlations:</p>
+<div id="aaabc795" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pd.crosstab(df[<span class="st">"island"</span>], df[<span class="st">"species"</span>]), annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">"d"</span>, cmap<span class="op">=</span><span class="st">"Blues"</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>annot=True</code> prints the number in each cell, and <code>fmt="d"</code> formats those numbers as integers rather than the <code>".2f"</code> we used for correlations — these cells are counts, so <code>44.00</code> would be silly.</p>
+<p>The colormap choice differs too, and for a reason worth remembering. Counts are <strong>sequential</strong>: they start at zero and only increase, so <code>"Blues"</code> runs light-to-dark in one direction. Correlations are <strong>diverging</strong>: they run from −1 through a meaningful zero to +1, so <code>"coolwarm"</code> puts a pale color at the midpoint and strong colors at both extremes. Using a diverging map for counts, or a sequential map for correlations, makes a plot that actively misleads — the reader’s eye looks for a midpoint that isn’t there, or misses the one that is.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind of data</th>
+<th>Colormap</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sequential (low → high, no midpoint)</td>
+<td><code>"Blues"</code>, <code>"viridis"</code></td>
+<td>Counts, totals, prices</td>
+</tr>
+<tr class="even">
+<td>Diverging (meaningful center)</td>
+<td><code>"coolwarm"</code>, <code>"RdBu_r"</code></td>
+<td>Correlations, change from a baseline, profit vs.&nbsp;loss</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="two-numeric-variables-in-order-the-line-plot" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="two-numeric-variables-in-order-the-line-plot"><span class="header-section-number">8.11</span> Two numeric variables in order: the line plot</h2>
+<p>None of the penguin columns is a time series, so this row of the decision table needs a different example. The rule is what matters: <strong>use a line plot when the x-values have a meaningful order</strong>, because a line asserts that the space between two points is real.</p>
+<div id="0a1f0231" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>, <span class="dv">2022</span>, <span class="dv">2023</span>]</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>observations <span class="op">=</span> [<span class="dv">110</span>, <span class="dv">95</span>, <span class="dv">130</span>, <span class="dv">142</span>, <span class="dv">138</span>]</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>plt.plot(years, observations, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Penguins observed"</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Observations per year (illustrative data)"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that <code>plt.plot</code> accepts plain Python lists — no DataFrame needed. The <code>marker="o"</code> argument puts a dot at each actual data point, which is a good habit: it shows your reader where the measurements are and where the line is just interpolation.</p>
+<p>The seaborn equivalent for data in a DataFrame is <code>sns.lineplot(data=df, x=..., y=...)</code>, and in pandas, <code>df.plot(kind="line", x=..., y=...)</code>.</p>
+<p>A line plot of unordered categories is one of the most common beginner mistakes. Nothing stops you from drawing a line across <code>Adelie</code>, <code>Chinstrap</code>, <code>Gentoo</code> — the code runs fine — but it implies a trend through a sequence that could be rearranged at will. If the x-axis could be shuffled without losing information, use bars.</p>
+</section>
+<section id="finishing-a-plot" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="finishing-a-plot"><span class="header-section-number">8.12</span> Finishing a plot</h2>
+<p>An unlabeled plot is not finished. Whichever library drew it, these <code>matplotlib</code> commands will adjust it, because all three ultimately draw through <code>matplotlib</code>:</p>
+<div id="f0bb0252" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Heavier penguins have longer flippers"</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The commands you will use constantly:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>plt.xlabel(...)</code>, <code>plt.ylabel(...)</code></td>
+<td>Label the axes — <strong>include units</strong></td>
+</tr>
+<tr class="even">
+<td><code>plt.title(...)</code></td>
+<td>Title the plot</td>
+</tr>
+<tr class="odd">
+<td><code>plt.xlim(...)</code>, <code>plt.ylim(...)</code></td>
+<td>Set the axis range</td>
+</tr>
+<tr class="even">
+<td><code>plt.legend(title=...)</code></td>
+<td>Adjust the legend</td>
+</tr>
+<tr class="odd">
+<td><code>plt.xticks(rotation=45)</code></td>
+<td>Rotate tick labels so long names don’t overlap</td>
+</tr>
+<tr class="even">
+<td><code>plt.figure(figsize=(w, h))</code></td>
+<td>Set the figure size in inches — <strong>before</strong> drawing</td>
+</tr>
+<tr class="odd">
+<td><code>plt.savefig("name.png", dpi=300)</code></td>
+<td>Save to a file — <strong>before</strong> <code>plt.show()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two ordering traps in that table, both of which produce a confusing result rather than an error:</p>
+<ul>
+<li><code>plt.figure(figsize=...)</code> must come <em>before</em> the plotting command, since it creates the figure that the plot goes into.</li>
+<li><code>plt.savefig(...)</code> must come <em>before</em> <code>plt.show()</code>. <code>plt.show()</code> closes out the current figure, so saving afterwards writes a blank image.</li>
+</ul>
+<div id="c848c1a6" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Species"</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Gentoo penguins are markedly heavier"</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Seaborn also controls overall appearance with themes, which apply to every plot you draw afterwards:</p>
+<div id="1dd3c303" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Species"</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Other <code>style</code> options are <code>"darkgrid"</code> (seaborn’s default), <code>"white"</code>, <code>"dark"</code>, and <code>"ticks"</code>. Setting a theme once at the top of a notebook is a good way to keep every figure in a report looking consistent.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Going further: making a plot look good
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A chapter has room for the arguments that decide what a plot means, and little room for the ones that decide how it looks. Every plot here can be made considerably handsomer without changing what it claims, and seaborn documents that side of the work in three places worth a browse when you have a plot you care about:</p>
+<ul>
+<li><a href="https://seaborn.pydata.org/tutorial/aesthetics.html">Controlling figure aesthetics</a> — themes, grids, spines, and the <code>context</code> setting that scales every element at once for a slide or a printed page.</li>
+<li><a href="https://seaborn.pydata.org/tutorial/color_palettes.html">Choosing color palettes</a> — which palette suits categories, an ordered scale, or a diverging one, and which choices stay readable for colour-blind readers. Matplotlib’s <a href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">colormap reference</a> is the companion for <code>cmap=</code>.</li>
+<li><a href="https://seaborn.pydata.org/examples/index.html">The example gallery</a> — finished figures with their source code. Finding one that resembles what you want and reading its code is the fastest way to learn the styling arguments.</li>
+</ul>
+<p>None of this is required for the practice activity, and none of it repairs a plot that answers the wrong question.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="making-plots-honest" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="making-plots-honest"><span class="header-section-number">8.13</span> Making plots honest</h2>
+<p>A plot is an argument, and it is easy to make a misleading one by accident.</p>
+<p><strong>Start bar charts at zero.</strong> A bar’s <em>length</em> is what encodes the value, so cutting off the bottom of the axis exaggerates differences. Compare:</p>
+<div id="f99ab311" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">3500</span>, <span class="dv">5500</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Misleading: truncated y-axis"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b6f77655" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Honest: y-axis starts at zero"</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The first plot makes Gentoos look several times heavier than Adelies. In fact the means are about 5076 g and 3701 g — Gentoos are roughly 37% heavier, a real difference but not the overwhelming one the truncated axis suggests. Scatter and line plots, where position rather than length carries the meaning, do not need a zero baseline.</p>
+<p><strong>Label your axes and include units.</strong> <code>body_mass_g</code> is a column name, not a label. “Body mass (g)” tells the reader what they are looking at.</p>
+<p><strong>Don’t hide the sample size.</strong> A bar chart of means looks equally confident whether a group has 300 observations or 3. A boxplot or violin at least shows the spread; adding the raw points is even better, and one of the nicest things seaborn does is let you layer plots by simply drawing one after the other:</p>
+<div id="119b41bf" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, whis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), color<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>sns.stripplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, size<span class="op">=</span><span class="dv">3</span>, color<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Species"</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution and every individual penguin"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_1_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Two seaborn calls in a row drew onto the same axes, because each one adds to the plot that is already there rather than starting a new one. <code>alpha=0.5</code> makes the points semi-transparent so overlapping penguins are still visible — a useful trick any time points pile up.</p>
+<p><strong>Say what the plot is for.</strong> A title that states the finding (“Gentoo penguins are markedly heavier”) is more useful than one that states the mechanics (“Body mass by species”).</p>
+</section>
+<section id="summary-cheat-sheet" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="summary-cheat-sheet"><span class="header-section-number">8.14</span> Summary Cheat Sheet</h2>
+<p>Choosing a plot comes down to counting your variables and checking their types:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Plot</th>
+<th>Seaborn function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One numeric</td>
+<td>Histogram / density / boxplot</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.histplot.html"><code>histplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.kdeplot.html"><code>kdeplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html"><code>boxplot</code></a></td>
+</tr>
+<tr class="even">
+<td>One categorical</td>
+<td>Bar chart of counts</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.countplot.html"><code>countplot</code></a></td>
+</tr>
+<tr class="odd">
+<td>Two numeric</td>
+<td>Scatter plot</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.scatterplot.html"><code>scatterplot</code></a></td>
+</tr>
+<tr class="even">
+<td>Two numeric, roughly linear</td>
+<td>Scatter plot with a fitted line</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.regplot.html"><code>regplot</code></a></td>
+</tr>
+<tr class="odd">
+<td>Two numeric, x ordered</td>
+<td>Line plot</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.lineplot.html"><code>lineplot</code></a></td>
+</tr>
+<tr class="even">
+<td>Several numeric</td>
+<td>Correlation heatmap</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code>heatmap</code></a> on <code>df.corr()</code></td>
+</tr>
+<tr class="odd">
+<td>Numeric + categorical</td>
+<td>Grouped boxplot / violin / bar of means</td>
+<td><a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html"><code>boxplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.violinplot.html"><code>violinplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.barplot.html"><code>barplot</code></a></td>
+</tr>
+<tr class="even">
+<td>Two categorical</td>
+<td>Grouped bar chart / heatmap</td>
+<td><code>countplot(hue=...)</code>, <a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code>heatmap</code></a></td>
+</tr>
+<tr class="odd">
+<td>One extra variable</td>
+<td>Add color, shape, or size</td>
+<td><code>hue=</code>, <code>style=</code>, <code>size=</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each function name above links to its own documentation page. This chapter uses only the arguments that change what a plot <em>says</em>; those pages list the rest — the ones that change how it looks — with a worked example for each.</p>
+<p>And choosing a library comes down to what the plot has to do:</p>
+<ul>
+<li><strong><code>pandas</code></strong> — <code>df["col"].plot(kind=...)</code> or <code>df.plot(kind=..., x=..., y=...)</code>. Fastest for a quick look at a DataFrame you already have.</li>
+<li><strong><code>matplotlib</code></strong> — <code>plt.hist</code>, <code>plt.scatter</code>, <code>plt.bar</code>, <code>plt.plot</code>. Takes raw data, not column names. Maximum control; you write every label yourself.</li>
+<li><strong><code>seaborn</code></strong> — <code>sns.func(data=df, x="col", y="col", hue="col")</code>. The right default for anything involving groups, distributions, or statistics.</li>
+</ul>
+<p>Because <code>pandas</code> and <code>seaborn</code> both draw through <code>matplotlib</code>, the <code>plt.*</code> commands for labels, titles, sizes, and saving work on all three.</p>
+</section>
+<section id="practice-activity-choose-draw-and-defend-a-plot" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="practice-activity-choose-draw-and-defend-a-plot"><span class="header-section-number">8.15</span> Practice Activity: Choose, Draw, and Defend a Plot</h2>
+<p><strong>Goal:</strong> Pick the right plot for four questions about one dataset, draw each one, and say what it shows and what it hides.</p>
+<p><strong>File:</strong> <code>activity08.ipynb</code> from the <a href="downloads/data-visualization-1-practice.zip">practice kit</a>.</p>
+<p><strong>Submit:</strong> <code>activity08.html</code> through the final upload question in the Data Visualization I Canvas quiz.</p>
+<p><strong>This section contains the complete activity instructions.</strong> The starter loads the data and supplies spaces to record your work. Open <code>activity08.ipynb</code> from the folder prepared in <a href="#set-up-your-chapter-files">Set Up Your Chapter Files</a>, using the same project environment. The worked examples above are preparation, not additional submission requirements.</p>
+<p>You will use the same Palmer penguins dataset the chapter uses, loaded the same way, so the activity needs no data file of its own.</p>
+<section id="a.-one-numeric-variable-and-what-the-bins-decide" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.-one-numeric-variable-and-what-the-bins-decide">A. One Numeric Variable, and What the Bins Decide</h3>
+<ul>
+<li>Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field. Run the setup cell; it must report the shape <code>(344, 7)</code>.</li>
+<li>Draw <code>flipper_length_mm</code> as a histogram with 5 bins, then 15, then 40, and describe the shape each one shows in a sentence. Say which bin count you would report, and why.</li>
+<li>Report how many penguins the histogram left out because the column is missing, and show the code that told you. Nothing on the plot itself says so.</li>
+<li>Draw the same column as a density curve and as a box plot. Name one thing each of the three views shows that the other two hide.</li>
+</ul>
+</section>
+<section id="b.-one-categorical-variable-in-two-libraries" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="b.-one-categorical-variable-in-two-libraries">B. One Categorical Variable, in Two Libraries</h3>
+<ul>
+<li>Count the penguins on each island and draw the counts as a bar chart, with the bars in decreasing order of count.</li>
+<li>Draw that same bar chart twice: once with pandas and once with seaborn.</li>
+<li>In two or three sentences, compare the two versions: which ordered the bars with less work, which labelled the axes for you, and which you would use for a quick look versus for a report.</li>
+</ul>
+</section>
+<section id="c.-two-numeric-variables-and-a-line-only-where-it-belongs" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="c.-two-numeric-variables-and-a-line-only-where-it-belongs">C. Two Numeric Variables, and a Line Only Where It Belongs</h3>
+<ul>
+<li>Display the correlation matrix of the four numeric columns and draw it as a heatmap with the colour scale pinned to the full −1 to +1 range. Read off the correlation between <code>bill_depth_mm</code> and <code>body_mass_g</code> and interpret its sign in a sentence.</li>
+<li>Draw the scatter plot of those two columns, then redraw it with <code>hue="species"</code>.</li>
+<li>Fit a regression line to the pooled data with <code>sns.regplot</code>, then say what happens to the relationship inside each species. Explain what the pooled line claims and why that claim is wrong for these penguins.</li>
+<li>Finish with one sentence on what this means for reading a correlation computed over a mixed population.</li>
+</ul>
+</section>
+<section id="d.-groups-hidden-aggregation-and-a-finished-plot" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="d.-groups-hidden-aggregation-and-a-finished-plot">D. Groups, Hidden Aggregation, and a Finished Plot</h3>
+<ul>
+<li>Compare <code>body_mass_g</code> across the three species with a box plot, and then with <code>sns.barplot</code>.</li>
+<li>The bar chart shows one height per species although you never averaged anything. Say what seaborn computed for you, what the thin vertical line on each bar represents, and which of the two plots you would put in a report.</li>
+<li>Redraw your chosen plot as a finished figure: both axes labelled with units, a title that states a finding rather than the mechanics, and a deliberate figure size. Save it as a 300-dpi PNG and confirm the saved file is not blank.</li>
+<li>Explain in one sentence why a bar chart of these means has to start at zero.</li>
+</ul>
+</section>
+<section id="render-and-submit" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="render-and-submit">Render and Submit</h3>
+<p>Restart the kernel, run all cells in order, resolve unexpected errors, and save. Include your plots, outputs, and explanations for A–D, and a short Markdown completion note. From <code>stat303-data-visualization-1</code> in the terminal, run:</p>
+<pre class="text"><code>quarto render activity08.ipynb --to html</code></pre>
+<p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Quarto refresher</a>: inspect the HTML and a copy opened outside the project folder, and confirm that every plot appears and your name is on the report. Upload only <code>activity08.html</code> to the Data Visualization I Canvas quiz; keep your notebook locally.</p>
+<p><strong>HTML grading (16 points):</strong> bin choices, the missing-value count, and the three views of one variable (4); the ordered count chart in both libraries with a justified preference (3); correlation, heatmap, grouped scatter, and the critique of the pooled line (5); group comparison, the aggregation seaborn performed, and a finished honest figure (3); name, readable report, and completion note (1).</p>
+</section>
+</section>
+<section id="extended-practice" class="level2" data-number="8.16">
+<h2 data-number="8.16" class="anchored" data-anchor-id="extended-practice"><span class="header-section-number">8.16</span> Extended Practice</h2>
+<p>These longer exercises are additional practice, not requirements for the Canvas quiz. Work in a separate notebook beside your activity and load the data the way the chapter does. Include your code, plots, and explanations.</p>
+<section id="violin-against-box" class="level3" data-number="8.16.1">
+<h3 data-number="8.16.1" class="anchored" data-anchor-id="violin-against-box"><span class="header-section-number">8.16.1</span> Violin against Box</h3>
+<p>Compare <code>flipper_length_mm</code> across the three species with a box plot and then with a violin plot. Name one thing each plot shows that the other does not, and describe a distribution where the choice between them would change a reader’s conclusion.</p>
+</section>
+<section id="a-heatmap-that-hides-its-scale" class="level3" data-number="8.16.2">
+<h3 data-number="8.16.2" class="anchored" data-anchor-id="a-heatmap-that-hides-its-scale"><span class="header-section-number">8.16.2</span> A Heatmap That Hides Its Scale</h3>
+<p>Build the correlation heatmap again, but leave out <code>vmin</code> and <code>vmax</code> and change the colormap to <code>"Blues"</code>. Name two specific ways the result is harder to read than the version in this chapter, and say what a reader could wrongly conclude from it.</p>
+</section>
+<section id="the-weakest-pair-and-the-shaded-band" class="level3" data-number="8.16.3">
+<h3 data-number="8.16.3" class="anchored" data-anchor-id="the-weakest-pair-and-the-shaded-band"><span class="header-section-number">8.16.3</span> The Weakest Pair, and the Shaded Band</h3>
+<p>Use the correlation heatmap to pick the pair of numeric columns with the <em>weakest</em> correlation, and draw that pair with <code>sns.regplot</code>. Would you report this line to someone? Explain what the shaded band around it is doing, and why a fitted line can mislead here even though the code ran without complaint.</p>
+</section>
+<section id="a-line-where-a-line-does-not-belong" class="level3" data-number="8.16.4">
+<h3 data-number="8.16.4" class="anchored" data-anchor-id="a-line-where-a-line-does-not-belong"><span class="header-section-number">8.16.4</span> A Line Where a Line Does Not Belong</h3>
+<p>Someone shows you a line plot with <code>species</code> on the x-axis and mean <code>body_mass_g</code> on the y-axis, and argues that it shows a trend. Draw that plot, explain what is wrong with it, and draw the plot they should have used instead.</p>
+</section>
+</section>
+<section id="before-you-move-on" class="level2" data-number="8.17">
+<h2 data-number="8.17" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">8.17</span> Before You Move On</h2>
+<p>The habit to carry forward is choosing before drawing: count the variables, check their types, and let the question pick the plot. Reach for the library that fits the job — pandas for a glance at a DataFrame you already have, seaborn for anything involving groups or distributions, and <code>plt.*</code> for the labels, size, and saving, whichever library drew the picture.</p>
+<p>The plotting libraries are also quietly <strong>summarizing</strong> your data — binning it, counting it, averaging it — before they draw a single pixel. Understanding what a plot computed is as important as knowing which plot to pick.</p>
+<p>For any plot you make or read, you should be able to answer five questions without redrawing it:</p>
+<ol type="1">
+<li>What question is this plot answering, and do the variable types fit that question?</li>
+<li>What did the library compute before it drew — bins, counts, means, quartiles, a fitted line?</li>
+<li>How many observations are missing from the picture because a value was missing, and where did that number come from?</li>
+<li>Does the pattern in the pooled data still hold inside each group?</li>
+<li>Would a reader who saw only this picture reach the conclusion the data supports — axes labelled with units, a title that states the finding, and bars starting at zero?</li>
+</ol>
+<p>Continue to <a href="./data_viz_2.html">Data Visualization II</a>, where several plots are combined into one figure so that groups and variables can be compared side by side.</p>
+<p>References: <a href="https://seaborn.pydata.org/tutorial/function_overview.html">seaborn function overview</a>, <a href="https://seaborn.pydata.org/tutorial/distributions.html">distributions tutorial</a>, <a href="https://seaborn.pydata.org/generated/seaborn.histplot.html"><code>histplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.regplot.html"><code>regplot</code></a>, <a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code>heatmap</code></a>, <a href="https://pandas.pydata.org/docs/user_guide/visualization.html">pandas plotting</a>, <a href="https://matplotlib.org/stable/tutorials/pyplot.html">matplotlib pyplot tutorial</a>, and the penguin measurements of <a href="https://doi.org/10.1371/journal.pone.0090081">Gorman, Williams, and Fraser (2014)</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./numpy_pandas_workflow.html" class="pagination-link" aria-label="NumPy and pandas in a Real Workflow">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy and pandas in a Real Workflow</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_viz_2.html" class="pagination-link" aria-label="Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

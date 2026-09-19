@@ -22,7 +22,7 @@ The book now teaches Pandas Fundamentals → Pandas Intermediate → NumPy Funda
 
 ## Existing teaching materials
 
-Existing practice ZIPs, activity filenames, and Canvas/QTI artifacts are preserved. The NumPy Fundamentals activity still uses `activity05.ipynb`; its copied chapter explicitly identifies the existing Canvas assessment as legacy Chapter 5. These identifiers are not automatically renumbered to match Quarto's chapter numbering. No Canvas content was changed. Existing coverage maps describe the earlier revisions; this document records the current chapter mapping.
+Activity filenames now match Quarto's chapter numbering: Pandas Intermediate uses `activity05.ipynb`, NumPy Fundamentals `activity06.ipynb`, and the Pandas + NumPy workflow `activity07.ipynb`. The chapters no longer describe the NumPy assessment as a legacy Chapter 5. Canvas quizzes are configured outside this repository and still expect their earlier upload filenames, so they must be updated there by hand. Existing coverage maps describe the earlier revisions; this document records the current chapter mapping.
 
 ## Validation
 

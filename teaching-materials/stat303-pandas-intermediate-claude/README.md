@@ -1,10 +1,10 @@
 # Pandas Intermediate Practice Kit
 
-Open this folder inside your existing stat303-setup project and select its verified Python environment. pandas is the only analysis dependency. All inputs are created in Python. Use pandas_intermediate_examples.ipynb for the lesson and activity_pandas_intermediate.ipynb for your report.
+Open this folder inside your existing stat303-setup project and select its verified Python environment. pandas is the only analysis dependency. All inputs are created in Python. Use pandas_intermediate_examples.ipynb for the lesson and activity05.ipynb for your report.
 
 ## Practice Activity: Calculate, Align, and Explain {#practice-activity-calculate-align-and-explain}
 
-**Goal:** Build and explain a small store report using labeled transformations. **File:** `activity_pandas_intermediate.ipynb` from the practice kit. **Submit:** `activity_pandas_intermediate.html` through the final upload question in the Pandas Intermediate Canvas quiz when assigned.
+**Goal:** Build and explain a small store report using labeled transformations. **File:** `activity05.ipynb` from the practice kit. **Submit:** `activity05.html` through the final upload question in the Pandas Intermediate Canvas quiz when assigned.
 
 **This section contains the complete activity instructions.** The starter supplies invented inputs and spaces for your work, without completed solutions. Work in the extracted `stat303-pandas-intermediate-claude` folder with the verified project environment. The worked examples are preparation, not additional submission requirements.
 
@@ -40,9 +40,9 @@ Open this folder inside your existing stat303-setup project and select its verif
 Restart the kernel, run all cells in order, resolve errors, and save. Add a short Markdown completion note, then save again. From `stat303-pandas-intermediate-claude` in the terminal, run:
 
 ```text
-quarto render activity_pandas_intermediate.ipynb --to html
+quarto render activity05.ipynb --to html
 ```
 
-Follow the Quarto refresher: inspect the HTML and a copy opened outside the project folder. Check your name, predictions, code, outputs, and explanations for A–D. When assigned, upload only `activity_pandas_intermediate.html` to the Pandas Intermediate Canvas quiz; keep your notebook locally.
+Follow the Quarto refresher: inspect the HTML and a copy opened outside the project folder. Check your name, predictions, code, outputs, and explanations for A–D. When assigned, upload only `activity05.html` to the Pandas Intermediate Canvas quiz; keep your notebook locally.
 
 **HTML grading (16 points):** calculated variables, explicit inputs, and units (4); alignment and justified `fill_value` choices (4); recoding and custom logic (4); correlation and interpretation (3); name, readable report, and completion note (1).

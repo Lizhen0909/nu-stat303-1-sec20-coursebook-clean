@@ -9,7 +9,7 @@ Added teaching support:
 - Meaning-based per-product/per-store broadcasting and axis reductions.
 - Explicit maximum/minimum value versus position, flattened coordinates, and all tied maxima.
 - Stable tie handling, missing-value discussion, and stack versus concatenate.
-- A single authoritative end-of-chapter activity, unfinished activity05 starter, local practice kit, and locally validated instructor-only Canvas QTI package.
+- A single authoritative end-of-chapter activity, unfinished activity06 starter, local practice kit, and locally validated instructor-only Canvas QTI package.
 
 Corrections include the previously valid broadcasting example labeled invalid, reshape copy/view guarantees, old dtype names, unsupported speed/contiguity/parallelism claims, an inverted timing explanation, stacking differences for 1D input, and capital-reference exclusion for both minimum and maximum searches. Benchmarks use modest reproducible inputs and equivalent-result checks. No fabricated large-distance sentinel remains. The coordinate-plane metric is explicitly distinguished from spherical distance.
 

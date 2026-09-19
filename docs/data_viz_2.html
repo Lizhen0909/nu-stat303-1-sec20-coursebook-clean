@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures – Data Science I with python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Data_cleaning.html" rel="next">
+<link href="./data_viz_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d3f7f8e73c8d287b30bcf59c2b563615.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./NU_Stat_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science I with python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Review of STAT 201: Python Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Structures</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Setting Up for Data Science</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vscode_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Jupyter Notebooks in VS Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Project Environments, Packages, and File Paths</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Core Library Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_fundamentals_reorganized.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pandas_intermediate_claude.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Pandas Intermediate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">NumPy Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numpy_pandas_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NumPy and pandas in a Real Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_viz_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">From Messy to Insight</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Grouping and Aggregation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data_reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data Reshaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Datasets</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Python Iterables and Data Structures Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Reproducible Project Setup Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Pandas Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment D.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">NumPy Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment E.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Data Visualization Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment F.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Data Cleaning and Preparation Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment G.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Data Wrangling Assignment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./geospatial_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Geospatial Plotting for Final Projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Datasets &amp; Templates</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#set-up-your-chapter-files" id="toc-set-up-your-chapter-files" class="nav-link active" data-scroll-target="#set-up-your-chapter-files"><span class="header-section-number">9.1</span> Set Up Your Chapter Files</a></li>
+  <li><a href="#anatomy-of-a-figure" id="toc-anatomy-of-a-figure" class="nav-link" data-scroll-target="#anatomy-of-a-figure"><span class="header-section-number">9.2</span> Anatomy of a figure</a></li>
+  <li><a href="#the-two-interfaces" id="toc-the-two-interfaces" class="nav-link" data-scroll-target="#the-two-interfaces"><span class="header-section-number">9.3</span> The two interfaces</a>
+  <ul class="collapse">
+  <li><a href="#interface-1-pyplot-the-implicit-interface" id="toc-interface-1-pyplot-the-implicit-interface" class="nav-link" data-scroll-target="#interface-1-pyplot-the-implicit-interface"><span class="header-section-number">9.3.1</span> Interface 1: pyplot, the implicit interface</a></li>
+  <li><a href="#interface-2-the-object-oriented-explicit-interface" id="toc-interface-2-the-object-oriented-explicit-interface" class="nav-link" data-scroll-target="#interface-2-the-object-oriented-explicit-interface"><span class="header-section-number">9.3.2</span> Interface 2: the object-oriented, explicit interface</a></li>
+  <li><a href="#the-translation-table" id="toc-the-translation-table" class="nav-link" data-scroll-target="#the-translation-table"><span class="header-section-number">9.3.3</span> The translation table</a></li>
+  <li><a href="#why-you-should-prefer-the-explicit-interface" id="toc-why-you-should-prefer-the-explicit-interface" class="nav-link" data-scroll-target="#why-you-should-prefer-the-explicit-interface"><span class="header-section-number">9.3.4</span> Why you should prefer the explicit interface</a></li>
+  </ul></li>
+  <li><a href="#making-a-grid-plt.subplots" id="toc-making-a-grid-plt.subplots" class="nav-link" data-scroll-target="#making-a-grid-plt.subplots"><span class="header-section-number">9.4</span> Making a grid: <code>plt.subplots()</code></a>
+  <ul class="collapse">
+  <li><a href="#indexing-1d-versus-2d" id="toc-indexing-1d-versus-2d" class="nav-link" data-scroll-target="#indexing-1d-versus-2d"><span class="header-section-number">9.4.1</span> Indexing: 1D versus 2D</a></li>
+  <li><a href="#useful-arguments-to-plt.subplots" id="toc-useful-arguments-to-plt.subplots" class="nav-link" data-scroll-target="#useful-arguments-to-plt.subplots"><span class="header-section-number">9.4.2</span> Useful arguments to <code>plt.subplots()</code></a></li>
+  <li><a href="#small-multiples-one-loop-many-panels" id="toc-small-multiples-one-loop-many-panels" class="nav-link" data-scroll-target="#small-multiples-one-loop-many-panels"><span class="header-section-number">9.4.3</span> Small multiples: one loop, many panels</a></li>
+  </ul></li>
+  <li><a href="#uneven-layouts" id="toc-uneven-layouts" class="nav-link" data-scroll-target="#uneven-layouts"><span class="header-section-number">9.5</span> Uneven layouts</a>
+  <ul class="collapse">
+  <li><a href="#plt.subplot_mosaic" id="toc-plt.subplot_mosaic" class="nav-link" data-scroll-target="#plt.subplot_mosaic"><span class="header-section-number">9.5.1</span> <code>plt.subplot_mosaic</code></a></li>
+  <li><a href="#gridspec" id="toc-gridspec" class="nav-link" data-scroll-target="#gridspec"><span class="header-section-number">9.5.2</span> <code>GridSpec</code></a></li>
+  </ul></li>
+  <li><a href="#seaborn-axes-level-and-figure-level-functions" id="toc-seaborn-axes-level-and-figure-level-functions" class="nav-link" data-scroll-target="#seaborn-axes-level-and-figure-level-functions"><span class="header-section-number">9.6</span> Seaborn: axes-level and figure-level functions</a>
+  <ul class="collapse">
+  <li><a href="#axes-level-functions-draw-into-a-panel-you-give-them" id="toc-axes-level-functions-draw-into-a-panel-you-give-them" class="nav-link" data-scroll-target="#axes-level-functions-draw-into-a-panel-you-give-them"><span class="header-section-number">9.6.1</span> Axes-level functions draw into a panel you give them</a></li>
+  <li><a href="#figure-level-functions-create-and-own-the-whole-figure" id="toc-figure-level-functions-create-and-own-the-whole-figure" class="nav-link" data-scroll-target="#figure-level-functions-create-and-own-the-whole-figure"><span class="header-section-number">9.6.2</span> Figure-level functions create and own the whole figure</a></li>
+  <li><a href="#the-catch-ax-does-not-work-on-figure-level-functions" id="toc-the-catch-ax-does-not-work-on-figure-level-functions" class="nav-link" data-scroll-target="#the-catch-ax-does-not-work-on-figure-level-functions"><span class="header-section-number">9.6.3</span> The catch: <code>ax=</code> does not work on figure-level functions</a></li>
+  <li><a href="#working-with-what-a-figure-level-function-returns" id="toc-working-with-what-a-figure-level-function-returns" class="nav-link" data-scroll-target="#working-with-what-a-figure-level-function-returns"><span class="header-section-number">9.6.4</span> Working with what a figure-level function returns</a></li>
+  </ul></li>
+  <li><a href="#sharing-a-legend-across-panels" id="toc-sharing-a-legend-across-panels" class="nav-link" data-scroll-target="#sharing-a-legend-across-panels"><span class="header-section-number">9.7</span> Sharing a legend across panels</a></li>
+  <li><a href="#two-y-axes-on-one-panel" id="toc-two-y-axes-on-one-panel" class="nav-link" data-scroll-target="#two-y-axes-on-one-panel"><span class="header-section-number">9.8</span> Two y-axes on one panel</a></li>
+  <li><a href="#use-an-inset-to-show-detail" id="toc-use-an-inset-to-show-detail" class="nav-link" data-scroll-target="#use-an-inset-to-show-detail"><span class="header-section-number">9.9</span> Use an Inset to Show Detail</a></li>
+  <li><a href="#formatting-tick-labels" id="toc-formatting-tick-labels" class="nav-link" data-scroll-target="#formatting-tick-labels"><span class="header-section-number">9.10</span> Formatting Tick Labels</a>
+  <ul class="collapse">
+  <li><a href="#a-detour-for-larger-numbers" id="toc-a-detour-for-larger-numbers" class="nav-link" data-scroll-target="#a-detour-for-larger-numbers"><span class="header-section-number">9.10.1</span> A detour for larger numbers</a></li>
+  </ul></li>
+  <li><a href="#saving-a-multi-panel-figure" id="toc-saving-a-multi-panel-figure" class="nav-link" data-scroll-target="#saving-a-multi-panel-figure"><span class="header-section-number">9.11</span> Saving a multi-panel figure</a></li>
+  <li><a href="#designing-a-multi-panel-figure" id="toc-designing-a-multi-panel-figure" class="nav-link" data-scroll-target="#designing-a-multi-panel-figure"><span class="header-section-number">9.12</span> Designing a multi-panel figure</a></li>
+  <li><a href="#summary-cheat-sheet" id="toc-summary-cheat-sheet" class="nav-link" data-scroll-target="#summary-cheat-sheet"><span class="header-section-number">9.13</span> Summary Cheat Sheet</a></li>
+  <li><a href="#practice-activity-build-and-defend-a-multi-panel-figure" id="toc-practice-activity-build-and-defend-a-multi-panel-figure" class="nav-link" data-scroll-target="#practice-activity-build-and-defend-a-multi-panel-figure"><span class="header-section-number">9.14</span> Practice Activity: Build and Defend a Multi-Panel Figure</a>
+  <ul class="collapse">
+  <li><a href="#a.-the-two-interfaces-and-a-title-that-goes-astray" id="toc-a.-the-two-interfaces-and-a-title-that-goes-astray" class="nav-link" data-scroll-target="#a.-the-two-interfaces-and-a-title-that-goes-astray">A. The Two Interfaces, and a Title That Goes Astray</a></li>
+  <li><a href="#b.-a-grid-whose-panels-are-comparable" id="toc-b.-a-grid-whose-panels-are-comparable" class="nav-link" data-scroll-target="#b.-a-grid-whose-panels-are-comparable">B. A Grid Whose Panels Are Comparable</a></li>
+  <li><a href="#c.-looping-over-panels-and-one-figure-wide-label" id="toc-c.-looping-over-panels-and-one-figure-wide-label" class="nav-link" data-scroll-target="#c.-looping-over-panels-and-one-figure-wide-label">C. Looping Over Panels, and One Figure-Wide Label</a></li>
+  <li><a href="#d.-axes-level-or-figure-level" id="toc-d.-axes-level-or-figure-level" class="nav-link" data-scroll-target="#d.-axes-level-or-figure-level">D. Axes-Level or Figure-Level</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">Render and Submit</a></li>
+  </ul></li>
+  <li><a href="#extended-practice" id="toc-extended-practice" class="nav-link" data-scroll-target="#extended-practice"><span class="header-section-number">9.15</span> Extended Practice</a>
+  <ul class="collapse">
+  <li><a href="#mosaic-against-gridspec" id="toc-mosaic-against-gridspec" class="nav-link" data-scroll-target="#mosaic-against-gridspec"><span class="header-section-number">9.15.1</span> Mosaic against GridSpec</a></li>
+  <li><a href="#empty-panels-and-what-they-tell-you" id="toc-empty-panels-and-what-they-tell-you" class="nav-link" data-scroll-target="#empty-panels-and-what-they-tell-you"><span class="header-section-number">9.15.2</span> Empty Panels, and What They Tell You</a></li>
+  <li><a href="#one-legend-for-the-whole-figure" id="toc-one-legend-for-the-whole-figure" class="nav-link" data-scroll-target="#one-legend-for-the-whole-figure"><span class="header-section-number">9.15.3</span> One Legend for the Whole Figure</a></li>
+  <li><a href="#two-y-axes-and-whether-to-use-them" id="toc-two-y-axes-and-whether-to-use-them" class="nav-link" data-scroll-target="#two-y-axes-and-whether-to-use-them"><span class="header-section-number">9.15.4</span> Two Y-Axes, and Whether to Use Them</a></li>
+  </ul></li>
+  <li><a href="#before-you-move-on" id="toc-before-you-move-on" class="nav-link" data-scroll-target="#before-you-move-on"><span class="header-section-number">9.16</span> Before You Move On</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Reading_data.html">Core Library Foundations</a></li><li class="breadcrumb-item"><a href="./data_viz_2.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Every plot in <a href="./data_viz_1.html">Data Visualization I</a> was a single picture drawn with a single command. We wrote <code>plt.hist(...)</code> or <code>sns.boxplot(...)</code>, added labels, and a figure appeared. We never had to ask <em>where</em> it appeared, because there was only one place it could go.</p>
+<p>That question — where does this plot go? — is what this chapter is about. Once you want two plots side by side, or a grid of six, you need to name the thing you are drawing into. Doing that requires learning:</p>
+<ol type="1">
+<li>The <strong>anatomy</strong> of a matplotlib figure, so the vocabulary makes sense.</li>
+<li>The <strong>two interfaces</strong> matplotlib offers for drawing, and why you should prefer the second one from now on.</li>
+<li><code>plt.subplots()</code> — how to create a grid of panels and draw into each one.</li>
+<li>How <strong>seaborn</strong> fits into all this, including why some seaborn functions refuse to be put in a panel.</li>
+</ol>
+<p>Along the way we will deliver on two promises from that chapter: fitting a separate regression line per group with <code>lmplot</code>, and explaining what “figure-level” means.</p>
+<p>By the end of this chapter you should be able to:</p>
+<ul>
+<li>Name the parts of a matplotlib figure — figure, axes, axis, artist — and use “axes” to mean one panel.</li>
+<li>Draw with the explicit, object-oriented interface, and translate a pyplot command into its <code>ax</code> equivalent.</li>
+<li>Explain why a stray <code>plt.title()</code> lands on the wrong panel, and predict which panel it hits.</li>
+<li>Build a grid with <code>plt.subplots()</code>, index its panels correctly in one and two dimensions, and loop over them with <code>axes.flat</code>.</li>
+<li>Choose <code>sharex</code> / <code>sharey</code> when panels should be comparable, and give a figure enough room with <code>figsize</code> and <code>layout="constrained"</code>.</li>
+<li>Lay out an uneven figure with <code>plt.subplot_mosaic()</code> or <code>GridSpec</code>.</li>
+<li>Tell a seaborn axes-level function from a figure-level one, and say which accepts <code>ax=</code> and which builds panels with <code>col=</code> and <code>row=</code>.</li>
+<li>Magnify a crowded region with an inset panel, and mark what it magnifies.</li>
+<li>Place a summary inset in figure coordinates, and decide whether an inset keeps its ticks.</li>
+<li>Format tick labels through <code>ax.xaxis</code> and <code>ax.yaxis</code> — thousands separators, percentages, and rotated category names.</li>
+<li>Give a multi-panel figure one shared legend, figure-wide titles, and a saved file that is not cut off.</li>
+<li>Judge whether a set of plots belongs in one figure at all.</li>
+</ul>
+<p>Complete the <a href="#practice-activity-build-and-defend-a-multi-panel-figure">practice activity</a> after the worked examples.</p>
+<section id="set-up-your-chapter-files" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="set-up-your-chapter-files"><span class="header-section-number">9.1</span> Set Up Your Chapter Files</h2>
+<p>Download the <a href="downloads/data-visualization-2-practice.zip">Data Visualization II practice kit</a>. Extract <code>stat303-data-visualization-2</code> inside the <code>stat303-setup</code> project from the setup chapters and select that project’s verified Python environment.</p>
+<pre class="text"><code>stat303-setup/
+├── .venv/
+└── stat303-data-visualization-2/
+    ├── data_viz_2_examples.ipynb
+    ├── activity09.ipynb
+    └── README.md</code></pre>
+<p>Run <code>data_viz_2_examples.ipynb</code> for the lesson and complete <code>activity09.ipynb</code> for your own activity report, with <code>stat303-data-visualization-2</code> as the notebook working folder.</p>
+<p><strong>This kit has no <code>data/</code> folder, and nothing belongs in one.</strong> As in the previous chapter, every figure uses the Palmer penguins dataset that comes with seaborn, which <code>sns.load_dataset("penguins")</code> hands you in one line. The first call downloads the file and caches it on your computer, so you need a network connection once; after that it loads from the cache. If you would rather read it from a file of your own, the note under <a href="./data_viz_1.html#the-data">The data</a> in the previous chapter shows the one-line change.</p>
+<p>The three libraries and the aliases <code>pd</code>, <code>plt</code>, and <code>sns</code> are the same as in <a href="./data_viz_1.html">Data Visualization I</a>.</p>
+<div id="503dfb31" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">island</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<th data-quarto-table-cell-role="th">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>181.0</td>
+<td>3750.0</td>
+<td>Male</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>186.0</td>
+<td>3800.0</td>
+<td>Female</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>195.0</td>
+<td>3250.0</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>193.0</td>
+<td>3450.0</td>
+<td>Female</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Environment check:</strong> This chapter uses pandas, matplotlib, and seaborn. If an import fails, check the selected notebook kernel first. If a package is missing, activate your project environment and run this command in its terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install pandas matplotlib seaborn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>pandas and matplotlib went into that environment in <a href="./python_venv.html#install-packages-in-the-intended-environment">Project Environments, Packages, and File Paths</a>, and seaborn is the package that chapter installs as its worked example. This chapter leans on matplotlib more heavily than the last one, so make sure the import cell runs before you go on.</p>
+<p>Same Palmer penguins dataset as before: 344 penguins, four numeric measurement columns and three categorical columns.</p>
+</section>
+<section id="anatomy-of-a-figure" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="anatomy-of-a-figure"><span class="header-section-number">9.2</span> Anatomy of a figure</h2>
+<p>Matplotlib’s vocabulary is the single biggest obstacle to learning it, because two of the central words look almost identical. Learn these four terms and most documentation suddenly becomes readable.</p>
+<p><strong>Figure</strong> — the whole canvas. It is the sheet of paper. A figure has a size (<code>figsize=(width, height)</code> in inches), and it is the thing you save to a file. A figure can hold one panel or twenty.</p>
+<p><strong>Axes</strong> — <strong>one panel</strong>: a single plot with its own x-axis, y-axis, title, and data. This is the confusing one. Despite sounding plural, <em>one</em> <code>Axes</code> object is <em>one</em> rectangular plot. A figure with six panels contains six Axes. Whenever you read “axes” in matplotlib documentation or in a variable name like <code>ax</code>, read it as <strong>“panel”</strong> and you will rarely be confused.</p>
+<p><strong>Axis</strong> — one of the actual number lines, the x-axis or the y-axis, belonging to an Axes. You will interact with these much less often than with Axes.</p>
+<p><strong>Artist</strong> — everything drawable: each line, bar, dot, piece of text, tick, and legend. Everything you see on a figure is an Artist, including the Axes themselves.</p>
+<p>The containment goes one way:</p>
+<pre><code>Figure  (the canvas, what you save)
+└── Axes  (a panel — one plot; there can be many)
+    ├── Axis  (the x number line)
+    ├── Axis  (the y number line)
+    └── Artists  (the bars, dots, lines, text, legend)</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Axes vs.&nbsp;Axis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Axes = one panel.</strong> <strong>Axis = one number line.</strong> The plural of Axes is also “axes”, which is why people say “a figure with three axes” meaning three panels. If a sentence seems to be using the word strangely, substitute “panel” and see if it makes sense.</p>
+</div>
+</div>
+<p>In the last chapter, every plot created one Figure containing exactly one Axes — we just never referred to either of them by name.</p>
+</section>
+<section id="the-two-interfaces" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="the-two-interfaces"><span class="header-section-number">9.3</span> The two interfaces</h2>
+<p>Matplotlib gives you two different ways to draw the same plot. This is the main reason matplotlib code found online looks inconsistent: you are seeing two styles mixed together, sometimes in the same code block. Once you can tell them apart, the confusion mostly disappears.</p>
+<section id="interface-1-pyplot-the-implicit-interface" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="interface-1-pyplot-the-implicit-interface"><span class="header-section-number">9.3.1</span> Interface 1: pyplot, the implicit interface</h3>
+<p>This is what the last chapter used. You call functions on <code>plt</code> directly, and matplotlib keeps track of a <strong>“current figure”</strong> and a <strong>“current Axes”</strong> behind the scenes. Every <code>plt.</code> command you issue applies to whatever is current.</p>
+<div id="634e99ff" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"body_mass_g"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Made with the pyplot interface"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is no variable anywhere in that code holding the figure or the panel. <code>plt.hist</code> noticed that no figure existed, created one with a single Axes, made it current, and drew into it. The next three commands each modified “the current Axes” — that same one.</p>
+<p>This style is also called the <strong>implicit</strong> interface (the target is implied) or the <strong>state-machine</strong> interface (matplotlib holds state: which panel is current). It is modeled on MATLAB, which is where the design comes from.</p>
+<p>It is excellent for one quick plot, and that is exactly what we used it for.</p>
+</section>
+<section id="interface-2-the-object-oriented-explicit-interface" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="interface-2-the-object-oriented-explicit-interface"><span class="header-section-number">9.3.2</span> Interface 2: the object-oriented, explicit interface</h3>
+<p>Here you ask for the figure and panel up front, keep them in variables, and call methods <strong>on those variables</strong>:</p>
+<div id="0d6bd49b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.hist(df[<span class="st">"body_mass_g"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of penguins"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Made with the object-oriented interface"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The same picture, with one important difference: nothing is implied. <code>plt.subplots()</code> creates a Figure and an Axes and hands both back, so <code>fig</code> is the canvas and <code>ax</code> is the panel. Every subsequent command says explicitly which panel it is drawing into.</p>
+<p>Read that first line carefully, because it appears in nearly every matplotlib program you will ever write:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>plt.subplots()</code> returns <strong>two</strong> things, and the two names on the left unpack them: <code>fig</code> is the Figure, <code>ax</code> is the Axes. You can name them anything, but <code>fig</code> and <code>ax</code> are the universal convention.</p>
+<p>This is called the <strong>object-oriented (OO)</strong> or <strong>explicit</strong> interface.</p>
+</section>
+<section id="the-translation-table" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="the-translation-table"><span class="header-section-number">9.3.3</span> The translation table</h3>
+<p>The two interfaces do the same things under slightly different names. The pattern is that most <code>plt.something(...)</code> functions become <code>ax.set_something(...)</code> methods:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>pyplot (implicit)</th>
+<th>object-oriented (explicit)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>plt.plot(...)</code>, <code>plt.hist(...)</code>, <code>plt.scatter(...)</code></td>
+<td><code>ax.plot(...)</code>, <code>ax.hist(...)</code>, <code>ax.scatter(...)</code></td>
+</tr>
+<tr class="even">
+<td><code>plt.xlabel("x")</code></td>
+<td><code>ax.set_xlabel("x")</code></td>
+</tr>
+<tr class="odd">
+<td><code>plt.ylabel("y")</code></td>
+<td><code>ax.set_ylabel("y")</code></td>
+</tr>
+<tr class="even">
+<td><code>plt.title("t")</code></td>
+<td><code>ax.set_title("t")</code></td>
+</tr>
+<tr class="odd">
+<td><code>plt.xlim(0, 10)</code></td>
+<td><code>ax.set_xlim(0, 10)</code></td>
+</tr>
+<tr class="even">
+<td><code>plt.xticks(rotation=45)</code></td>
+<td><code>ax.tick_params(axis="x", rotation=45)</code></td>
+</tr>
+<tr class="odd">
+<td><code>plt.legend()</code></td>
+<td><code>ax.legend()</code></td>
+</tr>
+<tr class="even">
+<td><code>plt.savefig("f.png")</code></td>
+<td><code>fig.savefig("f.png")</code></td>
+</tr>
+<tr class="odd">
+<td><em>(no equivalent)</em></td>
+<td><code>fig.suptitle("figure-wide title")</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note the two sides of the split: <strong>plotting commands keep their names</strong> (<code>plt.hist</code> → <code>ax.hist</code>) while <strong>labelling commands gain a <code>set_</code> prefix</strong> (<code>plt.xlabel</code> → <code>ax.set_xlabel</code>). And notice which object each belongs to: anything about <em>one panel</em> is a method of <code>ax</code>, while anything about <em>the whole canvas</em> — saving, a figure-wide title — is a method of <code>fig</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Setting several properties at once
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because the <code>set_</code> methods all belong to the Axes, there is a shortcut that sets many at once:</p>
+<div id="7f5e8247" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ax.hist(df[<span class="st">"body_mass_g"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Body mass (g)"</span>, ylabel<span class="op">=</span><span class="st">"Number of penguins"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="st">"Everything in one call"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>ax.set(...)</code> accepts any property that has a <code>set_</code> method, with the prefix dropped. It is a convenient way to keep panel styling to one line, which matters when you are styling six panels in a loop.</p>
+</div>
+</div>
+</section>
+<section id="why-you-should-prefer-the-explicit-interface" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="why-you-should-prefer-the-explicit-interface"><span class="header-section-number">9.3.4</span> Why you should prefer the explicit interface</h3>
+<p>For one plot, the pyplot style is shorter and perfectly fine. The problem begins the moment there is more than one panel, because “the current Axes” becomes ambiguous — and matplotlib will not warn you when you guess wrong. Consider what happens with two panels:</p>
+<div id="a4f0f8bd" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, (ax_left, ax_right) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax_left.hist(df[<span class="st">"body_mass_g"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax_left.set_title(<span class="st">"Body mass"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax_right.hist(df[<span class="st">"flipper_length_mm"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>ax_right.set_title(<span class="st">"Flipper length"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Where does THIS title go?"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The last <code>plt.title(...)</code> landed on the <strong>right-hand panel</strong>, because that was the most recently created one and therefore “current”. Worse, it did not just appear in the wrong place — it <strong>overwrote</strong> that panel’s existing title, so “Flipper length” is now gone. A title meant for the whole figure silently destroyed a panel label instead. Nothing errored; you just get a wrong plot, which is the worst kind of bug, because it looks like output.</p>
+<p>With the explicit interface the question cannot arise. Each command names its target:</p>
+<div id="dac944af" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, (ax_left, ax_right) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax_left.hist(df[<span class="st">"body_mass_g"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ax_left.set_title(<span class="st">"Body mass"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax_right.hist(df[<span class="st">"flipper_length_mm"</span>], bins<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax_right.set_title(<span class="st">"Flipper length"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Two measurements, one figure"</span>)   <span class="co"># figure-wide, unambiguous</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>fig.suptitle</code> (“super-title”) is the figure-level title, and because it is a method of <code>fig</code> there is no doubt where it goes.</p>
+<p><strong>From here on, this book uses the explicit interface.</strong> Three reasons:</p>
+<ul>
+<li>It is unambiguous with any number of panels.</li>
+<li>It works the same way inside functions and loops, where there is no reliable notion of “current”.</li>
+<li>It is what the matplotlib documentation itself now recommends.</li>
+</ul>
+<p>The one <code>plt.</code> function we keep using is <code>plt.subplots()</code>, to create the figure in the first place — plus <code>plt.show()</code> at the end.</p>
+</section>
+</section>
+<section id="making-a-grid-plt.subplots" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="making-a-grid-plt.subplots"><span class="header-section-number">9.4</span> Making a grid: <code>plt.subplots()</code></h2>
+<p><code>plt.subplots(nrows, ncols)</code> creates a figure with a grid of panels and returns the figure plus the panels.</p>
+<div id="3154d799" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(axes))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(axes.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'numpy.ndarray'&gt;
+(2,)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With more than one panel, the second return value is a <strong>NumPy array of Axes objects</strong>. You reach a panel by indexing that array. Here the grid is one row by two columns, so <code>axes</code> has shape <code>(2,)</code> and the panels are <code>axes[0]</code> and <code>axes[1]</code>:</p>
+<div id="3911da69" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Body mass"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Flipper length"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note the <code>ax=</code> argument on the seaborn calls. That is how you tell a seaborn function which panel to draw into, and we come back to it in detail below.</p>
+<section id="indexing-1d-versus-2d" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="indexing-1d-versus-2d"><span class="header-section-number">9.4.1</span> Indexing: 1D versus 2D</h3>
+<p>The shape of the <code>axes</code> array follows the shape of your grid, which trips people up constantly:</p>
+<ul>
+<li><code>plt.subplots(1, 2)</code> → shape <code>(2,)</code> → index with <strong>one</strong> number: <code>axes[0]</code></li>
+<li><code>plt.subplots(3, 1)</code> → shape <code>(3,)</code> → index with <strong>one</strong> number: <code>axes[2]</code></li>
+<li><code>plt.subplots(2, 3)</code> → shape <code>(2, 3)</code> → index with <strong>two</strong>: <code>axes[0, 2]</code> (row, column)</li>
+<li><code>plt.subplots()</code> → <strong>not an array at all</strong> — a single Axes, so <code>axes[0]</code> is an error</li>
+</ul>
+<p>That last case is the classic bug: <code>fig, axes = plt.subplots()</code> followed by <code>axes[0]</code> raises <code>TypeError: 'Axes' object is not subscriptable</code>. With one panel there is no array to index, which is why the single-panel convention is to name it <code>ax</code>, not <code>axes</code>.</p>
+<p>A 2×3 grid, indexed by row and column:</p>
+<div id="3e269f7e" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">6</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"shape:"</span>, axes.shape)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">"row 0, col 0"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">"row 0, col 1"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">2</span>].set_title(<span class="st">"row 0, col 2"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">"row 1, col 0"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].set_title(<span class="st">"row 1, col 1"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">2</span>].set_title(<span class="st">"row 1, col 2"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"An empty 2 × 3 grid, panels labelled by position"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>shape: (2, 3)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Forcing a consistent shape
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are writing code that should work for any grid size, the shape differences are annoying. <code>squeeze=False</code> makes <code>plt.subplots</code> <strong>always</strong> return a 2D array, even for a single panel:</p>
+<div id="a79d52d5" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, squeeze<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(axes.shape)       <span class="co"># (1, 1) — always 2D, so axes[0, 0] always works</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(1, 1)</code></pre>
+</div>
+</div>
+<p><code>plt.close(fig)</code> discards a figure without displaying it, which is handy when you create one only to inspect it.</p>
+</div>
+</div>
+</section>
+<section id="useful-arguments-to-plt.subplots" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="useful-arguments-to-plt.subplots"><span class="header-section-number">9.4.2</span> Useful arguments to <code>plt.subplots()</code></h3>
+<div id="414a4e2d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                         figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                         sharex<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                         sharey<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                         layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>species_list <span class="op">=</span> [<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, name <span class="kw">in</span> <span class="bu">zip</span>(axes.flat, species_list):</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> df[df[<span class="st">"species"</span>] <span class="op">==</span> name]</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    ax.scatter(subset[<span class="st">"flipper_length_mm"</span>], subset[<span class="st">"body_mass_g"</span>], s<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    ax.set_title(name)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>axes.flat[<span class="dv">3</span>].set_visible(<span class="va">False</span>)         <span class="co"># hide the unused fourth panel</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].tick_params(labelbottom<span class="op">=</span><span class="va">True</span>)  <span class="co"># ...and give its neighbour back its x labels</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>fig.supxlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>fig.supylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Flipper length vs. body mass, by species"</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That example uses most of what you need day to day:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>figsize=(w, h)</code></td>
+<td>Size of the whole figure in inches. Grids need more room than one plot</td>
+</tr>
+<tr class="even">
+<td><code>sharex=True</code></td>
+<td>All panels use the same x-axis range, and inner tick labels are hidden</td>
+</tr>
+<tr class="odd">
+<td><code>sharey=True</code></td>
+<td>Same for the y-axis</td>
+</tr>
+<tr class="even">
+<td><code>layout="constrained"</code></td>
+<td>Automatically space panels so labels and titles don’t collide</td>
+</tr>
+<tr class="odd">
+<td><code>squeeze=False</code></td>
+<td>Always return a 2D array of Axes</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>sharex</code> / <code>sharey</code> are not cosmetic.</strong> When you compare panels side by side, the reader assumes the axes match. If each panel auto-scales to its own data, the same visual distance means a different quantity in each panel, and the comparison is silently invalid — the most common way a multi-panel figure misleads. Share the axes whenever the panels show the same variable.</p>
+<p><strong><code>layout="constrained"</code> fixes overlapping labels.</strong> In a grid, one panel’s x-axis label tends to run into the panel below it. Constrained layout computes the spacing for you. You will also see <code>fig.tight_layout()</code> used for this, which is the older approach and works nearly as well; <code>constrained</code> handles shared legends better.</p>
+<p>Two other things in that code are worth naming:</p>
+<ul>
+<li><strong><code>axes.flat</code></strong> flattens the grid into a single sequence, so you can loop over panels without nested indexing. Combined with <code>zip</code>, it pairs each panel with each thing you want to draw — the standard way to build a grid programmatically.</li>
+<li><strong><code>set_visible(False)</code></strong> hides a panel. A 2×2 grid has four slots but we only had three species, and an empty fourth panel with lonely tick marks looks like a mistake.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Hiding a panel can strip its neighbour’s tick labels
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>That <code>tick_params(labelbottom=True)</code> line is not decoration, and the figure is wrong without it. With <code>sharex=True</code>, matplotlib shows x tick labels only on the <strong>bottom</strong> panel of each column, since the panels above it share the same scale. Hiding the bottom-right panel therefore removes the only x tick labels in the right-hand column, leaving the Chinstrap panel with a bare axis and no numbers on it.</p>
+<p><code>tick_params(labelbottom=True)</code> turns the labels back on for that panel. Whenever you hide a panel in a grid with shared axes, look at the panel above it and check it still has its tick labels.</p>
+</div>
+</div>
+</section>
+<section id="small-multiples-one-loop-many-panels" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="small-multiples-one-loop-many-panels"><span class="header-section-number">9.4.3</span> Small multiples: one loop, many panels</h3>
+<p>The real payoff of a grid is drawing the <em>same</em> plot for several variables or groups, so they can be compared at a glance. This pattern — a grid of identically-built panels — is called <strong>small multiples</strong>, and it is one of the most effective layouts in all of data visualization.</p>
+<div id="4b215227" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>numeric_cols <span class="op">=</span> [<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, column <span class="kw">in</span> <span class="bu">zip</span>(axes.flat, numeric_cols):</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span>column, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ax.set_title(column)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">""</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Distribution of all four measurements"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Four histograms, one loop, and adding a fifth variable would mean changing only the list and the grid size. Note <code>ax.set_xlabel("")</code> — the column name is already in the panel title, so clearing the axis label removes the duplication.</p>
+<p>Here the panels show <em>different</em> variables on different scales, so <code>sharex</code> would be wrong: forcing bill depth (14–22 mm) and body mass (2700–6300 g) onto one x-axis range would make three of the four panels unreadable.</p>
+</section>
+</section>
+<section id="uneven-layouts" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="uneven-layouts"><span class="header-section-number">9.5</span> Uneven layouts</h2>
+<p>A regular grid is not always the right shape. Two tools handle panels of different sizes.</p>
+<section id="plt.subplot_mosaic" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="plt.subplot_mosaic"><span class="header-section-number">9.5.1</span> <code>plt.subplot_mosaic</code></h3>
+<p>You draw a picture of the layout with strings, using a letter per panel, and get back a dictionary keyed by those letters. Repeat a letter to make that panel span the space:</p>
+<div id="0d56fba8" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplot_mosaic(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">    AAB</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AAC</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">5</span>),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    layout<span class="op">=</span><span class="st">"constrained"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(axes.keys())</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>axes[<span class="st">"A"</span>])</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="st">"A"</span>].set_title(<span class="st">"Main plot"</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="st">"B"</span>])</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>axes[<span class="st">"B"</span>].set_title(<span class="st">"Flipper length"</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="st">"C"</span>])</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>axes[<span class="st">"C"</span>].set_title(<span class="st">"Body mass"</span>)</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"One big panel with two supporting panels"</span>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_keys(['A', 'B', 'C'])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>"AAB" / "AAC"</code> describes a 2-row, 3-column grid in which <code>A</code> occupies the whole left 2×2 block while <code>B</code> and <code>C</code> take the right column. Because the panels come back in a dictionary, you refer to them by meaningful letters rather than remembering that the big one is <code>axes[0, 0]</code>. Use <code>.</code> in the string to leave a slot deliberately empty.</p>
+<p>This is the most readable way to build an uneven layout, and it is the one to reach for first.</p>
+</section>
+<section id="gridspec" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="gridspec"><span class="header-section-number">9.5.2</span> <code>GridSpec</code></h3>
+<p>The older, more explicit approach is to create a grid and then claim rectangles from it with slicing:</p>
+<div id="75898898" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">5</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> fig.add_gridspec(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>ax_main <span class="op">=</span> fig.add_subplot(gs[:, <span class="dv">0</span>:<span class="dv">2</span>])    <span class="co"># all rows, first two columns</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax_top <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">2</span>])       <span class="co"># row 0, last column</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>ax_bottom <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">2</span>])    <span class="co"># row 1, last column</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>ax_main)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>ax_top)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>ax_bottom)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"The same layout, built with GridSpec"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The slices work like the indexing you know: <code>gs[:, 0:2]</code> means “every row, columns 0 and 1”. Note also <code>plt.figure()</code> and <code>fig.add_subplot()</code> — a figure created empty, with panels added to it one at a time, which is what <code>plt.subplots()</code> does for you in the regular-grid case.</p>
+<p><code>subplot_mosaic</code> and <code>GridSpec</code> produce identical figures here. Prefer the mosaic for readability; you need <code>GridSpec</code> when you want finer control, such as making one row taller than another with <code>height_ratios</code>.</p>
+</section>
+</section>
+<section id="seaborn-axes-level-and-figure-level-functions" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="seaborn-axes-level-and-figure-level-functions"><span class="header-section-number">9.6</span> Seaborn: axes-level and figure-level functions</h2>
+<p>Now we can explain something that was postponed in the last chapter. Seaborn’s plotting functions come in two kinds, and the difference is exactly the Figure/Axes distinction we just learned.</p>
+<section id="axes-level-functions-draw-into-a-panel-you-give-them" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="axes-level-functions-draw-into-a-panel-you-give-them"><span class="header-section-number">9.6.1</span> Axes-level functions draw into a panel you give them</h3>
+<p>Every seaborn function used in the last chapter — <code>histplot</code>, <code>scatterplot</code>, <code>boxplot</code>, <code>violinplot</code>, <code>barplot</code>, <code>countplot</code>, <code>kdeplot</code>, <code>heatmap</code>, <code>regplot</code>, <code>stripplot</code> — is <strong>axes-level</strong>. Each draws onto a single Axes, and each accepts an <code>ax=</code> argument naming which one. With no <code>ax=</code>, it draws into the current Axes, which is why they worked unprompted in the last chapter.</p>
+<p>This makes them composable with everything in this chapter:</p>
+<div id="92e51b37" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"scatterplot"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"boxplot"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, ax<span class="op">=</span>axes[<span class="dv">2</span>])</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"violinplot"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Three axes-level seaborn functions in one figure"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-level-functions-create-and-own-the-whole-figure" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="figure-level-functions-create-and-own-the-whole-figure"><span class="header-section-number">9.6.2</span> Figure-level functions create and own the whole figure</h3>
+<p>Seaborn also offers a smaller set of <strong>figure-level</strong> functions. Each one wraps a family of axes-level functions and, crucially, <strong>creates its own Figure</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Figure-level function</th>
+<th>Wraps</th>
+<th>Pick the inner plot with</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sns.displot</code></td>
+<td><code>histplot</code>, <code>kdeplot</code>, <code>ecdfplot</code></td>
+<td><code>kind="hist"</code>, <code>"kde"</code>, <code>"ecdf"</code></td>
+</tr>
+<tr class="even">
+<td><code>sns.relplot</code></td>
+<td><code>scatterplot</code>, <code>lineplot</code></td>
+<td><code>kind="scatter"</code>, <code>"line"</code></td>
+</tr>
+<tr class="odd">
+<td><code>sns.catplot</code></td>
+<td><code>boxplot</code>, <code>violinplot</code>, <code>barplot</code>, <code>countplot</code>, <code>stripplot</code>, …</td>
+<td><code>kind="box"</code>, <code>"violin"</code>, …</td>
+</tr>
+<tr class="even">
+<td><code>sns.lmplot</code></td>
+<td><code>regplot</code></td>
+<td><em>(regression only)</em></td>
+</tr>
+</tbody>
+</table>
+<p>In exchange for owning the figure, they give you something the axes-level functions cannot do on their own: <strong>automatic faceting</strong>. Pass <code>col=</code> or <code>row=</code> and seaborn splits the data by that column and builds one panel per group, laying out the grid itself.</p>
+<div id="c69f7ab0" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, col<span class="op">=</span><span class="st">"species"</span>, bins<span class="op">=</span><span class="dv">15</span>, height<span class="op">=</span><span class="fl">3.5</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One argument, <code>col="species"</code>, produced a three-panel figure with shared axes, matching titles, and consistent spacing. Compare that with the manual loop we wrote earlier — this is why figure-level functions exist.</p>
+<p>Faceting composes with the visual channels from the last chapter:</p>
+<div id="476a4795" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            col<span class="op">=</span><span class="st">"species"</span>, hue<span class="op">=</span><span class="st">"sex"</span>, height<span class="op">=</span><span class="fl">3.5</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now each panel is one species and color distinguishes sex — four variables, cleanly readable, from a single call. And <code>catplot</code> faceting the categorical plots:</p>
+<div id="f79c4c34" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"sex"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, col<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">"box"</span>, height<span class="op">=</span><span class="fl">3.5</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally, the promise from the last chapter. We wanted a separate regression line per species and had to loop <code>regplot</code> because it has no <code>hue</code>. <code>lmplot</code> is the figure-level version, and it does have one:</p>
+<div id="3e3d79e3" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>           height<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="fl">1.2</span>, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Three groups, three fitted lines, one call — the Simpson’s paradox figure from the last chapter without the loop. Swap <code>hue</code> for <code>col</code> and you get the same three regressions in three separate panels:</p>
+<div id="4b61016c" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, col<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>           height<span class="op">=</span><span class="fl">3.5</span>, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-catch-ax-does-not-work-on-figure-level-functions" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="the-catch-ax-does-not-work-on-figure-level-functions"><span class="header-section-number">9.6.3</span> The catch: <code>ax=</code> does not work on figure-level functions</h3>
+<p>Because a figure-level function creates its own Figure, it cannot draw into a panel that already exists. Passing <code>ax=</code> is an error:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.displot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>])   <span class="co"># TypeError</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The mistake everyone makes once
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the most common seaborn error there is, and the fix is always to ask whether you need the figure-level function at all:</p>
+<ul>
+<li><strong>Putting a seaborn plot into a grid you built?</strong> Use the <strong>axes-level</strong> function with <code>ax=</code>: <code>histplot</code> not <code>displot</code>, <code>scatterplot</code> not <code>relplot</code>, <code>boxplot</code> not <code>catplot</code>, <code>regplot</code> not <code>lmplot</code>.</li>
+<li><strong>Want seaborn to build the grid for you, by splitting on a column?</strong> Use the <strong>figure-level</strong> function with <code>col=</code> / <code>row=</code>, and let it own the figure.</li>
+</ul>
+<p>A quick way to tell which you are holding: figure-level functions take <code>height</code> and <code>aspect</code> (they size their own figure) and a <code>kind</code> argument; axes-level functions take <code>ax</code> and no <code>kind</code>. Figure-level names also end in <code>-plot</code> after a short prefix — <code>displot</code>, <code>relplot</code>, <code>catplot</code>, <code>lmplot</code> — and are easy to misread as the axes-level names they wrap. <code>displot</code> and <code>histplot</code> are different functions; so are <code>relplot</code> and <code>scatterplot</code>.</p>
+</div>
+</div>
+</section>
+<section id="working-with-what-a-figure-level-function-returns" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="working-with-what-a-figure-level-function-returns"><span class="header-section-number">9.6.4</span> Working with what a figure-level function returns</h3>
+<p>A figure-level call returns a <code>FacetGrid</code> object rather than Axes, and you adjust the result through it:</p>
+<div id="e6fdb115" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                col<span class="op">=</span><span class="st">"species"</span>, hue<span class="op">=</span><span class="st">"sex"</span>, height<span class="op">=</span><span class="fl">3.5</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>g.set_axis_labels(<span class="st">"Flipper length (mm)"</span>, <span class="st">"Body mass (g)"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>g.set_titles(<span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>g.figure.suptitle(<span class="st">"Flipper length vs. body mass, by species and sex"</span>, y<span class="op">=</span><span class="fl">1.05</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>On a <code>FacetGrid</code> <code>g</code></th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>g.set_axis_labels(x, y)</code></td>
+<td>Label the x and y axes across all panels</td>
+</tr>
+<tr class="even">
+<td><code>g.set_titles("{col_name}")</code></td>
+<td>Retitle panels; <code>{col_name}</code> is the group’s value</td>
+</tr>
+<tr class="odd">
+<td><code>g.figure</code></td>
+<td>The underlying Figure — for <code>suptitle</code>, <code>savefig</code></td>
+</tr>
+<tr class="even">
+<td><code>g.axes</code></td>
+<td>The array of underlying Axes, if you need one directly</td>
+</tr>
+<tr class="odd">
+<td><code>g.axes.flat[0]</code></td>
+<td>The first panel, e.g.&nbsp;to add an annotation</td>
+</tr>
+<tr class="even">
+<td><code>g.savefig("name.png")</code></td>
+<td>Save the figure</td>
+</tr>
+<tr class="odd">
+<td><code>col_wrap=3</code></td>
+<td>Wrap a long row of facets onto multiple rows</td>
+</tr>
+</tbody>
+</table>
+<p><code>col_wrap</code> matters when the faceting column has many values. With <code>col=</code> alone, seaborn puts every panel in a single row, which gets uncomfortably wide past four or five groups; <code>col_wrap=3</code> breaks that row after three panels and continues below. Our penguin columns only have three values each, so there is nothing to wrap here — but remember it the first time you facet on something like a 12-month column.</p>
+<p>Faceting on two columns at once, with <code>col=</code> and <code>row=</code>, gives a grid of every combination:</p>
+<div id="4c225416" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, col<span class="op">=</span><span class="st">"island"</span>, row<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                bins<span class="op">=</span><span class="dv">12</span>, height<span class="op">=</span><span class="fl">2.6</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>g.set_titles(<span class="st">"</span><span class="sc">{row_name}</span><span class="st"> on </span><span class="sc">{col_name}</span><span class="st">"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>g.figure.suptitle(<span class="st">"Body mass by island and species"</span>, y<span class="op">=</span><span class="fl">1.03</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Two things to notice.</p>
+<p>First, <code>set_titles</code> is doing necessary work. Seaborn’s default title for a two-way facet is the full <code>species = Chinstrap | island = Biscoe</code>, and nine of those across a grid this size run into each other and become unreadable. <code>"{row_name} on {col_name}"</code> substitutes just the group values, giving “Chinstrap on Biscoe”.</p>
+<p>Second, <strong>four panels are empty</strong>, and that is the most informative thing in the figure. Faceting creates a slot for every combination of the two columns, whether or not any rows fall into it, so the blanks show you exactly which combinations do not occur: no Gentoos except on Biscoe, no Chinstraps except on Dream. That is the island/species structure we found with a heatmap in the last chapter, arrived at from a different direction. An empty facet is not a bug in your code — it is data.</p>
+</section>
+</section>
+<section id="sharing-a-legend-across-panels" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="sharing-a-legend-across-panels"><span class="header-section-number">9.7</span> Sharing a legend across panels</h2>
+<p>When every panel uses the same colors, a legend in each one is repeated clutter. The fix is to take the legend entries from one panel, remove the per-panel legends, and attach a single legend to the figure.</p>
+<div id="7e7d38d5" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>numeric_pairs <span class="op">=</span> [(<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                 (<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                 (<span class="st">"bill_length_mm"</span>, <span class="st">"body_mass_g"</span>)]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (ax, (xcol, ycol)) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(axes, numeric_pairs)):</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let ONLY the first panel build a legend — we harvest it, then delete it.</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span>xcol, y<span class="op">=</span>ycol, hue<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>ax,</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>                    legend<span class="op">=</span>(i <span class="op">==</span> <span class="dv">0</span>))</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"</span><span class="sc">{</span>xcol<span class="sc">}</span><span class="ss"> vs </span><span class="sc">{</span>ycol<span class="sc">}</span><span class="ss">"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> axes[<span class="dv">0</span>].get_legend_handles_labels()</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].get_legend().remove()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, title<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>           loc<span class="op">=</span><span class="st">"outside lower center"</span>, ncols<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Three views of the same penguins, one legend"</span>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The mechanics are worth stepping through, because there is a trap in the obvious version:</p>
+<ol type="1">
+<li><code>legend=(i == 0)</code> passes <code>True</code> for the first panel and <code>False</code> for the other two, so exactly one legend gets built.</li>
+<li><code>get_legend_handles_labels()</code> reads that panel’s legend entries — the colored markers (<code>handles</code>) and the species names (<code>labels</code>).</li>
+<li><code>axes[0].get_legend().remove()</code> then deletes the per-panel legend, now that we have its contents.</li>
+<li><code>fig.legend(handles, labels, ...)</code> attaches them once to the figure.</li>
+</ol>
+<p>The trap is step 1. It is tempting to pass <code>legend=False</code> to <em>every</em> panel and then ask for the handles, but a panel that never drew a legend has no labelled artists, so <code>get_legend_handles_labels()</code> returns two empty lists and <code>fig.legend</code> renders a legend box containing nothing but its title. <strong>You have to let one panel build a legend in order to steal it.</strong></p>
+<p>The <code>loc="outside lower center"</code> position requires <code>layout="constrained"</code>, which is one of the places constrained layout beats <code>tight_layout()</code>. <code>ncols=3</code> lays the three entries out in a row rather than a column, which suits a legend under a wide figure.</p>
+<p>If a seaborn function has already drawn a legend you want gone, remove it directly:</p>
+<div id="e5df28aa" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ax.get_legend().remove()</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Legend removed after the fact"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="two-y-axes-on-one-panel" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="two-y-axes-on-one-panel"><span class="header-section-number">9.8</span> Two y-axes on one panel</h2>
+<p>Occasionally you want two variables with completely different units on the same panel. <code>ax.twinx()</code> creates a second Axes sharing the same x-axis but with its own y-axis on the right.</p>
+<p>The two lists of means below are typed in as literal numbers rather than computed, because computing a mean per species needs <code>.groupby()</code>, which comes in a later chapter. They are the real values for this dataset — the same body-mass means you saw behind the bar chart in the last chapter.</p>
+<div id="87fd989d" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fig, ax_left <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>species_list <span class="op">=</span> [<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>mass_means <span class="op">=</span> [<span class="fl">3700.7</span>, <span class="fl">3733.1</span>, <span class="fl">5076.0</span>]        <span class="co"># grams</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>flipper_means <span class="op">=</span> [<span class="fl">190.0</span>, <span class="fl">195.8</span>, <span class="fl">217.2</span>]        <span class="co"># millimetres</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>ax_left.bar(species_list, mass_means, color<span class="op">=</span><span class="st">"steelblue"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>ax_left.set_ylabel(<span class="st">"Mean body mass (g)"</span>, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>ax_left.tick_params(axis<span class="op">=</span><span class="st">"y"</span>, labelcolor<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>ax_right <span class="op">=</span> ax_left.twinx()</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>ax_right.plot(species_list, flipper_means, color<span class="op">=</span><span class="st">"darkred"</span>, marker<span class="op">=</span><span class="st">"o"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>ax_right.set_ylabel(<span class="st">"Mean flipper length (mm)"</span>, color<span class="op">=</span><span class="st">"darkred"</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>ax_right.tick_params(axis<span class="op">=</span><span class="st">"y"</span>, labelcolor<span class="op">=</span><span class="st">"darkred"</span>)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>ax_left.set_title(<span class="st">"Two units, two y-axes"</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Colour-coding each axis label to match its data is not decoration here — with two scales it is the only thing telling the reader which line belongs to which axis.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Use two y-axes sparingly
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A twin-axis plot is easy to mislead with, because <strong>you chose the two scales</strong>. Sliding one axis range up or down changes where the lines cross and which appears to lead the other, and the “relationship” a reader sees can be manufactured entirely by that choice.</p>
+<p>Prefer two panels with <code>sharex=True</code>. The comparison stays honest, and the reader is never asked to track which line goes with which axis. Reach for <code>twinx</code> only when the two series genuinely belong in one frame — and say in the caption that the scales differ.</p>
+</div>
+</div>
+</section>
+<section id="use-an-inset-to-show-detail" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="use-an-inset-to-show-detail"><span class="header-section-number">9.9</span> Use an Inset to Show Detail</h2>
+<p>Two y-axes squeeze a second <em>scale</em> into one panel. An inset does something gentler: it puts a second <em>view of the same data</em> inside the panel. It is the tool for a plot that is right overall but crowded in one region — the main panel keeps the full range while a small panel inside it magnifies the part where the points pile up.</p>
+<p><code>ax.inset_axes([left, bottom, width, height])</code> creates that small Axes as a child of the panel, positioned in fractions of the parent. <code>[0.58, 0.06, 0.40, 0.34]</code> starts 58% of the way across and 6% up, and takes 40% of the width and 34% of the height. Because the numbers are relative to the parent, the inset stays put when the surrounding layout changes. (<code>fig.add_axes(...)</code> takes figure coordinates instead, which is what you want when a small Axes should sit somewhere in the figure independently of any panel.)</p>
+<p><code>ax.indicate_inset_zoom()</code> then draws the rectangle marking the magnified region and the lines connecting it to the inset. Without it, the reader has to work out the relationship from the axis numbers alone.</p>
+<div id="dataviz2-inset-code" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="dv">5</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                alpha<span class="op">=</span><span class="fl">0.7</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Where the points pile up, an inset can show the detail"</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># A child Axes, placed in fractions of the parent panel.</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>zoom <span class="op">=</span> ax.inset_axes([<span class="fl">0.58</span>, <span class="fl">0.06</span>, <span class="fl">0.40</span>, <span class="fl">0.34</span>])</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                alpha<span class="op">=</span><span class="fl">0.7</span>, legend<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>zoom)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>zoom.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">185</span>, <span class="dv">200</span>), ylim<span class="op">=</span>(<span class="dv">3000</span>, <span class="dv">4200</span>), xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>zoom.tick_params(labelsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>ax.indicate_inset_zoom(zoom, edgecolor<span class="op">=</span><span class="st">"gray"</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Two details of craft. <strong>Put the inset where the data is not</strong>: the bottom-right corner of this panel is nearly empty, so the magnified view hides nothing. If every corner is occupied, the region deserves its own panel instead.</p>
+<p><strong>Keep the inset’s ticks.</strong> The temptation is to strip them for tidiness, but an inset has a different scale from its parent and those numbers are the only thing saying so. Here <code>legend=False</code> drops the duplicate legend and the axis <em>labels</em> are dropped because the parent already names both variables — the tick numbers stay.</p>
+<p>An inset does not have to be a magnified copy. It is an ordinary Axes, so it can hold any plot at all, and a common use is a small summary tucked into a corner of the main panel: the distribution of one variable, or a compact comparison across groups.</p>
+<p>The figure below places two of them with <code>fig.add_axes([left, bottom, width, height])</code>, which takes the same four numbers as <strong>figure</strong> coordinates rather than fractions of a panel. That is the right tool when a small Axes belongs to the figure as a whole rather than to one panel, and the cost is exactly that: you are positioning against the whole canvas, so a change in the surrounding layout can leave the inset stranded. <code>facecolor</code> sets each one apart from the scatter behind it, and <code>sns.move_legend(ax, "upper left", bbox_to_anchor=(1.02, 1))</code> pushes the legend outside the panel, because the insets wanted the corner it was sitting in.</p>
+<div id="dataviz2-inset2-code" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, hue<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                alpha<span class="op">=</span><span class="fl">0.7</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>sns.move_legend(ax, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.02</span>, <span class="dv">1</span>))</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"One main panel, two summary insets"</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure coordinates: positioned against the whole canvas, not the panel.</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>hist_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.13</span>, <span class="fl">0.63</span>, <span class="fl">0.17</span>, <span class="fl">0.20</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>hist_ax)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>hist_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Body mass"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[], yticks<span class="op">=</span>[])</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>hist_ax.title.set_size(<span class="dv">9</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>box_ax <span class="op">=</span> fig.add_axes([<span class="fl">0.50</span>, <span class="fl">0.18</span>, <span class="fl">0.21</span>, <span class="fl">0.17</span>], facecolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, y<span class="op">=</span><span class="st">"species"</span>, ax<span class="op">=</span>box_ax)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>box_ax.<span class="bu">set</span>(title<span class="op">=</span><span class="st">"By species"</span>, xlabel<span class="op">=</span><span class="st">""</span>, ylabel<span class="op">=</span><span class="st">""</span>, xticks<span class="op">=</span>[])</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>box_ax.title.set_size(<span class="dv">9</span>)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>box_ax.tick_params(labelsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Both insets earn their corners: the upper left of this scatter holds no penguins, and neither does the lower right.</p>
+<p>Their ticks are gone, which is the opposite of the advice one figure ago — deliberately. A <strong>zoom</strong> inset has to show its scale, because the reader needs to know how far in it went. A <strong>summary</strong> inset like these two makes a claim about shape and order rather than about particular values, so stripping the ticks removes clutter without removing the point. Decide which kind you are drawing before you decide about ticks.</p>
+</section>
+<section id="formatting-tick-labels" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="formatting-tick-labels"><span class="header-section-number">9.10</span> Formatting Tick Labels</h2>
+<p>The last few sections added things to a panel. This one changes how the panel’s own numbers read. Matplotlib writes tick labels straight from the data, which gives you <code>6000</code> where a reader expects <code>6,000</code>, and <code>0.44</code> where they expect <code>44%</code>. The fix lives on the axis objects <code>ax.xaxis</code> and <code>ax.yaxis</code> — another place where having the object in hand is what makes the adjustment possible.</p>
+<p><code>set_major_formatter</code> accepts a format string in which <code>{x}</code> stands for the tick value. <code>'{x:,.0f}'</code> is a thousands separator with no decimals; <code>'{x:.0%}'</code> turns a proportion into a percentage.</p>
+<div id="dataviz2-fmt-code" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fig, (ax_mass, ax_share) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">4</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">20</span>, ax<span class="op">=</span>ax_mass)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>ax_mass.xaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>ax_mass.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Body mass (g)"</span>, title<span class="op">=</span><span class="st">"A thousands separator on the x-axis"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>shares <span class="op">=</span> df[<span class="st">"species"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>ax_share.bar(shares.index, shares.values, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>ax_share.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:.0%}</span><span class="st">'</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>ax_share.<span class="bu">set</span>(ylabel<span class="op">=</span><span class="st">"Share of penguins"</span>, title<span class="op">=</span><span class="st">"Proportions read as percentages"</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The right-hand panel holds proportions — <code>value_counts(normalize=True)</code>, from Pandas Fundamentals — so the values behind the bars are 0.442, 0.360, and 0.198. The formatter is what makes them read as the percentages a caption would quote, and the data itself is untouched: format for the reader rather than by rewriting your numbers.</p>
+<p>Two adjustments you will reach for on the same figures: <code>ax.tick_params(axis="x", rotation=45)</code> when category names overlap, and <code>ax.set_xticks([...])</code> when you want to choose the tick positions yourself instead of accepting matplotlib’s.</p>
+<section id="a-detour-for-larger-numbers" class="level3" data-number="9.10.1">
+<h3 data-number="9.10.1" class="anchored" data-anchor-id="a-detour-for-larger-numbers"><span class="header-section-number">9.10.1</span> A detour for larger numbers</h3>
+<p>Penguin masses run in the low thousands, so the separator above is a small improvement. It becomes a real one once counts reach five figures. For one figure only, this section borrows another dataset that ships with seaborn — 53,940 diamonds, nothing to download — to show what the formatter is actually for.</p>
+<div id="dataviz2-fmt-diamonds" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> sns.load_dataset(<span class="st">"diamonds"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>diamonds, x<span class="op">=</span><span class="st">"cut"</span>, order<span class="op">=</span>diamonds[<span class="st">"cut"</span>].value_counts().index,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>              color<span class="op">=</span><span class="st">"steelblue"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(<span class="st">'</span><span class="sc">{x:,.0f}</span><span class="st">'</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">"x"</span>, rotation<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Cut"</span>, ylabel<span class="op">=</span><span class="st">"Number of diamonds"</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="st">"Counts large enough to need separators"</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>21551</code> against <code>21,551</code>: at this size the separator is the difference between reading a number and counting its digits. The same figure shows the rotation argument doing its job on category names long enough to collide.</p>
+<p>The rest of the chapter returns to the penguins.</p>
+</section>
+</section>
+<section id="saving-a-multi-panel-figure" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="saving-a-multi-panel-figure"><span class="header-section-number">9.11</span> Saving a multi-panel figure</h2>
+<p>With a figure in a variable, save it with <code>fig.savefig</code>:</p>
+<div id="235d43bd" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), layout<span class="op">=</span><span class="st">"constrained"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"body_mass_g"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, bins<span class="op">=</span><span class="dv">15</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Saved to a file"</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"penguin_panels.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_viz_2_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Three points, two of which bit us in the last chapter:</p>
+<ul>
+<li><strong><code>fig.savefig</code>, not <code>plt.savefig</code>.</strong> With several figures in flight, <code>plt.savefig</code> saves whichever is current — name the one you mean.</li>
+<li><strong>Save before <code>plt.show()</code>.</strong> <code>plt.show()</code> closes out the figure, so saving afterwards writes a blank image. In the explicit interface this is less dangerous, since <code>fig</code> still refers to the figure, but keep the habit.</li>
+<li><strong><code>bbox_inches="tight"</code></strong> crops surrounding whitespace and, importantly, stops a <code>suptitle</code> or an outside legend from being cut off. <code>dpi=300</code> is a reasonable resolution for print.</li>
+</ul>
+<p>For a figure-level seaborn plot, save through the <code>FacetGrid</code>: <code>g.savefig("name.png")</code>, or equivalently <code>g.figure.savefig(...)</code>.</p>
+</section>
+<section id="designing-a-multi-panel-figure" class="level2" data-number="9.12">
+<h2 data-number="9.12" class="anchored" data-anchor-id="designing-a-multi-panel-figure"><span class="header-section-number">9.12</span> Designing a multi-panel figure</h2>
+<p>The mechanics are the easy part. Four habits separate a readable grid from a confusing one:</p>
+<p><strong>Share the axes when the panels share a variable.</strong> Unshared axes make panels look comparable while quietly rescaling each one. Use <code>sharex</code> / <code>sharey</code>, and if you cannot, say so.</p>
+<p><strong>Let one panel carry one idea.</strong> A grid works because each panel is simple and the reader learns to read it once. If a panel needs its own explanation, it probably wants to be its own figure.</p>
+<p><strong>Keep the panels in a meaningful order.</strong> Left to right, top to bottom is how people read. Order panels by size, time, or importance rather than alphabetically by accident — <code>order=</code> and <code>col_order=</code> exist for this.</p>
+<p><strong>Give the figure enough room.</strong> A 2×3 grid at the default figure size produces six cramped, unreadable panels. Scale <code>figsize</code> with the grid, and use <code>layout="constrained"</code>.</p>
+<p>And the question that comes before all of them: should this be one figure at all? Panels earn their place when the reader will <em>compare</em> them. Six unrelated plots in a grid are harder to read than six plots one after another, because the grid implies a relationship that isn’t there.</p>
+</section>
+<section id="summary-cheat-sheet" class="level2" data-number="9.13">
+<h2 data-number="9.13" class="anchored" data-anchor-id="summary-cheat-sheet"><span class="header-section-number">9.13</span> Summary Cheat Sheet</h2>
+<p><strong>The anatomy.</strong> A <strong>Figure</strong> is the canvas; an <strong>Axes</strong> is one panel; an <strong>Axis</strong> is one number line; <strong>Artists</strong> are the things drawn. “Axes” means panel.</p>
+<p><strong>The two interfaces.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Implicit (pyplot): fine for a single quick plot</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.hist(data)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit (object-oriented): use this for everything else</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>ax.hist(data)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Plotting commands keep their names, labelling commands gain <code>set_</code>, panel properties live on <code>ax</code>, and figure properties live on <code>fig</code>.</p>
+<p><strong>Building grids.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One panel</td>
+<td><code>fig, ax = plt.subplots()</code></td>
+</tr>
+<tr class="even">
+<td>A regular grid</td>
+<td><code>fig, axes = plt.subplots(nrows, ncols)</code></td>
+</tr>
+<tr class="odd">
+<td>Loop over panels</td>
+<td><code>for ax, thing in zip(axes.flat, things):</code></td>
+</tr>
+<tr class="even">
+<td>Uneven layout</td>
+<td><code>plt.subplot_mosaic("AAB\nAAC")</code></td>
+</tr>
+<tr class="odd">
+<td>Fine control of an uneven layout</td>
+<td><code>fig.add_gridspec</code> + <code>fig.add_subplot(gs[...])</code></td>
+</tr>
+<tr class="even">
+<td>Comparable panels</td>
+<td><code>sharex=True</code>, <code>sharey=True</code></td>
+</tr>
+<tr class="odd">
+<td>Spacing that works</td>
+<td><code>layout="constrained"</code></td>
+</tr>
+<tr class="even">
+<td>A magnified inset</td>
+<td><code>ax.inset_axes([left, bottom, w, h])</code> + <code>ax.indicate_inset_zoom(inset)</code></td>
+</tr>
+<tr class="odd">
+<td>A summary inset, in figure coordinates</td>
+<td><code>fig.add_axes([left, bottom, w, h], facecolor=...)</code></td>
+</tr>
+<tr class="even">
+<td>Thousands separator / percentages</td>
+<td><code>ax.yaxis.set_major_formatter('{x:,.0f}')</code> / <code>'{x:.0%}'</code></td>
+</tr>
+<tr class="odd">
+<td>Rotate tick labels</td>
+<td><code>ax.tick_params(axis="x", rotation=45)</code></td>
+</tr>
+<tr class="even">
+<td>Move a legend out of the panel</td>
+<td><code>sns.move_legend(ax, "upper left", bbox_to_anchor=(1.02, 1))</code></td>
+</tr>
+<tr class="odd">
+<td>Figure-wide text</td>
+<td><code>fig.suptitle</code>, <code>fig.supxlabel</code>, <code>fig.supylabel</code></td>
+</tr>
+<tr class="even">
+<td>Saving</td>
+<td><code>fig.savefig(..., dpi=300, bbox_inches="tight")</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Seaborn’s two kinds of function.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Axes-level</th>
+<th>Figure-level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Examples</td>
+<td><code>histplot</code>, <code>scatterplot</code>, <code>boxplot</code>, <code>regplot</code></td>
+<td><code>displot</code>, <code>relplot</code>, <code>catplot</code>, <code>lmplot</code></td>
+</tr>
+<tr class="even">
+<td>Draws into</td>
+<td>A panel you give it, via <code>ax=</code></td>
+<td>Its own new figure</td>
+</tr>
+<tr class="odd">
+<td>Builds panels for you</td>
+<td>No</td>
+<td>Yes, via <code>col=</code> / <code>row=</code></td>
+</tr>
+<tr class="even">
+<td>Distinctive arguments</td>
+<td><code>ax=</code></td>
+<td><code>kind=</code>, <code>height=</code>, <code>aspect=</code>, <code>col_wrap=</code></td>
+</tr>
+<tr class="odd">
+<td>Returns</td>
+<td>An <code>Axes</code></td>
+<td>A <code>FacetGrid</code></td>
+</tr>
+<tr class="even">
+<td>Use it when</td>
+<td>You are assembling a figure yourself</td>
+<td>You want faceting by a column</td>
+</tr>
+</tbody>
+</table>
+<p>The rule to remember: <strong><code>ax=</code> for a panel you built, <code>col=</code> for panels seaborn builds.</strong></p>
+</section>
+<section id="practice-activity-build-and-defend-a-multi-panel-figure" class="level2" data-number="9.14">
+<h2 data-number="9.14" class="anchored" data-anchor-id="practice-activity-build-and-defend-a-multi-panel-figure"><span class="header-section-number">9.14</span> Practice Activity: Build and Defend a Multi-Panel Figure</h2>
+<p><strong>Goal:</strong> Assemble figures out of panels, choose between building them yourself and letting seaborn facet them, and say what each choice cost.</p>
+<p><strong>File:</strong> <code>activity09.ipynb</code> from the <a href="downloads/data-visualization-2-practice.zip">practice kit</a>.</p>
+<p><strong>Submit:</strong> <code>activity09.html</code> through the final upload question in the Data Visualization II Canvas quiz.</p>
+<p><strong>This section contains the complete activity instructions.</strong> The starter loads the data and supplies spaces to record your work. Open <code>activity09.ipynb</code> from the folder prepared in <a href="#set-up-your-chapter-files">Set Up Your Chapter Files</a>, using the same project environment. The worked examples above are preparation, not additional submission requirements.</p>
+<p>You will use the same Palmer penguins dataset, loaded the same way, so the activity needs no data file of its own.</p>
+<section id="a.-the-two-interfaces-and-a-title-that-goes-astray" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a.-the-two-interfaces-and-a-title-that-goes-astray">A. The Two Interfaces, and a Title That Goes Astray</h3>
+<ul>
+<li>Replace <code>Your Name</code> in the opening Raw cell’s <code>author</code> field. Run the setup cell; it must report the shape <code>(344, 7)</code>.</li>
+<li>Draw a histogram of <code>bill_length_mm</code> twice, once with the pyplot interface and once with the object-oriented interface, giving each an x-label and a title. Say in one sentence what <code>fig</code> and <code>ax</code> refer to in the second version.</li>
+<li>Build a 1×2 figure, draw into both panels, and then call <code>plt.title("Left panel")</code>. Report where the title actually appeared and explain why. Fix it so the title lands on the left panel.</li>
+</ul>
+</section>
+<section id="b.-a-grid-whose-panels-are-comparable" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="b.-a-grid-whose-panels-are-comparable">B. A Grid Whose Panels Are Comparable</h3>
+<ul>
+<li>Create <code>fig, axes = plt.subplots(2, 2)</code>. Before running anything, write down the index of the bottom-left panel and the value of <code>axes.shape</code>; then confirm both by setting that panel’s title.</li>
+<li>Build a 1×3 figure comparing <code>body_mass_g</code> across the three species: a box plot, a violin plot, and a bar chart of means, one per panel.</li>
+<li>Use <code>sharey=True</code> and explain in a sentence why sharing the y-axis matters for this comparison. Give the figure a size that leaves the panels readable.</li>
+</ul>
+</section>
+<section id="c.-looping-over-panels-and-one-figure-wide-label" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="c.-looping-over-panels-and-one-figure-wide-label">C. Looping Over Panels, and One Figure-Wide Label</h3>
+<ul>
+<li>Using <code>zip</code> and <code>axes.flat</code>, draw a 2×2 grid of scatter plots of <code>body_mass_g</code> against each of the four numeric columns.</li>
+<li>One panel plots body mass against itself. Say what that panel shows, then replace it with something a reader would learn from.</li>
+<li>Give the figure a single figure-wide title instead of four panel titles, and label the shared axes once. Save it as a 300-dpi PNG and confirm nothing is cut off.</li>
+</ul>
+</section>
+<section id="d.-axes-level-or-figure-level" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="d.-axes-level-or-figure-level">D. Axes-Level or Figure-Level</h3>
+<ul>
+<li>Draw <code>sns.displot(data=df, x="body_mass_g", col="species")</code>, then rebuild the same figure with <code>plt.subplots()</code> and <code>sns.histplot(..., ax=...)</code>. Say which version was shorter and what you had to do by hand.</li>
+<li>Explain why the same call fails when you pass <code>ax=</code> to <code>sns.catplot()</code> but works with <code>sns.boxplot()</code>, and name the argument that tells you at a glance which kind of function you are holding.</li>
+<li>Use <code>sns.lmplot</code> to fit one regression line per species for <code>bill_depth_mm</code> against <code>bill_length_mm</code>, and say what that figure shows that a single pooled line hid in the previous chapter.</li>
+</ul>
+</section>
+<section id="render-and-submit" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="render-and-submit">Render and Submit</h3>
+<p>Restart the kernel, run all cells in order, resolve unexpected errors, and save. Include your figures, outputs, and explanations for A–D, and a short Markdown completion note. From <code>stat303-data-visualization-2</code> in the terminal, run:</p>
+<pre class="text"><code>quarto render activity09.ipynb --to html</code></pre>
+<p>Follow the <a href="./vscode_setup.html#render-and-submit-with-quarto">Quarto refresher</a>: inspect the HTML and a copy opened outside the project folder, and confirm that every figure appears and your name is on the report. Upload only <code>activity09.html</code> to the Data Visualization II Canvas quiz; keep your notebook locally.</p>
+<p><strong>HTML grading (16 points):</strong> both interfaces drawn, <code>fig</code>/<code>ax</code> explained, and the misplaced title diagnosed and fixed (4); panel indexing, <code>axes.shape</code>, the three-panel comparison, and the <code>sharey</code> justification (4); the looped grid, the self-comparison panel replaced, figure-wide labelling, and a clean saved file (4); the faceted figure rebuilt by hand, the <code>ax=</code> explanation, and the per-species regression lines (3); name, readable report, and completion note (1).</p>
+</section>
+</section>
+<section id="extended-practice" class="level2" data-number="9.15">
+<h2 data-number="9.15" class="anchored" data-anchor-id="extended-practice"><span class="header-section-number">9.15</span> Extended Practice</h2>
+<p>These longer exercises are additional practice, not requirements for the Canvas quiz. Work in a separate notebook beside your activity and load the data the way the chapter does. Include your code, figures, and explanations.</p>
+<section id="mosaic-against-gridspec" class="level3" data-number="9.15.1">
+<h3 data-number="9.15.1" class="anchored" data-anchor-id="mosaic-against-gridspec"><span class="header-section-number">9.15.1</span> Mosaic against GridSpec</h3>
+<p>Reproduce this chapter’s <code>subplot_mosaic</code> figure using <code>GridSpec</code> instead. Then say which version you would rather maintain, and what <code>GridSpec</code> gives you that the mosaic string cannot.</p>
+</section>
+<section id="empty-panels-and-what-they-tell-you" class="level3" data-number="9.15.2">
+<h3 data-number="9.15.2" class="anchored" data-anchor-id="empty-panels-and-what-they-tell-you"><span class="header-section-number">9.15.2</span> Empty Panels, and What They Tell You</h3>
+<p>Facet body mass with <code>sns.displot</code> twice: once with <code>col="island", row="species"</code>, and once with <code>col="island", row="sex"</code>. The first has empty panels and the second does not. Explain what that difference tells you about the two pairs of variables.</p>
+</section>
+<section id="one-legend-for-the-whole-figure" class="level3" data-number="9.15.3">
+<h3 data-number="9.15.3" class="anchored" data-anchor-id="one-legend-for-the-whole-figure"><span class="header-section-number">9.15.3</span> One Legend for the Whole Figure</h3>
+<p>Build a 1×3 figure in which each panel is coloured by species, then remove the three panel legends and give the figure a single shared legend. Explain what goes wrong if you simply call <code>ax.legend()</code> on the last panel instead.</p>
+</section>
+<section id="two-y-axes-and-whether-to-use-them" class="level3" data-number="9.15.4">
+<h3 data-number="9.15.4" class="anchored" data-anchor-id="two-y-axes-and-whether-to-use-them"><span class="header-section-number">9.15.4</span> Two Y-Axes, and Whether to Use Them</h3>
+<p>Draw one panel with two y-axes using <code>ax.twinx()</code>, then draw the same information as two stacked panels sharing an x-axis. Argue for one of the two versions as the one you would publish, and name the specific way the twin-axis version can mislead a reader.</p>
+</section>
+</section>
+<section id="before-you-move-on" class="level2" data-number="9.16">
+<h2 data-number="9.16" class="anchored" data-anchor-id="before-you-move-on"><span class="header-section-number">9.16</span> Before You Move On</h2>
+<p>The habit to carry forward is naming the thing you draw into. A single quick plot can go through <code>plt.*</code> and land wherever pyplot puts it, but as soon as a figure has more than one panel, every command needs an address: <code>ax</code> for a panel, <code>fig</code> for the whole canvas. Axes-level seaborn functions take that address through <code>ax=</code>; figure-level ones refuse it, because they build the figure themselves.</p>
+<p>The other habit is asking whether the panels belong together. A grid tells the reader that the panels are worth comparing, so it should be true: shared axes when they share a variable, a meaningful order, one idea per panel, and enough room that none of it is cramped.</p>
+<p>For any multi-panel figure you make or read, you should be able to answer five questions:</p>
+<ol type="1">
+<li>What is one panel, and what changes from panel to panel?</li>
+<li>Are the axes shared, and if not, could a reader mistake the panels for comparable?</li>
+<li>Which commands addressed a panel, and which addressed the whole figure?</li>
+<li>Did seaborn build these panels, or did you — and does the function you called accept <code>ax=</code>?</li>
+<li>Would these plots be easier to read one after another instead of side by side?</li>
+</ol>
+<p>Continue to <a href="./Data_cleaning.html">Data Cleaning</a>, where the messy realities you have been plotting around — missing values, wrong types, duplicated records — become the subject rather than a footnote.</p>
+<p>References: <a href="https://matplotlib.org/stable/users/explain/quick_start.html">matplotlib quick start</a>, <a href="https://matplotlib.org/stable/gallery/showcase/anatomy.html">figure anatomy</a>, <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html"><code>plt.subplots</code></a>, <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot_mosaic.html"><code>subplot_mosaic</code></a>, <a href="https://matplotlib.org/stable/users/explain/axes/constrainedlayout_guide.html">constrained layout</a>, <a href="https://seaborn.pydata.org/tutorial/function_overview.html">seaborn figure-level versus axes-level functions</a>, and <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html"><code>FacetGrid</code></a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_viz_1.html" class="pagination-link" aria-label="Data Visualization I: Choosing and Drawing a Single Plot">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data Visualization I: Choosing and Drawing a Single Plot</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Data_cleaning.html" class="pagination-link" aria-label="Data Cleaning">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
