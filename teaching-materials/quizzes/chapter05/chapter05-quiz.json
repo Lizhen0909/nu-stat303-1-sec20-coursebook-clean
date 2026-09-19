@@ -1,7 +1,7 @@
 {
   "id": "stat303_chapter05_quiz_v1",
   "title": "Chapter 5 Quiz: NumPy Fundamentals",
-  "instructions_url": "https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Numpy.html#practice-activity-shapes-sales-and-search",
+  "instructions_url": "https://lizhen0909.github.io/stat303-1-sec20-coursebook/Numpy.html#practice-activity-shapes-sales-and-search",
   "instructions_label": "Chapter 5 Practice Activity",
   "total_points": 20,
   "mcqs": [

@@ -11,7 +11,7 @@ format:
 
 **Total: 20 points — Questions 1–4: 1 point each; Question 5: 16 points.**
 
-Complete [Chapter 2’s Practice Activity](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/python_venv.html#practice-activity-find-your-python-and-your-data) before answering the quiz. That chapter section contains the complete activity and HTML preparation instructions. You may consult Chapter 2, your notebook, and your terminal. Choose **one best answer** for each multiple-choice question. The final question asks you to upload your own HTML report.
+Complete [Chapter 2’s Practice Activity](https://lizhen0909.github.io/stat303-1-sec20-coursebook/python_venv.html#practice-activity-find-your-python-and-your-data) before answering the quiz. That chapter section contains the complete activity and HTML preparation instructions. You may consult Chapter 2, your notebook, and your terminal. Choose **one best answer** for each multiple-choice question. The final question asks you to upload your own HTML report.
 
 ## Multiple-Choice Questions
 
@@ -71,4 +71,4 @@ Which result is the strongest evidence that your terminal and notebook are using
 
 **Question type: File upload. Submit one file: `activity02.html`.**
 
-Upload `activity02.html`, prepared by following the [Chapter 2 Practice Activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/python_venv.html#practice-activity-find-your-python-and-your-data). Grading follows the criteria listed there.
+Upload `activity02.html`, prepared by following the [Chapter 2 Practice Activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/python_venv.html#practice-activity-find-your-python-and-your-data). Grading follows the criteria listed there.

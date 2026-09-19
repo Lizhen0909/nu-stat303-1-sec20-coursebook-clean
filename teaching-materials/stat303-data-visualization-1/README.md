@@ -1,7 +1,7 @@
 # Data Visualization I practice kit
 
-Follow [Data Visualization I: Choosing and Drawing a Single Plot](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/data_viz_1.html)
-and its [complete activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/data_viz_1.html#practice-activity-choose-draw-and-defend-a-plot).
+Follow [Data Visualization I: Choosing and Drawing a Single Plot](https://lizhen0909.github.io/stat303-1-sec20-coursebook/data_viz_1.html)
+and its [complete activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/data_viz_1.html#practice-activity-choose-draw-and-defend-a-plot).
 
 Extract this folder inside your stat303-setup project and select its verified
 environment. pandas, matplotlib, and seaborn are required. Use this folder as the

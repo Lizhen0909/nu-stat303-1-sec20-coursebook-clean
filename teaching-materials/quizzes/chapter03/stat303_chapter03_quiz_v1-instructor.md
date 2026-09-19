@@ -20,7 +20,7 @@ Correct answer: **D**. index=False omits the row index; meaningful IDs stored in
 
 ## Final HTML upload — 16 points
 
-Submit `activity03.html`; follow [Chapter 3 Practice Activity](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Reading_data.html#practice-activity-read-inspect-and-export-movie-data).
+Submit `activity03.html`; follow [Chapter 3 Practice Activity](https://lizhen0909.github.io/stat303-1-sec20-coursebook/Reading_data.html#practice-activity-read-inspect-and-export-movie-data).
 
 - **Import and dataset interpretation (3 points):** 1 point: correct CSV import and requested previews; 1: correct shape/column evidence; 1: observation, variables, and index interpretation.
 

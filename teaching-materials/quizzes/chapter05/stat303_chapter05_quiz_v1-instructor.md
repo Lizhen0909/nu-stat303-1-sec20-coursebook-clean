@@ -20,7 +20,7 @@ Correct answer: **D**. max returns the value. With no axis, argmax returns the f
 
 ## Final HTML upload — 16 points
 
-Submit `activity06.html`; follow [Chapter 5 Practice Activity](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/numpy_fundamentals.html#practice-activity-shapes-sales-and-search).
+Submit `activity06.html`; follow [Chapter 5 Practice Activity](https://lizhen0909.github.io/stat303-1-sec20-coursebook/numpy_fundamentals.html#practice-activity-shapes-sales-and-search).
 
 - **Shapes and selections (3 points):** 1 point: attributes and axis meanings; 1: predictions and results for integer versus sliced column selection; 1: first-two-store/last-two-product slice, shape, and explanation.
 

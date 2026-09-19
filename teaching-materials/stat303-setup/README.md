@@ -10,4 +10,4 @@ The activity sections in the coursebook are the authoritative instructions. Subm
 Create `.venv` and `requirements.txt` locally in Chapter 2. Neither is supplied. The six station-temperature records are illustrative.
 
 The formal Assignment B has a separate download and project folder. See its coursebook page:
-https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Assignment%20B.html
+https://lizhen0909.github.io/stat303-1-sec20-coursebook/Assignment%20B.html

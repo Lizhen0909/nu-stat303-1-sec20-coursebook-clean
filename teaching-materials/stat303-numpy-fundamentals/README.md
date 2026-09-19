@@ -1,6 +1,6 @@
 # NumPy Fundamentals practice kit
 
-Follow [NumPy Fundamentals (Chapter 6)](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/numpy_fundamentals.html) and its [complete activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/numpy_fundamentals.html#practice-activity-shapes-sales-and-search).
+Follow [NumPy Fundamentals (Chapter 6)](https://lizhen0909.github.io/stat303-1-sec20-coursebook/numpy_fundamentals.html) and its [complete activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/numpy_fundamentals.html#practice-activity-shapes-sales-and-search).
 
 Extract this folder inside your stat303-setup project and select its verified environment. NumPy and pandas are required. Use this folder as the notebook working directory.
 

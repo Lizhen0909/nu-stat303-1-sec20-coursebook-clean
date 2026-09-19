@@ -1,7 +1,7 @@
 # Data Visualization II practice kit
 
-Follow [Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/data_viz_2.html)
-and its [complete activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/data_viz_2.html#practice-activity-build-and-defend-a-multi-panel-figure).
+Follow [Data Visualization II: Interfaces, Subplots, and Multi-Panel Figures](https://lizhen0909.github.io/stat303-1-sec20-coursebook/data_viz_2.html)
+and its [complete activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/data_viz_2.html#practice-activity-build-and-defend-a-multi-panel-figure).
 
 Extract this folder inside your stat303-setup project and select its verified
 environment. pandas, matplotlib, and seaborn are required. Use this folder as the

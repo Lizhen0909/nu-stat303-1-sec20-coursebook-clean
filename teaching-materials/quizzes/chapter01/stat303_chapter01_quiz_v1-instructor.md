@@ -20,7 +20,7 @@ Correct answer: **C**. A running kernel can retain values from deleted cells, an
 
 ## Final HTML upload — 16 points
 
-Submit `activity01.html`; follow [Chapter 1 Practice Activity](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/vscode_setup.html#practice-activity-your-first-vs-code-notebook).
+Submit `activity01.html`; follow [Chapter 1 Practice Activity](https://lizhen0909.github.io/stat303-1-sec20-coursebook/vscode_setup.html#practice-activity-your-first-vs-code-notebook).
 
 - **Name and readable Markdown (2 points):** 1 point for the student name in the notebook/report; 1 point for explanations displayed as readable Markdown text. Do not require the name to appear in a particular metadata field.
 

@@ -19,6 +19,8 @@ book:
   title: "Data Science I with python"
   subtitle: "STAT 303-1-Sec20"
   author: "Lizhen Shi"
+  site-url: "https://lizhen0909.github.io/stat303-1-sec20-coursebook/"
+  repo-url: "https://github.com/Lizhen0909/stat303-1-sec20-coursebook"
   
   sidebar:
     search: true

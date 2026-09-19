@@ -1,6 +1,6 @@
 # Reading Data practice kit
 
-Use the [Reading Data chapter](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Reading_data.html) for the lesson and its [complete activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/Reading_data.html#practice-activity-read-inspect-and-export-movie-data) for the graded task list.
+Use the [Reading Data chapter](https://lizhen0909.github.io/stat303-1-sec20-coursebook/Reading_data.html) for the lesson and its [complete activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/Reading_data.html#practice-activity-read-inspect-and-export-movie-data) for the graded task list.
 
 ## Open and run
 

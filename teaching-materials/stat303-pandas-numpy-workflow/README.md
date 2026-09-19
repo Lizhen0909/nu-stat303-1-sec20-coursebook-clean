@@ -1,7 +1,7 @@
 # NumPy and pandas Workflow practice kit
 
-Follow [NumPy and pandas in a Real Workflow](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/numpy_pandas_workflow.html)
-and its [complete activity instructions](https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/numpy_pandas_workflow.html#practice-activity-from-messy-file-to-labeled-report).
+Follow [NumPy and pandas in a Real Workflow](https://lizhen0909.github.io/stat303-1-sec20-coursebook/numpy_pandas_workflow.html)
+and its [complete activity instructions](https://lizhen0909.github.io/stat303-1-sec20-coursebook/numpy_pandas_workflow.html#practice-activity-from-messy-file-to-labeled-report).
 
 Extract this folder inside your stat303-setup project and select its verified
 environment. NumPy and pandas are required. Use this folder as the notebook

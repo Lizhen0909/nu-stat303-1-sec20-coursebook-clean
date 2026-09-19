@@ -2,7 +2,7 @@
 
 Free coursebook by Lizhen Shi for Northwestern University's Department of Statistics and Data Science. This edition retains the original teaching material and saved outputs while updating the setup sequence and assignments.
 
-**Read the book:** https://lizhen0909.github.io/nu-stat303-1-sec20-coursebook-clean/
+**Read the book:** https://lizhen0909.github.io/stat303-1-sec20-coursebook/
 
 ## Repository contents
 
